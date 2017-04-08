@@ -5,7 +5,7 @@ import {
   Well
 } from 'react-bootstrap'
 
-const { bool, string, node } = React.PropTypes;
+const { bool, string } = React.PropTypes;
 
 class Collapsible extends React.Component {
   constructor (props) {
@@ -26,7 +26,7 @@ class Collapsible extends React.Component {
           <Collapse in={this.state.isOpen}>
             <div>
               <Well>
-                {this.props.body}
+                {this.props.children}
               </Well>
             </div>
           </Collapse>
@@ -38,12 +38,10 @@ class Collapsible extends React.Component {
 Collapsible.propTypes = {
   title: string.isRequired,
   defaultOpen: bool,
-  body: node
 };
 
 Collapsible.defaultProps = {
   defaultOpen: false,
-  body: null
 };
 
 export default Collapsible
