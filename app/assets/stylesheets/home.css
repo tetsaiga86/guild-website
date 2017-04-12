@@ -1,0 +1,29 @@
+
+.banner{
+  height: 20em;
+  /*margin-left: 20%;*/
+  width: 100%;
+  object-fit: contain;
+}
+
+body, .well, td{
+  background-color: black;
+  background-repeat: repeat;
+}
+
+body{
+  background-image: url("/images/background.jpg");
+  background-repeat: no-repeat;
+}
+
+.contact{
+  position:relative;
+}
+
+.navbar{
+  margin: 0;
+}
+
+.carousel-img{
+  width:100%;
+}

@@ -16843,59 +16843,68 @@ var Home = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
-        _react2.default.createElement(_header2.default, null),
+        { className: 'home-div' },
+        _react2.default.createElement(_header2.default, { className: 'header' }),
         _react2.default.createElement(
-          _reactBootstrap.Grid,
-          null,
+          'div',
+          { className: 'banner-div' },
+          _react2.default.createElement('img', { className: 'banner', src: '/images/kubrickheader.jpg' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'main-page' },
           _react2.default.createElement(
-            _reactBootstrap.Row,
-            { className: 'top-row' },
+            _reactBootstrap.Grid,
+            null,
             _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 12, md: 8 },
+              _reactBootstrap.Row,
+              { className: 'top-row' },
               _react2.default.createElement(
-                'code',
-                null,
-                _react2.default.createElement(_slide2.default, null)
+                _reactBootstrap.Col,
+                { xs: 12, md: 8 },
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  _react2.default.createElement(_slide2.default, null)
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 6, md: 4 },
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  _react2.default.createElement(_progress2.default, null)
+                )
               )
             ),
             _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 6, md: 4 },
+              _reactBootstrap.Row,
+              { className: 'bottom-row' },
               _react2.default.createElement(
-                'code',
-                null,
-                _react2.default.createElement(_progress2.default, null)
-              )
-            )
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.Row,
-            { className: 'bottom-row' },
-            _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 6, md: 4 },
+                _reactBootstrap.Col,
+                { xs: 6, md: 4 },
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  _react2.default.createElement(_announcements2.default, null)
+                )
+              ),
               _react2.default.createElement(
-                'code',
-                null,
-                _react2.default.createElement(_announcements2.default, null)
+                _reactBootstrap.Col,
+                { xs: 6, md: 4 },
+                _react2.default.createElement(
+                  'code',
+                  null,
+                  _react2.default.createElement(_recruitment2.default, null)
+                )
               )
             ),
             _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 6, md: 4 },
-              _react2.default.createElement(
-                'code',
-                null,
-                _react2.default.createElement(_recruitment2.default, null)
-              )
+              _reactBootstrap.Row,
+              { className: 'footer' },
+              _react2.default.createElement(_footer2.default, null)
             )
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.Row,
-            { className: 'footer' },
-            _react2.default.createElement(_footer2.default, null)
           )
         )
       );
@@ -17650,8 +17659,159 @@ var Announcements = function (_React$Component) {
 exports.default = Announcements;
 
 /***/ }),
-/* 200 */,
-/* 201 */,
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(57);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ButtonGrp = function (_React$Component) {
+  _inherits(ButtonGrp, _React$Component);
+
+  function ButtonGrp() {
+    _classCallCheck(this, ButtonGrp);
+
+    return _possibleConstructorReturn(this, (ButtonGrp.__proto__ || Object.getPrototypeOf(ButtonGrp)).apply(this, arguments));
+  }
+
+  _createClass(ButtonGrp, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _reactBootstrap.ButtonGroup,
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          { bsStyle: 'success' },
+          'Heroic'
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          { bsStyle: 'danger' },
+          'Mythic'
+        )
+      );
+    }
+  }]);
+
+  return ButtonGrp;
+}(_react2.default.Component);
+
+exports.default = ButtonGrp;
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(57);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _React$PropTypes = _react2.default.PropTypes,
+    bool = _React$PropTypes.bool,
+    string = _React$PropTypes.string;
+
+var Collapsible = function (_React$Component) {
+  _inherits(Collapsible, _React$Component);
+
+  function Collapsible(props) {
+    _classCallCheck(this, Collapsible);
+
+    var _this = _possibleConstructorReturn(this, (Collapsible.__proto__ || Object.getPrototypeOf(Collapsible)).call(this, props));
+
+    _this.state = { isOpen: _this.props.defaultOpen };
+    _this.toggle = _this.toggle.bind(_this);
+    return _this;
+  }
+
+  _createClass(Collapsible, [{
+    key: 'toggle',
+    value: function toggle() {
+      var isOpen = this.state.isOpen;
+      this.setState({ isOpen: !isOpen });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          { block: true, onClick: this.toggle },
+          this.props.title
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Collapse,
+          { 'in': this.state.isOpen },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Well,
+              null,
+              this.props.children
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Collapsible;
+}(_react2.default.Component);
+
+Collapsible.propTypes = {
+  title: string.isRequired,
+  defaultOpen: bool
+};
+
+Collapsible.defaultProps = {
+  defaultOpen: false
+};
+
+exports.default = Collapsible;
+
+/***/ }),
 /* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17850,10 +18010,204 @@ exports.default = Header;
 
 /***/ }),
 /* 204 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token (43:39)\n\n\u001b[0m \u001b[90m 41 | \u001b[39m        guildAchievements\u001b[33m.\u001b[39mforEach(guildAchivement \u001b[33m=>\u001b[39m {\n \u001b[90m 42 | \u001b[39m          \u001b[36mif\u001b[39m (isArelevantAchievement(guildAchievement) \u001b[33m&&\u001b[39m achievementComplete(guildAchievement)) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 43 | \u001b[39m            \u001b[36mconst\u001b[39m raidEntry \u001b[33m=\u001b[39m newRaids[\u001b[33m...\u001b[39m\u001b[33m...\u001b[39m]\u001b[33m;\u001b[39m\n \u001b[90m    | \u001b[39m                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 44 | \u001b[39m            raidEntry\u001b[33m.\u001b[39mkilledDate \u001b[33m=\u001b[39m guildAchievement[\u001b[32m'killed_at'\u001b[39m]\u001b[33m;\u001b[39m\n \u001b[90m 45 | \u001b[39m          }\n \u001b[90m 46 | \u001b[39m        })\u001b[33m;\u001b[39m\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _collapsible = __webpack_require__(201);
+
+var _collapsible2 = _interopRequireDefault(_collapsible);
+
+var _buttonGrp = __webpack_require__(200);
+
+var _buttonGrp2 = _interopRequireDefault(_buttonGrp);
+
+var _raid = __webpack_require__(444);
+
+var _raid2 = _interopRequireDefault(_raid);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var guildAchievementsUrl = 'https://us.api.battle.net/wow/guild/kiljaeden/F%20O%20O%20L%20S%20A%20V%20A%20G%20E?fields=achievements%2Cchallenge&locale=en_US&apikey=8swrjb9wywnx7ycxqpgz39uweq9pbnps';
+
+var allGuildAchievementsUrl = 'https://us.api.battle.net/wow/data/guild/achievements?locale=en_US&apikey=8swrjb9wywnx7ycxqpgz39uweq9pbnps';
+
+var guildLeaderAchievementsUrl = 'https://us.api.battle.net/wow/character/kiljaeden/Srprise?fields=achievements&locale=en_US&apikey=8swrjb9wywnx7ycxqpgz39uweq9pbnps';
+
+var allCharacterAchievementsUrl = 'https://us.api.battle.net/wow/data/character/achievements?locale=en_US&apikey=8swrjb9wywnx7ycxqpgz39uweq9pbnps';
+
+var areas = ['Emerald Nightmare', 'Trial of Valor', 'Nighthold'];
+var difficulty = 'Mythic';
+var action = 'Defeat';
+
+var achievements;
+var mythicBossAchievementIds = [];
+var heroicBossCriteriaIds = [];
+var mythicBossKills = [];
+
+var Progress = function (_React$Component) {
+  _inherits(Progress, _React$Component);
+
+  function Progress(props) {
+    _classCallCheck(this, Progress);
+
+    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this, props));
+
+    _this.state = {
+      raids: []
+    };
+    return _this;
+  }
+
+  _createClass(Progress, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.fetchListData();
+    }
+  }, {
+    key: 'fetchListData',
+    value: function fetchListData() {
+      var _this2 = this;
+
+      $.getJSON(allGuildAchievementsUrl, function (allGuildAchievements) {
+        var raids = allGuildAchievements.achievements[3].categories[11].achievements.slice(0, 3);
+        for (var i = 0; i < raids.length; i++) {
+          for (var j = 0; j < raids[i].criteria.length; j++) {
+            heroicBossCriteriaIds.push(raids[i].criteria[j].id);
+          }
+        }
+        console.log(raids);
+        _this2.setState({ raids: raids });
+
+        $.getJSON(guildLeaderAchievementsUrl, function (characterData) {
+          var guildLeaderAchievements = characterData.achievements.achievementsCompleted;
+          var guildLeaderAchievementsTimestamp = characterData.achievements.achievementsCompletedTimestamp;
+
+          $.getJSON(allCharacterAchievementsUrl, function (allCharacterAchievements) {
+            var mythicCandidates = allCharacterAchievements.achievements[4].categories[11].achievements;
+
+            mythicCandidates.forEach(function (candidate) {
+              if (candidate.description.startsWith(action)) {
+                areas.forEach(function (location) {
+                  if (candidate.description.includes(location + ' on ' + difficulty + ' difficulty.')) {
+                    mythicBossAchievementIds.push({ name: candidate.title.slice(8, candidate.title.length), id: candidate.id, location: location });
+                  }
+                });
+              }
+            });
+
+            for (var i = 0; i < mythicBossAchievementIds.length; i++) {
+              if (guildLeaderAchievements.includes(mythicBossAchievementIds[i].id)) {
+                var index = guildLeaderAchievements.indexOf(mythicBossAchievementIds[i].id);
+                mythicBossKills.push({ id: guildLeaderAchievements[index], timestamp: guildLeaderAchievementsTimestamp[index], name: mythicBossAchievementIds[i].name, location: mythicBossAchievementIds[i].location });
+              }
+            }
+
+            console.log(mythicBossKills);
+            var raidCharacterAchievements = allCharacterAchievements.achievements;
+
+            $.getJSON(guildAchievementsUrl, function (guildData) {
+              var newRaids = _this2.state.raids;
+
+              var guildAchievementIds = guildData.achievements.criteria;
+              var guildAchivementTimestamps = guildData.achievements.criteriaTimestamp;
+              var guildAchievements = [];
+              for (var i = 0; i < guildAchievementIds.length; i++) {
+                guildAchievements[i] = { id: guildAchievementIds[i], timestamp: guildAchivementTimestamps[i] };
+              }
+              console.log(heroicBossCriteriaIds);
+              var raidEntry;
+              guildAchievements.forEach(function (guildAchievement) {
+                if (_this2.isAHeroicKill(guildAchievement.id)) {
+                  raidEntry = newRaids;
+                  for (var i = 0; i < raidEntry.length; i++) {
+                    for (var j = 0; j < raidEntry[i].criteria.length; j++) {
+                      if (raidEntry[i].criteria[j].id == guildAchievement.id) {
+                        raidEntry[i].criteria[j].killedDate = _this2.timeConverter(guildAchievement.timestamp);
+                      }
+                    }
+                  }
+                }
+              });
+              console.log('raid entry', raidEntry);
+              _this2.setState({ raids: raidEntry });
+            });
+          });
+        });
+      });
+    }
+  }, {
+    key: 'isAHeroicKill',
+    value: function isAHeroicKill(achievementId) {
+      return heroicBossCriteriaIds.includes(achievementId);
+    }
+  }, {
+    key: 'timeConverter',
+    value: function timeConverter(UNIX_timestamp) {
+      var a = new Date(UNIX_timestamp);
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var year = a.getFullYear();
+      var month = months[a.getMonth()];
+      var date = a.getDate();
+      var hour = a.getHours();
+      var min = a.getMinutes();
+      var sec = a.getSeconds();
+      var time = date + ' ' + month + ' ' + year;
+      return time;
+    }
+  }, {
+    key: 'achievementComplete',
+    value: function achievementComplete() {
+      return true;
+    }
+  }, {
+    key: 'renderRaid',
+    value: function renderRaid(raid) {
+      return _react2.default.createElement(_raid2.default, { raid: raid });
+    }
+  }, {
+    key: 'renderRaids',
+    value: function renderRaids() {
+      return this.state.raids.map(this.renderRaid);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Progression'
+        ),
+        _react2.default.createElement(_buttonGrp2.default, null),
+        this.renderRaids()
+      );
+    }
+  }]);
+
+  return Progress;
+}(_react2.default.Component);
+
+exports.default = Progress;
 
 /***/ }),
 /* 205 */
@@ -17988,7 +18342,7 @@ var HomeCarousel = function (_React$Component) {
         _react2.default.createElement(
           _reactBootstrap.Carousel.Item,
           null,
-          _react2.default.createElement('img', { width: 615, height: 300, alt: 'Problem loading image', src: '/images/1.jpg' }),
+          _react2.default.createElement('img', { className: 'carousel-img', width: 615, height: 300, alt: 'Problem loading image', src: '/images/1.jpg' }),
           _react2.default.createElement(
             _reactBootstrap.Carousel.Caption,
             null,
@@ -18007,7 +18361,7 @@ var HomeCarousel = function (_React$Component) {
         _react2.default.createElement(
           _reactBootstrap.Carousel.Item,
           null,
-          _react2.default.createElement('img', { width: 615, height: 300, alt: 'Problem loading image', src: '/images/2.jpg' }),
+          _react2.default.createElement('img', { className: 'carousel-img', width: 615, height: 300, alt: 'Problem loading image', src: '/images/2.jpg' }),
           _react2.default.createElement(
             _reactBootstrap.Carousel.Caption,
             null,
@@ -18026,7 +18380,7 @@ var HomeCarousel = function (_React$Component) {
         _react2.default.createElement(
           _reactBootstrap.Carousel.Item,
           null,
-          _react2.default.createElement('img', { width: 615, height: 300, alt: 'Problem loading image', src: '/images/3.jpg' }),
+          _react2.default.createElement('img', { className: 'carousel-img', width: 615, height: 300, alt: 'Problem loading image', src: '/images/3.jpg' }),
           _react2.default.createElement(
             _reactBootstrap.Carousel.Caption,
             null,
@@ -41420,6 +41774,237 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 443 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _collapsible = __webpack_require__(201);
+
+var _collapsible2 = _interopRequireDefault(_collapsible);
+
+var _boss_images = __webpack_require__(445);
+
+var _boss_images2 = _interopRequireDefault(_boss_images);
+
+var _reactBootstrap = __webpack_require__(57);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Boss = function (_React$Component) {
+  _inherits(Boss, _React$Component);
+
+  function Boss() {
+    _classCallCheck(this, Boss);
+
+    return _possibleConstructorReturn(this, (Boss.__proto__ || Object.getPrototypeOf(Boss)).apply(this, arguments));
+  }
+
+  _createClass(Boss, [{
+    key: 'render',
+    value: function render() {
+      var boss = this.props.boss;
+      return _react2.default.createElement(
+        'tr',
+        null,
+        _react2.default.createElement(
+          'td',
+          null,
+          _react2.default.createElement('img', { className: 'bossImg', src: _boss_images2.default[boss.id] }),
+          boss.description
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          boss.killedDate && _react2.default.createElement('img', { className: 'skullImg', src: '/images/heroic_icon.png' })
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          boss.killedDate
+        )
+      );
+    }
+  }]);
+
+  return Boss;
+}(_react2.default.Component);
+
+exports.default = Boss;
+
+/***/ }),
+/* 444 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _collapsible = __webpack_require__(201);
+
+var _collapsible2 = _interopRequireDefault(_collapsible);
+
+var _boss = __webpack_require__(443);
+
+var _boss2 = _interopRequireDefault(_boss);
+
+var _reactBootstrap = __webpack_require__(57);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Raid = function (_React$Component) {
+  _inherits(Raid, _React$Component);
+
+  function Raid(props) {
+    _classCallCheck(this, Raid);
+
+    var _this = _possibleConstructorReturn(this, (Raid.__proto__ || Object.getPrototypeOf(Raid)).call(this, props));
+
+    _this.raid = props.raid;
+    return _this;
+  }
+
+  _createClass(Raid, [{
+    key: 'renderBoss',
+    value: function renderBoss(boss) {
+      return _react2.default.createElement(_boss2.default, { boss: boss, key: boss.id });
+    }
+  }, {
+    key: 'renderBosses',
+    value: function renderBosses() {
+      return this.raid.criteria.map(this.renderBoss);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var raid = this.raid;
+      return _react2.default.createElement(
+        _collapsible2.default,
+        { title: raid.title, defaultOpen: this.props.defaultOpen, key: raid.title },
+        _react2.default.createElement(
+          _reactBootstrap.Table,
+          { striped: true, bordered: true, condensed: true, hover: true },
+          _react2.default.createElement(
+            'thead',
+            null,
+            _react2.default.createElement(
+              'tr',
+              null,
+              _react2.default.createElement(
+                'th',
+                null,
+                'Boss'
+              ),
+              _react2.default.createElement(
+                'th',
+                null,
+                'Killed'
+              ),
+              _react2.default.createElement(
+                'th',
+                null,
+                'Date'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'tbody',
+            null,
+            this.renderBosses()
+          )
+        )
+      );
+    }
+  }]);
+
+  return Raid;
+}(_react2.default.Component);
+
+exports.default = Raid;
+/*
+<tr>
+  <td><img className="bossImg" src="/images/ui-ej-boss-skorpyron.png" />Skorpyron</td>
+  <td><img className="skullImg" src="/images/heroic_icon.png"></img></td>
+  <td>1/1/2017</td>
+</tr>
+<tr>
+  <td><img className="bossImg" src="/images/ui-ej-boss-skorpyron.png" />Skorpyron</td>
+  <td><img className="skullImg" src="/images/heroic_icon.png"></img></td>
+  <td>1/1/2017</td>
+</tr>
+<tr>
+  <td><img className="bossImg" src="/images/ui-ej-boss-skorpyron.png" />Skorpyron</td>
+  <td><img className="skullImg" src="/images/heroic_icon.png"></img></td>
+  <td>1/1/2017</td>
+</tr>
+*/
+
+/***/ }),
+/* 445 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  31495: '/images/ui-ej-boss-botanist.png',
+  31492: '/images/ui-ej-boss-chronomatic-anomaly.png',
+  31494: '/images/ui-ej-boss-grand-magistrix-elisande.png',
+  31489: '/images/ui-ej-boss-guldan.png',
+  31496: '/images/ui-ej-boss-krosus.png',
+  31493: '/images/ui-ej-boss-skorpyron.png',
+  31490: '/images/ui-ej-boss-spellblade-aluriel.png',
+  31491: '/images/ui-ej-boss-star-augur-etraeus.png',
+  31497: '/images/ui-ej-boss-tichondrius.png',
+  31488: '/images/ui-ej-boss-trilliax.png',
+  34816: '/images/ui-ej-boss-odyn.png',
+  34818: '/images/ui-ej-boss-guarm.png',
+  34817: '/images/ui-ej-boss-helya.png',
+  31481: '/images/ui-ej-boss-nythendra.png',
+  31482: '/images/ui-ej-boss-elerethe-renferal.png',
+  31486: '/images/ui-ej-boss-ilgynoth-heart-of-corruption.png',
+  31484: '/images/ui-ej-boss-ursoc.png',
+  31487: '/images/ui-ej-boss-dragons-of-nightmare.png',
+  31485: '/images/ui-ej-boss-cenarius.png',
+  31483: '/images/ui-ej-boss-xavius.png'
+};
 
 /***/ })
 /******/ ]);

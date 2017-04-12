@@ -17,13 +17,13 @@ class Raid extends React.Component {
   }
 
   renderBosses () {
-    return this.raid.achievements.map(this.renderBoss);
+    return this.raid.criteria.map(this.renderBoss);
   }
 
   render () {
     const raid = this.raid;
     return (
-      <Collapsible title={raid.title} defaultOpen={this.props.defaultOpen}>
+      <Collapsible title={raid.title} defaultOpen={this.props.defaultOpen} key={raid.title} >
         <Table striped bordered condensed hover>
           <thead>
             <tr>

@@ -1,4 +1,22 @@
 export default {
-  12345: '/images/foo.png',
-  12346: '/images/bar.png'
+  31495: '/images/ui-ej-boss-botanist.png',
+  31492: '/images/ui-ej-boss-chronomatic-anomaly.png',
+  31494: '/images/ui-ej-boss-grand-magistrix-elisande.png',
+  31489: '/images/ui-ej-boss-guldan.png',
+  31496: '/images/ui-ej-boss-krosus.png',
+  31493: '/images/ui-ej-boss-skorpyron.png',
+  31490: '/images/ui-ej-boss-spellblade-aluriel.png',
+  31491: '/images/ui-ej-boss-star-augur-etraeus.png',
+  31497: '/images/ui-ej-boss-tichondrius.png',
+  31488: '/images/ui-ej-boss-trilliax.png',
+  34816: '/images/ui-ej-boss-odyn.png',
+  34818: '/images/ui-ej-boss-guarm.png',
+  34817: '/images/ui-ej-boss-helya.png',
+  31481: '/images/ui-ej-boss-nythendra.png',
+  31482: '/images/ui-ej-boss-elerethe-renferal.png',
+  31486: '/images/ui-ej-boss-ilgynoth-heart-of-corruption.png',
+  31484: '/images/ui-ej-boss-ursoc.png',
+  31487: '/images/ui-ej-boss-dragons-of-nightmare.png',
+  31485: '/images/ui-ej-boss-cenarius.png',
+  31483: '/images/ui-ej-boss-xavius.png'
 };

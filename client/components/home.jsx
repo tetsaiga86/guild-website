@@ -15,8 +15,10 @@ import {
 class Home extends React.Component {
   render () {
     return (
-      <div>
-        <Header />
+      <div className="home-div">
+        <Header className="header" />
+        <div className="banner-div"><img className="banner" src="/images/kubrickheader.jpg"/></div>
+        <div className="main-page">
           <Grid>
            <Row className="top-row">
              <Col xs={12} md={8}><code><Slide /></code></Col>
@@ -28,7 +30,8 @@ class Home extends React.Component {
              <Col xs={6} md={4}><code><Recruitment /></code></Col>
            </Row>
            <Row className="footer"><Footer /></Row>
-         </Grid>
+          </Grid>
+        </div>
       </div>
     )
   }
