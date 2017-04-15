@@ -9,6 +9,7 @@ import {
 
 class Header extends React.Component {
   render () {
+    const loginTitle = ENV.membership_level > 99 ? 'Login' : `Member level ${ENV.membership_level}`
     return (
       <div className="menu">
         <Navbar inverse collapseOnSelect>
@@ -27,7 +28,7 @@ class Header extends React.Component {
               <NavItem eventKey={6} href="#">Recruitment</NavItem>
             </Nav>
             <Nav pullRight>
-              <NavDropdown eventKey={1} title="login" id="basic-nav-dropdown">
+              <NavDropdown eventKey={1} title={loginTitle} id="basic-nav-dropdown">
                 <MenuItem eventKey={1.1}>Action</MenuItem>
                 <MenuItem eventKey={1.2}>Another action</MenuItem>
                 <MenuItem eventKey={1.3}>Something else here</MenuItem>

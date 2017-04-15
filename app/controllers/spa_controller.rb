@@ -11,7 +11,16 @@ class SpaController < ApplicationController
 
   def js_env(values = {})
     @js_env = {
-      api_key: ENV['API_KEY']
+      api_key: ENV['API_KEY'],
+      membership_level: membership_level
     }.merge(values).to_json
+  end
+
+  def membership_level
+    if session.keys.include? :membership_level
+      session[:membership_level]
+    else
+      100
+    end
   end
 end

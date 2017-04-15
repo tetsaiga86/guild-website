@@ -17891,6 +17891,7 @@ var Header = function (_React$Component) {
   _createClass(Header, [{
     key: 'render',
     value: function render() {
+      var loginTitle = ENV.membership_level > 99 ? 'Login' : 'Member level ' + ENV.membership_level;
       return _react2.default.createElement(
         'div',
         { className: 'menu' },
@@ -17948,7 +17949,7 @@ var Header = function (_React$Component) {
               { pullRight: true },
               _react2.default.createElement(
                 _reactBootstrap.NavDropdown,
-                { eventKey: 1, title: 'login', id: 'basic-nav-dropdown' },
+                { eventKey: 1, title: loginTitle, id: 'basic-nav-dropdown' },
                 _react2.default.createElement(
                   _reactBootstrap.MenuItem,
                   { eventKey: 1.1 },
