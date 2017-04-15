@@ -5,25 +5,14 @@ import {
   Well
 } from 'react-bootstrap'
 
-const { bool, string } = React.PropTypes;
+const { bool, func, string } = React.PropTypes;
 
 class Collapsible extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = { isOpen: this.props.defaultOpen };
-    this.toggle = this.toggle.bind(this);
-  }
-
-  toggle () {
-    const isOpen = this.state.isOpen;
-    this.setState({ isOpen: !isOpen });
-  }
-
   render () {
     return (
       <div>
-        <Button block onClick={this.toggle}>{this.props.title}</Button>
-          <Collapse in={this.state.isOpen}>
+        <Button block onClick={this.props.onToggle}>{this.props.title}</Button>
+          <Collapse in={this.props.in}>
             <div>
               <Well>
                 {this.props.children}
@@ -37,11 +26,8 @@ class Collapsible extends React.Component {
 
 Collapsible.propTypes = {
   title: string.isRequired,
-  defaultOpen: bool,
-};
-
-Collapsible.defaultProps = {
-  defaultOpen: false,
+  in: bool.isRequired,
+  onToggle: func.isRequired
 };
 
 export default Collapsible

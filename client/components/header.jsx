@@ -14,19 +14,17 @@ class Header extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">F O O L S A V G E</a>
+              <a href="/">F O O L S A V G E</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} href="#">Logo and link home</NavItem>
-              <NavItem eventKey={2} href="#">Forum link</NavItem>
-              <NavItem eventKey={3} href="#">about and contact</NavItem>
-              <NavItem eventKey={4} href="#">achievements</NavItem>
-              <NavItem eventKey={5} href="#">members</NavItem>
-              <NavItem eventKey={6} href="#">recruitment</NavItem>
-
+              <NavItem eventKey={2} href="#">Forum</NavItem>
+              <NavItem eventKey={3} href="#">About</NavItem>
+              <NavItem eventKey={4} href="#">Achievements</NavItem>
+              <NavItem eventKey={5} href="/spa/members">Members</NavItem>
+              <NavItem eventKey={6} href="#">Recruitment</NavItem>
             </Nav>
             <Nav pullRight>
               <NavDropdown eventKey={1} title="login" id="basic-nav-dropdown">

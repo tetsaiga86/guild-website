@@ -3,13 +3,13 @@ import Collapsible from './collapsible'
 import ButtonGroup from './buttonGrp'
 import Raid from './raid'
 
-const guildAchievementsUrl = 'https://us.api.battle.net/wow/guild/kiljaeden/F%20O%20O%20L%20S%20A%20V%20A%20G%20E?fields=achievements%2Cchallenge&locale=en_US&apikey=8swrjb9wywnx7ycxqpgz39uweq9pbnps';
+const guildAchievementsUrl = `https://us.api.battle.net/wow/guild/kiljaeden/F%20O%20O%20L%20S%20A%20V%20A%20G%20E?fields=achievements%2Cchallenge&locale=en_US&apikey=${ENV.api_key}`;
 
-const allGuildAchievementsUrl = 'https://us.api.battle.net/wow/data/guild/achievements?locale=en_US&apikey=8swrjb9wywnx7ycxqpgz39uweq9pbnps';
+const allGuildAchievementsUrl = `https://us.api.battle.net/wow/data/guild/achievements?locale=en_US&apikey=${ENV.api_key}`;
 
-const guildLeaderAchievementsUrl = 'https://us.api.battle.net/wow/character/kiljaeden/Srprise?fields=achievements&locale=en_US&apikey=8swrjb9wywnx7ycxqpgz39uweq9pbnps'
+const guildLeaderAchievementsUrl = `https://us.api.battle.net/wow/character/kiljaeden/Srprise?fields=achievements&locale=en_US&apikey=${ENV.api_key}`
 
-const allCharacterAchievementsUrl = 'https://us.api.battle.net/wow/data/character/achievements?locale=en_US&apikey=8swrjb9wywnx7ycxqpgz39uweq9pbnps'
+const allCharacterAchievementsUrl = `https://us.api.battle.net/wow/data/character/achievements?locale=en_US&apikey=${ENV.api_key}`
 
 const areas = ['Emerald Nightmare', 'Trial of Valor', 'Nighthold'];
 const difficulty = 'Mythic';
@@ -27,6 +27,7 @@ class Progress extends React.Component {
     this.state = {
       raids: []
     };
+    this.onToggle = this.onToggle.bind(this);
   }
 
   componentWillMount() {
@@ -40,9 +41,11 @@ class Progress extends React.Component {
         for(var j=0; j<raids[i].criteria.length; j++){
           heroicBossCriteriaIds.push(raids[i].criteria[j].id);
         }
+
+        raids[i].in = i == raids.length - 1;
       }
-      console.log(raids);
-      this.setState({ raids: raids });
+
+      this.setState({ raids });
 
       $.getJSON(guildLeaderAchievementsUrl, (characterData) => {
         const guildLeaderAchievements = characterData.achievements.achievementsCompleted;
@@ -125,12 +128,22 @@ class Progress extends React.Component {
     return true;
   }
 
+  onToggle (toggleRaid) {
+    const newState = !toggleRaid.in;
+    this.setState({
+      raids: this.state.raids.map((raid) => {
+        raid.in = raid == toggleRaid ? newState : false;
+        return raid;
+      })
+    });
+  }
+
   renderRaid(raid) {
-    return <Raid raid={raid} />;
+    return <Raid raid={raid} key={raid.title} onToggle={() => this.onToggle(raid)}/>;
   }
 
   renderRaids() {
-    return this.state.raids.map(this.renderRaid);
+    return this.state.raids.map((raid) => this.renderRaid(raid));
   }
 
   render() {

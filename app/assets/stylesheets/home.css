@@ -1,6 +1,6 @@
 
 .banner{
-  height: 20em;
+  max-height: 20em;
   /*margin-left: 20%;*/
   width: 100%;
   object-fit: contain;
@@ -9,6 +9,12 @@
 body, .well, td{
   background-color: black;
   background-repeat: repeat;
+}
+
+.banner-div{
+  background-image: url("/images/kubrickbgcolor.png");
+  background-repeat: repeat-x;
+  margin-bottom: 1em;
 }
 
 body{

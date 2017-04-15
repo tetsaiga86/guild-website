@@ -22,8 +22,9 @@ class Raid extends React.Component {
 
   render () {
     const raid = this.raid;
+    console.log('raid', raid.title, raid.in)
     return (
-      <Collapsible title={raid.title} defaultOpen={this.props.defaultOpen} key={raid.title} >
+      <Collapsible title={raid.title} in={raid.in} key={raid.title} onToggle={this.props.onToggle}>
         <Table striped bordered condensed hover>
           <thead>
             <tr>
