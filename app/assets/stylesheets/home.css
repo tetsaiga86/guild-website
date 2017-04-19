@@ -1,4 +1,12 @@
-
+@font-face {
+  font-family: 'WarcraftFont';
+  src: url("/fonts/WarcraftFont.woff") format('woff'),
+       url("/fonts/WarcraftFont.ttf") format('truetype');
+}
+*{
+  color: white;
+  font-family: 'WarcraftFont', Fallback, sans-serif;
+}
 .banner{
   max-height: 20em;
   /*margin-left: 20%;*/

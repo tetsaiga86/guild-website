@@ -22,15 +22,15 @@ class Raid extends React.Component {
 
   render () {
     const raid = this.raid;
-    console.log('raid', raid.title, raid.in)
+    //console.log('raid', raid.title, raid.in)
     return (
       <Collapsible title={raid.title} in={raid.in} key={raid.title} onToggle={this.props.onToggle}>
         <Table striped bordered condensed hover>
           <thead>
             <tr>
               <th>Boss</th>
-              <th>Killed</th>
-              <th>Date</th>
+              <th>Heroic Kill</th>
+              <th>Mythic Kill</th>
             </tr>
           </thead>
           <tbody>
@@ -43,20 +43,3 @@ class Raid extends React.Component {
 }
 
 export default Raid
-/*
-<tr>
-  <td><img className="bossImg" src="/images/ui-ej-boss-skorpyron.png" />Skorpyron</td>
-  <td><img className="skullImg" src="/images/heroic_icon.png"></img></td>
-  <td>1/1/2017</td>
-</tr>
-<tr>
-  <td><img className="bossImg" src="/images/ui-ej-boss-skorpyron.png" />Skorpyron</td>
-  <td><img className="skullImg" src="/images/heroic_icon.png"></img></td>
-  <td>1/1/2017</td>
-</tr>
-<tr>
-  <td><img className="bossImg" src="/images/ui-ej-boss-skorpyron.png" />Skorpyron</td>
-  <td><img className="skullImg" src="/images/heroic_icon.png"></img></td>
-  <td>1/1/2017</td>
-</tr>
-*/

@@ -72,7 +72,7 @@ class Progress extends React.Component {
             }
           }
 
-          console.log(mythicBossKills);
+          //console.log('mythicBossKills', mythicBossKills);
           const raidCharacterAchievements = allCharacterAchievements.achievements;
 
           $.getJSON(guildAchievementsUrl, (guildData) => {
@@ -84,7 +84,7 @@ class Progress extends React.Component {
             for (var i=0; i<guildAchievementIds.length; i++){
               guildAchievements[i]={ id: guildAchievementIds[i], timestamp: guildAchivementTimestamps[i]};
             }
-            console.log(heroicBossCriteriaIds);
+            //console.log(heroicBossCriteriaIds);
             var raidEntry;
             guildAchievements.forEach(guildAchievement => {
               if (this.isAHeroicKill(guildAchievement.id)) {
@@ -99,7 +99,16 @@ class Progress extends React.Component {
                 }
               }
             });
-            console.log('raid entry', raidEntry);
+            mythicBossKills.forEach(mythicBossKill => {
+              for (var i = 0; i < raidEntry.length; i++) {
+                for (var j = 0; j < raidEntry[i].criteria.length; j++) {
+                  if(raidEntry[i].criteria[j].description.includes(mythicBossKill.name)){
+                    raidEntry[i].criteria[j].mKilledDate = this.timeConverter(mythicBossKill.timestamp);
+                  }
+                }
+              }
+            });
+            //console.log('raid entry', raidEntry);
             this.setState({ raids: raidEntry });
           });
         });
@@ -150,7 +159,6 @@ class Progress extends React.Component {
     return (
       <div>
         <h2>Progression</h2>
-        <ButtonGroup />
         {this.renderRaids()}
       </div>
     );
