@@ -15,7 +15,7 @@ class Player extends React.Component{
 
 
   getGuildPoints(player){
-    return 'wip';
+    return player.gp;
   }
 
   render(){
@@ -26,17 +26,17 @@ class Player extends React.Component{
           <img className="playerImg" src={avatarUrl + character.thumbnail} />
           {character.name}
         </td>
-        <td>
+        <td className="members-table-cell">
           {classID[character.class]}
         </td>
-        <td>
+        <td className="members-table-cell">
           {character.spec && character.spec.name}
         </td>
-        <td>
+        <td className="members-table-cell">
           {character.achievementPoints}
         </td>
-        <td>
-          {this.getGuildPoints(character.name)}
+        <td className="members-table-cell">
+          {this.getGuildPoints(character)}
         </td>
       </tr>
     )
