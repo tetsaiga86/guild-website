@@ -17927,6 +17927,12 @@ var _header = __webpack_require__(127);
 
 var _header2 = _interopRequireDefault(_header);
 
+var _player = __webpack_require__(453);
+
+var _player2 = _interopRequireDefault(_player);
+
+var _reactBootstrap = __webpack_require__(38);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -17935,23 +17941,98 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var guildMembersUrl = 'https://us.api.battle.net/wow/guild/kiljaeden/f%20o%20o%20l%20s%20a%20v%20a%20g%20e?fields=members&locale=en_US&apikey=' + ENV.api_key;
+
 var Members = function (_React$Component) {
   _inherits(Members, _React$Component);
 
-  function Members() {
+  function Members(props) {
     _classCallCheck(this, Members);
 
-    return _possibleConstructorReturn(this, (Members.__proto__ || Object.getPrototypeOf(Members)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Members.__proto__ || Object.getPrototypeOf(Members)).call(this, props));
+
+    _this.state = {
+      members: []
+    };
+    _this.members = props.members;
+    return _this;
   }
 
   _createClass(Members, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.fetchGuildMembers();
+    }
+  }, {
+    key: 'fetchGuildMembers',
+    value: function fetchGuildMembers() {
+      var _this2 = this;
+
+      $.getJSON(guildMembersUrl, function (guildMembersJson) {
+        var gMembers = guildMembersJson.members;
+        _this2.setState({ members: gMembers });
+        console.log(gMembers);
+      });
+    }
+  }, {
+    key: 'renderMember',
+    value: function renderMember(member) {
+      return _react2.default.createElement(_player2.default, { player: member.character, key: member.character.name });
+    }
+  }, {
+    key: 'renderMembers',
+    value: function renderMembers() {
+      return this.state.members.map(this.renderMember);
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(_header2.default, null),
-        'MEMBERS HERE'
+        _react2.default.createElement(
+          _reactBootstrap.Table,
+          { striped: true, bordered: true, condensed: true, hover: true },
+          _react2.default.createElement(
+            'thead',
+            null,
+            _react2.default.createElement(
+              'tr',
+              null,
+              _react2.default.createElement(
+                'th',
+                null,
+                'Name'
+              ),
+              _react2.default.createElement(
+                'th',
+                null,
+                'Class'
+              ),
+              _react2.default.createElement(
+                'th',
+                null,
+                'Spec'
+              ),
+              _react2.default.createElement(
+                'th',
+                null,
+                'Achievement Points'
+              ),
+              _react2.default.createElement(
+                'th',
+                null,
+                'Guild Points'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'tbody',
+            null,
+            this.renderMembers()
+          )
+        )
       );
     }
   }]);
@@ -42666,6 +42747,96 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 453 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(38);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var avatarUrl = 'http://render-api-us.worldofwarcraft.com/static-render/us/';
+var imgType = {
+  avatar: 'avatar.jpg',
+  inset: 'inset.jpg',
+  profileMain: 'profilemain.jpg'
+};
+
+var Player = function (_React$Component) {
+  _inherits(Player, _React$Component);
+
+  function Player() {
+    _classCallCheck(this, Player);
+
+    return _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).apply(this, arguments));
+  }
+
+  _createClass(Player, [{
+    key: 'getGuildPoints',
+    value: function getGuildPoints(player) {
+      return 'wip';
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var player = this.props.player;
+      return _react2.default.createElement(
+        'tr',
+        null,
+        _react2.default.createElement(
+          'td',
+          null,
+          _react2.default.createElement('img', { className: 'playerImg', src: avatarUrl + player.thumbnail }),
+          player.name
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          player.class
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          player.spec.name
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          player.achievementPoints
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          this.getGuildPoints(player.name)
+        )
+      );
+    }
+  }]);
+
+  return Player;
+}(_react2.default.Component);
+
+exports.default = Player;
 
 /***/ })
 /******/ ]);

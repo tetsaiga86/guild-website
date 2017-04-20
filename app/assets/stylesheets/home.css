@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'WarcraftFont';
-  src: url("/fonts/WarcraftFont.woff") format('woff'),
+  src: url("/fonts/WarcraftFont.WOFF") format('woff'),
        url("/fonts/WarcraftFont.ttf") format('truetype');
 }
 *{
