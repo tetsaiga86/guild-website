@@ -1,4 +1,5 @@
 import React from 'react'
+import classID from '../data/character_class_id'
 import {
   Table
 } from 'react-bootstrap'
@@ -26,7 +27,7 @@ class Player extends React.Component{
           {character.name}
         </td>
         <td>
-          {character.class}
+          {classID[character.class]}
         </td>
         <td>
           {character.spec && character.spec.name}

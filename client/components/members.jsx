@@ -23,9 +23,8 @@ class Members extends React.Component {
 
   fetchGuildMembers(){
     $.getJSON(guildMembersUrl, (guildMembersJson) => {
-      const gMembers = guildMembersJson.members.filter(member => member.rank<=3);
+      const gMembers = guildMembersJson.members.filter(member => member.rank<=4);
       this.setState({ members : gMembers });
-      console.log(gMembers);
     })
   }
 
@@ -41,7 +40,7 @@ class Members extends React.Component {
     return (
       <div>
         <Header />
-        <Table striped bordered condensed hover>
+        <Table striped bordered condensed hover className="members-table">
           <thead>
             <tr>
               <th>Name</th>

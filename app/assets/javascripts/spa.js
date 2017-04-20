@@ -17970,10 +17970,9 @@ var Members = function (_React$Component) {
 
       $.getJSON(guildMembersUrl, function (guildMembersJson) {
         var gMembers = guildMembersJson.members.filter(function (member) {
-          return member.rank <= 3;
+          return member.rank <= 4;
         });
         _this2.setState({ members: gMembers });
-        console.log(gMembers);
       });
     }
   }, {
@@ -17995,7 +17994,7 @@ var Members = function (_React$Component) {
         _react2.default.createElement(_header2.default, null),
         _react2.default.createElement(
           _reactBootstrap.Table,
-          { striped: true, bordered: true, condensed: true, hover: true },
+          { striped: true, bordered: true, condensed: true, hover: true, className: 'members-table' },
           _react2.default.createElement(
             'thead',
             null,
@@ -19111,6 +19110,10 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _character_class_id = __webpack_require__(454);
+
+var _character_class_id2 = _interopRequireDefault(_character_class_id);
+
 var _reactBootstrap = __webpack_require__(30);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -19158,7 +19161,7 @@ var Player = function (_React$Component) {
         _react2.default.createElement(
           'td',
           null,
-          character.class
+          _character_class_id2.default[character.class]
         ),
         _react2.default.createElement(
           'td',
@@ -19482,7 +19485,7 @@ var Raid = function (_React$Component) {
         { title: raid.title, 'in': raid.in, key: raid.title, onToggle: this.props.onToggle },
         _react2.default.createElement(
           _reactBootstrap.Table,
-          { striped: true, bordered: true, condensed: true, hover: true },
+          { striped: true, bordered: true, condensed: true, hover: true, className: 'raid-table' },
           _react2.default.createElement(
             'thead',
             null,
@@ -42839,6 +42842,31 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 454 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  1: 'Warrior',
+  2: 'Paladin',
+  3: 'Hunter',
+  4: 'Rogue',
+  5: 'Priest',
+  6: 'Death Knight',
+  7: 'Shaman',
+  8: 'Mage',
+  9: 'Warlock',
+  10: 'Monk',
+  11: 'Druid',
+  12: 'Demon Hunter'
+};
 
 /***/ })
 /******/ ]);

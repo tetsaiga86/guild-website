@@ -14,7 +14,7 @@
   object-fit: contain;
 }
 
-body, .well, td{
+body, .well, td, th{
   background-color: black;
   background-repeat: repeat;
 }
@@ -40,4 +40,14 @@ body{
 
 .carousel-img{
   width:100%;
+}
+
+.members-table{
+  font-size: 2em;
+}
+
+th, .raid-table{
+  text-align: center;
+  vertical-align: middle;
+  line-height: inherit;
 }
