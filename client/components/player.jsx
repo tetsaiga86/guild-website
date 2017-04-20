@@ -18,24 +18,24 @@ class Player extends React.Component{
   }
 
   render(){
-    const player = this.props.player;
+    const character = this.props.player.character;
     return(
       <tr>
         <td>
-          <img className="playerImg" src={avatarUrl + player.thumbnail} />
-          {player.name}
+          <img className="playerImg" src={avatarUrl + character.thumbnail} />
+          {character.name}
         </td>
         <td>
-          {player.class}
+          {character.class}
         </td>
         <td>
-          {player.spec.name}
+          {character.spec && character.spec.name}
         </td>
         <td>
-          {player.achievementPoints}
+          {character.achievementPoints}
         </td>
         <td>
-          {this.getGuildPoints(player.name)}
+          {this.getGuildPoints(character.name)}
         </td>
       </tr>
     )

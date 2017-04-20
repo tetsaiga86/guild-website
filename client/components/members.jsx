@@ -23,14 +23,14 @@ class Members extends React.Component {
 
   fetchGuildMembers(){
     $.getJSON(guildMembersUrl, (guildMembersJson) => {
-      const gMembers = guildMembersJson.members;
+      const gMembers = guildMembersJson.members.filter(member => member.rank<=3);
       this.setState({ members : gMembers });
       console.log(gMembers);
     })
   }
 
   renderMember(member){
-    return <Player player={member.character} key={member.character.name}/>
+    return <Player player={member} key={member.character.name}/>
   }
 
   renderMembers(){
