@@ -12,6 +12,9 @@ class SpaController < ApplicationController
   def js_env(values = {})
     @js_env = {
       api_key: ENV['API_KEY'],
+      realm: ENV['REALM'],
+      guild_name: ENV['GUILD_NAME'],
+      wow_logs_api_key: ENV['WOW_LOGS_API_KEY'],
       membership_level: membership_level
     }.merge(values).to_json
   end

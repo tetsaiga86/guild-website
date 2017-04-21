@@ -17942,7 +17942,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var guildMembersUrl = 'https://us.api.battle.net/wow/guild/kiljaeden/f%20o%20o%20l%20s%20a%20v%20a%20g%20e?fields=members&locale=en_US&apikey=' + ENV.api_key;
-var logReportIdsUrl = 'https://www.warcraftlogs.com:443/v1/reports/guild/f%20o%20o%20l%20s%20a%20v%20a%20g%20e/kiljaeden/US?api_key=65a59b7957c1781ece4c1ffed13e442b';
+var logReportIdsUrl = 'https://www.warcraftlogs.com:443/v1/reports/guild/f%20o%20o%20l%20s%20a%20v%20a%20g%20e/kiljaeden/US?api_key=' + ENV.wow_logs_api_key;
+var lastFourLogJson = [];
 
 var Members = function (_React$Component) {
   _inherits(Members, _React$Component);
@@ -17966,7 +17967,7 @@ var Members = function (_React$Component) {
     }
   }, {
     key: 'calculateGuildPoints',
-    value: function calculateGuildPoints(playerReport) {
+    value: function calculateGuildPoints(playerReport, logJsonArray, name) {
       var totalPoints = 0;
       var counter = 0;
       playerReport.forEach(function (report) {
@@ -17977,7 +17978,26 @@ var Members = function (_React$Component) {
       });
       var performance = Math.floor(totalPoints / counter * 10) || 1;
       var attendance = 0;
-
+      logJsonArray.forEach(function (log) {
+        var attendingFriendly = log.friendlies.find(function (friendly) {
+          return friendly.name == name;
+        });
+        if (attendingFriendly) {
+          var attendingDate = new Date(log.start);
+          var attendingDayOfWeek = attendingDate.getDay();
+          if (name == "Lëmmiwinks") console.log(name, attendingDate);
+          switch (attendingDayOfWeek) {
+            case 2:
+              attendance += 50;
+              break;
+            case 3:
+            case 4:
+              attendance += 225;
+              break;
+          }
+          attendance = attendance / 3 * 12;
+        }
+      });
       return Math.floor((performance + attendance) / 2);
     }
   }, {
@@ -17990,28 +18010,37 @@ var Members = function (_React$Component) {
           return member.rank <= 4;
         });
         $.getJSON(logReportIdsUrl, function (logReportIds) {
+          var lastFourLogIds = [];
           logReportIds = logReportIds.filter(function (log) {
             return log.owner == "srprise";
           });
-          // FIXME: 
-          console.log(logReportIds);
-          gMembers.forEach(function (gMember) {
-            $.getJSON('https://www.warcraftlogs.com/v1/parses/character/' + gMember.character.name + '/kiljaeden/US?api_key=65a59b7957c1781ece4c1ffed13e442b', function (playerReport) {
-              playerReport = playerReport.filter(function (report) {
-                return report.difficulty >= 4;
-              });
-              gMember.character.ilvl = 0;
-              playerReport.forEach(function (playerReport) {
-                playerReport.specs.forEach(function (spec) {
-                  spec.data.forEach(function (data) {
-                    if (gMember.character.ilvl < data.ilvl) {
-                      gMember.character.ilvl = data.ilvl;
-                    }
+          for (var i = logReportIds.length - 1; i > logReportIds.length - 4; i--) {
+            lastFourLogIds.push(logReportIds[i].id);
+          }
+          lastFourLogIds.forEach(function (logId) {
+            $.getJSON('https://www.warcraftlogs.com/v1/report/fights/' + logId + '?api_key=' + ENV.wow_logs_api_key, function (logJson) {
+              lastFourLogJson.push(logJson);
+              if (lastFourLogJson.length === 3) {
+                gMembers.forEach(function (gMember) {
+                  $.getJSON('https://www.warcraftlogs.com/v1/parses/character/' + gMember.character.name + '/kiljaeden/US?api_key=' + ENV.wow_logs_api_key, function (playerReport) {
+                    playerReport = playerReport.filter(function (report) {
+                      return report.difficulty >= 4;
+                    });
+                    gMember.character.ilvl = 0;
+                    playerReport.forEach(function (playerReport) {
+                      playerReport.specs.forEach(function (spec) {
+                        spec.data.forEach(function (data) {
+                          if (gMember.character.ilvl < data.ilvl) {
+                            gMember.character.ilvl = data.ilvl;
+                          }
+                        });
+                      });
+                    });
+                    gMember.character.gp = _this2.calculateGuildPoints(playerReport, lastFourLogJson, gMember.character.name);
+                    _this2.setState({ members: gMembers });
                   });
                 });
-              });
-              gMember.character.gp = _this2.calculateGuildPoints(playerReport);
-              _this2.setState({ members: gMembers });
+              }
             });
           });
         });
