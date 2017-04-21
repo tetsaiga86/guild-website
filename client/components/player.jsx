@@ -38,6 +38,9 @@ class Player extends React.Component{
         <td className="members-table-cell">
           {this.getGuildPoints(character)}
         </td>
+        <td className="members-table-cell">
+          {character.ilvl || 'Not Available'}
+        </td>
       </tr>
     )
   }

@@ -17942,6 +17942,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var guildMembersUrl = 'https://us.api.battle.net/wow/guild/kiljaeden/f%20o%20o%20l%20s%20a%20v%20a%20g%20e?fields=members&locale=en_US&apikey=' + ENV.api_key;
+var logReportIdsUrl = 'https://www.warcraftlogs.com:443/v1/reports/guild/f%20o%20o%20l%20s%20a%20v%20a%20g%20e/kiljaeden/US?api_key=65a59b7957c1781ece4c1ffed13e442b';
 
 var Members = function (_React$Component) {
   _inherits(Members, _React$Component);
@@ -17974,8 +17975,10 @@ var Members = function (_React$Component) {
           counter++;
         });
       });
-      console.log(totalPoints, counter);
-      return Math.floor(totalPoints / counter * 10) || 'Not Available';
+      var performance = Math.floor(totalPoints / counter * 10) || 1;
+      var attendance = 0;
+
+      return Math.floor((performance + attendance) / 2);
     }
   }, {
     key: 'fetchGuildMembers',
@@ -17986,13 +17989,30 @@ var Members = function (_React$Component) {
         var gMembers = guildMembersJson.members.filter(function (member) {
           return member.rank <= 4;
         });
-        gMembers.forEach(function (gMember) {
-          $.getJSON('https://www.warcraftlogs.com/v1/parses/character/' + gMember.character.name + '/kiljaeden/US?api_key=65a59b7957c1781ece4c1ffed13e442b', function (playerReport) {
-            playerReport = playerReport.filter(function (report) {
-              return report.difficulty >= 4;
+        $.getJSON(logReportIdsUrl, function (logReportIds) {
+          logReportIds = logReportIds.filter(function (log) {
+            return log.owner == "srprise";
+          });
+          // FIXME: 
+          console.log(logReportIds);
+          gMembers.forEach(function (gMember) {
+            $.getJSON('https://www.warcraftlogs.com/v1/parses/character/' + gMember.character.name + '/kiljaeden/US?api_key=65a59b7957c1781ece4c1ffed13e442b', function (playerReport) {
+              playerReport = playerReport.filter(function (report) {
+                return report.difficulty >= 4;
+              });
+              gMember.character.ilvl = 0;
+              playerReport.forEach(function (playerReport) {
+                playerReport.specs.forEach(function (spec) {
+                  spec.data.forEach(function (data) {
+                    if (gMember.character.ilvl < data.ilvl) {
+                      gMember.character.ilvl = data.ilvl;
+                    }
+                  });
+                });
+              });
+              gMember.character.gp = _this2.calculateGuildPoints(playerReport);
+              _this2.setState({ members: gMembers });
             });
-            gMember.character.gp = _this2.calculateGuildPoints(playerReport);
-            _this2.setState({ members: gMembers });
           });
         });
       });
@@ -18047,6 +18067,11 @@ var Members = function (_React$Component) {
                 'th',
                 null,
                 'Guild Points'
+              ),
+              _react2.default.createElement(
+                'th',
+                null,
+                'Item Level'
               )
             )
           ),
@@ -19199,6 +19224,11 @@ var Player = function (_React$Component) {
           'td',
           { className: 'members-table-cell' },
           this.getGuildPoints(character)
+        ),
+        _react2.default.createElement(
+          'td',
+          { className: 'members-table-cell' },
+          character.ilvl || 'Not Available'
         )
       );
     }
