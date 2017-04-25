@@ -19,6 +19,13 @@ body, .well, td, th{
   background-repeat: repeat;
 }
 
+.armory{
+  background-repeat: no-repeat;
+  object-fit: contain;
+  min-height: 600px;
+  background-position: center;
+}
+
 .banner-div{
   background-image: url("/images/kubrickbgcolor.png");
   background-repeat: repeat-x;
@@ -50,4 +57,8 @@ th, .raid-table, .members-table-cell{
   text-align: center;
   vertical-align: middle;
   line-height: inherit;
+}
+
+.modal-content{
+  background-color: black;
 }

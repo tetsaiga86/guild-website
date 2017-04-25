@@ -55,7 +55,7 @@ class HomeCarousel extends React.Component {
     return (
       <Carousel prevIcon={prevIcon} nextIcon={nextIcon}>
         { this.state.list.map(this.renderArticle) }
-    </Carousel>
+      </Carousel>
     )
   }
 }

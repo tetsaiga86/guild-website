@@ -1,5 +1,6 @@
 import React from 'react'
 import classID from '../data/character_class_id'
+import CharacterModal from './characterModal'
 import {
   Table
 } from 'react-bootstrap'
@@ -12,16 +13,31 @@ const imgType = {
 }
 
 class Player extends React.Component{
+  constructor(props) {
+    super(props);
 
+    this.state = { showModal: false };
+    this.onRequestClose = this.onRequestClose.bind(this);
+    this.onOpen = this.onOpen.bind(this);
+  }
 
   getGuildPoints(player){
     return player.gp;
   }
 
+  onOpen () {
+    this.setState({ showModal: true });
+  }
+
+  onRequestClose () {
+    this.setState({ showModal: false });
+  }
+
   render(){
     const character = this.props.player.character;
     return(
-      <tr>
+      <tr onClick={this.onOpen}>
+        <CharacterModal character={character} show={this.state.showModal} onRequestClose={this.onRequestClose}/>
         <td>
           <img className="playerImg" src={avatarUrl + character.thumbnail} />
           {character.name}
