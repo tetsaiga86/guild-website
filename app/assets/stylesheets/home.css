@@ -14,7 +14,7 @@
   object-fit: contain;
 }
 
-body, .well, td, th{
+body, .well, td, th, .popover{
   background-color: black;
   background-repeat: repeat;
 }
@@ -61,4 +61,36 @@ th, .raid-table, .members-table-cell{
 
 .modal-content{
   background-color: black;
+}
+
+.frame{
+  width: 49px;
+  height: 49px;
+  background: url("http://us.battle.net/wow/static/images/icons/frames/inventory-slots.png");
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  display: block;
+  padding: 1px;
+  margin: 10px;
+  /*position: absolute;*/
+}
+
+.equip-icon{
+  width: 47px;
+  height: 47px;
+  border-radius: 4px;
+}
+
+.left-gear{
+float: left;
+}
+
+.right-gear{
+float: right;
+}
+
+.bottom-gear{
+  display: inline-block;
+  clear: both;
+  align-content: flex-end;
 }
