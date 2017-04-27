@@ -8,7 +8,7 @@ const iconUrl = 'http://media.blizzard.com/wow/icons/56/';
 const itemUrl = 'http://us.battle.net/wow/en/item/';
 class Equip extends React.Component{
   getArtifactRank(item){
-    console.log(item);
+    //console.log(item);
     if(item.artifactTraits.length>0){
       var counter=0;
       for (var i = 0; i < item.artifactTraits.length; i++) {

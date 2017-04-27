@@ -94,3 +94,8 @@ float: right;
   clear: both;
   align-content: flex-end;
 }
+
+strong{
+  font-size: 2em;
+  text-decoration: underline;
+}

@@ -1929,36 +1929,6 @@ module.exports = emptyFunction;
 
 /***/ }),
 /* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * 
- */
-
-
-
-// Trust the developer to only use ReactInstrumentation with a __DEV__ check
-
-var debugTool = null;
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactDebugTool = __webpack_require__(394);
-  debugTool = ReactDebugTool;
-}
-
-module.exports = { debugTool: debugTool };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2235,6 +2205,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright 2016-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+
+
+// Trust the developer to only use ReactInstrumentation with a __DEV__ check
+
+var debugTool = null;
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactDebugTool = __webpack_require__(394);
+  debugTool = ReactDebugTool;
+}
+
+module.exports = { debugTool: debugTool };
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 25 */
@@ -4117,7 +4117,7 @@ module.exports = DOMLazyTree;
 
 
 var ReactRef = __webpack_require__(408);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 
 var warning = __webpack_require__(11);
 
@@ -8490,7 +8490,7 @@ TabContent.childContextTypes = childContextTypes;
 var DOMLazyTree = __webpack_require__(49);
 var Danger = __webpack_require__(371);
 var ReactDOMComponentTree = __webpack_require__(15);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(115);
 var setInnerHTML = __webpack_require__(76);
@@ -9321,7 +9321,7 @@ var _prodInvariant = __webpack_require__(12);
 
 var ReactCurrentOwner = __webpack_require__(30);
 var ReactInstanceMap = __webpack_require__(61);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 var ReactUpdates = __webpack_require__(29);
 
 var invariant = __webpack_require__(10);
@@ -10522,7 +10522,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10602,7 +10602,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14712,7 +14712,7 @@ module.exports = PooledClass.addPoolingTo(CallbackQueue);
 
 var DOMProperty = __webpack_require__(36);
 var ReactDOMComponentTree = __webpack_require__(15);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 
 var quoteAttributeValueForBrowser = __webpack_require__(434);
 var warning = __webpack_require__(11);
@@ -15459,7 +15459,7 @@ var ReactDOMContainerInfo = __webpack_require__(381);
 var ReactDOMFeatureFlags = __webpack_require__(383);
 var ReactFeatureFlags = __webpack_require__(179);
 var ReactInstanceMap = __webpack_require__(61);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 var ReactMarkupChecksum = __webpack_require__(403);
 var ReactReconciler = __webpack_require__(50);
 var ReactUpdateQueue = __webpack_require__(114);
@@ -17817,7 +17817,7 @@ var _recruitment = __webpack_require__(217);
 
 var _recruitment2 = _interopRequireDefault(_recruitment);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17931,7 +17931,7 @@ var _player = __webpack_require__(214);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18882,7 +18882,15 @@ var _equip = __webpack_require__(211);
 
 var _equip2 = _interopRequireDefault(_equip);
 
-__webpack_require__(24);
+var _characterStats = __webpack_require__(458);
+
+var _characterStats2 = _interopRequireDefault(_characterStats);
+
+var _characterTalents = __webpack_require__(459);
+
+var _characterTalents2 = _interopRequireDefault(_characterTalents);
+
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18918,9 +18926,7 @@ var Armory = function (_React$Component) {
           }
         }
       } else {
-        for (var i = 0; i < gearArray.length; i++) {
-          equipArray.push(_react2.default.createElement('img', { className: 'spinner', src: '/images/hourglass.svg' }));
-        }
+        equipArray.push(_react2.default.createElement('img', { className: 'spinner', src: '/images/hourglass.svg' }));
       }
       return equipArray;
     }
@@ -18929,22 +18935,28 @@ var Armory = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'armory', style: { "backgroundImage": 'url(' + (avatarUrl + this.props.character.thumbnail.replace('avatar.jpg', 'profilemain.jpg')) + ')' } },
+        null,
         _react2.default.createElement(
           'div',
-          { className: 'left-gear' },
-          this.createEquip(leftColumn)
+          { className: 'armory', style: { "backgroundImage": 'url(' + (avatarUrl + this.props.character.thumbnail.replace('avatar.jpg', 'profilemain.jpg')) + ')' } },
+          _react2.default.createElement(
+            'div',
+            { className: 'left-gear' },
+            this.createEquip(leftColumn)
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'right-gear' },
+            this.createEquip(rightColumn)
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'bottom-gear' },
+            this.createEquip(bottomRow)
+          )
         ),
-        _react2.default.createElement(
-          'div',
-          { className: 'right-gear' },
-          this.createEquip(rightColumn)
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'bottom-gear' },
-          this.createEquip(bottomRow)
-        )
+        _react2.default.createElement(_characterStats2.default, { data: this.props.data }),
+        _react2.default.createElement(_characterTalents2.default, { data: this.props.data })
       );
     }
   }]);
@@ -18975,7 +18987,7 @@ var _boss_images = __webpack_require__(218);
 
 var _boss_images2 = _interopRequireDefault(_boss_images);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19045,7 +19057,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19110,7 +19122,7 @@ var _armory = __webpack_require__(207);
 
 var _armory2 = _interopRequireDefault(_armory);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19142,7 +19154,7 @@ var CharacterModal = function (_React$Component) {
           return;
         }
         this.setState({ initialized: true });
-        var characterItemURL = ' https://us.api.battle.net/wow/character/' + ENV.realm + '/' + this.props.character.name + '?fields=items&locale=en_US&apikey=' + ENV.api_key;
+        var characterItemURL = ' https://us.api.battle.net/wow/character/' + ENV.realm + '/' + this.props.character.name + '?fields=items+stats+talents&locale=en_US&apikey=' + ENV.api_key;
         $.getJSON(characterItemURL, function (data) {
           _this2.setState({ data: data });
         });
@@ -19203,7 +19215,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19228,7 +19240,7 @@ var Equip = function (_React$Component) {
   _createClass(Equip, [{
     key: 'getArtifactRank',
     value: function getArtifactRank(item) {
-      console.log(item);
+      //console.log(item);
       if (item.artifactTraits.length > 0) {
         var counter = 0;
         for (var i = 0; i < item.artifactTraits.length; i++) {
@@ -19376,7 +19388,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19496,7 +19508,7 @@ var _characterModal = __webpack_require__(210);
 
 var _characterModal2 = _interopRequireDefault(_characterModal);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19846,7 +19858,7 @@ var _boss = __webpack_require__(208);
 
 var _boss2 = _interopRequireDefault(_boss);
 
-var _reactBootstrap = __webpack_require__(24);
+var _reactBootstrap = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30881,7 +30893,7 @@ module.exports = BeforeInputEventPlugin;
 
 var CSSProperty = __webpack_require__(173);
 var ExecutionEnvironment = __webpack_require__(16);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 
 var camelizeStyleName = __webpack_require__(286);
 var dangerousStyleValue = __webpack_require__(427);
@@ -32179,7 +32191,7 @@ var ReactComponentEnvironment = __webpack_require__(112);
 var ReactCurrentOwner = __webpack_require__(30);
 var ReactErrorUtils = __webpack_require__(113);
 var ReactInstanceMap = __webpack_require__(61);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 var ReactNodeTypes = __webpack_require__(183);
 var ReactReconciler = __webpack_require__(50);
 
@@ -33166,7 +33178,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactInstrumentation = __webpack_require__(23);
+  var ReactInstrumentation = __webpack_require__(24);
   var ReactDOMUnknownPropertyHook = __webpack_require__(393);
   var ReactDOMNullInputValuePropHook = __webpack_require__(387);
   var ReactDOMInvalidARIAHook = __webpack_require__(386);
@@ -33216,7 +33228,7 @@ var ReactDOMInput = __webpack_require__(385);
 var ReactDOMOption = __webpack_require__(388);
 var ReactDOMSelect = __webpack_require__(177);
 var ReactDOMTextarea = __webpack_require__(391);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 var ReactMultiChild = __webpack_require__(404);
 var ReactServerRenderingTransaction = __webpack_require__(409);
 
@@ -36683,7 +36695,7 @@ var _prodInvariant = __webpack_require__(12);
 
 var ReactComponentEnvironment = __webpack_require__(112);
 var ReactInstanceMap = __webpack_require__(61);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 
 var ReactCurrentOwner = __webpack_require__(30);
 var ReactReconciler = __webpack_require__(50);
@@ -37272,7 +37284,7 @@ var CallbackQueue = __webpack_require__(174);
 var PooledClass = __webpack_require__(39);
 var ReactBrowserEventEmitter = __webpack_require__(72);
 var ReactInputSelection = __webpack_require__(181);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 var Transaction = __webpack_require__(74);
 var ReactUpdateQueue = __webpack_require__(114);
 
@@ -37548,7 +37560,7 @@ var _assign = __webpack_require__(14);
 
 var PooledClass = __webpack_require__(39);
 var Transaction = __webpack_require__(74);
-var ReactInstrumentation = __webpack_require__(23);
+var ReactInstrumentation = __webpack_require__(24);
 var ReactServerUpdateQueue = __webpack_require__(410);
 
 /**
@@ -43270,6 +43282,336 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 458 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(23);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CharacterStats = function (_React$Component) {
+  _inherits(CharacterStats, _React$Component);
+
+  function CharacterStats() {
+    _classCallCheck(this, CharacterStats);
+
+    return _possibleConstructorReturn(this, (CharacterStats.__proto__ || Object.getPrototypeOf(CharacterStats)).apply(this, arguments));
+  }
+
+  _createClass(CharacterStats, [{
+    key: 'renderStats',
+    value: function renderStats(statName) {
+      if (this.props.data) {
+        if (this.props.data.stats[statName]) return this.props.data.stats[statName];else if (statName == 'mana5' && this.props.data.stats[statName] == 0) return '--';else return 0;
+      } else return 'Loading...';
+    }
+  }, {
+    key: 'makePercent',
+    value: function makePercent(num) {
+      if (num == 0) return '0.00%';
+      if (num == 'Loading...') return 'Loading...';
+      return Math.round(num * 100) / 100 + '%';
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Grid,
+          { className: 'character-stats' },
+          _react2.default.createElement(
+            _reactBootstrap.Row,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 12, md: 8, className: 'character-attributes' },
+              _react2.default.createElement(
+                'strong',
+                null,
+                'Attributes'
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Strength: ',
+                this.renderStats('str')
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Agility: ',
+                this.renderStats('agi')
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Intellect: ',
+                this.renderStats('int')
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Stamina: ',
+                this.renderStats('sta')
+              )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 12, md: 8, className: 'character-defense' },
+              _react2.default.createElement(
+                'strong',
+                null,
+                'Defense'
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Armor: ',
+                this.renderStats('armor')
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Dodge: ',
+                this.makePercent(this.renderStats('dodge'))
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Parry: ',
+                this.makePercent(this.renderStats('parry'))
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Block: ',
+                this.makePercent(this.renderStats('block'))
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Row,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 12, md: 8, className: 'character-attack-spell' },
+              _react2.default.createElement(
+                'strong',
+                null,
+                'Attack'
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Damage: ',
+                this.renderStats('mainHandDmgMin'),
+                '-',
+                this.renderStats('mainHandDmgMax')
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Speed: ',
+                this.renderStats('mainHandSpeed')
+              ),
+              _react2.default.createElement(
+                'strong',
+                null,
+                'Spell'
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Mana Regen: ',
+                this.renderStats('mana5')
+              )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 12, md: 8, className: 'character-enhancements' },
+              _react2.default.createElement(
+                'strong',
+                null,
+                'Enhancements'
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Crit: ',
+                this.makePercent(this.renderStats('crit'))
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Haste: ',
+                this.makePercent(this.renderStats('haste'))
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Mastery: ',
+                this.makePercent(this.renderStats('mastery'))
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Leech: ',
+                this.makePercent(this.renderStats('leech'))
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Versatility: ',
+                this.makePercent(this.renderStats('versatility'))
+              ),
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Avoidance: ',
+                this.makePercent(this.renderStats('avoidanceRating') + this.renderStats('avoidanceRatingBonus'))
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return CharacterStats;
+}(_react2.default.Component);
+
+exports.default = CharacterStats;
+
+/***/ }),
+/* 459 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _collapsible = __webpack_require__(126);
+
+var _collapsible2 = _interopRequireDefault(_collapsible);
+
+var _reactBootstrap = __webpack_require__(23);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CharacterTalents = function (_React$Component) {
+  _inherits(CharacterTalents, _React$Component);
+
+  function CharacterTalents(props) {
+    _classCallCheck(this, CharacterTalents);
+
+    var _this = _possibleConstructorReturn(this, (CharacterTalents.__proto__ || Object.getPrototypeOf(CharacterTalents)).call(this, props));
+
+    _this.state = {
+      specs: []
+    };
+    _this.onToggle = _this.onToggle.bind(_this);
+    return _this;
+  }
+
+  _createClass(CharacterTalents, [{
+    key: 'renderTalents',
+    value: function renderTalents(talentName) {
+      if (this.props.data) {
+        return this.props.data.talents[talentName];
+      }
+    }
+  }, {
+    key: 'renderSpecs',
+    value: function renderSpecs() {
+      var _this2 = this;
+
+      if (this.props.data) {
+        var collapsibleArray = [];
+        var talents = this.props.data.talents;
+        talents.forEach(function (spec) {
+          spec.in = false;
+        });
+        console.log('talents', talents);
+        for (var i = 0; i < talents.length - 1; i++) {
+          collapsibleArray.push(_react2.default.createElement(_collapsible2.default, { title: talents[i].spec.name, 'in': talents[i].in, key: talents[i].spec.name, onToggle: function onToggle() {
+              return _this2.onToggle(talents[i]);
+            } }));
+        }
+        return collapsibleArray.map(function (col) {
+          return col;
+        });
+      }
+      return _react2.default.createElement(
+        'h2',
+        null,
+        'Loading...'
+      );
+    }
+  }, {
+    key: 'onToggle',
+    value: function onToggle(toggleSpec) {
+      var newState = !toggleSpec.in;
+      this.setState({
+        specs: this.state.specs.map(function (spec) {
+          spec.in = raid == toggleRaid ? newState : false;
+          return spec;
+        })
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        this.renderSpecs()
+      );
+    }
+  }]);
+
+  return CharacterTalents;
+}(_react2.default.Component);
+
+exports.default = CharacterTalents;
 
 /***/ })
 /******/ ]);

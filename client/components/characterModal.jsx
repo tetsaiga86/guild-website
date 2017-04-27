@@ -17,7 +17,7 @@ class CharacterModal extends React.Component{
         return;
       }
       this.setState({initialized: true})
-      var characterItemURL = ` https://us.api.battle.net/wow/character/${ENV.realm}/${this.props.character.name}?fields=items&locale=en_US&apikey=${ENV.api_key}`
+      var characterItemURL = ` https://us.api.battle.net/wow/character/${ENV.realm}/${this.props.character.name}?fields=items+stats+talents&locale=en_US&apikey=${ENV.api_key}`
       $.getJSON(characterItemURL, (data) => {
         this.setState({ data : data });
       });
