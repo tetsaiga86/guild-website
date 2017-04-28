@@ -11,8 +11,8 @@ import {
 
 const avatarUrl = 'http://render-api-us.worldofwarcraft.com/static-render/us/';
 
-const leftColumn = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist']
-const rightColumn = ['hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2']
+const leftColumn = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands']
+const rightColumn = ['waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2']
 const bottomRow = ['mainHand', 'offHand']
 
 
@@ -38,11 +38,11 @@ class Armory extends React.Component{
           <div className="left-gear">
             {this.createEquip(leftColumn)}
           </div>
-          <div className="right-gear">
-            {this.createEquip(rightColumn)}
-          </div>
           <div className="bottom-gear">
             {this.createEquip(bottomRow)}
+          </div>
+          <div className="right-gear">
+            {this.createEquip(rightColumn)}
           </div>
         </div>
         <CharacterStats data={this.props.data} />

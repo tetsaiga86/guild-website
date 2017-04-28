@@ -24,6 +24,8 @@ body, .well, td, th, .popover{
   object-fit: contain;
   min-height: 600px;
   background-position: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .banner-div{
@@ -69,9 +71,9 @@ th, .raid-table, .members-table-cell{
   background: url("http://us.battle.net/wow/static/images/icons/frames/inventory-slots.png");
   background-repeat: no-repeat;
   border-radius: 4px;
-  display: block;
+  /*display: block;*/
   padding: 1px;
-  margin: 10px;
+  /*margin: 10px;*/
   /*position: absolute;*/
 }
 
@@ -82,17 +84,36 @@ th, .raid-table, .members-table-cell{
 }
 
 .left-gear{
-float: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow:1;
+  justify-content: space-around;
+  /*flex-basis: 45%;*/
 }
 
 .right-gear{
-float: right;
+  display: flex;
+  flex-direction: column;
+  flex-grow:1;
+  justify-content: space-around;
+  align-content: flex-end;
 }
 
 .bottom-gear{
-  display: inline-block;
-  clear: both;
-  align-content: flex-end;
+  display: flex;
+  flex-grow:1;
+  justify-content: space-around;
+  align-items: flex-end;
+  /*flex-basis: 80%;*/
+  /*clear: both;
+  align-content: flex-end;*/
+}
+
+#character-spell-speed{
+  margin-bottom: 2em;
+}
+.character-stats-row{
+  margin: 2em;
 }
 
 strong{

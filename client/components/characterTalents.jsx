@@ -17,9 +17,15 @@ class CharacterTalents extends React.Component{
     this.onToggle = this.onToggle.bind(this);
   }
 
-  renderTalents(talentName){
+  renderTalents(talentsArr){
+    var talentNames = [];
     if (this.props.data) {
-      return this.props.data.talents[talentName];
+      for (var i = 0; i < talentsArr.length; i++) {
+        talentNames.push(<h5>{talentsArr[i].spell.name}</h5>)
+      }
+      return talentNames.map((talent) => {
+        return talent;
+      });
     }
   }
 
@@ -31,8 +37,12 @@ class CharacterTalents extends React.Component{
         spec.in = false;
       })
       console.log('talents', talents);
-      for (var i = 0; i < talents.length-1; i++) {
-        collapsibleArray.push(<Collapsible title={talents[i].spec.name} in={talents[i].in} key={talents[i].spec.name} onToggle={() => this.onToggle(talents[i])}/>)
+      for (var i = 0; i < talents.filter(talent => {return talent.talents.length > 0}).length; i++) {
+        collapsibleArray.push(
+          <Collapsible title={talents[i].spec.name} in={talents[i].in} key={talents[i].spec.name} onToggle={() => this.onToggle(talents[i])}>
+            {this.renderTalents(talents[i].talents)}
+          </Collapsible>
+        )
       }
       return collapsibleArray.map(col => {
         return col;
@@ -43,9 +53,10 @@ class CharacterTalents extends React.Component{
 
   onToggle (toggleSpec) {
     const newState = !toggleSpec.in;
+    this.setState({ specs:this.props.data.talents })
     this.setState({
       specs: this.state.specs.map((spec) => {
-        spec.in = raid == toggleRaid ? newState : false;
+        spec.in = spec == toggleSpec ? newState : false;
         return spec;
       })
     });
