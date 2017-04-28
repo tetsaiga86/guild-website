@@ -19491,6 +19491,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -19504,6 +19506,8 @@ var _collapsible2 = _interopRequireDefault(_collapsible);
 var _reactBootstrap = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -19519,9 +19523,7 @@ var CharacterTalents = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (CharacterTalents.__proto__ || Object.getPrototypeOf(CharacterTalents)).call(this, props));
 
-    _this.state = {
-      specs: []
-    };
+    _this.state = {};
     _this.onToggle = _this.onToggle.bind(_this);
     return _this;
   }
@@ -19551,24 +19553,28 @@ var CharacterTalents = function (_React$Component) {
       if (this.props.data) {
         var collapsibleArray = [];
         var talents = this.props.data.talents;
-        talents.forEach(function (spec) {
-          spec.in = false;
-        });
+        var state = this.state;
         console.log('talents', talents);
-        for (var i = 0; i < talents.filter(function (talent) {
+        var length = talents.filter(function (talent) {
           return talent.talents.length > 0;
-        }).length; i++) {
+        }).length;
+
+        var _loop = function _loop() {
+          var talent = talents[i];
+          var specName = talent.spec.name;
           collapsibleArray.push(_react2.default.createElement(
             _collapsible2.default,
-            { title: talents[i].spec.name, 'in': talents[i].in, key: talents[i].spec.name, onToggle: function onToggle() {
-                return _this2.onToggle(talents[i]);
+            { title: specName, 'in': !!state[specName], key: specName, onToggle: function onToggle() {
+                return _this2.onToggle(talent);
               } },
-            this.renderTalents(talents[i].talents)
+            _this2.renderTalents(talent.talents)
           ));
+        };
+
+        for (var i = 0; i < length; i++) {
+          _loop();
         }
-        return collapsibleArray.map(function (col) {
-          return col;
-        });
+        return collapsibleArray;
       }
       return _react2.default.createElement(
         'h2',
@@ -19578,15 +19584,11 @@ var CharacterTalents = function (_React$Component) {
     }
   }, {
     key: 'onToggle',
-    value: function onToggle(toggleSpec) {
-      var newState = !toggleSpec.in;
-      this.setState({ specs: this.props.data.talents });
-      this.setState({
-        specs: this.state.specs.map(function (spec) {
-          spec.in = spec == toggleSpec ? newState : false;
-          return spec;
-        })
-      });
+    value: function onToggle(talent) {
+      var state = this.state;
+      var toggleSpec = talent.spec;
+      console.log('togglespec', toggleSpec);
+      this.setState(_extends({}, state, _defineProperty({}, toggleSpec.name, !state[toggleSpec.name])));
     }
   }, {
     key: 'render',

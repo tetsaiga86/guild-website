@@ -86,22 +86,24 @@ th, .raid-table, .members-table-cell{
 .left-gear{
   display: flex;
   flex-direction: column;
-  flex-grow:1;
+  /*flex-grow:1;*/
   justify-content: space-around;
   /*flex-basis: 45%;*/
+  margin-left: 2em;
 }
 
 .right-gear{
   display: flex;
   flex-direction: column;
-  flex-grow:1;
+  /*flex-grow:1;*/
   justify-content: space-around;
   align-content: flex-end;
+  margin-right: 2em;
 }
 
 .bottom-gear{
   display: flex;
-  flex-grow:1;
+  /*flex-grow:1;*/
   justify-content: space-around;
   align-items: flex-end;
   /*flex-basis: 80%;*/
