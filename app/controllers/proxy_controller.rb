@@ -4,13 +4,33 @@ class ProxyController < ApplicationController
     render body: bnet_response.body
   end
 
-  def api_cache
-    cache = ApiCache.where(url: params[:url]).where('updated_at > ?')
+  def guild_members
+    render json: bnet_client.guild_members(ENV['GUILD_NAME'])
+  end
 
-    if cache.length
-      render text: cache.body
-    else
-      # TODO : make request to url and cache
-    end
+  def character_info
+    render json: bnet_client.character_info(params[:name])
+  end
+
+  def log_ids
+    render json: logs_client.guild_log_ids(ENV['GUILD_NAME'])
+  end
+
+  def log
+    render json: logs_client.guild_log(params[:id])
+  end
+
+  def character_parse
+    render json: logs_client.character_parse(params[:name])
+  end
+
+  private
+
+  def bnet_client
+    ::Bnet::Client.new
+  end
+
+  def logs_client
+    ::Warcraftlogs::Client.new
   end
 end
