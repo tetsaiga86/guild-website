@@ -1344,6 +1344,16 @@ var Style = {
 
 /***/ }),
 /* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(381);
+
+
+/***/ }),
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1619,16 +1629,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(381);
 
 
 /***/ }),
@@ -5134,7 +5134,7 @@ exports.default = function (componentOrElement) {
   return (0, _ownerDocument2.default)(_reactDom2.default.findDOMNode(componentOrElement));
 };
 
-var _reactDom = __webpack_require__(20);
+var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -5304,7 +5304,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_prop_types__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_dom__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_dom__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_prop_types_lib_all__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_prop_types_lib_all___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_prop_types_lib_all__);
@@ -7161,7 +7161,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7186,14 +7186,61 @@ var Collapsible = function (_React$Component) {
   }
 
   _createClass(Collapsible, [{
+    key: 'popover',
+    value: function popover(string) {
+      // console.log('popover', string)
+      return _react2.default.createElement(
+        _reactBootstrap.Popover,
+        { id: string },
+        string
+      );
+    }
+  }, {
+    key: 'renderIcon',
+    value: function renderIcon() {
+      if (this.props.iconUrl) {
+        return _react2.default.createElement('img', { className: 'collapsible-icon', src: this.props.iconUrl });
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
+      if (this.props.popoverInfo) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.OverlayTrigger,
+            { trigger: ['hover', 'focus'], placement: 'top', overlay: this.popover(this.props.popoverInfo) },
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              { block: true, onClick: this.props.onToggle, className: 'collapsible-button' },
+              this.renderIcon(),
+              this.props.title
+            )
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Collapse,
+            { 'in': this.props.in },
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                _reactBootstrap.Well,
+                null,
+                this.props.children
+              )
+            )
+          )
+        );
+      }
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
           _reactBootstrap.Button,
           { block: true, onClick: this.props.onToggle },
+          this.renderIcon(),
           this.props.title
         ),
         _react2.default.createElement(
@@ -10309,7 +10356,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getContainer;
 
-var _reactDom = __webpack_require__(20);
+var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -10602,7 +10649,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12170,7 +12217,7 @@ ButtonGroup.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_dom__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_dom__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__utils_TransitionEvents__ = __webpack_require__(365);
 
@@ -13008,7 +13055,7 @@ ModalTitle.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_dom__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_dom__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_prop_types_lib_all__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_prop_types_lib_all___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_prop_types_lib_all__);
@@ -16692,7 +16739,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(20);
+var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -16821,7 +16868,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(20);
+var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -17010,7 +17057,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(20);
+var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -17817,7 +17864,7 @@ var _recruitment = __webpack_require__(219);
 
 var _recruitment2 = _interopRequireDefault(_recruitment);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17931,7 +17978,7 @@ var _player = __webpack_require__(216);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18890,7 +18937,7 @@ var _characterTalents = __webpack_require__(212);
 
 var _characterTalents2 = _interopRequireDefault(_characterTalents);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18920,9 +18967,23 @@ var Armory = function (_React$Component) {
     value: function createEquip(gearArray) {
       var equipArray = [];
       if (this.props.data) {
-        for (var i = 0; i < gearArray.length; i++) {
-          if (this.props.data.items[gearArray[i]]) {
-            equipArray.push(_react2.default.createElement(_equip2.default, { item: this.props.data.items[gearArray[i]] }));
+        if (gearArray == leftColumn) {
+          for (var i = 0; i < gearArray.length; i++) {
+            if (this.props.data.items[gearArray[i]]) {
+              equipArray.push(_react2.default.createElement(_equip2.default, { position: 'right', item: this.props.data.items[gearArray[i]] }));
+            }
+          }
+        } else if (gearArray == rightColumn) {
+          for (var i = 0; i < gearArray.length; i++) {
+            if (this.props.data.items[gearArray[i]]) {
+              equipArray.push(_react2.default.createElement(_equip2.default, { position: 'left', item: this.props.data.items[gearArray[i]] }));
+            }
+          }
+        } else {
+          for (var i = 0; i < gearArray.length; i++) {
+            if (this.props.data.items[gearArray[i]]) {
+              equipArray.push(_react2.default.createElement(_equip2.default, { position: 'top', item: this.props.data.items[gearArray[i]] }));
+            }
           }
         }
       } else {
@@ -18987,7 +19048,7 @@ var _boss_images = __webpack_require__(220);
 
 var _boss_images2 = _interopRequireDefault(_boss_images);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19057,7 +19118,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19122,7 +19183,7 @@ var _armory = __webpack_require__(207);
 
 var _armory2 = _interopRequireDefault(_armory);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19215,7 +19276,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19273,14 +19334,23 @@ var CharacterStats = function (_React$Component) {
       return Math.round(num * 100) / 100 + '%';
     }
   }, {
+    key: 'buildOverlayTrigger',
+    value: function buildOverlayTrigger(element, string) {
+      return _react2.default.createElement(
+        _reactBootstrap.OverlayTrigger,
+        { placement: 'bottom', trigger: ['hover', 'focus'], overlay: this.statPopover(string) },
+        element
+      );
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'character-stats' },
         _react2.default.createElement(
           _reactBootstrap.Grid,
-          { className: 'character-stats' },
+          { className: 'character-grid' },
           _react2.default.createElement(
             _reactBootstrap.Row,
             { className: 'character-stats-row' },
@@ -19332,34 +19402,22 @@ var CharacterStats = function (_React$Component) {
                 this.renderStats('armor')
               ),
               _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('dodgeRating') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Dodge: ',
-                  this.makePercent(this.renderStats('dodge'))
-                )
+                'h4',
+                null,
+                'Dodge: ',
+                this.makePercent(this.renderStats('dodge'))
               ),
               _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('parryRating') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Parry: ',
-                  this.makePercent(this.renderStats('parry'))
-                )
+                'h4',
+                null,
+                'Parry: ',
+                this.makePercent(this.renderStats('parry'))
               ),
               _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('blockRating') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Block: ',
-                  this.makePercent(this.renderStats('block'))
-                )
+                'h4',
+                null,
+                'Block: ',
+                this.makePercent(this.renderStats('block'))
               )
             )
           ),
@@ -19408,66 +19466,42 @@ var CharacterStats = function (_React$Component) {
                 null,
                 'Enhancements'
               ),
-              _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('critRating') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Crit: ',
-                  this.makePercent(this.renderStats('crit'))
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('hasteRating') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Haste: ',
-                  this.makePercent(this.renderStats('haste'))
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('masteryRating') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Mastery: ',
-                  this.makePercent(this.renderStats('mastery'))
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('leechRating') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Leech: ',
-                  this.makePercent(this.renderStats('leech'))
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('versatility') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Versatility: ',
-                  this.makePercent(this.renderStats('versatilityDamageDoneBonus'))
-                )
-              ),
-              _react2.default.createElement(
-                _reactBootstrap.OverlayTrigger,
-                { trigger: ['hover', 'focus'], overlay: this.statPopover('avoidanceRating') },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  'Avoidance: ',
-                  this.makePercent(this.renderStats('avoidanceRating') + this.renderStats('avoidanceRatingBonus'))
-                )
-              )
+              this.buildOverlayTrigger(_react2.default.createElement(
+                'h4',
+                null,
+                'Crit: ',
+                this.makePercent(this.renderStats('crit'))
+              ), 'critRating'),
+              this.buildOverlayTrigger(_react2.default.createElement(
+                'h4',
+                null,
+                'Haste: ',
+                this.makePercent(this.renderStats('haste'))
+              ), 'hasteRating'),
+              this.buildOverlayTrigger(_react2.default.createElement(
+                'h4',
+                null,
+                'Mastery: ',
+                this.makePercent(this.renderStats('mastery'))
+              ), 'masteryRating'),
+              this.buildOverlayTrigger(_react2.default.createElement(
+                'h4',
+                null,
+                'Leech: ',
+                this.makePercent(this.renderStats('leech'))
+              ), 'leechRating'),
+              this.buildOverlayTrigger(_react2.default.createElement(
+                'h4',
+                null,
+                'Versatility: ',
+                this.makePercent(this.renderStats('versatilityDamageDoneBonus'))
+              ), 'versatility'),
+              this.buildOverlayTrigger(_react2.default.createElement(
+                'h4',
+                null,
+                'Avoidance: ',
+                this.makePercent(this.renderStats('avoidanceRating') + this.renderStats('avoidanceRatingBonus'))
+              ), 'avoidanceRating')
             )
           )
         )
@@ -19503,7 +19537,7 @@ var _collapsible = __webpack_require__(82);
 
 var _collapsible2 = _interopRequireDefault(_collapsible);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19529,20 +19563,41 @@ var CharacterTalents = function (_React$Component) {
   }
 
   _createClass(CharacterTalents, [{
+    key: 'popover',
+    value: function popover(string) {
+      return _react2.default.createElement(
+        _reactBootstrap.Popover,
+        { id: string },
+        string
+      );
+    }
+  }, {
     key: 'renderTalents',
     value: function renderTalents(talentsArr) {
       var talentNames = [];
+      talentsArr.sort(function (a, b) {
+        return a.tier - b.tier;
+      });
+      // console.log(talentsArr);
       if (this.props.data) {
         for (var i = 0; i < talentsArr.length; i++) {
+          var spellUrl = 'http://media.blizzard.com/wow/icons/36/' + talentsArr[i].spell.icon + '.jpg';
           talentNames.push(_react2.default.createElement(
-            'h5',
-            null,
-            talentsArr[i].spell.name
+            _reactBootstrap.OverlayTrigger,
+            { trigger: ['hover', 'focus'], placement: 'bottom', overlay: this.popover(talentsArr[i].spell.description) },
+            _react2.default.createElement(
+              'div',
+              { className: 'talent-div' },
+              _react2.default.createElement('img', { className: 'talent-icon', src: spellUrl }),
+              _react2.default.createElement(
+                'h3',
+                null,
+                talentsArr[i].spell.name
+              )
+            )
           ));
         }
-        return talentNames.map(function (talent) {
-          return talent;
-        });
+        return talentNames;
       }
     }
   }, {
@@ -19554,7 +19609,7 @@ var CharacterTalents = function (_React$Component) {
         var collapsibleArray = [];
         var talents = this.props.data.talents;
         var state = this.state;
-        console.log('talents', talents);
+        // console.log('talents', talents);
         var length = talents.filter(function (talent) {
           return talent.talents.length > 0;
         }).length;
@@ -19562,9 +19617,11 @@ var CharacterTalents = function (_React$Component) {
         var _loop = function _loop() {
           var talent = talents[i];
           var specName = talent.spec.name;
+          var popoverString = talent.spec.description;
+          var icon = 'http://media.blizzard.com/wow/icons/36/' + talent.spec.icon + '.jpg';
           collapsibleArray.push(_react2.default.createElement(
             _collapsible2.default,
-            { title: specName, 'in': !!state[specName], key: specName, onToggle: function onToggle() {
+            { title: specName, popoverInfo: popoverString, iconUrl: icon, 'in': !!state[specName], key: specName, onToggle: function onToggle() {
                 return _this2.onToggle(talent);
               } },
             _this2.renderTalents(talent.talents)
@@ -19587,13 +19644,12 @@ var CharacterTalents = function (_React$Component) {
     value: function onToggle(talent) {
       var state = this.state;
       var toggleSpec = talent.spec;
-      console.log('togglespec', toggleSpec);
+      // console.log('togglespec', toggleSpec)
       this.setState(_extends({}, state, _defineProperty({}, toggleSpec.name, !state[toggleSpec.name])));
     }
   }, {
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         'div',
         null,
@@ -19624,7 +19680,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(19);
+var _stat_id = __webpack_require__(460);
+
+var _stat_id2 = _interopRequireDefault(_stat_id);
+
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19664,12 +19724,29 @@ var Equip = function (_React$Component) {
       if (item.armor) return item.armor + ' Armor';
     }
   }, {
+    key: 'renderItemStats',
+    value: function renderItemStats(itemStatsArr) {
+      if (!itemStatsArr.length) return;
+      var statsArr = [];
+      for (var i = 0; i < itemStatsArr.length; i++) {
+        var statId = itemStatsArr[i].stat;
+        var amount = itemStatsArr[i].amount;
+        statsArr.push(_react2.default.createElement(
+          'h5',
+          null,
+          _stat_id2.default[statId] + ': ' + amount
+        ));
+      }
+      return statsArr;
+    }
+  }, {
     key: 'render',
     value: function render() {
       var item = this.props.item;
       var itemStyle = {
         backgroundPosition: '-' + (item.quality + 1) * 49 + 'px 0'
       };
+      console.log(item);
       var popover = _react2.default.createElement(
         _reactBootstrap.Popover,
         { className: 'popover', id: item.id },
@@ -19688,7 +19765,7 @@ var Equip = function (_React$Component) {
           null,
           'Item Level: ' + item.itemLevel
         ),
-        _react2.default.createElement('h5', null),
+        this.renderItemStats(item.stats),
         _react2.default.createElement('h5', null),
         _react2.default.createElement('h5', null),
         _react2.default.createElement('h5', null),
@@ -19703,7 +19780,7 @@ var Equip = function (_React$Component) {
         { className: 'frame', style: itemStyle },
         _react2.default.createElement(
           _reactBootstrap.OverlayTrigger,
-          { trigger: ['hover', 'focus'], overlay: popover },
+          { trigger: ['hover', 'focus'], placement: this.props.position, overlay: popover },
           _react2.default.createElement(
             'a',
             { href: '' + itemUrl + item.id + '/' + item.context, target: '_blank' },
@@ -19797,7 +19874,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19917,7 +19994,7 @@ var _characterModal = __webpack_require__(210);
 
 var _characterModal2 = _interopRequireDefault(_characterModal);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20267,7 +20344,7 @@ var _boss = __webpack_require__(208);
 
 var _boss2 = _interopRequireDefault(_boss);
 
-var _reactBootstrap = __webpack_require__(19);
+var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20505,7 +20582,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(20);
+var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -24939,7 +25016,7 @@ DropdownButton.propTypes = propTypes;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_prop_types__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_dom__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_dom__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_overlays_lib_RootCloseWrapper__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_overlays_lib_RootCloseWrapper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_react_overlays_lib_RootCloseWrapper__);
@@ -26898,7 +26975,7 @@ MenuItem.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_overlays_lib_Modal__ = __webpack_require__(438);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_overlays_lib_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_react_overlays_lib_Modal__);
@@ -28001,7 +28078,7 @@ NavbarToggle.contextTypes = contextTypes;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_dom__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_dom__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_warning__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_warning__);
@@ -41211,7 +41288,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(20);
+var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -43691,6 +43768,90 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 460 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _$0$1$3$4$5$6$7$12$;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+exports.default = (_$0$1$3$4$5$6$7$12$ = {
+  "-1": "None",
+  "0": "Mana",
+  "1": "Health",
+  "3": "Agility",
+  "4": "Strenght",
+  "5": "Intellect",
+  "6": "Spirit",
+  "7": "Stamina",
+  //-------------------------------
+  "12": "Defense Skill",
+  "13": "Dodge",
+  "14": "Parry",
+  "15": "Block",
+  "16": "Melee Hit",
+  "17": "Ranged Hit",
+  "18": "Spell Hit",
+  "19": "Melee Crit",
+  "20": "Ranged Crit",
+  "21": "Spell Crit",
+  "22": "Melee Hit Taken",
+  "23": "Ranged Hit Taken",
+  "24": "Spell Hit Taken",
+  "25": "Melee Crit Taken",
+  "26": "Ranged Crit Taken",
+  "27": "Spell Crit Taken",
+  "28": "Melee Haste",
+  "29": "Ranged Haste",
+  "30": "Spell Haste",
+  "31": "Hit",
+  "32": "Crit",
+  "33": "Hit Taken",
+  "34": "Crit Taken",
+  "35": "Resilience",
+  "36": "Haste",
+  "37": "Expertise",
+  "38": "Attack Power",
+  "39": "Ranged Attack Power",
+  "40": "Versatility",
+  "41": "Spell Healing Done", // deprecated
+  "42": "Spell Damage Done", // deprecated
+  "43": "Mana Regeneration",
+  "44": "Armor Penetration",
+  "45": "Spell Power",
+  "46": "Health Regen",
+  "47": "Spell Penetration",
+  "48": "Block Value",
+  "49": "Mastery",
+  "50": "Bonus Armor",
+  "51": "Fire Resistance",
+  "52": "Frost Resistance",
+  "53": "Holy Resistance",
+  "54": "Shadow Resistance",
+  "55": "Nature Resistance",
+  "56": "Arcane Resistance",
+  "57": "PVP Power",
+  "58": "Amplify",
+  "66": "Cleave",
+  // new in wod
+  "60": "Readiness",
+  "61": "Speed",
+  "62": "Leech",
+  "63": "Avoidence",
+  "64": "Indestructible",
+  "65": "WOD_5",
+  '59': "Multistrike",
+  '73': "Agility or Intellect"
+}, _defineProperty(_$0$1$3$4$5$6$7$12$, "40", 'Versatility'), _defineProperty(_$0$1$3$4$5$6$7$12$, "71", "Strength, Agility or Intellect"), _defineProperty(_$0$1$3$4$5$6$7$12$, "72", "Strength or Agility"), _defineProperty(_$0$1$3$4$5$6$7$12$, "74", "Strength or Intellect"), _$0$1$3$4$5$6$7$12$);
 
 /***/ })
 /******/ ]);

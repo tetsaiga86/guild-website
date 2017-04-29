@@ -20,9 +20,23 @@ class Armory extends React.Component{
   createEquip(gearArray){
     var equipArray=[];
     if(this.props.data){
-      for (var i = 0; i < gearArray.length; i++) {
-        if(this.props.data.items[gearArray[i]]){
-          equipArray.push(<Equip item={this.props.data.items[gearArray[i]]} />)
+      if(gearArray==leftColumn){
+        for (var i = 0; i < gearArray.length; i++) {
+          if(this.props.data.items[gearArray[i]]){
+            equipArray.push(<Equip position='right' item={this.props.data.items[gearArray[i]]} />)
+          }
+        }
+      }else if (gearArray==rightColumn) {
+        for (var i = 0; i < gearArray.length; i++) {
+          if(this.props.data.items[gearArray[i]]){
+            equipArray.push(<Equip position='left' item={this.props.data.items[gearArray[i]]} />)
+          }
+        }
+      }else{
+        for (var i = 0; i < gearArray.length; i++) {
+          if(this.props.data.items[gearArray[i]]){
+            equipArray.push(<Equip position='top' item={this.props.data.items[gearArray[i]]} />)
+          }
         }
       }
     }else{

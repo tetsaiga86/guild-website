@@ -1,4 +1,5 @@
 import React from 'react'
+import statMap from '../data/stat_id'
 import {
 Popover,
 OverlayTrigger,
@@ -22,17 +23,29 @@ class Equip extends React.Component{
     if(item.armor) return `${item.armor} Armor`
   }
 
+  renderItemStats(itemStatsArr){
+    if(!itemStatsArr.length) return;
+    var statsArr=[];
+    for (var i = 0; i < itemStatsArr.length; i++) {
+      var statId=itemStatsArr[i].stat;
+      var amount=itemStatsArr[i].amount;
+      statsArr.push(<h5>{`${statMap[statId]}: ${amount}`}</h5>)
+    }
+    return statsArr;
+  }
+
   render(){
     var item = this.props.item
     var itemStyle = {
       backgroundPosition : `-${(item.quality+1)*49}px 0`
     }
+    console.log(item)
     var popover = (
       <Popover className='popover' id={item.id}>
         <h2>{item.name}</h2>
         <h4>{this.getArtifactRank(item)}</h4>
         <h5>{`Item Level: ${item.itemLevel}`}</h5>
-        <h5></h5>
+        {this.renderItemStats(item.stats)}
         <h5></h5>
         <h5></h5>
         <h5></h5>
@@ -42,7 +55,7 @@ class Equip extends React.Component{
     return(
       <div className="frame" style={itemStyle}>
         {
-          <OverlayTrigger trigger={['hover', 'focus']} overlay={popover}>
+          <OverlayTrigger trigger={['hover', 'focus']} placement={this.props.position} overlay={popover}>
             <a href={`${itemUrl}${item.id}/${item.context}`} target="_blank">
               <img src={iconUrl+item.icon+'.jpg'} className="equip-icon" />
 

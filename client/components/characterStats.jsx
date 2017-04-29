@@ -48,10 +48,18 @@ class CharacterStats extends React.Component{
     return (Math.round(num*100)/100+'%');
   }
 
+  buildOverlayTrigger(element, string){
+    return(
+      <OverlayTrigger placement="bottom" trigger={['hover', 'focus']} overlay={this.statPopover(string)}>
+        {element}
+      </OverlayTrigger>
+    )
+  }
+
   render(){
     return(
-      <div>
-        <Grid className="character-stats">
+      <div className="character-stats">
+        <Grid className="character-grid">
           <Row className="character-stats-row">
             <Col xs={6} md={4} className="character-attributes">
               <strong>Attributes</strong>
@@ -63,15 +71,9 @@ class CharacterStats extends React.Component{
             <Col xs={6} md={4} className="character-defense">
               <strong>Defense</strong>
               <h4>Armor: {this.renderStats('armor')}</h4>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('dodgeRating')}>
-                <h4>Dodge: {this.makePercent(this.renderStats('dodge'))}</h4>
-              </OverlayTrigger>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('parryRating')}>
-                <h4>Parry: {this.makePercent(this.renderStats('parry'))}</h4>
-              </OverlayTrigger>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('blockRating')}>
-                <h4>Block: {this.makePercent(this.renderStats('block'))}</h4>
-              </OverlayTrigger>
+              <h4>Dodge: {this.makePercent(this.renderStats('dodge'))}</h4>
+              <h4>Parry: {this.makePercent(this.renderStats('parry'))}</h4>
+              <h4>Block: {this.makePercent(this.renderStats('block'))}</h4>
             </Col>
           </Row>
           <Row className="character-stats-row">
@@ -84,24 +86,12 @@ class CharacterStats extends React.Component{
             </Col>
             <Col xs={6} md={4} className="character-enhancements">
               <strong>Enhancements</strong>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('critRating')}>
-                <h4>Crit: {this.makePercent(this.renderStats('crit'))}</h4>
-              </OverlayTrigger>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('hasteRating')}>
-                <h4>Haste: {this.makePercent(this.renderStats('haste'))}</h4>
-              </OverlayTrigger>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('masteryRating')}>
-                <h4>Mastery: {this.makePercent(this.renderStats('mastery'))}</h4>
-              </OverlayTrigger>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('leechRating')}>
-                <h4>Leech: {this.makePercent(this.renderStats('leech'))}</h4>
-              </OverlayTrigger>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('versatility')}>
-                <h4>Versatility: {this.makePercent(this.renderStats('versatilityDamageDoneBonus'))}</h4>
-              </OverlayTrigger>
-              <OverlayTrigger trigger={['hover', 'focus']} overlay={this.statPopover('avoidanceRating')}>
-                <h4>Avoidance: {this.makePercent(this.renderStats('avoidanceRating')+this.renderStats('avoidanceRatingBonus'))}</h4>
-              </OverlayTrigger>
+              {this.buildOverlayTrigger(<h4>Crit: {this.makePercent(this.renderStats('crit'))}</h4>, 'critRating')}
+              {this.buildOverlayTrigger(<h4>Haste: {this.makePercent(this.renderStats('haste'))}</h4>, 'hasteRating')}
+              {this.buildOverlayTrigger(<h4>Mastery: {this.makePercent(this.renderStats('mastery'))}</h4>, 'masteryRating')}
+              {this.buildOverlayTrigger(<h4>Leech: {this.makePercent(this.renderStats('leech'))}</h4>, 'leechRating')}
+              {this.buildOverlayTrigger(<h4>Versatility: {this.makePercent(this.renderStats('versatilityDamageDoneBonus'))}</h4>, 'versatility')}
+              {this.buildOverlayTrigger(<h4>Avoidance: {this.makePercent(this.renderStats('avoidanceRating')+this.renderStats('avoidanceRatingBonus'))}</h4>, 'avoidanceRating')}
             </Col>
           </Row>
         </Grid>

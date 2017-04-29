@@ -89,7 +89,9 @@ th, .raid-table, .members-table-cell{
   /*flex-grow:1;*/
   justify-content: space-around;
   /*flex-basis: 45%;*/
-  margin-left: 2em;
+  padding-left: 2em;
+  max-height: 38.5em;
+  margin-top: 2em;
 }
 
 .right-gear{
@@ -98,7 +100,10 @@ th, .raid-table, .members-table-cell{
   /*flex-grow:1;*/
   justify-content: space-around;
   align-content: flex-end;
-  margin-right: 2em;
+  padding-right: 2em;
+  max-height: 38.5em;
+  margin-top: 2em;
+  /*background-color: black;*/
 }
 
 .bottom-gear{
@@ -106,9 +111,11 @@ th, .raid-table, .members-table-cell{
   /*flex-grow:1;*/
   justify-content: space-around;
   align-items: flex-end;
+  min-width: 32%;
   /*flex-basis: 80%;*/
   /*clear: both;
   align-content: flex-end;*/
+  margin-bottom: 2em;
 }
 
 #character-spell-speed{
@@ -116,9 +123,43 @@ th, .raid-table, .members-table-cell{
 }
 .character-stats-row{
   margin: 2em;
+  display: flex;
+  justify-content: space-around;
 }
 
 strong{
   font-size: 2em;
   text-decoration: underline;
+}
+
+.collapsible-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collapsible-icon{
+  margin-right: 1em;
+}
+
+.talent-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.talent-icon{
+  margin-right: 1em;
+  max-height: 36px;
+  max-width: 36px;
+}
+
+.character-stats{
+  display: flex;
+  justify-content: space-around;
+}
+
+.character-grid{
+  /*display: flex;
+  justify-content: space-around;*/
 }
