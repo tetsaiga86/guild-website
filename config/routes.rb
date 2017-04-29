@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/api/log_ids' => 'proxy#log_ids'
   get '/api/log/:id' => 'proxy#log'
   get '/api/character_parse/:name' => 'proxy#character_parse'
+  get '/api/achievements' => 'proxy#achievements'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

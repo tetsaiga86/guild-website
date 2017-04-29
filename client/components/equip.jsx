@@ -10,7 +10,7 @@ const itemUrl = 'http://us.battle.net/wow/en/item/';
 class Equip extends React.Component{
   getArtifactRank(item){
     //console.log(item);
-    if(item.artifactTraits.length>0){
+    if(item.artifactTraits.length){
       var counter=0;
       for (var i = 0; i < item.artifactTraits.length; i++) {
         counter+=item.artifactTraits[i].rank;

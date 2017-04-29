@@ -16,6 +16,12 @@ module Bnet
       parsed_response['members']
     end
 
+    def achievements(name)
+      query_values = { fields: 'news achievements' }
+
+      request "guild/#{REALM}/#{URI.escape name}", query_values
+    end
+
     def character_info(name)
       query_values = { fields: 'items stats talents progression'}
 

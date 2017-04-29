@@ -16,6 +16,10 @@ class ProxyController < ApplicationController
     render json: logs_client.guild_log_ids(ENV['GUILD_NAME'])
   end
 
+  def achievements
+    render json: bnet_client.achievements(ENV['GUILD_NAME'])
+  end
+
   def log
     render json: logs_client.guild_log(params[:id])
   end

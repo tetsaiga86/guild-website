@@ -55,7 +55,7 @@ body{
   font-size: 2em;
 }
 
-th, .raid-table, .members-table-cell{
+th, .raid-table, .members-table-cell, .achievement-table-cell{
   text-align: center;
   vertical-align: middle;
   line-height: inherit;
@@ -161,5 +161,25 @@ strong{
 
 .character-grid{
   /*display: flex;
-  justify-content: space-around;*/
+  justify-content: center;*/
+}
+
+.achievement-news-table{
+  display: flex;
+  justify-content: center;
+}
+
+.achievement-table{
+  max-width: 45%;
+  margin: 1em;
+}
+
+.news-table{
+  max-width: 45%;
+  margin: 1em;
+}
+
+.achievement-table-head{
+  min-height: 52px;
+  font-size: 1.5em;
 }

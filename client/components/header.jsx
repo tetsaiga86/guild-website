@@ -23,7 +23,7 @@ class Header extends React.Component {
             <Nav>
               <NavItem eventKey={2} href="#">Forum</NavItem>
               <NavItem eventKey={3} href="#">About</NavItem>
-              <NavItem eventKey={4} href="#">Achievements</NavItem>
+              <NavItem eventKey={4} href="/spa/achievements">Achievements</NavItem>
               <NavItem eventKey={5} href="/spa/members">Members</NavItem>
               <NavItem eventKey={6} href="#">Recruitment</NavItem>
             </Nav>
