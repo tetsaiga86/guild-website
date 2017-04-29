@@ -17988,8 +17988,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var guildMembersUrl = 'https://us.api.battle.net/wow/guild/kiljaeden/f%20o%20o%20l%20s%20a%20v%20a%20g%20e?fields=members&locale=en_US&apikey=' + ENV.api_key;
-var logReportIdsUrl = 'https://www.warcraftlogs.com:443/v1/reports/guild/f%20o%20o%20l%20s%20a%20v%20a%20g%20e/kiljaeden/US?api_key=' + ENV.wow_logs_api_key;
+var guildMembersUrl = '/api/guild_members';
+var logReportIdsUrl = '/api/log_ids';
 var lastFourLogJson = [];
 
 var Members = function (_React$Component) {
@@ -18053,7 +18053,7 @@ var Members = function (_React$Component) {
       var _this2 = this;
 
       $.getJSON(guildMembersUrl, function (guildMembersJson) {
-        var gMembers = guildMembersJson.members.filter(function (member) {
+        var gMembers = guildMembersJson.filter(function (member) {
           return member.rank <= 4;
         });
         $.getJSON(logReportIdsUrl, function (logReportIds) {
@@ -18065,11 +18065,11 @@ var Members = function (_React$Component) {
             lastFourLogIds.push(logReportIds[i].id);
           }
           lastFourLogIds.forEach(function (logId) {
-            $.getJSON('https://www.warcraftlogs.com/v1/report/fights/' + logId + '?api_key=' + ENV.wow_logs_api_key, function (logJson) {
+            $.getJSON('/api/log/' + logId, function (logJson) {
               lastFourLogJson.push(logJson);
               if (lastFourLogJson.length === 3) {
                 gMembers.forEach(function (gMember) {
-                  $.getJSON('https://www.warcraftlogs.com/v1/parses/character/' + gMember.character.name + '/kiljaeden/US?api_key=' + ENV.wow_logs_api_key, function (playerReport) {
+                  $.getJSON('/api/character_parse/' + gMember.character.name, function (playerReport) {
                     playerReport = playerReport.filter(function (report) {
                       return report.difficulty >= 4;
                     });
@@ -19048,6 +19048,10 @@ var _boss_images = __webpack_require__(220);
 
 var _boss_images2 = _interopRequireDefault(_boss_images);
 
+var _unix_time = __webpack_require__(461);
+
+var _unix_time2 = _interopRequireDefault(_unix_time);
+
 var _reactBootstrap = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -19078,19 +19082,19 @@ var Boss = function (_React$Component) {
           'td',
           null,
           _react2.default.createElement('img', { className: 'bossImg', src: _boss_images2.default[boss.id] }),
-          boss.description
+          boss.name
         ),
         _react2.default.createElement(
           'td',
           null,
-          boss.killedDate && _react2.default.createElement('img', { className: 'skullImg', src: '/images/heroic_icon.png' }),
-          boss.killedDate
+          !!boss.heroicKills && _react2.default.createElement('img', { className: 'skullImg', src: '/images/heroic_icon.png' }),
+          !!boss.heroicTimestamp && (0, _unix_time2.default)(boss.heroicTimestamp)
         ),
         _react2.default.createElement(
           'td',
           null,
-          boss.mKilledDate && _react2.default.createElement('img', { className: 'skullImg', src: '/images/heroic_icon.png' }),
-          boss.mKilledDate
+          !!boss.mythicKills && _react2.default.createElement('img', { className: 'skullImg', src: '/images/heroic_icon.png' }),
+          !!boss.mythicTimestamp && (0, _unix_time2.default)(boss.mythicTimestamp)
         )
       );
     }
@@ -19215,7 +19219,7 @@ var CharacterModal = function (_React$Component) {
           return;
         }
         this.setState({ initialized: true });
-        var characterItemURL = ' https://us.api.battle.net/wow/character/' + ENV.realm + '/' + this.props.character.name + '?fields=items+stats+talents&locale=en_US&apikey=' + ENV.api_key;
+        var characterItemURL = ' /api/character_info/' + this.props.character.name;
         $.getJSON(characterItemURL, function (data) {
           _this2.setState({ data: data });
         });
@@ -19928,7 +19932,7 @@ var HomeCarousel = function (_React$Component) {
     value: function renderArticle(article) {
       return _react2.default.createElement(
         _reactBootstrap.Carousel.Item,
-        null,
+        { key: article.href },
         _react2.default.createElement(
           'a',
           { href: article.href, target: '_blank' },
@@ -20117,6 +20121,10 @@ var _raid = __webpack_require__(218);
 
 var _raid2 = _interopRequireDefault(_raid);
 
+var _fetch_leader_data = __webpack_require__(462);
+
+var _fetch_leader_data2 = _interopRequireDefault(_fetch_leader_data);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20124,23 +20132,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var guildAchievementsUrl = 'https://us.api.battle.net/wow/guild/kiljaeden/F%20O%20O%20L%20S%20A%20V%20A%20G%20E?fields=achievements%2Cchallenge&locale=en_US&apikey=' + ENV.api_key;
-
-var allGuildAchievementsUrl = 'https://us.api.battle.net/wow/data/guild/achievements?locale=en_US&apikey=' + ENV.api_key;
-
-var guildLeaderAchievementsUrl = 'https://us.api.battle.net/wow/character/kiljaeden/Srprise?fields=achievements&locale=en_US&apikey=' + ENV.api_key;
-
-var allCharacterAchievementsUrl = 'https://us.api.battle.net/wow/data/character/achievements?locale=en_US&apikey=' + ENV.api_key;
-
-var areas = ['Emerald Nightmare', 'Trial of Valor', 'Nighthold'];
-var difficulty = 'Mythic';
-var action = 'Defeat';
-
-var achievements;
-var mythicBossAchievementIds = [];
-var heroicBossCriteriaIds = [];
-var mythicBossKills = [];
 
 var Progress = function (_React$Component) {
   _inherits(Progress, _React$Component);
@@ -20160,114 +20151,11 @@ var Progress = function (_React$Component) {
   _createClass(Progress, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.fetchListData();
-    }
-  }, {
-    key: 'fetchListData',
-    value: function fetchListData() {
       var _this2 = this;
 
-      $.getJSON(allGuildAchievementsUrl, function (allGuildAchievements) {
-        var raids = allGuildAchievements.achievements[3].categories[11].achievements.slice(0, 3);
-        for (var i = 0; i < raids.length; i++) {
-          for (var j = 0; j < raids[i].criteria.length; j++) {
-            heroicBossCriteriaIds.push(raids[i].criteria[j].id);
-          }
-
-          raids[i].in = i == raids.length - 1;
-        }
-
-        _this2.setState({ raids: raids });
-
-        $.getJSON(guildLeaderAchievementsUrl, function (characterData) {
-          var guildLeaderAchievements = characterData.achievements.achievementsCompleted;
-          var guildLeaderAchievementsTimestamp = characterData.achievements.achievementsCompletedTimestamp;
-
-          $.getJSON(allCharacterAchievementsUrl, function (allCharacterAchievements) {
-            var mythicCandidates = allCharacterAchievements.achievements[4].categories[11].achievements;
-
-            mythicCandidates.forEach(function (candidate) {
-              if (candidate.description.startsWith(action)) {
-                areas.forEach(function (location) {
-                  if (candidate.description.includes(location + ' on ' + difficulty + ' difficulty.')) {
-                    mythicBossAchievementIds.push({ name: candidate.title.slice(8, candidate.title.length), id: candidate.id, location: location });
-                  }
-                });
-              }
-            });
-
-            for (var i = 0; i < mythicBossAchievementIds.length; i++) {
-              if (guildLeaderAchievements.includes(mythicBossAchievementIds[i].id)) {
-                var index = guildLeaderAchievements.indexOf(mythicBossAchievementIds[i].id);
-                mythicBossKills.push({ id: guildLeaderAchievements[index], timestamp: guildLeaderAchievementsTimestamp[index], name: mythicBossAchievementIds[i].name, location: mythicBossAchievementIds[i].location });
-              }
-            }
-
-            //console.log('mythicBossKills', mythicBossKills);
-            var raidCharacterAchievements = allCharacterAchievements.achievements;
-
-            $.getJSON(guildAchievementsUrl, function (guildData) {
-              var newRaids = _this2.state.raids;
-
-              var guildAchievementIds = guildData.achievements.criteria;
-              var guildAchivementTimestamps = guildData.achievements.criteriaTimestamp;
-              var guildAchievements = [];
-              for (var i = 0; i < guildAchievementIds.length; i++) {
-                guildAchievements[i] = { id: guildAchievementIds[i], timestamp: guildAchivementTimestamps[i] };
-              }
-              //console.log(heroicBossCriteriaIds);
-              var raidEntry;
-              guildAchievements.forEach(function (guildAchievement) {
-                if (_this2.isAHeroicKill(guildAchievement.id)) {
-                  raidEntry = newRaids;
-                  for (var i = 0; i < raidEntry.length; i++) {
-                    for (var j = 0; j < raidEntry[i].criteria.length; j++) {
-                      if (raidEntry[i].criteria[j].id == guildAchievement.id) {
-                        raidEntry[i].criteria[j].killedDate = _this2.timeConverter(guildAchievement.timestamp);
-                      }
-                    }
-                  }
-                }
-              });
-              mythicBossKills.forEach(function (mythicBossKill) {
-                for (var i = 0; i < raidEntry.length; i++) {
-                  for (var j = 0; j < raidEntry[i].criteria.length; j++) {
-                    if (raidEntry[i].criteria[j].description.includes(mythicBossKill.name)) {
-                      raidEntry[i].criteria[j].mKilledDate = _this2.timeConverter(mythicBossKill.timestamp);
-                    }
-                  }
-                }
-              });
-              //console.log('raid entry', raidEntry);
-              _this2.setState({ raids: raidEntry });
-            });
-          });
-        });
+      (0, _fetch_leader_data2.default)('Lëmmiwinks', function (data) {
+        _this2.setState({ raids: data });
       });
-    }
-  }, {
-    key: 'isAHeroicKill',
-    value: function isAHeroicKill(achievementId) {
-      return heroicBossCriteriaIds.includes(achievementId);
-    }
-  }, {
-    key: 'timeConverter',
-    value: function timeConverter(UNIX_timestamp) {
-      var a = new Date(UNIX_timestamp);
-      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      var year = a.getFullYear();
-      var month = months[a.getMonth()];
-      var date = a.getDate();
-      var hour = a.getHours();
-      var min = a.getMinutes();
-      var sec = a.getSeconds();
-      var time = date + ' ' + month + ' ' + year;
-      return time;
-    }
-  }, {
-    key: 'achievementComplete',
-    value: function achievementComplete() {
-      return true;
     }
   }, {
     key: 'onToggle',
@@ -20285,7 +20173,7 @@ var Progress = function (_React$Component) {
     value: function renderRaid(raid) {
       var _this3 = this;
 
-      return _react2.default.createElement(_raid2.default, { raid: raid, key: raid.title, onToggle: function onToggle() {
+      return _react2.default.createElement(_raid2.default, { raid: raid, key: raid.name, onToggle: function onToggle() {
           return _this3.onToggle(raid);
         } });
     }
@@ -20357,13 +20245,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Raid = function (_React$Component) {
   _inherits(Raid, _React$Component);
 
-  function Raid(props) {
+  function Raid() {
     _classCallCheck(this, Raid);
 
-    var _this = _possibleConstructorReturn(this, (Raid.__proto__ || Object.getPrototypeOf(Raid)).call(this, props));
-
-    _this.raid = props.raid;
-    return _this;
+    return _possibleConstructorReturn(this, (Raid.__proto__ || Object.getPrototypeOf(Raid)).apply(this, arguments));
   }
 
   _createClass(Raid, [{
@@ -20374,16 +20259,16 @@ var Raid = function (_React$Component) {
   }, {
     key: 'renderBosses',
     value: function renderBosses() {
-      return this.raid.criteria.map(this.renderBoss);
+      return this.props.raid.bosses.map(this.renderBoss);
     }
   }, {
     key: 'render',
     value: function render() {
-      var raid = this.raid;
+      var raid = this.props.raid;
       //console.log('raid', raid.title, raid.in)
       return _react2.default.createElement(
         _collapsible2.default,
-        { title: raid.title, 'in': raid.in, key: raid.title, onToggle: this.props.onToggle },
+        { title: raid.name, 'in': raid.in, key: raid.name, onToggle: this.props.onToggle },
         _react2.default.createElement(
           _reactBootstrap.Table,
           { striped: true, bordered: true, condensed: true, hover: true, className: 'raid-table' },
@@ -20524,26 +20409,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  31495: '/images/ui-ej-boss-botanist.png',
-  31492: '/images/ui-ej-boss-chronomatic-anomaly.png',
-  31494: '/images/ui-ej-boss-grand-magistrix-elisande.png',
-  31489: '/images/ui-ej-boss-guldan.png',
-  31496: '/images/ui-ej-boss-krosus.png',
-  31493: '/images/ui-ej-boss-skorpyron.png',
-  31490: '/images/ui-ej-boss-spellblade-aluriel.png',
-  31491: '/images/ui-ej-boss-star-augur-etraeus.png',
-  31497: '/images/ui-ej-boss-tichondrius.png',
-  31488: '/images/ui-ej-boss-trilliax.png',
-  34816: '/images/ui-ej-boss-odyn.png',
-  34818: '/images/ui-ej-boss-guarm.png',
-  34817: '/images/ui-ej-boss-helya.png',
-  31481: '/images/ui-ej-boss-nythendra.png',
-  31482: '/images/ui-ej-boss-elerethe-renferal.png',
-  31486: '/images/ui-ej-boss-ilgynoth-heart-of-corruption.png',
-  31484: '/images/ui-ej-boss-ursoc.png',
-  31487: '/images/ui-ej-boss-dragons-of-nightmare.png',
-  31485: '/images/ui-ej-boss-cenarius.png',
-  31483: '/images/ui-ej-boss-xavius.png'
+  104528: '/images/ui-ej-boss-botanist.png',
+  104415: '/images/ui-ej-boss-chronomatic-anomaly.png',
+  110965: '/images/ui-ej-boss-grand-magistrix-elisande.png',
+  105503: '/images/ui-ej-boss-guldan.png',
+  101002: '/images/ui-ej-boss-krosus.png',
+  102263: '/images/ui-ej-boss-skorpyron.png',
+  107699: '/images/ui-ej-boss-spellblade-aluriel.png',
+  103758: '/images/ui-ej-boss-star-augur-etraeus.png',
+  103685: '/images/ui-ej-boss-tichondrius.png',
+  104288: '/images/ui-ej-boss-trilliax.png',
+  115323: '/images/ui-ej-boss-odyn.png',
+  114344: '/images/ui-ej-boss-guarm.png',
+  93394: '/images/ui-ej-boss-helya.png',
+  103160: '/images/ui-ej-boss-nythendra.png',
+  111000: '/images/ui-ej-boss-elerethe-renferal.png',
+  105393: '/images/ui-ej-boss-ilgynoth-heart-of-corruption.png',
+  100497: '/images/ui-ej-boss-ursoc.png',
+  102679: '/images/ui-ej-boss-dragons-of-nightmare.png',
+  113534: '/images/ui-ej-boss-cenarius.png',
+  103769: '/images/ui-ej-boss-xavius.png'
 };
 
 /***/ }),
@@ -43852,6 +43737,56 @@ exports.default = (_$0$1$3$4$5$6$7$12$ = {
   '59': "Multistrike",
   '73': "Agility or Intellect"
 }, _defineProperty(_$0$1$3$4$5$6$7$12$, "40", 'Versatility'), _defineProperty(_$0$1$3$4$5$6$7$12$, "71", "Strength, Agility or Intellect"), _defineProperty(_$0$1$3$4$5$6$7$12$, "72", "Strength or Agility"), _defineProperty(_$0$1$3$4$5$6$7$12$, "74", "Strength or Intellect"), _$0$1$3$4$5$6$7$12$);
+
+/***/ }),
+/* 461 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = timeConverter;
+function timeConverter(UNIX_timestamp) {
+  var a = new Date(UNIX_timestamp);
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year;
+  return time;
+}
+
+/***/ }),
+/* 462 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = fetchLeaderdata;
+function fetchLeaderdata(name, callback) {
+  var leaderUrl = "/api/character_info/" + name;
+  var legionRaids = [];
+  var numberOfRaids = 3;
+  $.getJSON(leaderUrl, function (leaderJsonData) {
+    var j = 0;
+    for (var i = leaderJsonData.progression.raids.length - numberOfRaids; i < leaderJsonData.progression.raids.length; i++, j++) {
+      legionRaids.push(leaderJsonData.progression.raids[i]);
+      legionRaids[legionRaids.length - 1].in = j == numberOfRaids - 1;
+    }
+
+    callback(legionRaids);
+  });
+}
 
 /***/ })
 /******/ ]);

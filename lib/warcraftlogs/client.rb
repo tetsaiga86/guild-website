@@ -19,7 +19,7 @@ module Warcraftlogs
     end
 
     def character_parse(name)
-      request "parses/character/#{name}/#{REALM}/#{LOCALE}"
+      request "parses/character/#{URI.escape name}/#{REALM}/#{LOCALE}"
     end
 
     private

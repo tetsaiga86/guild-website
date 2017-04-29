@@ -5,8 +5,8 @@ import {
   Table
 } from 'react-bootstrap'
 
-const guildMembersUrl = `https://us.api.battle.net/wow/guild/kiljaeden/f%20o%20o%20l%20s%20a%20v%20a%20g%20e?fields=members&locale=en_US&apikey=${ENV.api_key}`;
-const logReportIdsUrl = `https://www.warcraftlogs.com:443/v1/reports/guild/f%20o%20o%20l%20s%20a%20v%20a%20g%20e/kiljaeden/US?api_key=${ENV.wow_logs_api_key}`
+const guildMembersUrl = `/api/guild_members`;
+const logReportIdsUrl = `/api/log_ids`;
 var lastFourLogJson=[];
 
 class Members extends React.Component {
@@ -57,7 +57,7 @@ class Members extends React.Component {
 
   fetchGuildMembers(){
     $.getJSON(guildMembersUrl, (guildMembersJson) => {
-      const gMembers = guildMembersJson.members.filter(member => member.rank<=4);
+      const gMembers = guildMembersJson.filter(member => member.rank<=4);
       $.getJSON(logReportIdsUrl, (logReportIds) => {
         var lastFourLogIds=[];
         logReportIds=logReportIds.filter(log => log.owner=="srprise");
@@ -65,11 +65,11 @@ class Members extends React.Component {
           lastFourLogIds.push(logReportIds[i].id);
         }
         lastFourLogIds.forEach(logId => {
-          $.getJSON(`https://www.warcraftlogs.com/v1/report/fights/${logId}?api_key=${ENV.wow_logs_api_key}`, (logJson) => {
+          $.getJSON(`/api/log/${logId}`, (logJson) => {
             lastFourLogJson.push(logJson);
             if (lastFourLogJson.length === 3) {
               gMembers.forEach(gMember => {
-                $.getJSON(`https://www.warcraftlogs.com/v1/parses/character/${gMember.character.name}/kiljaeden/US?api_key=${ENV.wow_logs_api_key}`, (playerReport) => {
+                $.getJSON(`/api/character_parse/${gMember.character.name}`, (playerReport) => {
                   playerReport = playerReport.filter(report => report.difficulty>=4);
                   gMember.character.ilvl=0;
                   playerReport.forEach(playerReport =>{

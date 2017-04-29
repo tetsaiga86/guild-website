@@ -6,25 +6,19 @@ import {
 } from 'react-bootstrap'
 
 class Raid extends React.Component {
-  constructor(props){
-    super(props);
-
-    this.raid = props.raid;
-  }
-
   renderBoss (boss) {
     return <Boss boss={boss} key={boss.id}/>;
   }
 
   renderBosses () {
-    return this.raid.criteria.map(this.renderBoss);
+    return this.props.raid.bosses.map(this.renderBoss);
   }
 
   render () {
-    const raid = this.raid;
+    const raid = this.props.raid;
     //console.log('raid', raid.title, raid.in)
     return (
-      <Collapsible title={raid.title} in={raid.in} key={raid.title} onToggle={this.props.onToggle}>
+      <Collapsible title={raid.name} in={raid.in} key={raid.name} onToggle={this.props.onToggle}>
         <Table striped bordered condensed hover className='raid-table'>
           <thead>
             <tr>

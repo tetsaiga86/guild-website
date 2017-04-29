@@ -36,7 +36,7 @@ class HomeCarousel extends React.Component {
 
   renderArticle(article) {
     return (
-      <Carousel.Item>
+      <Carousel.Item key={article.href}>
         <a href={article.href} target="_blank">
           <img className="carousel-img" width={615} height={300} alt={article.subtitle} src={article.imageUrl} />
           <Carousel.Caption>
