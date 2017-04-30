@@ -22,6 +22,14 @@ module Bnet
       request "guild/#{REALM}/#{URI.escape name}", query_values
     end
 
+    def achievement_info(id)
+      request "achievement/#{id}"
+    end
+
+    def item_info(id)
+      request "item/#{id}"
+    end
+
     def character_info(name)
       query_values = { fields: 'items stats talents progression'}
 

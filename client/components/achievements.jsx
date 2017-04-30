@@ -39,20 +39,8 @@ class Achievements extends React.Component {
 
   fetchGuildAchievNews(){
     $.getJSON(guildAchievNewsUrl, (guildAchievNews) => {
-      var guildAchievementsAndTimeStamps = [];
-      var guildAchievementIds = guildAchievNews.achievements.achievementsCompleted;
-      var achievementTimestamps = guildAchievNews.achievements.achievementsCompletedTimestamp;
-      for (var i = 0; i < guildAchievementIds.length; i++) {
-        guildAchievementsAndTimeStamps.push({
-          id: guildAchievementIds[i],
-          timestamp: achievementTimestamps[i]
-        })
-      }
-      guildAchievementsAndTimeStamps.sort((a,b) =>{
-        return b.timestamp - a.timestamp;
-      })
       this.setState({
-        achievements : guildAchievementsAndTimeStamps,
+        achievements : guildAchievNews.achievements,
         news : guildAchievNews.news
       })
     })
