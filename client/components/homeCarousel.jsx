@@ -12,9 +12,13 @@ class HomeCarousel extends React.Component {
     $.get('/news', (response) => {
       const $page = $(response);
 
-      const articleTiles = $page.find('.ArticleTile').slice(0, 3);
-
-      const articles = [articleTiles[0], articleTiles[1], articleTiles[2]].map(articleTile => {
+      const articleTiles = $page.find('.ArticleTile');
+      console.log(articleTiles.length)
+      var articlesArr = [];
+      for (var i = 0; i < articleTiles.length; i++) {
+        articlesArr.push(articleTiles[i]);
+      }
+      const articles = articlesArr.map(articleTile => {
         const $tile = $(articleTile);
         const imageUrl = $tile.find('.Tile-bg').attr('style').match(/"(.*)"/)[1];
         const title = $tile.find('.ArticleTile-title').text();
