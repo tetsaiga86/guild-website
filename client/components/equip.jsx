@@ -10,7 +10,7 @@ const itemUrl = 'http://us.battle.net/wow/en/item/';
 class Equip extends React.Component{
   getArtifactRank(item){
     //console.log(item);
-    if(item.artifactTraits.length){
+    if(item.artifactTraits && item.artifactTraits.length){
       var counter=0;
       for (var i = 0; i < item.artifactTraits.length; i++) {
         counter+=item.artifactTraits[i].rank;
@@ -39,13 +39,13 @@ class Equip extends React.Component{
     var itemStyle = {
       backgroundPosition : `-${(item.quality+1)*49}px 0`
     }
-    console.log(item)
+    // console.log(item)
     var popover = (
       <Popover className='popover' id={item.id}>
         <h2>{item.name}</h2>
         <h4>{this.getArtifactRank(item)}</h4>
         <h5>{`Item Level: ${item.itemLevel}`}</h5>
-        {this.renderItemStats(item.stats)}
+        {this.renderItemStats(item.stats || item.bonusStats)}
         <h5></h5>
         <h5></h5>
         <h5></h5>

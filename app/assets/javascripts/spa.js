@@ -20013,7 +20013,7 @@ var Equip = function (_React$Component) {
     key: 'getArtifactRank',
     value: function getArtifactRank(item) {
       //console.log(item);
-      if (item.artifactTraits.length) {
+      if (item.artifactTraits && item.artifactTraits.length) {
         var counter = 0;
         for (var i = 0; i < item.artifactTraits.length; i++) {
           counter += item.artifactTraits[i].rank;
@@ -20049,7 +20049,7 @@ var Equip = function (_React$Component) {
       var itemStyle = {
         backgroundPosition: '-' + (item.quality + 1) * 49 + 'px 0'
       };
-      console.log(item);
+      // console.log(item)
       var popover = _react2.default.createElement(
         _reactBootstrap.Popover,
         { className: 'popover', id: item.id },
@@ -20068,7 +20068,7 @@ var Equip = function (_React$Component) {
           null,
           'Item Level: ' + item.itemLevel
         ),
-        this.renderItemStats(item.stats),
+        this.renderItemStats(item.stats || item.bonusStats),
         _react2.default.createElement('h5', null),
         _react2.default.createElement('h5', null),
         _react2.default.createElement('h5', null),
@@ -20291,6 +20291,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactBootstrap = __webpack_require__(17);
 
+var _equip = __webpack_require__(216);
+
+var _equip2 = _interopRequireDefault(_equip);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20312,16 +20316,17 @@ var NewsPiece = function (_React$Component) {
     key: 'render',
     value: function render() {
       var player = this.props.piece.character;
-      var item = this.props.piece.itemId;
+      var item = this.props.piece.item;
       return _react2.default.createElement(
         'tr',
         null,
         _react2.default.createElement(
           'td',
           { className: 'achievement-table-cell' },
+          _react2.default.createElement(_equip2.default, { position: 'left', item: item }),
           player,
           ' has looted ',
-          item
+          item.name
         )
       );
     }
