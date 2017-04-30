@@ -19205,13 +19205,11 @@ var Achievement = function (_React$Component) {
           { trigger: ['hover', 'focus'], placement: 'right', overlay: popover },
           _react2.default.createElement(
             'td',
-            { className: 'achievement-table-cell' },
-            _react2.default.createElement(
-              'a',
-              { href: '' + achievementUrl + achievement.id + '/' + details.title, target: '_blank' },
-              _react2.default.createElement('img', { src: '' + iconUrl + details.icon + '.jpg', className: 'achievement-icon' }),
-              details.title
-            )
+            { className: 'achievement-table-cell', onClick: function onClick() {
+                return window.open('' + achievementUrl + achievement.id + '/' + details.title);
+              } },
+            _react2.default.createElement('img', { src: '' + iconUrl + details.icon + '.jpg', className: 'achievement-icon' }),
+            details.title
           )
         ),
         _react2.default.createElement(
@@ -20208,7 +20206,6 @@ var HomeCarousel = function (_React$Component) {
         var $page = $(response);
 
         var articleTiles = $page.find('.ArticleTile');
-        console.log(articleTiles.length);
         var articlesArr = [];
         for (var i = 0; i < articleTiles.length; i++) {
           articlesArr.push(articleTiles[i]);
@@ -20307,6 +20304,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var itemUrl = 'http://us.battle.net/wow/en/item/';
+
 var NewsPiece = function (_React$Component) {
   _inherits(NewsPiece, _React$Component);
 
@@ -20326,7 +20325,9 @@ var NewsPiece = function (_React$Component) {
         null,
         _react2.default.createElement(
           'td',
-          { className: 'achievement-table-cell' },
+          { className: 'achievement-table-cell', onClick: function onClick() {
+              return window.open('' + itemUrl + item.id + '/' + item.context);
+            } },
           _react2.default.createElement(_equip2.default, { position: 'left', item: item }),
           player,
           ' has looted ',

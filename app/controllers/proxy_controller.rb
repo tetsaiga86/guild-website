@@ -42,7 +42,7 @@ class ProxyController < ApplicationController
     end
 
     filtered_news.select! do |newsItem|
-      (newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i)
+      ((newsItem['item']['quality'] >= ENV['MINIMUM_ITEM_QUALITY'].to_i) && (newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i))
     end
 
     massaged_achievements = []
@@ -64,17 +64,6 @@ class ProxyController < ApplicationController
     # render json: bnet_client.achievements(ENV['GUILD_NAME'])
   end
 
-  # def achievement_info(id)
-  #   # TODO
-  # end
-  #
-  # def item_info(item_id)
-  #   # TODO
-  # end
-
-  def filter_items(item_data)
-    # TODO : return true or false
-  end
 
   def log
     render json: logs_client.guild_log(params[:id])

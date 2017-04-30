@@ -13,7 +13,6 @@ class HomeCarousel extends React.Component {
       const $page = $(response);
 
       const articleTiles = $page.find('.ArticleTile');
-      console.log(articleTiles.length)
       var articlesArr = [];
       for (var i = 0; i < articleTiles.length; i++) {
         articlesArr.push(articleTiles[i]);

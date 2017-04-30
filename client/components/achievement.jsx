@@ -34,11 +34,9 @@ class Achievement extends React.Component{
     return(
       <tr>
         <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={popover}>
-          <td className="achievement-table-cell">
-            <a href={`${achievementUrl}${achievement.id}/${details.title}`} target="_blank">
-              <img src={`${iconUrl}${details.icon}.jpg`} className="achievement-icon" />
-              {details.title}
-            </a>
+          <td className="achievement-table-cell" onClick={()=> window.open(`${achievementUrl}${achievement.id}/${details.title}`)}>
+            <img src={`${iconUrl}${details.icon}.jpg`} className="achievement-icon" />
+            {details.title}
           </td>
         </OverlayTrigger>
 
