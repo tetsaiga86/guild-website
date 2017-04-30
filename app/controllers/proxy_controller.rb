@@ -41,6 +41,10 @@ class ProxyController < ApplicationController
       newsItem['item'] = JSON.parse(item_info.body)
     end
 
+    filtered_news.select! do |newsItem|
+      (newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i)
+    end
+
     massaged_achievements = []
 
     # Iterate over all achievements

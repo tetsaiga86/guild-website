@@ -20049,7 +20049,7 @@ var Equip = function (_React$Component) {
       var itemStyle = {
         backgroundPosition: '-' + (item.quality + 1) * 49 + 'px 0'
       };
-      // console.log(item)
+      console.log(item);
       var popover = _react2.default.createElement(
         _reactBootstrap.Popover,
         { className: 'popover', id: item.id },
