@@ -1,0 +1,2 @@
+class MembersDatum < ApplicationRecord
+end

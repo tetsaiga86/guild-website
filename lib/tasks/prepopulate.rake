@@ -9,9 +9,25 @@ namespace :prepopulate do
     achievement_ids = bnet_achievements['achievementsCompleted']
 
     achievement_ids.each do |achievementId|
+      puts "fetching #{achievementId}"
       achievement_info = bnet_client.achievement_info(achievementId)
       achievement_datum = AchievementDatum.find_or_create_by(bnet_id: achievementId)
       achievement_datum.update(body: achievement_info.to_json)
+    end
+  end
+
+  task members: :environment do
+    bnet_client = ::Bnet::Client.new
+    guild_members = bnet_client.guild_members(ENV['GUILD_NAME'])
+    filtered_guild_members = guild_members.select do |member|
+      member['rank']<=4
+    end
+
+    filtered_guild_members.each do |member|
+      puts "fetching #{member['character']['name']}"
+      character_info = bnet_client.character_info(member['character']['name'])
+      members_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
+      members_datum.update(body: character_info.to_json)
     end
   end
 

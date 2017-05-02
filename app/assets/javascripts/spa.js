@@ -18372,9 +18372,7 @@ var Members = function (_React$Component) {
       var _this2 = this;
 
       $.getJSON(guildMembersUrl, function (guildMembersJson) {
-        var gMembers = guildMembersJson.filter(function (member) {
-          return member.rank <= 4;
-        });
+        var gMembers = guildMembersJson;
         $.getJSON(logReportIdsUrl, function (logReportIds) {
           var lastFourLogIds = [];
           logReportIds = logReportIds.filter(function (log) {
