@@ -12,7 +12,6 @@ module Warcraftlogs
 
     def guild_log_ids(name)
       parsed_response = request "reports/guild/#{URI.escape name}/#{REALM}/#{LOCALE}"
-      # parsed_response.last(12)
     end
 
     def guild_leader_personal_logs()

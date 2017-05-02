@@ -58,10 +58,8 @@ class Members extends React.Component {
   fetchGuildMembers(){
     $.getJSON(guildMembersUrl, (guildMembersJson) => {
       const gMembers = guildMembersJson;
-      // FIXME: return log record instead of log id
       $.getJSON(logReportIdsUrl, (logReportIds) => {
         var lastFourLogIds=[];
-        // FIXME: move filter to proxy controller
         logReportIds=logReportIds.filter(log => log.owner=="srprise");
         for (var i = logReportIds.length-1; i > logReportIds.length-4; i--) {
           lastFourLogIds.push(logReportIds[i].id);

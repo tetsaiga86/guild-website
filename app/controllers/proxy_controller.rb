@@ -59,7 +59,14 @@ class ProxyController < ApplicationController
 
     logs_arr=[]
     log_ids_to_be_rendered.last(ENV['LOG_COUNT'].to_i).each do |log_id|
-      logs_arr.push(logs_client.guild_log(log_id['id']))
+      raid_log = RaidLog.find_by(w_log_id: log_id['id'])
+      if !raid_log
+        raid_log_body = raid_log_client.guild_log(log_id['id'])
+        raid_log = RaidLog.find_or_create_by(w_log_id: log_id['id'])
+        raid_log.update(body: raid_log_body.to_json)
+      end
+      logs_arr.push(JSON.parse(raid_log.body))
+      # logs_arr.push(logs_client.guild_log(log_id['id']))
     end
     render json: logs_arr;
   end
