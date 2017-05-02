@@ -7,11 +7,16 @@ module Warcraftlogs
     LOCALE = 'US'.freeze
     REALM = ENV['REALM']
     API_KEY = ENV['WOW_LOGS_API_KEY']
+    GUILD_LEADER = ENV['GUILD_LEADER']
     BASE_URL = 'https://www.warcraftlogs.com/v1/'.freeze
 
     def guild_log_ids(name)
       parsed_response = request "reports/guild/#{URI.escape name}/#{REALM}/#{LOCALE}"
-      parsed_response.last(12)
+      # parsed_response.last(12)
+    end
+
+    def guild_leader_personal_logs()
+      parsed_response = request "reports/user/#{URI.escape GUILD_LEADER}"
     end
 
     def guild_log(log_id)

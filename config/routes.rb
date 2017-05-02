@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/api/guild_members' => 'proxy#guild_members'
   get '/api/character_info/:name' => 'proxy#character_info'
-  get '/api/log_ids' => 'proxy#log_ids'
+  get '/api/latest_logs' => 'proxy#latest_logs'
   get '/api/log/:id' => 'proxy#log'
   get '/api/character_parse/:name' => 'proxy#character_parse'
   get '/api/achievements' => 'proxy#achievements'
