@@ -5,24 +5,29 @@ class ProxyController < ApplicationController
   end
 
   def guild_members
-    guild_members = bnet_client.guild_members(ENV['GUILD_NAME'])
-    filtered_guild_members = guild_members.select do |member|
-      member['rank']<=4
+    # guild_members = bnet_client.guild_members(ENV['GUILD_NAME'])
+    # filtered_guild_members = guild_members.select do |member|
+    #   member['rank']<=4
+    # end
+    #
+    # membersArr=[]
+    # filtered_guild_members.each do |member|
+    #   puts "fetching #{member['character']['name']}"
+    #   member_datum = MembersDatum.find_by(bnet_id: member['character']['name'])
+    #   # if !member_datum
+    #     # member_info = bnet_client.character_info(member['character']['name'])
+    #     # member_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
+    #     # member_datum.update(body: member_info.to_json)
+    #   end
+    #   membersArr.push(JSON.parse(member_datum.body))
+    # end
+    #
+    # render json: membersArr
+    guild_members = MembersDatum.where(updated_at: 8.minutes.ago..Time.now).to_a
+    member_jsons = guild_members.map do |member|
+      JSON.parse(member.body)
     end
-
-    membersArr=[]
-    filtered_guild_members.each do |member|
-      puts "fetching #{member['character']['name']}"
-      member_datum = MembersDatum.find_by(bnet_id: member['character']['name'])
-      if !member_datum
-        member_info = bnet_client.character_info(member['character']['name'])
-        member_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
-        member_datum.update(body: member_info.to_json)
-      end
-      membersArr.push(JSON.parse(member_datum.body))
-    end
-
-    render json: membersArr
+    render json: member_jsons
   end
 
   def character_info
@@ -74,7 +79,7 @@ class ProxyController < ApplicationController
     log_ids_to_be_rendered.last(ENV['LOG_COUNT'].to_i).each do |log_id|
       raid_log = RaidLog.find_by(w_log_id: log_id['id'])
       if !raid_log
-        raid_log_body = raid_log_client.guild_log(log_id['id'])
+        raid_log_body = logs_client.guild_log(log_id['id'])
         raid_log = RaidLog.find_or_create_by(w_log_id: log_id['id'])
         raid_log.update(body: raid_log_body.to_json)
       end
