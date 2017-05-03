@@ -26,8 +26,8 @@ namespace :prepopulate do
     filtered_guild_members.each do |member|
       puts "fetching #{member['character']['name']}"
       character_info = bnet_client.character_info(member['character']['name'])
-      members_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
-      members_datum.update(body: character_info.to_json)
+      member_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
+      member_datum.update(body: character_info.to_json)
     end
   end
 

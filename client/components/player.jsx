@@ -33,8 +33,17 @@ class Player extends React.Component{
     this.setState({ showModal: false });
   }
 
+  getCharacterspec(character){
+    for (var i = 0; i < character.talents.length; i++) {
+      if(character.talents[i].selected){
+        return character.talents[i].spec.name
+      }
+    }
+    return 'Not Available'
+  }
+
   render(){
-    const character = this.props.player.character;
+    const character = this.props.player;
     return(
       <tr onClick={this.onOpen}>
         <CharacterModal character={character} show={this.state.showModal} onRequestClose={this.onRequestClose}/>
@@ -46,7 +55,7 @@ class Player extends React.Component{
           {classID[character.class]}
         </td>
         <td className="members-table-cell">
-          {character.spec && character.spec.name}
+          {this.getCharacterspec(character)}
         </td>
         <td className="members-table-cell">
           {character.achievementPoints}
@@ -55,7 +64,7 @@ class Player extends React.Component{
           {this.getGuildPoints(character)}
         </td>
         <td className="members-table-cell">
-          {character.ilvl || 'Not Available'}
+          {character.items.averageItemLevel || 'Not Available'}
         </td>
       </tr>
     )

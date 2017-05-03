@@ -6,8 +6,7 @@ import {
 } from 'react-bootstrap'
 
 const guildMembersUrl = `/api/guild_members`;
-const logReportIdsUrl = `/api/log_ids`;
-var lastFourLogJson=[];
+const logReportUrl = `/api/latest_logs`;
 
 class Members extends React.Component {
   constructor(props){
@@ -39,53 +38,31 @@ class Members extends React.Component {
       if (attendingFriendly) {
         const attendingDate = new Date(log.start);
         const attendingDayOfWeek = attendingDate.getDay();
-        if(name=="Lëmmiwinks") console.log(name, attendingDate);
+        // if(name=="Lëmmiwinks") console.log(name, attendingDate);
         switch(attendingDayOfWeek) {
           case 2:
-            attendance+=50;
-            break;
           case 3:
-          case 4:
             attendance+=225;
             break;
+          case 4:
+          attendance+=50;
+          break;
         }
-        attendance=attendance/3*12
       }
     })
+    console.log(name, performance, attendance)
     return Math.floor((performance+attendance)/2);
   }
 
   fetchGuildMembers(){
     $.getJSON(guildMembersUrl, (guildMembersJson) => {
       const gMembers = guildMembersJson;
-      $.getJSON(logReportIdsUrl, (logReportIds) => {
-        var lastFourLogIds=[];
-        logReportIds=logReportIds.filter(log => log.owner=="srprise");
-        for (var i = logReportIds.length-1; i > logReportIds.length-4; i--) {
-          lastFourLogIds.push(logReportIds[i].id);
-        }
-        lastFourLogIds.forEach(logId => {
-          $.getJSON(`/api/log/${logId}`, (logJson) => {
-            lastFourLogJson.push(logJson);
-            if (lastFourLogJson.length === 3) {
-              gMembers.forEach(gMember => {
-                $.getJSON(`/api/character_parse/${gMember.character.name}`, (playerReport) => {
-                  playerReport = playerReport.filter(report => report.difficulty>=4);
-                  gMember.character.ilvl=0;
-                  playerReport.forEach(playerReport =>{
-                    playerReport.specs.forEach(spec => {
-                      spec.data.forEach(data =>{
-                        if(gMember.character.ilvl<data.ilvl){
-                          gMember.character.ilvl = data.ilvl;
-                        }
-                      })
-                    })
-                  })
-                  gMember.character.gp=this.calculateGuildPoints(playerReport, lastFourLogJson, gMember.character.name);
-                  this.setState({ members : gMembers });
-                })
-              });
-            }
+      $.getJSON(logReportUrl, (logReport) => {
+        gMembers.forEach(gMember => {
+          $.getJSON(`/api/character_parse/${gMember.name}`, (playerReport) => {
+            playerReport = playerReport.filter(report => report.difficulty>=4);
+            gMember.gp=this.calculateGuildPoints(playerReport, logReport, gMember.name);
+            this.setState({ members : gMembers });
           })
         })
       })
@@ -93,7 +70,7 @@ class Members extends React.Component {
   }
 
   renderMember(member){
-    return <Player player={member} key={member.character.name}/>
+    return <Player player={member} key={member.name}/>
   }
 
   renderMembers(){

@@ -8,7 +8,7 @@ export default function fetchLeaderdata(name, callback){
         legionRaids.push(leaderJsonData.progression.raids[i]);
         legionRaids[legionRaids.length-1].in = j == numberOfRaids-1;
       }
-
+      // FIXME: merge all officer data in backend and change url to retrieve that
       callback(legionRaids);
     })
   }

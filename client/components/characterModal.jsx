@@ -17,10 +17,7 @@ class CharacterModal extends React.Component{
         return;
       }
       this.setState({initialized: true})
-      var characterItemURL = ` /api/character_info/${this.props.character.name}`
-      $.getJSON(characterItemURL, (data) => {
-        this.setState({ data : data });
-      });
+      this.setState({ data : this.props.character });
     }
   }
 

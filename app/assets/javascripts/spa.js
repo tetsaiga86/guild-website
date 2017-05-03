@@ -18308,8 +18308,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var guildMembersUrl = '/api/guild_members';
-var logReportIdsUrl = '/api/log_ids';
-var lastFourLogJson = [];
+var logReportUrl = '/api/latest_logs';
 
 var Members = function (_React$Component) {
   _inherits(Members, _React$Component);
@@ -18351,19 +18350,19 @@ var Members = function (_React$Component) {
         if (attendingFriendly) {
           var attendingDate = new Date(log.start);
           var attendingDayOfWeek = attendingDate.getDay();
-          if (name == "Lëmmiwinks") console.log(name, attendingDate);
+          // if(name=="Lëmmiwinks") console.log(name, attendingDate);
           switch (attendingDayOfWeek) {
             case 2:
-              attendance += 50;
-              break;
             case 3:
-            case 4:
               attendance += 225;
               break;
+            case 4:
+              attendance += 50;
+              break;
           }
-          attendance = attendance / 3 * 12;
         }
       });
+      console.log(name, performance, attendance);
       return Math.floor((performance + attendance) / 2);
     }
   }, {
@@ -18373,38 +18372,14 @@ var Members = function (_React$Component) {
 
       $.getJSON(guildMembersUrl, function (guildMembersJson) {
         var gMembers = guildMembersJson;
-        $.getJSON(logReportIdsUrl, function (logReportIds) {
-          var lastFourLogIds = [];
-          logReportIds = logReportIds.filter(function (log) {
-            return log.owner == "srprise";
-          });
-          for (var i = logReportIds.length - 1; i > logReportIds.length - 4; i--) {
-            lastFourLogIds.push(logReportIds[i].id);
-          }
-          lastFourLogIds.forEach(function (logId) {
-            $.getJSON('/api/log/' + logId, function (logJson) {
-              lastFourLogJson.push(logJson);
-              if (lastFourLogJson.length === 3) {
-                gMembers.forEach(function (gMember) {
-                  $.getJSON('/api/character_parse/' + gMember.character.name, function (playerReport) {
-                    playerReport = playerReport.filter(function (report) {
-                      return report.difficulty >= 4;
-                    });
-                    gMember.character.ilvl = 0;
-                    playerReport.forEach(function (playerReport) {
-                      playerReport.specs.forEach(function (spec) {
-                        spec.data.forEach(function (data) {
-                          if (gMember.character.ilvl < data.ilvl) {
-                            gMember.character.ilvl = data.ilvl;
-                          }
-                        });
-                      });
-                    });
-                    gMember.character.gp = _this2.calculateGuildPoints(playerReport, lastFourLogJson, gMember.character.name);
-                    _this2.setState({ members: gMembers });
-                  });
-                });
-              }
+        $.getJSON(logReportUrl, function (logReport) {
+          gMembers.forEach(function (gMember) {
+            $.getJSON('/api/character_parse/' + gMember.name, function (playerReport) {
+              playerReport = playerReport.filter(function (report) {
+                return report.difficulty >= 4;
+              });
+              gMember.gp = _this2.calculateGuildPoints(playerReport, logReport, gMember.name);
+              _this2.setState({ members: gMembers });
             });
           });
         });
@@ -18413,7 +18388,7 @@ var Members = function (_React$Component) {
   }, {
     key: 'renderMember',
     value: function renderMember(member) {
-      return _react2.default.createElement(_player2.default, { player: member, key: member.character.name });
+      return _react2.default.createElement(_player2.default, { player: member, key: member.name });
     }
   }, {
     key: 'renderMembers',
@@ -19640,17 +19615,12 @@ var CharacterModal = function (_React$Component) {
   _createClass(CharacterModal, [{
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      var _this2 = this;
-
       if (nextProps.show && !this.props.show) {
         if (this.state.isInitialized) {
           return;
         }
         this.setState({ initialized: true });
-        var characterItemURL = ' /api/character_info/' + this.props.character.name;
-        $.getJSON(characterItemURL, function (data) {
-          _this2.setState({ data: data });
-        });
+        this.setState({ data: this.props.character });
       }
     }
   }, {
@@ -20412,9 +20382,19 @@ var Player = function (_React$Component) {
       this.setState({ showModal: false });
     }
   }, {
+    key: 'getCharacterspec',
+    value: function getCharacterspec(character) {
+      for (var i = 0; i < character.talents.length; i++) {
+        if (character.talents[i].selected) {
+          return character.talents[i].spec.name;
+        }
+      }
+      return 'Not Available';
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var character = this.props.player.character;
+      var character = this.props.player;
       return _react2.default.createElement(
         'tr',
         { onClick: this.onOpen },
@@ -20433,7 +20413,7 @@ var Player = function (_React$Component) {
         _react2.default.createElement(
           'td',
           { className: 'members-table-cell' },
-          character.spec && character.spec.name
+          this.getCharacterspec(character)
         ),
         _react2.default.createElement(
           'td',
@@ -20448,7 +20428,7 @@ var Player = function (_React$Component) {
         _react2.default.createElement(
           'td',
           { className: 'members-table-cell' },
-          character.ilvl || 'Not Available'
+          character.items.averageItemLevel || 'Not Available'
         )
       );
     }
@@ -20979,7 +20959,7 @@ function fetchLeaderdata(name, callback) {
       legionRaids.push(leaderJsonData.progression.raids[i]);
       legionRaids[legionRaids.length - 1].in = j == numberOfRaids - 1;
     }
-
+    // FIXME: merge all officer data in backend and change url to retrieve that
     callback(legionRaids);
   });
 }

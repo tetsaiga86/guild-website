@@ -9,7 +9,20 @@ class ProxyController < ApplicationController
     filtered_guild_members = guild_members.select do |member|
       member['rank']<=4
     end
-    render json: filtered_guild_members
+
+    membersArr=[]
+    filtered_guild_members.each do |member|
+      puts "fetching #{member['character']['name']}"
+      member_datum = MembersDatum.find_by(bnet_id: member['character']['name'])
+      if !member_datum
+        member_info = bnet_client.character_info(member['character']['name'])
+        member_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
+        member_datum.update(body: member_info.to_json)
+      end
+      membersArr.push(JSON.parse(member_datum.body))
+    end
+
+    render json: membersArr
   end
 
   def character_info
