@@ -1,4 +1,15 @@
 namespace :prepopulate do
+  task everyTenMinustes: :environment do
+    Rake::Task["prepopulate:achievements"].invoke
+    Rake::Task["prepopulate:members"].invoke
+
+  end
+
+  task daily: :environment do
+    Rake::Task["prepopulate:raid_logs"].invoke
+    Rake::Task["prepopulate:news"].invoke
+  end
+
   task achievements: :environment do
     bnet_client = ::Bnet::Client.new
 

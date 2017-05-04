@@ -112,7 +112,7 @@ class ProxyController < ApplicationController
     end
 
     filtered_news.select! do |newsItem|
-      ((newsItem['item']['quality'] >= ENV['MINIMUM_ITEM_QUALITY'].to_i) && (newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i))
+      newsItem['item']['quality'] && newsItem['item']['itemLevel'] && ((newsItem['item']['quality'] >= ENV['MINIMUM_ITEM_QUALITY'].to_i) && (newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i))
     end
 
     massaged_achievements = []
