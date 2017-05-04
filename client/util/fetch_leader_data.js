@@ -1,14 +1,13 @@
-export default function fetchLeaderdata(name, callback){
-    var leaderUrl = `/api/character_info/${name}`;
-    var legionRaids = [];
-    var numberOfRaids = 3;
-    $.getJSON(leaderUrl, (leaderJsonData) =>{
-      var j = 0;
-      for (var i = leaderJsonData.progression.raids.length-numberOfRaids; i < leaderJsonData.progression.raids.length; i++, j++) {
-        legionRaids.push(leaderJsonData.progression.raids[i]);
-        legionRaids[legionRaids.length-1].in = j == numberOfRaids-1;
+export default function fetchLeaderdata(callback){
+    var officerUrl = `/api/officer_info`;
+    $.getJSON(officerUrl, (leaderJsonData) =>{
+      for (var i = 0; i < leaderJsonData.length; i++) {
+        if (i==leaderJsonData.length-1) {
+          leaderJsonData[i].in=true;
+        }else{
+          leaderJsonData[i].in=false;
+        }
       }
-      // FIXME: merge all officer data in backend and change url to retrieve that
-      callback(legionRaids);
+      callback(leaderJsonData);
     })
   }

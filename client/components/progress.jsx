@@ -15,7 +15,7 @@ class Progress extends React.Component {
   }
 
   componentWillMount() {
-      fetchLeaderdata('Lëmmiwinks', (data) => {
+      fetchLeaderdata((data) => {
         this.setState( { raids: data });
       });
   }

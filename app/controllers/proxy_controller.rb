@@ -23,7 +23,7 @@ class ProxyController < ApplicationController
     # end
     #
     # render json: membersArr
-    guild_members = MembersDatum.where(updated_at: 12.minutes.ago..Time.now).to_a
+    guild_members = MembersDatum.where(updated_at: 60.minutes.ago..Time.now).to_a
     member_jsons = guild_members.map do |member|
       JSON.parse(member.body)
     end
@@ -32,6 +32,37 @@ class ProxyController < ApplicationController
 
   def character_info
     render json: bnet_client.character_info(params[:name])
+  end
+
+  def officer_info
+    officers = ENV['OFFICERS'].split(' ').map do |officer|
+      officer = JSON.parse(MembersDatum.find_by(bnet_id: officer).body)
+    end
+
+    legion_raid_officer_info = []
+    officers.each do |officer|
+      for i in officer['progression']['raids'].length-3...officer['progression']['raids'].length
+        legion_raid_officer_info.push(officer['progression']['raids'][i])
+      end
+    end
+
+    merged_legion_raid_officer_info = []
+    for i in 0...ENV['NUMBER_OF_RAIDS'].to_i
+      merged_legion_raid_officer_info.push(legion_raid_officer_info[i])
+    end
+    legion_raid_officer_info.each do |raid|
+      for i in 0...merged_legion_raid_officer_info.length
+        if merged_legion_raid_officer_info[i]['name']==raid['name']
+          for j in 0...merged_legion_raid_officer_info[i]['bosses'].length
+            merged_legion_raid_officer_info[i]['bosses'][j]['lfrKills'] += raid['bosses'][j]['lfrKills']
+            merged_legion_raid_officer_info[i]['bosses'][j]['normalKills'] += raid['bosses'][j]['normalKills']
+            merged_legion_raid_officer_info[i]['bosses'][j]['heroicKills'] += raid['bosses'][j]['heroicKills']
+            merged_legion_raid_officer_info[i]['bosses'][j]['mythicKills'] += raid['bosses'][j]['mythicKills']
+          end
+        end
+      end
+    end
+    render json: merged_legion_raid_officer_info
   end
 
   def latest_logs

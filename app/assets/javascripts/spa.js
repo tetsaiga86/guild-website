@@ -20500,7 +20500,7 @@ var Progress = function (_React$Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      (0, _fetch_leader_data2.default)('Lëmmiwinks', function (data) {
+      (0, _fetch_leader_data2.default)(function (data) {
         _this2.setState({ raids: data });
       });
     }
@@ -20612,7 +20612,6 @@ var Raid = function (_React$Component) {
     key: 'render',
     value: function render() {
       var raid = this.props.raid;
-      //console.log('raid', raid.title, raid.in)
       return _react2.default.createElement(
         _collapsible2.default,
         { title: raid.name, 'in': raid.in, key: raid.name, onToggle: this.props.onToggle },
@@ -20949,18 +20948,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = fetchLeaderdata;
-function fetchLeaderdata(name, callback) {
-  var leaderUrl = "/api/character_info/" + name;
-  var legionRaids = [];
-  var numberOfRaids = 3;
-  $.getJSON(leaderUrl, function (leaderJsonData) {
-    var j = 0;
-    for (var i = leaderJsonData.progression.raids.length - numberOfRaids; i < leaderJsonData.progression.raids.length; i++, j++) {
-      legionRaids.push(leaderJsonData.progression.raids[i]);
-      legionRaids[legionRaids.length - 1].in = j == numberOfRaids - 1;
+function fetchLeaderdata(callback) {
+  var officerUrl = "/api/officer_info";
+  $.getJSON(officerUrl, function (leaderJsonData) {
+    for (var i = 0; i < leaderJsonData.length; i++) {
+      if (i == leaderJsonData.length - 1) {
+        leaderJsonData[i].in = true;
+      } else {
+        leaderJsonData[i].in = false;
+      }
     }
-    // FIXME: merge all officer data in backend and change url to retrieve that
-    callback(legionRaids);
+    callback(leaderJsonData);
   });
 }
 

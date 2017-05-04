@@ -8,6 +8,7 @@ namespace :prepopulate do
   task daily: :environment do
     Rake::Task["prepopulate:raid_logs"].invoke
     Rake::Task["prepopulate:news"].invoke
+    # Rake::Task["prepopulate:officers"].invoke
   end
 
   task achievements: :environment do
@@ -26,6 +27,18 @@ namespace :prepopulate do
       achievement_datum.update(body: achievement_info.to_json)
     end
   end
+
+  # task officers: :environment do
+  #   bnet_client = ::Bnet::Client.new
+  #   officers = ENV['OFFICERS'].split(' ').map do |officer|
+  #     officer = URI.escape(officer)
+  #   end
+  #   officer_info=[]
+  #   officers.each do |officer|
+  #     officer_info.push(bnet_client.character_info(officer))
+  #   end
+  #
+  # end
 
   task members: :environment do
     bnet_client = ::Bnet::Client.new
