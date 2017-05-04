@@ -23,7 +23,7 @@ class ProxyController < ApplicationController
     # end
     #
     # render json: membersArr
-    guild_members = MembersDatum.where(updated_at: 8.minutes.ago..Time.now).to_a
+    guild_members = MembersDatum.where(updated_at: 12.minutes.ago..Time.now).to_a
     member_jsons = guild_members.map do |member|
       JSON.parse(member.body)
     end
