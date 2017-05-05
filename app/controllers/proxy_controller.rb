@@ -23,7 +23,7 @@ class ProxyController < ApplicationController
     # end
     #
     # render json: membersArr
-    guild_members = MembersDatum.where(updated_at: 60.minutes.ago..Time.now).to_a
+    guild_members = MembersDatum.where(updated_at: 59.minutes.ago..Time.now).to_a
     member_jsons = guild_members.map do |member|
       JSON.parse(member.body)
     end
@@ -41,7 +41,7 @@ class ProxyController < ApplicationController
 
     legion_raid_officer_info = []
     officers.each do |officer|
-      for i in officer['progression']['raids'].length-3...officer['progression']['raids'].length
+      for i in officer['progression']['raids'].length-ENV['NUMBER_OF_RAIDS'].to_i...officer['progression']['raids'].length
         legion_raid_officer_info.push(officer['progression']['raids'][i])
       end
     end
