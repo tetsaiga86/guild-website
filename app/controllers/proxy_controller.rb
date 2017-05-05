@@ -54,10 +54,17 @@ class ProxyController < ApplicationController
       for i in 0...merged_legion_raid_officer_info.length
         if merged_legion_raid_officer_info[i]['name']==raid['name']
           for j in 0...merged_legion_raid_officer_info[i]['bosses'].length
+            #add all kills together
             merged_legion_raid_officer_info[i]['bosses'][j]['lfrKills'] += raid['bosses'][j]['lfrKills']
             merged_legion_raid_officer_info[i]['bosses'][j]['normalKills'] += raid['bosses'][j]['normalKills']
             merged_legion_raid_officer_info[i]['bosses'][j]['heroicKills'] += raid['bosses'][j]['heroicKills']
             merged_legion_raid_officer_info[i]['bosses'][j]['mythicKills'] += raid['bosses'][j]['mythicKills']
+
+            #get latest timestamp
+            merged_legion_raid_officer_info[i]['bosses'][j]['lfrTimestamp'] = [raid['bosses'][j]['lfrTimestamp'], merged_legion_raid_officer_info[i]['bosses'][j]['lfrTimestamp']].max
+            merged_legion_raid_officer_info[i]['bosses'][j]['normalTimestamp'] = [raid['bosses'][j]['normalTimestamp'], merged_legion_raid_officer_info[i]['bosses'][j]['normalTimestamp']].max
+            merged_legion_raid_officer_info[i]['bosses'][j]['heroicTimestamp'] = [raid['bosses'][j]['heroicTimestamp'], merged_legion_raid_officer_info[i]['bosses'][j]['heroicTimestamp']].max
+            merged_legion_raid_officer_info[i]['bosses'][j]['mythicTimestamp'] = [raid['bosses'][j]['mythicTimestamp'], merged_legion_raid_officer_info[i]['bosses'][j]['mythicTimestamp']].max
           end
         end
       end
