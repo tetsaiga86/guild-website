@@ -23,7 +23,7 @@ class ProxyController < ApplicationController
     # end
     #
     # render json: membersArr
-    guild_members = MembersDatum.where(updated_at: 59.minutes.ago..Time.now).to_a
+    guild_members = MembersDatum.recent.to_a
     member_jsons = guild_members.map do |member|
       JSON.parse(member.body)
     end
@@ -35,42 +35,12 @@ class ProxyController < ApplicationController
   end
 
   def officer_info
-    officers = ENV['OFFICERS'].split(' ').map do |officer|
-      officer = JSON.parse(MembersDatum.find_by(bnet_id: officer).body)
-    end
+    officers = MembersDatum.find_all_officers
 
-    legion_raid_officer_info = []
-    officers.each do |officer|
-      for i in officer['progression']['raids'].length-ENV['NUMBER_OF_RAIDS'].to_i...officer['progression']['raids'].length
-        legion_raid_officer_info.push(officer['progression']['raids'][i])
-      end
-    end
+    legion_raid_officer_info = data_manipulation_officer_info.legion_raid_officer_info(officers)
 
-    merged_legion_raid_officer_info = []
-    for i in 0...ENV['NUMBER_OF_RAIDS'].to_i
-      merged_legion_raid_officer_info.push(legion_raid_officer_info[i])
-    end
-    legion_raid_officer_info.each do |raid|
-      for i in 0...merged_legion_raid_officer_info.length
-        if merged_legion_raid_officer_info[i]['name']==raid['name']
-          for j in 0...merged_legion_raid_officer_info[i]['bosses'].length
-            jth_item = merged_legion_raid_officer_info[i]['bosses'][j]
+    merged_legion_raid_officer_info = data_manipulation_officer_info.merge_legion_raid_officer_info(legion_raid_officer_info)
 
-            #add all kills together
-            difficulties= %w[lfrKills normalKills heroicKills mythicKills]
-            difficulties.each do |difficulty|
-              jth_item[difficulty] += raid['bosses'][j][difficulty]
-            end
-
-            #get latest timestamp
-            timestampDifficulties= %w[lfrTimestamp normalTimestamp heroicTimestamp mythicTimestamp]
-            timestampDifficulties.each do |timestampDifficulty|
-              jth_item[timestampDifficulty] = [raid['bosses'][j][timestampDifficulty], jth_item[timestampDifficulty]].max
-            end
-          end
-        end
-      end
-    end
     render json: merged_legion_raid_officer_info
   end
 
@@ -131,51 +101,7 @@ class ProxyController < ApplicationController
 
   def achievements
     guild_data = bnet_client.achievements(ENV['GUILD_NAME'])
-    bnet_achievements = guild_data['achievements']
-
-    achievement_timestamps = Hash[bnet_achievements['achievementsCompleted'].zip(bnet_achievements['achievementsCompletedTimestamp'])]
-    achievement_ids = bnet_achievements['achievementsCompleted']
-
-    filtered_news = guild_data['news'].select do |news_item|
-      news_item['context'].include?('raid') || news_item['context'].include?('dungeon')
-    end
-
-    filtered_news.each do |newsItem|
-      item_info = CharacterLootDatum.find_by(bnet_id: newsItem['itemId'])
-
-      unless item_info
-        item_info_body = bnet_client.item_info(newsItem['itemId'])
-        item_info = CharacterLootDatum.create(bnet_id: newsItem['itemId'], body: item_info_body.to_json)
-      end
-
-      newsItem['item'] = JSON.parse(item_info.body)
-    end
-
-    filtered_news.select! do |newsItem|
-      newsItem['item']['quality'] && newsItem['item']['itemLevel'] && ((newsItem['item']['quality'] >= ENV['MINIMUM_ITEM_QUALITY'].to_i) && (newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i))
-    end
-
-    massaged_achievements = []
-
-    # Iterate over all achievements
-
-    massaged_achievements = AchievementDatum.all.map do |datum|
-      {
-        id: datum.bnet_id.to_i,
-        timestamp: achievement_timestamps[datum.bnet_id.to_i],
-        details: JSON.parse(datum.body)
-      }
-    end
-
-    massaged_achievements.sort! do |a,b|
-      b[:timestamp] <=> a[:timestamp]
-    end
-
-    guild_data['news'] = filtered_news
-    guild_data['achievements'] = massaged_achievements
-
-    render json: guild_data
-    # render json: bnet_client.achievements(ENV['GUILD_NAME'])
+    render json: data_manipulation_achievements.massage_achievements(guild_data)
   end
 
 
@@ -195,5 +121,13 @@ class ProxyController < ApplicationController
 
   def logs_client
     ::Warcraftlogs::Client.new
+  end
+
+  def data_manipulation_officer_info
+    ::DataManipulation::OfficerInfo.new
+  end
+
+  def data_manipulation_achievements
+    ::DataManipulation::Achievements.new
   end
 end
