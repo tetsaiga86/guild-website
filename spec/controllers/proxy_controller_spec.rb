@@ -86,17 +86,54 @@ RSpec.describe ProxyController, type: :controller do
     end
   end
 
-  describe '#achievements' do
+  describe '#latest_logs' do
     before do
-      bnet_client_double = instance_double("Bnet::Client")
-      allow(bnet_client_double).to receive(:achievements).and_return({})
-      allow(controller).to receive(:bnet_client).and_return(bnet_client_double)
+      data_manipulation_latest_logs_double = instance_double("DataManipulation::LatestLogs")
+      allow(data_manipulation_latest_logs_double).to receive(:massage_logs).and_return({})
+      allow(controller).to receive(:data_manipulation_latest_logs).and_return(data_manipulation_latest_logs_double)
     end
 
     it 'returns http ok' do
-      #FIXME: failing with hash/zip line 136
+      get :latest_logs
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'returns valid json' do
+      get :latest_logs
+      expect {JSON.parse(response.body)}.not_to raise_error
+    end
+  end
+
+  describe '#achievements' do
+    context 'http behavior' do
+      before do
+        bnet_client_double = instance_double("Bnet::Client")
+        data_manipulation_achievements_double = instance_double("DataManipulation::Achievements")
+        allow(data_manipulation_achievements_double).to receive(:massage_achievements).and_return({})
+        allow(bnet_client_double).to receive(:achievements).and_return({})
+        allow(controller).to receive(:bnet_client).and_return(bnet_client_double)
+        allow(controller).to receive(:data_manipulation_achievements).and_return(data_manipulation_achievements_double)
+      end
+
+      it 'returns http ok' do
+        get :achievements
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'returns valid json' do
+        get :achievements
+        expect {JSON.parse(response.body)}.not_to raise_error
+      end
+    end
+
+    it 'calls bnet_client.achievements with correct guild name' do
+      bnet_client_double = instance_double("Bnet::Client")
+      data_manipulation_achievements_double = instance_double("DataManipulation::Achievements")
+      allow(data_manipulation_achievements_double).to receive(:massage_achievements).and_return({})
+      expect(bnet_client_double).to receive(:achievements).with(ENV['GUILD_NAME'])
+      allow(controller).to receive(:bnet_client).and_return(bnet_client_double)
+      allow(controller).to receive(:data_manipulation_achievements).and_return(data_manipulation_achievements_double)
       get :achievements
-      # expect(response).to have_http_status(:ok)
     end
   end
 
