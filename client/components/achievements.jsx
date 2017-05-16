@@ -5,6 +5,7 @@ import NewsPiece from './newsPiece'
 import {
   Table
 } from 'react-bootstrap'
+import $ from 'jquery';
 
 const guildAchievNewsUrl = '/api/achievements';
 class Achievements extends React.Component {

@@ -9,7 +9,7 @@ import {
 class CharacterModal extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { initialized: false, data: null };
+    this.state = { initialized: false, data: props.character };
   }
   componentWillReceiveProps(nextProps){
     if (nextProps.show && !this.props.show) {
