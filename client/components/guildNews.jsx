@@ -1,5 +1,8 @@
 import React from 'react'
 import NewsPiece from './newsPiece'
+import {
+  Table
+} from 'react-bootstrap'
 
 class GuildNews extends React.Component {
   renderNewsPiece(newsPiece){
@@ -12,9 +15,16 @@ class GuildNews extends React.Component {
 
   render () {
     return (
-      <tbody>
-        {this.renderNews()}
-      </tbody>
+      <Table striped bordered condensed hover className="news-table">
+        <thead>
+          <tr>
+            <th className="achievement-table-head">Guild News</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.renderNews()}
+        </tbody>
+      </Table>
     )
   }
 }

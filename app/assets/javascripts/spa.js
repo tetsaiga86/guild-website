@@ -18181,23 +18181,13 @@ var _header = __webpack_require__(83);
 
 var _header2 = _interopRequireDefault(_header);
 
-var _achievement = __webpack_require__(128);
-
-var _achievement2 = _interopRequireDefault(_achievement);
-
 var _achievements = __webpack_require__(211);
 
 var _achievements2 = _interopRequireDefault(_achievements);
 
-var _newsPiece = __webpack_require__(130);
-
-var _newsPiece2 = _interopRequireDefault(_newsPiece);
-
 var _guildNews = __webpack_require__(220);
 
 var _guildNews2 = _interopRequireDefault(_guildNews);
-
-var _reactBootstrap = __webpack_require__(17);
 
 var _jquery = __webpack_require__(310);
 
@@ -18269,47 +18259,8 @@ var GuildUpdates = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'achievement-news-table' },
-            _react2.default.createElement(
-              _reactBootstrap.Table,
-              { striped: true, bordered: true, condensed: true, hover: true, className: 'achievement-table' },
-              _react2.default.createElement(
-                'thead',
-                null,
-                _react2.default.createElement(
-                  'tr',
-                  null,
-                  _react2.default.createElement(
-                    'th',
-                    { className: 'achievement-table-head' },
-                    'Achievement Name'
-                  ),
-                  _react2.default.createElement(
-                    'th',
-                    { className: 'achievement-table-head' },
-                    'Date Completed'
-                  )
-                )
-              ),
-              _react2.default.createElement(_achievements2.default, { achievements: this.state.achievements })
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.Table,
-              { striped: true, bordered: true, condensed: true, hover: true, className: 'news-table' },
-              _react2.default.createElement(
-                'thead',
-                null,
-                _react2.default.createElement(
-                  'tr',
-                  null,
-                  _react2.default.createElement(
-                    'th',
-                    { className: 'achievement-table-head' },
-                    'Guild News'
-                  )
-                )
-              ),
-              _react2.default.createElement(_guildNews2.default, { news: this.state.news })
-            )
+            _react2.default.createElement(_achievements2.default, { achievements: this.state.achievements }),
+            _react2.default.createElement(_guildNews2.default, { news: this.state.news })
           )
         );
       }
@@ -19288,6 +19239,8 @@ var _achievement = __webpack_require__(128);
 
 var _achievement2 = _interopRequireDefault(_achievement);
 
+var _reactBootstrap = __webpack_require__(17);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19319,9 +19272,31 @@ var Achievements = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'tbody',
-        null,
-        this.renderAchievements()
+        _reactBootstrap.Table,
+        { striped: true, bordered: true, condensed: true, hover: true, className: 'achievement-table' },
+        _react2.default.createElement(
+          'thead',
+          null,
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'th',
+              { className: 'achievement-table-head' },
+              'Achievement Name'
+            ),
+            _react2.default.createElement(
+              'th',
+              { className: 'achievement-table-head' },
+              'Date Completed'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'tbody',
+          null,
+          this.renderAchievements()
+        )
       );
     }
   }]);
@@ -20279,6 +20254,8 @@ var _newsPiece = __webpack_require__(130);
 
 var _newsPiece2 = _interopRequireDefault(_newsPiece);
 
+var _reactBootstrap = __webpack_require__(17);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20310,9 +20287,26 @@ var GuildNews = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'tbody',
-        null,
-        this.renderNews()
+        _reactBootstrap.Table,
+        { striped: true, bordered: true, condensed: true, hover: true, className: 'news-table' },
+        _react2.default.createElement(
+          'thead',
+          null,
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'th',
+              { className: 'achievement-table-head' },
+              'Guild News'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'tbody',
+          null,
+          this.renderNews()
+        )
       );
     }
   }]);
