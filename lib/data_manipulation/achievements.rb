@@ -6,6 +6,7 @@ module DataManipulation
       achievement_timestamps = Hash[bnet_achievements['achievementsCompleted'].zip(bnet_achievements['achievementsCompletedTimestamp'])]
       achievement_ids = bnet_achievements['achievementsCompleted']
 
+      # filtered_news = guild_data['news']
       filtered_news = guild_data['news'].select do |news_item|
         news_item['context'].include?('raid') || news_item['context'].include?('dungeon')
       end
@@ -25,10 +26,7 @@ module DataManipulation
         newsItem['item']['quality'] && newsItem['item']['itemLevel'] && ((newsItem['item']['quality'] >= ENV['MINIMUM_ITEM_QUALITY'].to_i) && (newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i))
       end
 
-      massaged_achievements = []
-
       # Iterate over all achievements
-
       massaged_achievements = AchievementDatum.all.map do |datum|
         {
           id: datum.bnet_id.to_i,
@@ -45,6 +43,10 @@ module DataManipulation
       guild_data['achievements'] = massaged_achievements
 
       return guild_data
+    end
+
+    def bnet_client
+      ::Bnet::Client.new
     end
   end
 end

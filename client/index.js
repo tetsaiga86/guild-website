@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import page from 'page'
 import Home from './components/home'
 import Members from './components/members'
-import Achievements from './components/achievements'
+import GuildUpdates from './components/guildUpdates'
 
 function renderComponent(component) {
   ReactDOM.render(
@@ -21,7 +21,7 @@ page('/spa/members', function () {
 });
 
 page('/spa/achievements', function (){
-  renderComponent(<Achievements />);
+  renderComponent(<GuildUpdates />);
 });
 
 page(window.ENV.route);

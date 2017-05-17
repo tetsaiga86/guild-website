@@ -28,18 +28,6 @@ namespace :prepopulate do
     end
   end
 
-  # task officers: :environment do
-  #   bnet_client = ::Bnet::Client.new
-  #   officers = ENV['OFFICERS'].split(' ').map do |officer|
-  #     officer = URI.escape(officer)
-  #   end
-  #   officer_info=[]
-  #   officers.each do |officer|
-  #     officer_info.push(bnet_client.character_info(officer))
-  #   end
-  #
-  # end
-
   task members: :environment do
     bnet_client = ::Bnet::Client.new
     guild_members = bnet_client.guild_members(ENV['GUILD_NAME'])
