@@ -10,7 +10,10 @@ class Boss extends React.Component {
     const boss = this.props.boss;
     return(
     <tr>
-      <td><img className="bossImg" src={bossImages[boss.id]} />{boss.name}</td>
+      <td>
+        <img className="bossImg" src={bossImages[boss.id]} />
+        {boss.name}
+      </td>
       <td>
         {
         !!boss.heroicKills &&

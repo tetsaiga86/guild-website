@@ -16,7 +16,7 @@ class CharacterModal extends React.Component{
       if (this.state.isInitialized) {
         return;
       }
-      this.setState({initialized: true})
+      this.setState({ initialized : true })
       this.setState({ data : this.props.character });
     }
   }
