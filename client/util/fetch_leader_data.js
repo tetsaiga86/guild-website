@@ -1,3 +1,4 @@
+import $ from 'jquery'
 export default function fetchLeaderdata(callback){
     var officerUrl = `/api/officer_info`;
     $.getJSON(officerUrl, (leaderJsonData) =>{

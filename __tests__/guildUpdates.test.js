@@ -9,7 +9,7 @@ import achievements from '../spec/fixtures/achievements.json'
 import $ from 'jquery'
 import sinon from 'sinon'
 
-const stub = sinon.stub($,'getJSON', (url, callBack)=>{
+const stub = sinon.stub($,'getJSON').callsFake((url, callBack)=>{
   callBack(achievements)
 })
 const component = shallow(

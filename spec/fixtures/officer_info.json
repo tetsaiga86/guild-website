@@ -1,0 +1,272 @@
+[
+    {
+        "name": "The Emerald Nightmare",
+        "lfr": 2,
+        "normal": 2,
+        "heroic": 2,
+        "mythic": 2,
+        "id": 8026,
+        "bosses": [
+            {
+                "id": 103160,
+                "name": "Nythendra",
+                "lfrKills": 20,
+                "lfrTimestamp": 1492316977000,
+                "normalKills": 16,
+                "normalTimestamp": 1493459715000,
+                "heroicKills": 56,
+                "heroicTimestamp": 1493462635000,
+                "mythicKills": 47,
+                "mythicTimestamp": 1492133676000
+            },
+            {
+                "id": 111000,
+                "name": "Elerethe Renferal",
+                "lfrKills": 16,
+                "lfrTimestamp": 1493638546000,
+                "normalKills": 18,
+                "normalTimestamp": 1493460821000,
+                "heroicKills": 52,
+                "heroicTimestamp": 1493463682000,
+                "mythicKills": 30,
+                "mythicTimestamp": 1492136191000
+            },
+            {
+                "id": 105393,
+                "name": "Il'gynoth, Heart of Corruption",
+                "lfrKills": 20,
+                "lfrTimestamp": 1494916714000,
+                "normalKills": 18,
+                "normalTimestamp": 1493461120000,
+                "heroicKills": 59,
+                "heroicTimestamp": 1493463973000,
+                "mythicKills": 5,
+                "mythicTimestamp": 1492139779000
+            },
+            {
+                "id": 100497,
+                "name": "Ursoc",
+                "lfrKills": 20,
+                "lfrTimestamp": 1494920187000,
+                "normalKills": 18,
+                "normalTimestamp": 1493460261000,
+                "heroicKills": 58,
+                "heroicTimestamp": 1494798361000,
+                "mythicKills": 30,
+                "mythicTimestamp": 1492134423000
+            },
+            {
+                "id": 102679,
+                "name": "Dragons of Nightmare",
+                "lfrKills": 20,
+                "lfrTimestamp": 1494920442000,
+                "normalKills": 18,
+                "normalTimestamp": 1493460540000,
+                "heroicKills": 57,
+                "heroicTimestamp": 1494798834000,
+                "mythicKills": 15,
+                "mythicTimestamp": 1492135155000
+            },
+            {
+                "id": 113534,
+                "name": "Cenarius",
+                "lfrKills": 23,
+                "lfrTimestamp": 1494920656000,
+                "normalKills": 12,
+                "normalTimestamp": 1493461329000,
+                "heroicKills": 49,
+                "heroicTimestamp": 1493464325000,
+                "mythicKills": 5,
+                "mythicTimestamp": 1492140438000
+            },
+            {
+                "id": 103769,
+                "name": "Xavius",
+                "lfrKills": 42,
+                "lfrTimestamp": 1494919306000,
+                "normalKills": 12,
+                "normalTimestamp": 1493461651000,
+                "heroicKills": 49,
+                "heroicTimestamp": 1493464690000,
+                "mythicKills": 9,
+                "mythicTimestamp": 1492142263000
+            }
+        ]
+    },
+    {
+        "name": "Trial of Valor",
+        "lfr": 2,
+        "normal": 2,
+        "heroic": 2,
+        "mythic": 0,
+        "id": 8440,
+        "bosses": [
+            {
+                "id": 115323,
+                "name": "Odyn",
+                "lfrKills": 17,
+                "lfrTimestamp": 1494820324000,
+                "normalKills": 20,
+                "normalTimestamp": 1491156350000,
+                "heroicKills": 10,
+                "heroicTimestamp": 1485624460000,
+                "mythicKills": 0,
+                "mythicTimestamp": 0
+            },
+            {
+                "id": 114344,
+                "name": "Guarm",
+                "lfrKills": 14,
+                "lfrTimestamp": 1494820754000,
+                "normalKills": 20,
+                "normalTimestamp": 1491156773000,
+                "heroicKills": 10,
+                "heroicTimestamp": 1485625172000,
+                "mythicKills": 0,
+                "mythicTimestamp": 0
+            },
+            {
+                "id": 93394,
+                "name": "Helya",
+                "lfrKills": 18,
+                "lfrTimestamp": 1494821091000,
+                "normalKills": 20,
+                "normalTimestamp": 1491157132000,
+                "heroicKills": 10,
+                "heroicTimestamp": 1485627693000,
+                "mythicKills": 0,
+                "mythicTimestamp": 0
+            }
+        ]
+    },
+    {
+        "name": "The Nighthold",
+        "lfr": 1,
+        "normal": 2,
+        "heroic": 2,
+        "mythic": 1,
+        "id": 8025,
+        "bosses": [
+            {
+                "id": 102263,
+                "name": "Skorpyron",
+                "lfrKills": 15,
+                "lfrTimestamp": 1494915559000,
+                "normalKills": 56,
+                "normalTimestamp": 1494794103000,
+                "heroicKills": 61,
+                "heroicTimestamp": 1494787672000,
+                "mythicKills": 42,
+                "mythicTimestamp": 1494380774000
+            },
+            {
+                "id": 104415,
+                "name": "Chronomatic Anomaly",
+                "lfrKills": 19,
+                "lfrTimestamp": 1494916046000,
+                "normalKills": 58,
+                "normalTimestamp": 1494794487000,
+                "heroicKills": 62,
+                "heroicTimestamp": 1494788202000,
+                "mythicKills": 37,
+                "mythicTimestamp": 1494381579000
+            },
+            {
+                "id": 104288,
+                "name": "Trilliax",
+                "lfrKills": 18,
+                "lfrTimestamp": 1494916378000,
+                "normalKills": 57,
+                "normalTimestamp": 1494794739000,
+                "heroicKills": 61,
+                "heroicTimestamp": 1494788615000,
+                "mythicKills": 32,
+                "mythicTimestamp": 1494382854000
+            },
+            {
+                "id": 107699,
+                "name": "Spellblade Aluriel",
+                "lfrKills": 15,
+                "lfrTimestamp": 1494801856000,
+                "normalKills": 52,
+                "normalTimestamp": 1494795121000,
+                "heroicKills": 61,
+                "heroicTimestamp": 1494789176000,
+                "mythicKills": 10,
+                "mythicTimestamp": 1493861250000
+            },
+            {
+                "id": 103685,
+                "name": "Tichondrius",
+                "lfrKills": 19,
+                "lfrTimestamp": 1494917180000,
+                "normalKills": 52,
+                "normalTimestamp": 1494795535000,
+                "heroicKills": 57,
+                "heroicTimestamp": 1494790010000,
+                "mythicKills": 5,
+                "mythicTimestamp": 1494392098000
+            },
+            {
+                "id": 101002,
+                "name": "Krosus",
+                "lfrKills": 21,
+                "lfrTimestamp": 1494917692000,
+                "normalKills": 53,
+                "normalTimestamp": 1494795960000,
+                "heroicKills": 64,
+                "heroicTimestamp": 1494791121000,
+                "mythicKills": 23,
+                "mythicTimestamp": 1493782994000
+            },
+            {
+                "id": 104528,
+                "name": "High Botanist Tel'arn",
+                "lfrKills": 14,
+                "lfrTimestamp": 1494519364000,
+                "normalKills": 43,
+                "normalTimestamp": 1494796792000,
+                "heroicKills": 60,
+                "heroicTimestamp": 1494729172000,
+                "mythicKills": 0,
+                "mythicTimestamp": 0
+            },
+            {
+                "id": 103758,
+                "name": "Star Augur Etraeus",
+                "lfrKills": 14,
+                "lfrTimestamp": 1494802379000,
+                "normalKills": 47,
+                "normalTimestamp": 1494796336000,
+                "heroicKills": 58,
+                "heroicTimestamp": 1494728257000,
+                "mythicKills": 0,
+                "mythicTimestamp": 0
+            },
+            {
+                "id": 110965,
+                "name": "Grand Magistrix Elisande",
+                "lfrKills": 21,
+                "lfrTimestamp": 1494918319000,
+                "normalKills": 43,
+                "normalTimestamp": 1494797259000,
+                "heroicKills": 66,
+                "heroicTimestamp": 1494379103000,
+                "mythicKills": 0,
+                "mythicTimestamp": 0
+            },
+            {
+                "id": 105503,
+                "name": "Gul'dan",
+                "lfrKills": 11,
+                "lfrTimestamp": 1494918960000,
+                "normalKills": 44,
+                "normalTimestamp": 1494797637000,
+                "heroicKills": 57,
+                "heroicTimestamp": 1494379773000,
+                "mythicKills": 0,
+                "mythicTimestamp": 0
+            }
+        ]
+    }
+]

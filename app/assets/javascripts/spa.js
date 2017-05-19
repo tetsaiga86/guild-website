@@ -19344,6 +19344,7 @@ exports.default = Announcements;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.bottomRow = exports.rightColumn = exports.leftColumn = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -19375,9 +19376,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var avatarUrl = 'http://render-api-us.worldofwarcraft.com/static-render/us/';
 
-var leftColumn = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands'];
-var rightColumn = ['waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2'];
-var bottomRow = ['mainHand', 'offHand'];
+var leftColumn = exports.leftColumn = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands'];
+var rightColumn = exports.rightColumn = ['waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2'];
+var bottomRow = exports.bottomRow = ['mainHand', 'offHand'];
 
 var Armory = function (_React$Component) {
   _inherits(Armory, _React$Component);
@@ -20490,7 +20491,7 @@ var Player = function (_React$Component) {
   }, {
     key: 'getCharacterspec',
     value: function getCharacterspec(character) {
-      for (var i = 0; i < character.talents.length; i++) {
+      for (var i = 0; character.talents && i < character.talents.length; i++) {
         if (character.talents[i].selected) {
           return character.talents[i].spec.name;
         }
@@ -20534,7 +20535,7 @@ var Player = function (_React$Component) {
         _react2.default.createElement(
           'td',
           { className: 'members-table-cell' },
-          character.items.averageItemLevel || 'Not Available'
+          character.items && character.items.averageItemLevel || 'Not Available'
         )
       );
     }
@@ -21096,9 +21097,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = fetchLeaderdata;
+
+var _jquery = __webpack_require__(310);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function fetchLeaderdata(callback) {
-  var officerUrl = "/api/officer_info";
-  $.getJSON(officerUrl, function (leaderJsonData) {
+  var officerUrl = '/api/officer_info';
+  _jquery2.default.getJSON(officerUrl, function (leaderJsonData) {
     for (var i = 0; i < leaderJsonData.length; i++) {
       if (i == leaderJsonData.length - 1) {
         leaderJsonData[i].in = true;

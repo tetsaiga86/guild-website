@@ -12,26 +12,26 @@ const component = shallow(
   <Home />
 )
 
-test('if <Header/> is rendered', ()=>{
+test('<Header/> is rendered', ()=>{
   expect(component.find(Header).exists()).toBe(true)
 })
 
-test('if <HomeCarousel/> is rendered', ()=>{
+test('<HomeCarousel/> is rendered', ()=>{
   expect(component.find(HomeCarousel).exists()).toBe(true)
 })
 
-test('if <Announcements/> is rendered', ()=>{
+test('<Announcements/> is rendered', ()=>{
   expect(component.find(Announcements).exists()).toBe(true)
 })
 
-test('if <Recruitment/> is rendered', ()=>{
+test('<Recruitment/> is rendered', ()=>{
   expect(component.find(Recruitment).exists()).toBe(true)
 })
 
-test('if <Progress/> is rendered', ()=>{
+test('<Progress/> is rendered', ()=>{
   expect(component.find(Progress).exists()).toBe(true)
 })
 
-test('if <Footer/> is rendered', ()=>{
+test('<Footer/> is rendered', ()=>{
   expect(component.find(Footer).exists()).toBe(true)
 })

@@ -34,7 +34,7 @@ class Player extends React.Component{
   }
 
   getCharacterspec(character){
-    for (var i = 0; i < character.talents.length; i++) {
+    for (var i = 0; character.talents && i < character.talents.length; i++) {
       if(character.talents[i].selected){
         return character.talents[i].spec.name
       }
@@ -64,7 +64,7 @@ class Player extends React.Component{
           {this.getGuildPoints(character)}
         </td>
         <td className="members-table-cell">
-          {character.items.averageItemLevel || 'Not Available'}
+          {character.items && character.items.averageItemLevel || 'Not Available'}
         </td>
       </tr>
     )
