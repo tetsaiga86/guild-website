@@ -1,5 +1,6 @@
 import React from 'react'
 import { Carousel } from 'react-bootstrap'
+import $ from 'jquery'
 
 class HomeCarousel extends React.Component {
   constructor (props) {

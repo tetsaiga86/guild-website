@@ -34,7 +34,7 @@ class CharacterStats extends React.Component{
       return statInfo;
     }else{
       return (
-        <Popover id={stat}>
+        <Popover className='popover' id={stat}>
           loading...
         </Popover>
       )
