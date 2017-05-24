@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './header'
 import Player from './player'
+import $ from 'jquery'
 import {
   Table
 } from 'react-bootstrap'

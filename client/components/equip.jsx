@@ -58,7 +58,6 @@ class Equip extends React.Component{
           <OverlayTrigger trigger={['hover', 'focus']} placement={this.props.position} overlay={popover}>
             <a href={`${itemUrl}${item.id}/${item.context}`} target="_blank">
               <img src={iconUrl+item.icon+'.jpg'} className="equip-icon" />
-
             </a>
           </OverlayTrigger>
         }
