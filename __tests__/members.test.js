@@ -12,19 +12,35 @@ import guild_members from '../spec/fixtures/guild_members.json'
 import latest_logs from '../spec/fixtures/latest_logs.json'
 import character_parse from '../spec/fixtures/character_parse.json'
 
-// const stubGuildMembers = sinon.stub($, 'getJSON').callsFake((url, callBack)=>{
-//   callBack(guild_members)
-// })
-// const stubLatestLogs = sinon.stub($, 'getJSON').callsFake((url, callBack)=>{
-//   callBack(latest_logs)
-// })
-// const stubCharacterParse = sinon.stub($, 'getJSON').callsFake((url, callBack)=>{
-//   callBack(character_parse)
-// })
-const component = shallow(
-  <Members />
-)
+let getJson, component
+beforeEach(()=>{
+  getJson = sinon.stub($, 'getJSON')
+  getJson.onCall(0).callsFake((url, callBack)=>{
+    callBack(guild_members)
+  })
+  getJson.onCall(1).callsFake((url, callBack)=>{
+    callBack(latest_logs)
+  })
+  getJson.onCall(2).callsFake((url, callBack)=>{
+    callBack(character_parse)
+  })
+  component = shallow(
+    <Members />
+  )
+})
+afterEach(()=>{
+  getJson.restore()
+})
 
-test('Render <Player> in tbody', ()=>{
+test('Render all <Player> in tbody', ()=>{
   expect(component.find(Player).exists()).toBe(true)
+  expect(component.find(Player).length).toBe(guild_members.length)
+})
+
+test('getJson is called (2+the number of guild_members) times', ()=>{
+  expect(getJson.callCount).toBe(guild_members.length+2)
+})
+
+test('calculateGuildPoints() returns a number', ()=>{
+  expect(typeof component.instance().calculateGuildPoints(character_parse, latest_logs, guild_members[0].name)).toBe(typeof 1)
 })

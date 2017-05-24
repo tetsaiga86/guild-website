@@ -22,7 +22,7 @@ const statComponent = shallow(
 )
 
 test('getArtifiactRank() returns the artifact rank', ()=>{
-  expect(component.instance().getArtifactRank(equip_artifact_item)).toBe('Artifact Weapon Rank: 51')
+  expect(component.instance().getArtifactRank(equip_artifact_item).includes(51))
 })
 test('getArtifiactRank() returns undefined if item is not artifact', ()=>{
   expect(component.instance().getArtifactRank(equip_item)).toBe(undefined)
@@ -51,7 +51,11 @@ test('renders OverlayTrigger', ()=>{
 
 test('popover renders correct text', ()=>{
   const renderedOverlay = shallow(component.find(OverlayTrigger).prop('overlay'))
-  expect(renderedOverlay.text()).toBe(`Prydaz, Xavaric's Magnum OpusItem Level: 940Crit: 1079Mastery: 1079Haste: 1079Stamina: 2658`)
+  expect(renderedOverlay.text().includes(equip_item.name))
+  expect(renderedOverlay.text().includes(equip_item.itemLevel))
+  for (var i = 0; i < equip_item.stats.length; i++) {
+    expect(renderedOverlay.text().includes(equip_item.stats[i].amount))
+  }
 })
 
 test('renders <a> with correct url', ()=>{
