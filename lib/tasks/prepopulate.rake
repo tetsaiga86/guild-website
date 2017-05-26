@@ -32,14 +32,15 @@ namespace :prepopulate do
     bnet_client = ::Bnet::Client.new
     guild_members = bnet_client.guild_members(ENV['GUILD_NAME'])
     filtered_guild_members = guild_members.select do |member|
-      member['rank']<=4
+      member['rank']<=3
     end
 
     filtered_guild_members.each do |member|
       puts "fetching #{member['character']['name']}"
       character_info = bnet_client.character_info(member['character']['name'])
       member_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
-      member_datum.update(body: character_info.to_json, updated_at:Time.now)
+      member_datum.update_from_hash(character_info)
+      # member_datum.update(body: character_info.to_json, updated_at:Time.now)
     end
   end
 

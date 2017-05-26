@@ -42,5 +42,5 @@ test('getJson is called (2+the number of guild_members) times', ()=>{
 })
 
 test('calculateGuildPoints() returns a number', ()=>{
-  expect(typeof component.instance().calculateGuildPoints(character_parse, latest_logs, guild_members[0].name)).toBe(typeof 1)
+  expect(typeof component.instance().calculateGuildPoints(character_parse, latest_logs, guild_members[0].name)).toBe('number')
 })
