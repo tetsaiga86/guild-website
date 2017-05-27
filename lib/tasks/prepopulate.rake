@@ -1,8 +1,12 @@
 namespace :prepopulate do
+  task all: :environment do
+    Rake::Task["prepopulate:everyTenMinutes"].invoke
+    Rake::Task["prepopulate:daily"].invoke
+  end
+
   task everyTenMinutes: :environment do
     Rake::Task["prepopulate:achievements"].invoke
     Rake::Task["prepopulate:members"].invoke
-
   end
 
   task daily: :environment do

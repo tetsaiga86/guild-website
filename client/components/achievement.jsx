@@ -21,9 +21,14 @@ class Achievement extends React.Component{
     return <ul>{criteriaTitles}</ul>;
   }
   render(){
+    var criteria;
     var achievement = this.props.achievement;
     var details = achievement.details;
-    var criteria = details.criteria;
+    // var criteria = details.criteria;
+
+    try {
+      criteria = details.criteria;
+    } catch(e) { debugger }
     var popover = (
       <Popover className='popover' id={achievement.id}>
         <h5>{details.description}</h5>

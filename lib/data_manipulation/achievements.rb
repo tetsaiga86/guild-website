@@ -11,8 +11,12 @@ module DataManipulation
         news_item['context'].include?('raid') || news_item['context'].include?('dungeon')
       end
 
+      filtered_news_ids = filtered_news.map{|fn| fn['itemId']}
+      item_infos = CharacterLootDatum.where(bnet_id: filtered_news_ids).to_a
+
       filtered_news.each do |newsItem|
-        item_info = CharacterLootDatum.find_by(bnet_id: newsItem['itemId'])
+        item_info = item_infos.select { |i| i.bnet_id == newsItem['itemId'].to_s }.first
+        # item_info = CharacterLootDatum.find_by(bnet_id: newsItem['itemId'])
 
         unless item_info
           item_info_body = bnet_client.item_info(newsItem['itemId'])

@@ -42,8 +42,13 @@ module DataManipulation
       end
 
       logs_arr=[]
+      log_ids = log_ids_to_be_rendered.last(ENV['LOG_COUNT'].to_i).map{|litbr| litbr['id']}
+      raid_logs = RaidLog.where(w_log_id: log_ids).to_a
+
       log_ids_to_be_rendered.last(ENV['LOG_COUNT'].to_i).each do |log_id|
-        raid_log = RaidLog.find_by(w_log_id: log_id['id'])
+        raid_log = raid_logs.select { |rl| rl.w_log_id == log_id['id'].to_s }.first
+
+        # raid_log = RaidLog.find_by(w_log_id: log_id['id'])
         if !raid_log
           raid_log_body = logs_client.guild_log(log_id['id'])
           raid_log = RaidLog.find_or_create_by(w_log_id: log_id['id'])
