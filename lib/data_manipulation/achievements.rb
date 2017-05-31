@@ -21,9 +21,11 @@ module DataManipulation
         unless item_info
           item_info_body = bnet_client.item_info(newsItem['itemId'])
           item_info = CharacterLootDatum.create(bnet_id: newsItem['itemId'], body: item_info_body.to_json)
-        end
+          newsItem['item'] = item_info_body
 
-        newsItem['item'] = JSON.parse(item_info.body)
+        else
+          newsItem['item'] = JSON.parse(item_info.body)
+        end
       end
 
       filtered_news.select! do |newsItem|
