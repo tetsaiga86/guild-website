@@ -18,6 +18,7 @@ class Player extends React.Component{
 
     this.state = { showModal: false };
     this.onRequestClose = this.onRequestClose.bind(this);
+    this.onAvatarError = this.onAvatarError.bind(this);
     this.onOpen = this.onOpen.bind(this);
   }
 
@@ -42,17 +43,19 @@ class Player extends React.Component{
     return 'Not Available'
   }
 
-  addDefaultSrc(img){
-    img.target.src='/images/stick_thumbnail.jpg'
+  onAvatarError(img){
+    this.setState({error: true})
   }
 
   render(){
     const character = this.props.player;
+    const playerAvatarUrl = avatarUrl + character.thumbnail;
+    const playerImgUrl = this.state.error ? '/images/stick_thumbnail.jpg' : playerAvatarUrl;
     return(
       <tr onClick={this.onOpen}>
         <CharacterModal character={character} show={this.state.showModal} onRequestClose={this.onRequestClose}/>
         <td>
-          <img className="playerImg" src={avatarUrl + character.thumbnail} onError={this.addDefaultSrc}/>
+          <img className="playerImg" src={playerImgUrl} onError={this.onAvatarError}/>
           {character.name}
         </td>
         <td className="members-table-cell">

@@ -30744,6 +30744,7 @@ var Player = function (_React$Component) {
 
     _this.state = { showModal: false };
     _this.onRequestClose = _this.onRequestClose.bind(_this);
+    _this.onAvatarError = _this.onAvatarError.bind(_this);
     _this.onOpen = _this.onOpen.bind(_this);
     return _this;
   }
@@ -30774,14 +30775,16 @@ var Player = function (_React$Component) {
       return 'Not Available';
     }
   }, {
-    key: 'addDefaultSrc',
-    value: function addDefaultSrc(img) {
-      img.target.src = '/images/stick_thumbnail.jpg';
+    key: 'onAvatarError',
+    value: function onAvatarError(img) {
+      this.setState({ error: true });
     }
   }, {
     key: 'render',
     value: function render() {
       var character = this.props.player;
+      var playerAvatarUrl = avatarUrl + character.thumbnail;
+      var playerImgUrl = this.state.error ? '/images/stick_thumbnail.jpg' : playerAvatarUrl;
       return _react2.default.createElement(
         'tr',
         { onClick: this.onOpen },
@@ -30789,7 +30792,7 @@ var Player = function (_React$Component) {
         _react2.default.createElement(
           'td',
           null,
-          _react2.default.createElement('img', { className: 'playerImg', src: avatarUrl + character.thumbnail, onError: this.addDefaultSrc }),
+          _react2.default.createElement('img', { className: 'playerImg', src: playerImgUrl, onError: this.onAvatarError }),
           character.name
         ),
         _react2.default.createElement(
