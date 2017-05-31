@@ -9,7 +9,7 @@ import {
   Col,
 } from 'react-bootstrap'
 
-const avatarUrl = 'http://render-api-us.worldofwarcraft.com/static-render/us/';
+const avatarUrl = 'http://render-us.worldofwarcraft.com/character/';
 
 export const leftColumn = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands']
 export const rightColumn = ['waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2']

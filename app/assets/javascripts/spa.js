@@ -29645,7 +29645,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var avatarUrl = 'http://render-api-us.worldofwarcraft.com/static-render/us/';
+var avatarUrl = 'http://render-us.worldofwarcraft.com/character/';
 
 var leftColumn = exports.leftColumn = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands'];
 var rightColumn = exports.rightColumn = ['waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2'];
@@ -30727,7 +30727,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var avatarUrl = 'http://render-api-us.worldofwarcraft.com/static-render/us/';
+var avatarUrl = 'http://render-us.worldofwarcraft.com/character/';
 var imgType = {
   avatar: 'avatar.jpg',
   inset: 'inset.jpg',
@@ -30774,6 +30774,11 @@ var Player = function (_React$Component) {
       return 'Not Available';
     }
   }, {
+    key: 'addDefaultSrc',
+    value: function addDefaultSrc(img) {
+      img.target.src = '/images/stick_thumbnail.jpg';
+    }
+  }, {
     key: 'render',
     value: function render() {
       var character = this.props.player;
@@ -30784,7 +30789,7 @@ var Player = function (_React$Component) {
         _react2.default.createElement(
           'td',
           null,
-          _react2.default.createElement('img', { className: 'playerImg', src: avatarUrl + character.thumbnail }),
+          _react2.default.createElement('img', { className: 'playerImg', src: avatarUrl + character.thumbnail, onError: this.addDefaultSrc }),
           character.name
         ),
         _react2.default.createElement(

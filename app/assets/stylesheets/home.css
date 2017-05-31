@@ -195,3 +195,7 @@ strong{
   min-height: 52px;
   font-size: 1.5em;
 }
+
+.playerImg{
+  max-width: 84px;
+}

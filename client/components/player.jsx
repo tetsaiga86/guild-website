@@ -5,7 +5,7 @@ import {
   Table
 } from 'react-bootstrap'
 
-const avatarUrl = 'http://render-api-us.worldofwarcraft.com/static-render/us/';
+const avatarUrl = 'http://render-us.worldofwarcraft.com/character/';
 const imgType = {
   avatar: 'avatar.jpg',
   inset: 'inset.jpg',
@@ -42,13 +42,17 @@ class Player extends React.Component{
     return 'Not Available'
   }
 
+  addDefaultSrc(img){
+    img.target.src='/images/stick_thumbnail.jpg'
+  }
+
   render(){
     const character = this.props.player;
     return(
       <tr onClick={this.onOpen}>
         <CharacterModal character={character} show={this.state.showModal} onRequestClose={this.onRequestClose}/>
         <td>
-          <img className="playerImg" src={avatarUrl + character.thumbnail} />
+          <img className="playerImg" src={avatarUrl + character.thumbnail} onError={this.addDefaultSrc}/>
           {character.name}
         </td>
         <td className="members-table-cell">
