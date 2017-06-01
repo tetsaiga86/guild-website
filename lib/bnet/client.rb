@@ -31,8 +31,8 @@ module Bnet
       request "achievement/#{id}"
     end
 
-    def item_info(id)
-      request "item/#{id}"
+    def item_info(item)
+      request "item/#{item['itemId']}/#{item['context']}", bl: item['bonusLists']
     end
 
     def character_info(name)

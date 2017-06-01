@@ -6,32 +6,6 @@ module DataManipulation
       achievement_timestamps = Hash[bnet_achievements['achievementsCompleted'].zip(bnet_achievements['achievementsCompletedTimestamp'])]
       achievement_ids = bnet_achievements['achievementsCompleted']
 
-      # filtered_news = guild_data['news']
-      filtered_news = guild_data['news'].select do |news_item|
-        news_item['context'].include?('raid') || news_item['context'].include?('dungeon')
-      end
-
-      filtered_news_ids = filtered_news.map{|fn| fn['itemId']}
-      item_infos = CharacterLootDatum.where(bnet_id: filtered_news_ids).to_a
-
-      filtered_news.each do |newsItem|
-        item_info = item_infos.select { |i| i.bnet_id == newsItem['itemId'].to_s }.first
-        # item_info = CharacterLootDatum.find_by(bnet_id: newsItem['itemId'])
-
-        unless item_info
-          item_info_body = bnet_client.item_info(newsItem['itemId'])
-          item_info = CharacterLootDatum.create(bnet_id: newsItem['itemId'], body: item_info_body.to_json)
-          newsItem['item'] = item_info_body
-
-        else
-          newsItem['item'] = JSON.parse(item_info.body)
-        end
-      end
-
-      filtered_news.select! do |newsItem|
-        newsItem['item']['quality'] && newsItem['item']['itemLevel'] && ((newsItem['item']['quality'] >= ENV['MINIMUM_ITEM_QUALITY'].to_i) && (newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i))
-      end
-
       # Iterate over all achievements
       massaged_achievements = AchievementDatum.all.map do |datum|
         {
@@ -41,18 +15,59 @@ module DataManipulation
         }
       end
 
-      massaged_achievements.sort! do |a,b|
+      massaged_achievements.sort! do |a, b|
         b[:timestamp] <=> a[:timestamp]
       end
 
-      guild_data['news'] = filtered_news
       guild_data['achievements'] = massaged_achievements
+
+      # Filter News Items
+
+      filtered_news = guild_data['news'].select do |fn|
+        fn['type']=="itemLoot"
+      end
+
+      filtered_news_ids = filtered_news.map {|fn| fn_id(fn)}
+      item_infos = CharacterLootDatum.where(bnet_id: filtered_news_ids).to_a
+
+      filtered_news.each do |newsItem|
+        item_info = item_infos.select { |i| i.bnet_id == fn_id(newsItem) }.first
+
+        unless item_info
+          item_info_body = bnet_client.item_info(newsItem)
+          item_info = CharacterLootDatum.create(bnet_id: fn_id(newsItem), body: item_info_body.to_json)
+          newsItem['item'] = item_info_body
+        else
+          newsItem['item'] = JSON.parse(item_info.body)
+        end
+      end
+      filtered_news.select! do |newsItem|
+        newsItem['item']['quality'] && newsItem['item']['itemLevel']
+      end
+
+      # sort filtered_news by itemLevel
+      filtered_news.sort! do |a, b|
+        b['item']['itemLevel'] <=> a['item']['itemLevel']
+      end
+
+      # sort first 20 by date
+      topTwentyNews = filtered_news.first(20).sort do |a,b|
+        b['timestamp'] <=> a['timestamp']
+      end
+
+
+      guild_data['news'] = topTwentyNews
 
       return guild_data
     end
 
     def bnet_client
       ::Bnet::Client.new
+    end
+
+    def fn_id(fn)
+      bonusLists = fn['bonusLists'] || []
+      "#{fn['itemId']}_#{fn['context']}_#{bonusLists.join('*')}"
     end
   end
 end
