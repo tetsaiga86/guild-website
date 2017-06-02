@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601000452) do
+ActiveRecord::Schema.define(version: 20170602001825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "achievement_data", force: :cascade do |t|
     t.string   "bnet_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "order"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,6 +51,14 @@ ActiveRecord::Schema.define(version: 20170601000452) do
   create_table "raid_logs", force: :cascade do |t|
     t.string   "w_log_id"
     t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recruitments", force: :cascade do |t|
+    t.string   "class_name"
+    t.string   "spec"
+    t.integer  "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

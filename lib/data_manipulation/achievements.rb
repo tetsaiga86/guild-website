@@ -24,7 +24,7 @@ module DataManipulation
       # Filter News Items
 
       filtered_news = guild_data['news'].select do |fn|
-        fn['type']=="itemLoot"
+        fn['type'] == 'itemLoot'
       end
 
       filtered_news_ids = filtered_news.map {|fn| fn_id(fn)}
@@ -45,18 +45,13 @@ module DataManipulation
         newsItem['item']['quality'] && newsItem['item']['itemLevel']
       end
 
-      # sort filtered_news by itemLevel
-      filtered_news.sort! do |a, b|
-        b['item']['itemLevel'] <=> a['item']['itemLevel']
-      end
-
-      # sort first 20 by date
-      topTwentyNews = filtered_news.first(20).sort do |a,b|
+      filtered_news.sort! do |a,b|
         b['timestamp'] <=> a['timestamp']
       end
 
+      topFourtyNews = filtered_news.first(40)
 
-      guild_data['news'] = topTwentyNews
+      guild_data['news'] = topFourtyNews
 
       return guild_data
     end

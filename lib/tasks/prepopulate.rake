@@ -7,11 +7,11 @@ namespace :prepopulate do
   task everyTenMinutes: :environment do
     Rake::Task["prepopulate:achievements"].invoke
     Rake::Task["prepopulate:members"].invoke
+    Rake::Task["prepopulate:news"].invoke
   end
 
   task daily: :environment do
     Rake::Task["prepopulate:raid_logs"].invoke
-    Rake::Task["prepopulate:news"].invoke
     # Rake::Task["prepopulate:officers"].invoke
   end
 
@@ -27,7 +27,7 @@ namespace :prepopulate do
     achievement_ids.each do |achievementId|
       puts "fetching #{achievementId}"
       achievement_info = bnet_client.achievement_info(achievementId)
-      achievement_datum = AchievementDatum.find_or_create_by(bnet_id: achievementId)
+      achievement_datum = AchievementDatum.find_or_create_by(bnet_id: achievementId.to_i)
       achievement_datum.update(body: achievement_info.to_json)
     end
   end
@@ -102,16 +102,41 @@ namespace :prepopulate do
   task news: :environment do
     bnet_client = ::Bnet::Client.new
 
-    guild_data = bnet_client.achievements(ENV['GUILD_NAME'])
-    filtered_news = guild_data['news'].select do |news_item|
-      news_item['context'].include?('raid') || news_item['context'].include?('dungeon')
+    def fn_id(fn)
+      bonus_lists = fn['bonusLists'] || []
+      id = "#{fn['itemId']}_#{fn['context']}_#{bonus_lists.join('*')}"
+      puts id
+      return id
     end
 
+    guild_data = bnet_client.achievements(ENV['GUILD_NAME'])
+    # filtered_news = guild_data['news'].select do |news_item|
+    #   news_item['context'].include?('raid') || news_item['context'].include?('dungeon')
+    # end
+    #
+    # filtered_news.each do |newsItem|
+    #   puts "fetching #{newsItem['itemId']}"
+    #   item_info = bnet_client.item_info(newsItem['itemId'])
+    #   character_loot_datum = CharacterLootDatum.find_or_create_by(bnet_id: newsItem['itemId'])
+    #   character_loot_datum.update(body: item_info.to_json)
+    # end
+    filtered_news = guild_data['news'].select do |fn|
+      fn['type']=="itemLoot"
+    end
+
+    filtered_news_ids = filtered_news.map {|fn| fn_id(fn)}
+    item_infos = CharacterLootDatum.where(bnet_id: filtered_news_ids).to_a
+
     filtered_news.each do |newsItem|
-      puts "fetching #{newsItem['itemId']}"
-      item_info = bnet_client.item_info(newsItem['itemId'])
-      character_loot_datum = CharacterLootDatum.find_or_create_by(bnet_id: newsItem['itemId'])
-      character_loot_datum.update(body: item_info.to_json)
+      item_info = item_infos.select { |i| i.bnet_id == fn_id(newsItem) }.first
+
+      unless item_info
+        item_info_body = bnet_client.item_info(newsItem)
+        item_info = CharacterLootDatum.create(bnet_id: fn_id(newsItem), body: item_info_body.to_json)
+        newsItem['item'] = item_info_body
+      else
+        newsItem['item'] = JSON.parse(item_info.body)
+      end
     end
   end
 end

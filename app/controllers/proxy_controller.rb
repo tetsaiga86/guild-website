@@ -33,6 +33,10 @@ class ProxyController < ApplicationController
     render json: data_manipulation_achievements.massage_achievements(guild_data)
   end
 
+  def announcements
+    render json: Announcement.all
+  end
+
   def log
     render json: logs_client.guild_log(params[:id])
   end
