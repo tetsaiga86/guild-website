@@ -31109,33 +31109,29 @@ var Recruitment = function (_React$Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      this.setState({ classes: [] });
-      _jquery2.default.getJSON(recruitmentUrl, function (classes) {
-        _this2.setState({ classes: classes });
+      this.setState({ wowClasses: [] });
+      _jquery2.default.getJSON(recruitmentUrl, function (wowClasses) {
+        _this2.setState({ wowClasses: wowClasses });
       });
     }
   }, {
     key: 'renderAnnouncements',
     value: function renderAnnouncements() {
-      var liClasses = [];
-      var counter = 0;
-      this.state.classes.forEach(function (character) {
-        liClasses.push(_react2.default.createElement(
+      var wowClassesArr = [];
+      this.state.wowClasses.forEach(function (wowClass) {
+        wowClassesArr.push(_react2.default.createElement(
           'li',
-          { key: counter },
-          _react2.default.createElement('img', { src: character.img_url }),
-          '`$',
-          character.name,
-          ' $',
-          character.class_name,
-          '`'
+          { key: wowClass.id },
+          _react2.default.createElement('img', { src: wowClass.img_url }),
+          wowClass.name,
+          ' ',
+          wowClass.wow_class.name
         ));
-        counter++;
       });
-      return _react2.default.createElement(
-        'ul',
+      if (wowClassesArr.length) return wowClassesArr;else return _react2.default.createElement(
+        'h3',
         null,
-        announcements
+        'No Recruitment at this time'
       );
     }
   }, {
@@ -31152,78 +31148,7 @@ var Recruitment = function (_React$Component) {
         _react2.default.createElement(
           'ul',
           null,
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Death Knight'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Demon Hunter'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Druid'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Hunter'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Mage'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Monk'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Paladin'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Priest'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Rogue'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Shaman'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Warlock'
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement('img', null),
-            'Warrior'
-          )
+          this.renderAnnouncements()
         )
       );
     }

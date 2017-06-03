@@ -38,7 +38,7 @@ class ProxyController < ApplicationController
   end
 
   def recruitment
-    render json: Recruitment.active
+    render json: WowSpec.includes(:wow_class).active, include: :wow_class
   end
 
   def log

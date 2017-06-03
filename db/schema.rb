@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603004316) do
+ActiveRecord::Schema.define(version: 20170603030151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,13 +56,22 @@ ActiveRecord::Schema.define(version: 20170603004316) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recruitments", force: :cascade do |t|
-    t.string   "class_name"
-    t.string   "spec"
-    t.integer  "order"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.boolean  "active",     default: true
+  create_table "wow_classes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
+  create_table "wow_specs", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "wow_class_id"
+    t.boolean  "active"
+    t.integer  "order"
+    t.string   "img_url"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["wow_class_id"], name: "index_wow_specs_on_wow_class_id", using: :btree
+  end
+
+  add_foreign_key "wow_specs", "wow_classes"
 end
