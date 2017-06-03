@@ -14,14 +14,16 @@
   "author": "Kyle Kennedy",
   "license": "MIT",
   "jest": {
-    "transform": {"^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest"},
+    "transform": {
+      "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest"
+    },
     "unmockedModulePathPatterns": [
-        "<rootDir>/node_modules/react",
-        "<rootDir>/node_modules/react-dom",
-        "<rootDir>/node_modules/react-addons-test-utils",
-        "<rootDir>/node_modules/fbjs"
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
     ]
-},
+  },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.0",
@@ -43,6 +45,7 @@
     "webpack": "^2.3.3"
   },
   "dependencies": {
+    "moment": "^2.18.1",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.4.2"

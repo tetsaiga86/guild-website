@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get '/api/character_parse/:name' => 'proxy#character_parse'
   get '/api/achievements' => 'proxy#achievements'
   get '/api/announcements' => 'proxy#announcements'
+  get '/api/recruitment' => 'proxy#recruitment'
   get '/api/officer_info' => 'proxy#officer_info'
+
 
 
   namespace :admin do

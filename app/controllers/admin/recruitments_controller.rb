@@ -1,11 +1,12 @@
 module Admin
   class RecruitmentsController < ApplicationController
+    skip_before_filter :verify_authenticity_token
     before_action :set_recruitment, only: [:show, :edit, :update, :destroy]
 
     # GET /recruitments
     # GET /recruitments.json
     def index
-      @recruitments = Recruitment.all
+      render json: Recruitment.all
     end
 
     # GET /recruitments/1

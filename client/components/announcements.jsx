@@ -1,22 +1,26 @@
 import React from 'react'
+import $ from 'jquery'
+import moment from 'moment'
 
-// var propTypes = React.propTypes;
-
+const announcementsUrl = '/api/announcements';
 class Announcements extends React.Component {
   componentWillMount () {
     this.setState({items: []})
-  }
-
-  componentDidMount () {
-    setTimeout(() => {
-      this.setState({items: ['announcement1', 'announcement2', 'announcement3']})
-    }, 5000);
+    $.getJSON(announcementsUrl, (announcements) => {
+      this.setState({items: announcements})
+    })
   }
 
   renderAnnouncements() {
     var announcements = [];
     this.state.items.forEach(item => {
-      announcements.push(<li key={item}>{item}</li>)
+      announcements.push(
+        <li key={item.title}>
+          <h3>{item.title}</h3>
+          <h4>{item.body}</h4>
+          <h7>{moment(item.updated_at).format('LLLL')}</h7>
+        </li>
+      )
     });
     return <ul>{announcements}</ul>;
   }

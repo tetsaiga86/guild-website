@@ -34,7 +34,11 @@ class ProxyController < ApplicationController
   end
 
   def announcements
-    render json: Announcement.all
+    render json: Announcement.active.order(:order)
+  end
+
+  def recruitment
+    render json: Recruitment.all
   end
 
   def log
