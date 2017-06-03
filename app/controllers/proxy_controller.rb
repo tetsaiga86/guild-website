@@ -38,7 +38,7 @@ class ProxyController < ApplicationController
   end
 
   def recruitment
-    render json: Recruitment.all
+    render json: Recruitment.active
   end
 
   def log

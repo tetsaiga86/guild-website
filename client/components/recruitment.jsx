@@ -1,6 +1,29 @@
 import React from 'react'
+import $ from 'jquery'
 
+const recruitmentUrl = '/api/recruitment'
 class Recruitment extends React.Component {
+  componentWillMount () {
+    this.setState({classes: []})
+    $.getJSON(recruitmentUrl, (classes) => {
+      this.setState({classes: classes})
+    })
+  }
+
+  renderAnnouncements() {
+    var liClasses = [];
+    var counter = 0;
+    this.state.classes.forEach(character => {
+      liClasses.push(
+        <li key={counter}>
+          <img src={character.img_url}></img>
+          `${character.name} ${character.class_name}`
+        </li>
+      );
+      counter++;
+    });
+    return <ul>{announcements}</ul>;
+  }
   render () {
     return (
       <div className="recruitment-list">
