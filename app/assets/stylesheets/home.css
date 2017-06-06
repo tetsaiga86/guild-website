@@ -14,7 +14,7 @@
   object-fit: contain;
 }
 
-body, .well, td, th, .popover{
+body, .well, td, th, .popover, .list-group-item{
   background-color: black;
   background-repeat: repeat;
 }

@@ -31,7 +31,7 @@ class Header extends React.Component {
               <NavDropdown eventKey={1} title={loginTitle} id="basic-nav-dropdown">
                 <MenuItem eventKey={1.1}>Action</MenuItem>
                 <MenuItem eventKey={1.2}>Another action</MenuItem>
-                <MenuItem eventKey={1.3}>Something else here</MenuItem>
+                <MenuItem eventKey={1.3} href="/spa/admin">Admin</MenuItem>
                 <MenuItem divider />
                 <MenuItem eventKey={1.3}>Separated link</MenuItem>
               </NavDropdown>

@@ -37,6 +37,10 @@ class ProxyController < ApplicationController
     render json: Announcement.active.order(:order)
   end
 
+  def all_announcements
+    render json: Announcement.order(:order)
+  end
+
   def recruitment
     render json: WowSpec.includes(:wow_class).active, include: :wow_class
   end
