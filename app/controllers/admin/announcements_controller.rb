@@ -31,7 +31,7 @@ module Admin
       respond_to do |format|
         if @announcement.save
           format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
-          format.json { render :show, status: :created, location: @announcement }
+          format.json { render json: @announcement, status: :created }
         else
           format.html { render :new }
           format.json { render json: @announcement.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ module Admin
       respond_to do |format|
         if @announcement.update(announcement_params)
           format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
-          format.json { render :show, status: :ok, location: @announcement }
+          format.json { render json: @announcement, status: :ok }
         else
           format.html { render :edit }
           format.json { render json: @announcement.errors, status: :unprocessable_entity }
@@ -63,6 +63,16 @@ module Admin
       end
     end
 
+    def update_many
+      params.require(:announcements).each do |key, announcement|
+        puts announcement.inspect
+        Announcement.find(announcement['id'])
+          .update(
+            announcement.permit(:title, :order, :body, :retired))
+      end
+      head :ok
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_announcement
@@ -71,7 +81,7 @@ module Admin
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def announcement_params
-        params.require(:announcement).permit(:title, :order, :body)
+        params.require(:announcement).permit(:title, :order, :body, :retired)
       end
   end
 end

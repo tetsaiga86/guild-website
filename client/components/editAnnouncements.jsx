@@ -10,6 +10,7 @@ import {
 import AnnouncementCard from './announcementCard'
 
 const announcementsUrl = '/api/all_announcements'
+const saveAnnouncementsUrl = '/admin/announcements_many.json'
 class EditAnnouncemnts extends React.Component {
   constructor(props){
     super(props)
@@ -32,14 +33,21 @@ class EditAnnouncemnts extends React.Component {
     const { announcements } = this.state
     const dragged = announcements[dragIndex]
 
-    this.setState(update(this.state, {
+    const reordered = update(this.state, {
       announcements: {
+
         $splice: [
           [dragIndex, 1],
           [hoverIndex, 0, dragged]
         ]
       }
-    }))
+    });
+
+    reordered.announcements.forEach((announcement, index) => {
+      announcement.order = index + 1
+    })
+
+    this.setState(reordered)
     if (!this.state.change) this.setState({ change : true})
   }
   editAnnouncement(index, field, newValue){
@@ -50,13 +58,10 @@ class EditAnnouncemnts extends React.Component {
   }
 
   saveAllAnnouncements(){
-    var newAnnouncements = [...this.state.announcements]
-
-    for (var i = 0; i < newAnnouncements.length; i++) {
-      newAnnouncements[i]['order'] = i + 1
-    }
-    console.log(newAnnouncements);
-    // $.post()
+    $.post(saveAnnouncementsUrl, this.state, () => {
+      this.setState({ change : false })
+    })
+    // console.log(this.state);
   }
 
   renderAnnouncements() {

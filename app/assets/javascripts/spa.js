@@ -49168,6 +49168,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var announcementsUrl = '/api/all_announcements';
+var saveAnnouncementsUrl = '/admin/announcements_many.json';
 
 var EditAnnouncemnts = function (_React$Component) {
   _inherits(EditAnnouncemnts, _React$Component);
@@ -49203,11 +49204,18 @@ var EditAnnouncemnts = function (_React$Component) {
 
       var dragged = announcements[dragIndex];
 
-      this.setState((0, _update2.default)(this.state, {
+      var reordered = (0, _update2.default)(this.state, {
         announcements: {
+
           $splice: [[dragIndex, 1], [hoverIndex, 0, dragged]]
         }
-      }));
+      });
+
+      reordered.announcements.forEach(function (announcement, index) {
+        announcement.order = index + 1;
+      });
+
+      this.setState(reordered);
       if (!this.state.change) this.setState({ change: true });
     }
   }, {
@@ -49221,22 +49229,21 @@ var EditAnnouncemnts = function (_React$Component) {
   }, {
     key: 'saveAllAnnouncements',
     value: function saveAllAnnouncements() {
-      var newAnnouncements = [].concat(_toConsumableArray(this.state.announcements));
+      var _this3 = this;
 
-      for (var i = 0; i < newAnnouncements.length; i++) {
-        newAnnouncements[i]['order'] = i + 1;
-      }
-      console.log(newAnnouncements);
-      // $.post()
+      _jquery2.default.post(saveAnnouncementsUrl, this.state, function () {
+        _this3.setState({ change: false });
+      });
+      // console.log(this.state);
     }
   }, {
     key: 'renderAnnouncements',
     value: function renderAnnouncements() {
-      var _this3 = this;
+      var _this4 = this;
 
       var announcements = [];
       this.state.announcements.forEach(function (announcement) {
-        announcements.push(_react2.default.createElement(_announcementCard2.default, { announcement: announcement, id: announcement.id, index: announcement.order - 1, key: announcement.id, onMove: _this3.moveAnnouncement, onEdit: _this3.editAnnouncement }));
+        announcements.push(_react2.default.createElement(_announcementCard2.default, { announcement: announcement, id: announcement.id, index: announcement.order - 1, key: announcement.id, onMove: _this4.moveAnnouncement, onEdit: _this4.editAnnouncement }));
       });
       return announcements;
     }
