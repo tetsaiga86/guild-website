@@ -11,12 +11,16 @@ import AnnouncementCard from './announcementCard'
 
 const announcementsUrl = '/api/all_announcements'
 const saveAnnouncementsUrl = '/admin/announcements_many.json'
+const addAnnouncementUrl = '/admin/announcements'
+
 class EditAnnouncemnts extends React.Component {
   constructor(props){
     super(props)
     this.moveAnnouncement = this.moveAnnouncement.bind(this)
     this.editAnnouncement = this.editAnnouncement.bind(this)
     this.saveAllAnnouncements = this.saveAllAnnouncements.bind(this)
+    this.deleteAnnouncement = this.deleteAnnouncement.bind(this)
+    this.addAnnouncement = this.addAnnouncement.bind(this)
   }
 
   componentWillMount () {
@@ -50,6 +54,7 @@ class EditAnnouncemnts extends React.Component {
     this.setState(reordered)
     if (!this.state.change) this.setState({ change : true})
   }
+
   editAnnouncement(index, field, newValue){
     var newAnnouncements = [...this.state.announcements]
     newAnnouncements[index][field] = newValue
@@ -61,14 +66,42 @@ class EditAnnouncemnts extends React.Component {
     $.post(saveAnnouncementsUrl, this.state, () => {
       this.setState({ change : false })
     })
-    // console.log(this.state);
+  }
+
+  deleteAnnouncement(id){
+    var deletUrl = `/admin/announcements/${id}`
+    $.ajax({
+      url: deletUrl,
+      method: "DELETE",
+      success: () => {
+        $.getJSON(announcementsUrl, (announcements) => {
+          this.setState({announcements: announcements})
+        })
+      }
+    })
+  }
+
+  addAnnouncement(){
+    var emptyAnnouncement = {
+      announcement : {
+		    title : "",
+		    order : this.state.announcements.length+1,
+		    body : ""
+	    }
+    }
+    // add to db, get new json from db, set new state
+    $.post(addAnnouncementUrl, emptyAnnouncement, () => {
+      $.getJSON(announcementsUrl, (announcements) => {
+        this.setState({announcements: announcements})
+      })
+    })
   }
 
   renderAnnouncements() {
     var announcements = [];
     this.state.announcements.forEach(announcement => {
       announcements.push(
-        <AnnouncementCard announcement={announcement} id={announcement.id} index={announcement.order-1} key={announcement.id} onMove={this.moveAnnouncement} onEdit={this.editAnnouncement}/>
+        <AnnouncementCard announcement={announcement} id={announcement.id} index={announcement.order-1} key={announcement.id} onMove={this.moveAnnouncement} onDelete={this.deleteAnnouncement} onEdit={this.editAnnouncement}/>
       )
     });
     return announcements;
@@ -82,6 +115,7 @@ class EditAnnouncemnts extends React.Component {
           {this.renderAnnouncements()}
         </ListGroup>
         <Button bsStyle="success" disabled={!this.state.change} onClick={this.saveAllAnnouncements} >Save</Button>
+        <Button bsStyle="primary" onClick={this.addAnnouncement} >Add New</Button>
       </div>
     )
   }

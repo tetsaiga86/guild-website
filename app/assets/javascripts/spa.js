@@ -48122,6 +48122,11 @@ var AnnouncementCard = function (_React$Component) {
       this.props.onEdit(this.props.index, field, !e.target.checked);
     }
   }, {
+    key: 'deleteAnnouncement',
+    value: function deleteAnnouncement() {
+      this.props.onDelete(this.props.id);
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -48197,7 +48202,9 @@ var AnnouncementCard = function (_React$Component) {
                 { smOffset: 2, sm: 10 },
                 _react2.default.createElement(
                   _reactBootstrap.Button,
-                  { bsStyle: 'danger' },
+                  { bsStyle: 'danger', onClick: function onClick() {
+                      return _this2.deleteAnnouncement();
+                    } },
                   'Delete'
                 )
               )
@@ -48241,14 +48248,6 @@ var dragDropAnnouncementCard = (0, _reactDnd.DragSource)(_item_types2.default.CA
 })(dropAnnouncementCard);
 
 exports.default = dragDropAnnouncementCard;
-// @DropTarget(ItemTypes.CARD, cardTarget, connect => ({
-//   connectDropTarget: connect.dropTarget(),
-// }))
-// @DragSource(ItemTypes.CARD, cardSource, (connect, monitor) => ({
-//   connectDragSource: connect.dragSource(),
-//   isDragging: monitor.isDragging(),
-// }))
-// export default AnnouncementCard
 
 /***/ }),
 /* 390 */
@@ -49169,6 +49168,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var announcementsUrl = '/api/all_announcements';
 var saveAnnouncementsUrl = '/admin/announcements_many.json';
+var addAnnouncementUrl = '/admin/announcements';
 
 var EditAnnouncemnts = function (_React$Component) {
   _inherits(EditAnnouncemnts, _React$Component);
@@ -49181,6 +49181,8 @@ var EditAnnouncemnts = function (_React$Component) {
     _this.moveAnnouncement = _this.moveAnnouncement.bind(_this);
     _this.editAnnouncement = _this.editAnnouncement.bind(_this);
     _this.saveAllAnnouncements = _this.saveAllAnnouncements.bind(_this);
+    _this.deleteAnnouncement = _this.deleteAnnouncement.bind(_this);
+    _this.addAnnouncement = _this.addAnnouncement.bind(_this);
     return _this;
   }
 
@@ -49234,16 +49236,50 @@ var EditAnnouncemnts = function (_React$Component) {
       _jquery2.default.post(saveAnnouncementsUrl, this.state, function () {
         _this3.setState({ change: false });
       });
-      // console.log(this.state);
+    }
+  }, {
+    key: 'deleteAnnouncement',
+    value: function deleteAnnouncement(id) {
+      var _this4 = this;
+
+      var deletUrl = '/admin/announcements/' + id;
+      _jquery2.default.ajax({
+        url: deletUrl,
+        method: "DELETE",
+        success: function success() {
+          _jquery2.default.getJSON(announcementsUrl, function (announcements) {
+            _this4.setState({ announcements: announcements });
+          });
+        }
+      });
+    }
+  }, {
+    key: 'addAnnouncement',
+    value: function addAnnouncement() {
+      var _this5 = this;
+
+      var emptyAnnouncement = {
+        announcement: {
+          title: "",
+          order: this.state.announcements.length + 1,
+          body: ""
+        }
+      };
+      // add to db, get new json from db, set new state
+      _jquery2.default.post(addAnnouncementUrl, emptyAnnouncement, function () {
+        _jquery2.default.getJSON(announcementsUrl, function (announcements) {
+          _this5.setState({ announcements: announcements });
+        });
+      });
     }
   }, {
     key: 'renderAnnouncements',
     value: function renderAnnouncements() {
-      var _this4 = this;
+      var _this6 = this;
 
       var announcements = [];
       this.state.announcements.forEach(function (announcement) {
-        announcements.push(_react2.default.createElement(_announcementCard2.default, { announcement: announcement, id: announcement.id, index: announcement.order - 1, key: announcement.id, onMove: _this4.moveAnnouncement, onEdit: _this4.editAnnouncement }));
+        announcements.push(_react2.default.createElement(_announcementCard2.default, { announcement: announcement, id: announcement.id, index: announcement.order - 1, key: announcement.id, onMove: _this6.moveAnnouncement, onDelete: _this6.deleteAnnouncement, onEdit: _this6.editAnnouncement }));
       });
       return announcements;
     }
@@ -49267,6 +49303,11 @@ var EditAnnouncemnts = function (_React$Component) {
           _reactBootstrap.Button,
           { bsStyle: 'success', disabled: !this.state.change, onClick: this.saveAllAnnouncements },
           'Save'
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          { bsStyle: 'primary', onClick: this.addAnnouncement },
+          'Add New'
         )
       );
     }

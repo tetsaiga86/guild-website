@@ -30,7 +30,7 @@ module Admin
 
       respond_to do |format|
         if @announcement.save
-          format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
+          # format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
           format.json { render json: @announcement, status: :created }
         else
           format.html { render :new }
@@ -58,8 +58,8 @@ module Admin
     def destroy
       @announcement.destroy
       respond_to do |format|
-        format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
-        format.json { head :no_content }
+        # format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
+        format.json { render json: {}, status: :ok }
       end
     end
 
@@ -70,7 +70,9 @@ module Admin
           .update(
             announcement.permit(:title, :order, :body, :retired))
       end
-      head :ok
+      respond_to do |format|
+        format.json { render json: {}, status: :ok }
+      end
     end
 
     private

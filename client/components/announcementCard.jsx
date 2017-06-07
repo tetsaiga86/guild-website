@@ -91,6 +91,10 @@ class AnnouncementCard extends React.Component {
     this.props.onEdit(this.props.index, field, !e.target.checked)
   }
 
+  deleteAnnouncement(){
+    this.props.onDelete(this.props.id)
+  }
+
   render () {
     const { isDragging, connectDragSource, connectDropTarget } = this.props;
     const opacity = isDragging ? 0 : 1;
@@ -125,7 +129,7 @@ class AnnouncementCard extends React.Component {
 
             <FormGroup>
               <Col smOffset={2} sm={10}>
-                <Button bsStyle="danger">
+                <Button bsStyle="danger" onClick={() => this.deleteAnnouncement()}>
                   Delete
                 </Button>
               </Col>
@@ -161,11 +165,3 @@ const dragDropAnnouncementCard = DragSource(ItemTypes.CARD, cardSource, (connect
 }))(dropAnnouncementCard)
 
 export default dragDropAnnouncementCard
-// @DropTarget(ItemTypes.CARD, cardTarget, connect => ({
-//   connectDropTarget: connect.dropTarget(),
-// }))
-// @DragSource(ItemTypes.CARD, cardSource, (connect, monitor) => ({
-//   connectDragSource: connect.dragSource(),
-//   isDragging: monitor.isDragging(),
-// }))
-// export default AnnouncementCard
