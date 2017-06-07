@@ -5,6 +5,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import $ from 'jquery'
 import {
   ListGroup,
+  Button
 } from 'react-bootstrap'
 import AnnouncementCard from './announcementCard'
 
@@ -14,10 +15,14 @@ class EditAnnouncemnts extends React.Component {
     super(props)
     this.moveAnnouncement = this.moveAnnouncement.bind(this)
     this.editAnnouncement = this.editAnnouncement.bind(this)
+    this.saveAllAnnouncements = this.saveAllAnnouncements.bind(this)
   }
 
   componentWillMount () {
-    this.setState({announcements: []})
+    this.setState({
+      announcements: [],
+      change: false
+    })
     $.getJSON(announcementsUrl, (announcements) => {
       this.setState({announcements: announcements})
     })
@@ -35,11 +40,23 @@ class EditAnnouncemnts extends React.Component {
         ]
       }
     }))
+    if (!this.state.change) this.setState({ change : true})
   }
   editAnnouncement(index, field, newValue){
     var newAnnouncements = [...this.state.announcements]
     newAnnouncements[index][field] = newValue
-    this.setState({ announcements: newAnnouncements})
+    this.setState({ announcements : newAnnouncements})
+    if (!this.state.change) this.setState({ change : true})
+  }
+
+  saveAllAnnouncements(){
+    var newAnnouncements = [...this.state.announcements]
+
+    for (var i = 0; i < newAnnouncements.length; i++) {
+      newAnnouncements[i]['order'] = i + 1
+    }
+    console.log(newAnnouncements);
+    // $.post()
   }
 
   renderAnnouncements() {
@@ -59,6 +76,7 @@ class EditAnnouncemnts extends React.Component {
         <ListGroup>
           {this.renderAnnouncements()}
         </ListGroup>
+        <Button bsStyle="success" disabled={!this.state.change} onClick={this.saveAllAnnouncements} >Save</Button>
       </div>
     )
   }

@@ -10,7 +10,7 @@ class Recruitment extends React.Component {
     })
   }
 
-  renderAnnouncements() {
+  renderRecruitListing() {
     var wowClassesArr = [];
     this.state.wowClasses.forEach(wowClass => {
       wowClassesArr.push(
@@ -28,7 +28,7 @@ class Recruitment extends React.Component {
       <div className="recruitment-list">
         <h2>Recruitment</h2>
         <ul>
-          {this.renderAnnouncements()}
+          {this.renderRecruitListing()}
         </ul>
       </div>
     )

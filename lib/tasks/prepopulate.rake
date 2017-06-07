@@ -36,7 +36,7 @@ namespace :prepopulate do
     bnet_client = ::Bnet::Client.new
     guild_members = bnet_client.guild_members(ENV['GUILD_NAME'])
     filtered_guild_members = guild_members.select do |member|
-      member['rank']<=3
+      member['rank']<=4
     end
 
     filtered_guild_members.each do |member|

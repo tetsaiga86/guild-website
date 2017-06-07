@@ -6,7 +6,8 @@ import {
   Grid,
   Row,
   Clearfix,
-  Col
+  Col,
+  
 } from 'react-bootstrap'
 
 
