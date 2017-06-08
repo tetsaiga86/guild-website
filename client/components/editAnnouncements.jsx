@@ -63,7 +63,8 @@ class EditAnnouncemnts extends React.Component {
   }
 
   saveAllAnnouncements(){
-    $.post(saveAnnouncementsUrl, this.state, () => {
+    $.post(saveAnnouncementsUrl, this.state, (data) => {
+      this.setState({ announcements : data })
       this.setState({ change : false })
     })
   }
@@ -73,15 +74,14 @@ class EditAnnouncemnts extends React.Component {
     $.ajax({
       url: deletUrl,
       method: "DELETE",
-      success: () => {
-        $.getJSON(announcementsUrl, (announcements) => {
-          this.setState({announcements: announcements})
-        })
+      success: (data) => {
+        this.setState({announcements: data})
       }
     })
   }
 
   addAnnouncement(){
+    this.saveAllAnnouncements()
     var emptyAnnouncement = {
       announcement : {
 		    title : "",
@@ -90,10 +90,8 @@ class EditAnnouncemnts extends React.Component {
 	    }
     }
     // add to db, get new json from db, set new state
-    $.post(addAnnouncementUrl, emptyAnnouncement, () => {
-      $.getJSON(announcementsUrl, (announcements) => {
-        this.setState({announcements: announcements})
-      })
+    $.post(addAnnouncementUrl, emptyAnnouncement, (data) => {
+      this.setState({ announcements: data })
     })
   }
 

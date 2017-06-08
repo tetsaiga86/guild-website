@@ -31,9 +31,9 @@ module Admin
       respond_to do |format|
         if @announcement.save
           # format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
-          format.json { render json: @announcement, status: :created }
+          format.json { render json: Announcement.order(:order), status: :created }
         else
-          format.html { render :new }
+          # format.html { render :new }
           format.json { render json: @announcement.errors, status: :unprocessable_entity }
         end
       end
@@ -62,7 +62,7 @@ module Admin
       end
       respond_to do |format|
         # format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
-        format.json { render json: {}, status: :ok }
+        format.json { render json: Announcement.order(:order), status: :ok }
       end
     end
 
@@ -76,7 +76,7 @@ module Admin
           )
       end
       respond_to do |format|
-        format.json { render json: {}, status: :ok }
+        format.json { render json: Announcement.order(:order), status: :ok }
       end
     end
 
