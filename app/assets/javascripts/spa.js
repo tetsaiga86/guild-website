@@ -46346,6 +46346,10 @@ var _editAnnouncements = __webpack_require__(397);
 
 var _editAnnouncements2 = _interopRequireDefault(_editAnnouncements);
 
+var _editRecruitList = __webpack_require__(761);
+
+var _editRecruitList2 = _interopRequireDefault(_editRecruitList);
+
 var _reactBootstrap = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -46383,20 +46387,24 @@ var AdminLanding = function (_React$Component) {
               { className: 'top-row' },
               _react2.default.createElement(
                 _reactBootstrap.Col,
-                { xs: 12, md: 8 },
+                { xs: 18, md: 12 },
                 _react2.default.createElement(
                   _reactBootstrap.Row,
                   null,
                   _react2.default.createElement(
                     _reactBootstrap.Col,
-                    null,
+                    { xs: 12, md: 8 },
                     _react2.default.createElement(_editAnnouncements2.default, null)
+                  ),
+                  _react2.default.createElement(
+                    _reactBootstrap.Col,
+                    { xs: 6, md: 4 },
+                    _react2.default.createElement(_editRecruitList2.default, null)
                   )
                 ),
                 _react2.default.createElement(
                   _reactBootstrap.Row,
                   null,
-                  _react2.default.createElement(_reactBootstrap.Col, { xs: 12, md: 8 }),
                   _react2.default.createElement(_reactBootstrap.Col, { xs: 6, md: 4 })
                 )
               ),
@@ -48174,7 +48182,7 @@ var AnnouncementCard = function (_React$Component) {
               _react2.default.createElement(
                 _reactBootstrap.Col,
                 { sm: 10 },
-                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', value: announcement.body, onChange: function onChange(e) {
+                _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', value: announcement.body, onChange: function onChange(e) {
                     return _this2.onChange(e, 'body');
                   } })
               )
@@ -79926,6 +79934,140 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 761 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDnd = __webpack_require__(346);
+
+var _update = __webpack_require__(754);
+
+var _update2 = _interopRequireDefault(_update);
+
+var _reactDndHtml5Backend = __webpack_require__(649);
+
+var _reactDndHtml5Backend2 = _interopRequireDefault(_reactDndHtml5Backend);
+
+var _jquery = __webpack_require__(42);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _reactBootstrap = __webpack_require__(16);
+
+var _recruitCard = __webpack_require__(762);
+
+var _recruitCard2 = _interopRequireDefault(_recruitCard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var EditRecruitList = function (_React$Component) {
+  _inherits(EditRecruitList, _React$Component);
+
+  function EditRecruitList() {
+    _classCallCheck(this, EditRecruitList);
+
+    return _possibleConstructorReturn(this, (EditRecruitList.__proto__ || Object.getPrototypeOf(EditRecruitList)).apply(this, arguments));
+  }
+
+  _createClass(EditRecruitList, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'edit-recruit-list' },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Recruit List'
+        )
+      );
+    }
+  }]);
+
+  return EditRecruitList;
+}(_react2.default.Component);
+
+exports.default = (0, _reactDnd.DragDropContext)(_reactDndHtml5Backend2.default)(EditRecruitList);
+
+/***/ }),
+/* 762 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(10);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactDom = __webpack_require__(22);
+
+var _reactDnd = __webpack_require__(346);
+
+var _item_types = __webpack_require__(410);
+
+var _item_types2 = _interopRequireDefault(_item_types);
+
+var _reactBootstrap = __webpack_require__(16);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RecruitCard = function (_React$Component) {
+  _inherits(RecruitCard, _React$Component);
+
+  function RecruitCard() {
+    _classCallCheck(this, RecruitCard);
+
+    return _possibleConstructorReturn(this, (RecruitCard.__proto__ || Object.getPrototypeOf(RecruitCard)).apply(this, arguments));
+  }
+
+  _createClass(RecruitCard, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement('div', null);
+    }
+  }]);
+
+  return RecruitCard;
+}(_react2.default.Component);
+
+exports.default = RecruitCard;
 
 /***/ })
 /******/ ]);

@@ -57,6 +57,9 @@ module Admin
     # DELETE /announcements/1.json
     def destroy
       @announcement.destroy
+      Announcement.order(:order).to_a.each_with_index do |announcement, idx|
+        announcement.update(order: idx + 1)
+      end
       respond_to do |format|
         # format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
         format.json { render json: {}, status: :ok }
@@ -64,11 +67,13 @@ module Admin
     end
 
     def update_many
-      params.require(:announcements).each do |key, announcement|
+      params.require(:announcements).each do |_key, announcement|
         puts announcement.inspect
-        Announcement.find(announcement['id'])
+        Announcement
+          .find(announcement['id'])
           .update(
-            announcement.permit(:title, :order, :body, :retired))
+            announcement.permit(:title, :order, :body, :retired)
+          )
       end
       respond_to do |format|
         format.json { render json: {}, status: :ok }

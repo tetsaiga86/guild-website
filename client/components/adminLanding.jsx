@@ -2,12 +2,13 @@ import React from 'react'
 import Footer from './footer'
 import Header from './header'
 import EditAnnouncements from './editAnnouncements'
+import EditRecruitList from './editRecruitList'
 import {
   Grid,
   Row,
   Clearfix,
   Col,
-  
+
 } from 'react-bootstrap'
 
 
@@ -19,15 +20,16 @@ class AdminLanding extends React.Component {
         <div className="main-page">
           <Grid>
            <Row className="top-row">
-             <Col xs={12} md={8}>
+             <Col xs={18} md={12}>
                <Row>
-                 <Col>
+                 <Col xs={12} md={8}>
                    <EditAnnouncements />
+                 </Col>
+                 <Col xs={6} md={4}>
+                   <EditRecruitList />
                  </Col>
                </Row>
                <Row>
-                 <Col xs={12} md={8}>
-                 </Col>
                  <Col xs={6} md={4}>
                  </Col>
                </Row>

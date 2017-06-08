@@ -117,7 +117,7 @@ class AnnouncementCard extends React.Component {
                 Body
               </Col>
               <Col sm={10}>
-                <FormControl type="text" value={announcement.body} onChange={(e) => this.onChange(e, 'body')}/>
+                <FormControl componentClass="textarea" value={announcement.body} onChange={(e) => this.onChange(e, 'body')}/>
               </Col>
             </FormGroup>
 
