@@ -155,11 +155,11 @@ AnnouncementCard.propTypes = {
   onEdit: PropTypes.func.isRequired,
 };
 
-const dropAnnouncementCard = DropTarget(ItemTypes.CARD, cardTarget, connect => ({
+const dropAnnouncementCard = DropTarget(ItemTypes.ANNOUNCEMENT_CARD, cardTarget, connect => ({
   connectDropTarget: connect.dropTarget(),
 }))(AnnouncementCard)
 
-const dragDropAnnouncementCard = DragSource(ItemTypes.CARD, cardSource, (connect, monitor) => ({
+const dragDropAnnouncementCard = DragSource(ItemTypes.ANNOUNCEMENT_CARD, cardSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
 }))(dropAnnouncementCard)

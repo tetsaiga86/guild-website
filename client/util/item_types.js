@@ -1,3 +1,4 @@
 export default {
-  CARD: 'card',
+  ANNOUNCEMENT_CARD: 'announcement_card',
+  RECRUIT_CARD: 'recruit_card'
 };

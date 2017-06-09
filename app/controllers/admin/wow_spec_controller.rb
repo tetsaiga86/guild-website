@@ -3,11 +3,6 @@ module Admin
     skip_before_filter :verify_authenticity_token
 
     def list
-      render json: {
-        activeRecruits: WowSpec.includes(:wow_class),
-        wowClasses: WowClass.includes(:wow_specs)
-      }, include: { activeRecruits: :wow_class, wowClasses: :wow_specs}
-
     end
 
     def update_many
@@ -21,11 +16,7 @@ module Admin
       end
       respond_to do |format|
         format.json do
-          if params['bySpec']
-            render json: WowSpec.includes(:wow_class), include: :wow_class
-          else
-            render json: WowClass.includes(:wow_specs), include: :wow_specs
-          end
+          render :list
         end
       end
     end

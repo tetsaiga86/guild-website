@@ -7,9 +7,10 @@ import {
 import WowClass from './wowClass.jsx'
 
 class RecruitModal extends React.Component{
-  constructor(props) {
-    super(props)
-    this.renderRecruitList = this.renderRecruitList.bind(this)
+  onEdit(classIndex) {
+    return (specIndex, field, newValue) => {
+      this.props.onEdit(classIndex, specIndex, field, newValue);
+    }
   }
 
   renderRecruitList(){
@@ -18,7 +19,7 @@ class RecruitModal extends React.Component{
     if (this.props.recruitList.length) {
       this.props.recruitList.forEach(wowClass => {
         wowClassList.push(
-          <WowClass key={wowClass.id} wowClassObj={wowClass}/>
+          <WowClass key={wowClass.id} wowClassObj={wowClass} onEdit={this.onEdit(wowClassList.length)}/>
         )
       })
     }
@@ -38,8 +39,8 @@ class RecruitModal extends React.Component{
           {this.renderRecruitList()}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.save}>Save</Button>
-          <Button onClick={this.props.onRequestClose}>Close</Button>
+          <Button bsStyle="success" onClick={this.props.save}>Save</Button>
+          <Button bsStyle="danger" onClick={this.props.onRequestClose}>Cancel</Button>
         </Modal.Footer>
       </Modal>
     )

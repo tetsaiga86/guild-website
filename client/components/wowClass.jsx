@@ -14,11 +14,20 @@ class WowClass extends React.Component{
     this.renderWowSpecs = this.renderWowSpecs.bind(this)
   }
 
+  onToggle(specIndex){
+    return (e) => {
+      console.log(e);
+      this.props.onEdit(specIndex, 'active', e.nativeEvent.target.checked);
+    }
+  }
+
   renderWowSpecs(wowClass){
     var wowSpecArr = []
     wowClass.wow_specs.forEach(wowSpec => {
       wowSpecArr.push(
-        <Checkbox key={wowSpec.id} checked={wowSpec.active}>{wowSpec.name}</Checkbox>
+        <Checkbox key={wowSpec.id} checked={!!wowSpec.active} onChange={this.onToggle(wowSpecArr.length)}>
+          {wowSpec.name}
+        </Checkbox>
       )
     })
     return wowSpecArr

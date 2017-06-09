@@ -10,6 +10,8 @@ import {
   Col,
 
 } from 'react-bootstrap'
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
 
 
 class AdminLanding extends React.Component {
@@ -48,4 +50,4 @@ class AdminLanding extends React.Component {
 }
 
 
-export default AdminLanding
+export default DragDropContext(HTML5Backend)(AdminLanding)

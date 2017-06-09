@@ -118,4 +118,4 @@ class EditAnnouncemnts extends React.Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(EditAnnouncemnts)
+export default EditAnnouncemnts
