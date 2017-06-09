@@ -6,6 +6,7 @@ import {
 
 } from 'react-bootstrap'
 
+// FIXME: get rid of cruft
 class CharacterModal extends React.Component{
   constructor(props) {
     super(props);

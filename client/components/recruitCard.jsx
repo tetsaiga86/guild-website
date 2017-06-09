@@ -17,9 +17,11 @@ import {
 class RecruitCard extends React.Component {
 
   render () {
+    const recruit = this.props.recruit
     return (
       <div>
-
+        <img src={recruit.img_url}></img>
+        {recruit.name} {recruit.wow_class.name}
       </div>
     )
   }

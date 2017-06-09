@@ -48829,6 +48829,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// FIXME: get rid of cruft
 var CharacterModal = function (_React$Component) {
   _inherits(CharacterModal, _React$Component);
 
@@ -49383,7 +49384,6 @@ var EditAnnouncemnts = function (_React$Component) {
 
       var reordered = (0, _update2.default)(this.state, {
         announcements: {
-
           $splice: [[dragIndex, 1], [hoverIndex, 0, dragged]]
         }
       });
@@ -49528,6 +49528,10 @@ var _recruitCard = __webpack_require__(408);
 
 var _recruitCard2 = _interopRequireDefault(_recruitCard);
 
+var _recruitModal = __webpack_require__(763);
+
+var _recruitModal2 = _interopRequireDefault(_recruitModal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49536,25 +49540,135 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// const allRecruitsUrl = '/api/all_recruitments'
+var activeRecruitsUrl = '/api/recruitment';
+var wowClassesUrl = '/api/wow_classes';
+var saveAllRecruitsUrl = '/admin/wow_specs_many';
+
 var EditRecruitList = function (_React$Component) {
   _inherits(EditRecruitList, _React$Component);
 
-  function EditRecruitList() {
+  function EditRecruitList(props) {
     _classCallCheck(this, EditRecruitList);
 
-    return _possibleConstructorReturn(this, (EditRecruitList.__proto__ || Object.getPrototypeOf(EditRecruitList)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (EditRecruitList.__proto__ || Object.getPrototypeOf(EditRecruitList)).call(this, props));
+
+    _this.state = { showModal: false };
+    _this.moveRecruit = _this.moveRecruit.bind(_this);
+    // this.editRecruit = this.editRecruit.bind(this)
+    _this.saveAllRecruits = _this.saveAllRecruits.bind(_this);
+    _this.deleteRecruit = _this.deleteRecruit.bind(_this);
+    _this.addRecruit = _this.addRecruit.bind(_this);
+    _this.onRequestClose = _this.onRequestClose.bind(_this);
+    return _this;
   }
 
   _createClass(EditRecruitList, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      this.setState({
+        // recruits: [],
+        activeRecruits: [],
+        wowClasses: [],
+        change: false
+      });
+      // $.getJSON(allRecruitsUrl, (recruits) => {
+      // this.setState({ recruits : recruits })
+      // })
+      _jquery2.default.getJSON(activeRecruitsUrl, function (activeRecruits) {
+        _this2.setState({ activeRecruits: activeRecruits });
+      });
+      _jquery2.default.getJSON(wowClassesUrl, function (wowClasses) {
+        _this2.setState({ wowClasses: wowClasses });
+      });
+    }
+  }, {
+    key: 'moveRecruit',
+    value: function moveRecruit(dragIndex, hoverIndex) {
+      var activeRecruits = this.state.activeRecruits;
+
+      var dragged = activeRecruits[dragIndex];
+
+      var reordered = (0, _update2.default)(this.state, {
+        activeRecruits: {
+          $splice: [[dragIndex, 1], [hoverIndex, 0, dragged]]
+        }
+      });
+
+      reordered.activeRecruits.forEach(function (activeRecruit, index) {
+        activeRecruit.order = index + 1;
+      });
+
+      this.setState(reordered);
+      if (!this.state.change) this.setState({ change: true });
+    }
+  }, {
+    key: 'deleteRecruit',
+    value: function deleteRecruit(id) {
+      // var deletUrl = `/admin/announcements/${id}`
+      // $.ajax({
+      //   url: deletUrl,
+      //   method: "DELETE",
+      //   success: (data) => {
+      //     this.setState({announcements: data})
+      //   }
+      // })
+    }
+  }, {
+    key: 'renderActiveRecruits',
+    value: function renderActiveRecruits() {
+      var _this3 = this;
+
+      var activeRecruitsList = [];
+      this.state.activeRecruits.forEach(function (recruit) {
+        activeRecruitsList.push(_react2.default.createElement(_recruitCard2.default, { recruit: recruit, id: recruit.id, index: recruit.order - 1, key: recruit.id, onMove: _this3.moveRecruit, onDelete: _this3.deleteRecruit }));
+      });
+    }
+  }, {
+    key: 'saveAllRecruits',
+    value: function saveAllRecruits(newWowSpecs) {
+      var _this4 = this;
+
+      _jquery2.default.post(saveAllRecruitsUrl, {
+        wow_specs: newWowSpecs,
+        bySpec: true
+      }, function (data) {
+        _this4.setState({ activeRecruits: data });
+      });
+    }
+  }, {
+    key: 'addRecruit',
+    value: function addRecruit() {
+      this.setState({ showModal: true });
+    }
+  }, {
+    key: 'onRequestClose',
+    value: function onRequestClose() {
+      this.setState({ showModal: false });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         { className: 'edit-recruit-list' },
+        _react2.default.createElement(_recruitModal2.default, { show: this.state.showModal, onRequestClose: this.onRequestClose, recruitList: this.state.wowClasses, save: this.saveAllRecruits }),
         _react2.default.createElement(
           'h1',
           null,
           'Recruit List'
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.ListGroup,
+          null,
+          this.renderActiveRecruits()
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          { bsStyle: 'primary', onClick: this.addRecruit },
+          'Edit List'
         )
       );
     }
@@ -50241,7 +50355,15 @@ var RecruitCard = function (_React$Component) {
   _createClass(RecruitCard, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', null);
+      var recruit = this.props.recruit;
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement('img', { src: recruit.img_url }),
+        recruit.name,
+        ' ',
+        recruit.wow_class.name
+      );
     }
   }]);
 
@@ -80066,6 +80188,196 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 763 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(16);
+
+var _wowClass = __webpack_require__(764);
+
+var _wowClass2 = _interopRequireDefault(_wowClass);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RecruitModal = function (_React$Component) {
+  _inherits(RecruitModal, _React$Component);
+
+  function RecruitModal(props) {
+    _classCallCheck(this, RecruitModal);
+
+    var _this = _possibleConstructorReturn(this, (RecruitModal.__proto__ || Object.getPrototypeOf(RecruitModal)).call(this, props));
+
+    _this.renderRecruitList = _this.renderRecruitList.bind(_this);
+    return _this;
+  }
+
+  _createClass(RecruitModal, [{
+    key: 'renderRecruitList',
+    value: function renderRecruitList() {
+      var wowClassList = [];
+
+      if (this.props.recruitList.length) {
+        this.props.recruitList.forEach(function (wowClass) {
+          wowClassList.push(_react2.default.createElement(_wowClass2.default, { key: wowClass.id, wowClassObj: wowClass }));
+        });
+      }
+      return wowClassList;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      console.log(this.props.recruitList);
+      return _react2.default.createElement(
+        _reactBootstrap.Modal,
+        { show: this.props.show, onHide: this.props.onRequestClose },
+        _react2.default.createElement(
+          _reactBootstrap.Modal.Header,
+          { closeButton: true },
+          _react2.default.createElement(
+            _reactBootstrap.Modal.Title,
+            null,
+            'Edit Recruit List'
+          )
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Modal.Body,
+          null,
+          this.renderRecruitList()
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Modal.Footer,
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.Button,
+            { onClick: this.props.save },
+            'Save'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Button,
+            { onClick: this.props.onRequestClose },
+            'Close'
+          )
+        )
+      );
+    }
+  }]);
+
+  return RecruitModal;
+}(_react2.default.Component);
+
+exports.default = RecruitModal;
+
+/***/ }),
+/* 764 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(16);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var WowClass = function (_React$Component) {
+  _inherits(WowClass, _React$Component);
+
+  function WowClass(props) {
+    _classCallCheck(this, WowClass);
+
+    var _this = _possibleConstructorReturn(this, (WowClass.__proto__ || Object.getPrototypeOf(WowClass)).call(this, props));
+
+    _this.state = {};
+    _this.renderWowSpecs = _this.renderWowSpecs.bind(_this);
+    return _this;
+  }
+
+  _createClass(WowClass, [{
+    key: 'renderWowSpecs',
+    value: function renderWowSpecs(wowClass) {
+      var wowSpecArr = [];
+      wowClass.wow_specs.forEach(function (wowSpec) {
+        wowSpecArr.push(_react2.default.createElement(
+          _reactBootstrap.Checkbox,
+          { key: wowSpec.id, checked: wowSpec.active },
+          wowSpec.name
+        ));
+      });
+      return wowSpecArr;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var wowClass = this.props.wowClassObj;
+      return _react2.default.createElement(
+        'div',
+        { key: wowClass.id },
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          { className: 'wow-class-button', onClick: function onClick() {
+              return _this2.setState({ open: !_this2.state.open });
+            } },
+          wowClass.name
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Collapse,
+          { 'in': this.state.open },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Well,
+              null,
+              this.renderWowSpecs(wowClass)
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return WowClass;
+}(_react2.default.Component);
+
+exports.default = WowClass;
 
 /***/ })
 /******/ ]);

@@ -45,6 +45,14 @@ class ProxyController < ApplicationController
     render json: WowSpec.includes(:wow_class).active, include: :wow_class
   end
 
+  def all_recruitments
+    render json: WowSpec.includes(:wow_class), include: :wow_class
+  end
+
+  def wow_classes
+    render json: WowClass.includes(:wow_specs), include: :wow_specs
+  end
+
   def log
     render json: logs_client.guild_log(params[:id])
   end

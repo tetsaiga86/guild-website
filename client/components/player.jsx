@@ -27,11 +27,11 @@ class Player extends React.Component{
   }
 
   onOpen () {
-    this.setState({ showModal: true });
+    this.setState({ showModal : true });
   }
 
   onRequestClose () {
-    this.setState({ showModal: false });
+    this.setState({ showModal : false });
   }
 
   getCharacterspec(character){

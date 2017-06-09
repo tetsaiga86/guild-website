@@ -199,3 +199,7 @@ strong{
 .playerImg{
   max-width: 84px;
 }
+
+.wow-class-button{
+  min-width: 100%;
+}

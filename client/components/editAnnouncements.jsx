@@ -39,7 +39,6 @@ class EditAnnouncemnts extends React.Component {
 
     const reordered = update(this.state, {
       announcements: {
-
         $splice: [
           [dragIndex, 1],
           [hoverIndex, 0, dragged]
@@ -52,7 +51,7 @@ class EditAnnouncemnts extends React.Component {
     })
 
     this.setState(reordered)
-    if (!this.state.change) this.setState({ change : true})
+    if (!this.state.change) this.setState({ change : true })
   }
 
   editAnnouncement(index, field, newValue){
@@ -96,7 +95,7 @@ class EditAnnouncemnts extends React.Component {
   }
 
   renderAnnouncements() {
-    var announcements = [];
+    var announcements = []
     this.state.announcements.forEach(announcement => {
       announcements.push(
         <AnnouncementCard announcement={announcement} id={announcement.id} index={announcement.order-1} key={announcement.id} onMove={this.moveAnnouncement} onDelete={this.deleteAnnouncement} onEdit={this.editAnnouncement}/>
