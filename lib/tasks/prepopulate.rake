@@ -44,16 +44,16 @@ namespace :prepopulate do
       character_info = bnet_client.character_info(member['character']['name'])
       member_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
       member_datum.update_from_hash(character_info)
-      # member_datum.update(body: character_info.to_json, updated_at:Time.now)
     end
   end
 
   task raid_logs: :environment do
     raid_log_client = ::Warcraftlogs::Client.new
     log_data = raid_log_client.guild_log_ids(ENV['GUILD_NAME'])
-    guild_leader_personal_log_ids = raid_log_client.guild_leader_personal_logs()
+    guild_leader_personal_log_ids = raid_log_client.guild_leader_personal_logs
+    puts 'log_data'
     all_log_ids = log_data.push(*guild_leader_personal_log_ids)
-    all_log_ids.sort! do |a,b|
+    all_log_ids.sort! do |a, b|
       a['start'] <=> b['start']
     end
 
@@ -110,16 +110,7 @@ namespace :prepopulate do
     end
 
     guild_data = bnet_client.achievements(ENV['GUILD_NAME'])
-    # filtered_news = guild_data['news'].select do |news_item|
-    #   news_item['context'].include?('raid') || news_item['context'].include?('dungeon')
-    # end
-    #
-    # filtered_news.each do |newsItem|
-    #   puts "fetching #{newsItem['itemId']}"
-    #   item_info = bnet_client.item_info(newsItem['itemId'])
-    #   character_loot_datum = CharacterLootDatum.find_or_create_by(bnet_id: newsItem['itemId'])
-    #   character_loot_datum.update(body: item_info.to_json)
-    # end
+
     filtered_news = guild_data['news'].select do |fn|
       fn['type']=="itemLoot"
     end

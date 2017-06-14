@@ -18,13 +18,10 @@ class EditRecruitList extends React.Component {
     super(props)
     this.state = { showModal : false}
     this.moveRecruit = this.moveRecruit.bind(this)
-    // this.editRecruit = this.editRecruit.bind(this)
     this.saveAllRecruits = this.saveAllRecruits.bind(this)
-    this.deleteRecruit = this.deleteRecruit.bind(this)
     this.addRecruit = this.addRecruit.bind(this)
     this.onRequestClose = this.onRequestClose.bind(this)
     this.editSpecByClass = this.editSpecByClass.bind(this)
-    this.saveRecruitOrder = this.saveRecruitOrder.bind(this)
   }
 
   componentWillMount () {
@@ -68,30 +65,15 @@ class EditRecruitList extends React.Component {
     if (!this.state.change) this.setState({ change : true })
   }
 
-  deleteRecruit(id){
-    // var deletUrl = `/admin/announcements/${id}`
-    // $.ajax({
-    //   url: deletUrl,
-    //   method: "DELETE",
-    //   success: (data) => {
-    //     this.setState({announcements: data})
-    //   }
-    // })
-  }
-
   renderActiveRecruits(){
     var activeRecruitsList = []
     this.state.activeRecruits.forEach(recruit => {
       activeRecruitsList.push(
-        <RecruitCard recruit={recruit} id={recruit.id} index={activeRecruitsList.length} key={recruit.id} onMove={this.moveRecruit} onDelete={this.deleteRecruit}/>
+        <RecruitCard recruit={recruit} id={recruit.id} index={activeRecruitsList.length} key={recruit.id} onMove={this.moveRecruit} />
       )
     })
     console.log('arl', activeRecruitsList);
     return activeRecruitsList
-  }
-
-  saveRecruitOrder(){
-
   }
 
   saveAllRecruits(){
