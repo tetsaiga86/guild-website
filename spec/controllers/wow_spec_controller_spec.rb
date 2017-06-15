@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe WowSpecController, type: :controller do
-
+RSpec.describe Admin::WowSpecController, type: :controller do
+  # FIXME: 
 end

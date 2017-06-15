@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe WowClassController, type: :controller do
+RSpec.describe Admin::WowClassController, type: :controller do
 
 end
