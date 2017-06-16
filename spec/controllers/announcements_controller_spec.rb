@@ -26,7 +26,8 @@ RSpec.describe Admin::AnnouncementsController, type: :controller do
   describe '#create' do
     # FIXME:
     it 'creates a new announcement' do
-
+      post :create, announcement: attributes_for(:announcement)
+      expect(JSON.parse(response.body).length).to eq(1)
     end
 
     it 'returns valid json of all announcements in order' do
@@ -35,9 +36,11 @@ RSpec.describe Admin::AnnouncementsController, type: :controller do
   end
 
   describe '#destroy' do
-    # FIXME:
-    it 'destroys an announcement' do
+    let(:announcement) { create(:announcement, title: 'foo', body: 'bar', order: 1, retired: false) }
 
+    it 'destroys an announcement' do
+      delete :destroy, id: announcement.id
+      expect(JSON.parse(response.body).length).to eq(0)
     end
 
     it 'returns valid json of all announcements in order' do

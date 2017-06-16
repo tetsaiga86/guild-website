@@ -53,7 +53,7 @@ RSpec.describe ProxyController, type: :controller do
     end
 
     it 'returns http ok' do
-      get :character_info, params: {name: 'foo'}
+      get :character_info, params: { name: 'foo' }
       expect(response).to have_http_status(:ok)
     end
 

@@ -28,14 +28,11 @@ module Admin
     def create
       @announcement = Announcement.new(announcement_params)
 
-      respond_to do |format|
-        if @announcement.save
-          # format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
-          format.json { render json: Announcement.order(:order), status: :created }
-        else
-          # format.html { render :new }
-          format.json { render json: @announcement.errors, status: :unprocessable_entity }
-        end
+
+      if @announcement.save
+        render json: Announcement.order(:order), status: :created
+      else
+        render json: @announcement.errors, status: :unprocessable_entity
       end
     end
 
@@ -60,15 +57,12 @@ module Admin
       Announcement.order(:order).to_a.each_with_index do |announcement, idx|
         announcement.update(order: idx + 1)
       end
-      respond_to do |format|
-        # format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
-        format.json { render json: Announcement.order(:order), status: :ok }
-      end
+
+      render json: Announcement.order(:order), status: :ok
     end
 
     def update_many
       params.require(:announcements).each do |_key, announcement|
-        puts announcement.inspect
         Announcement
           .find(announcement['id'])
           .update(
