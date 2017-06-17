@@ -61,10 +61,13 @@ class EditAnnouncemnts extends React.Component {
     if (!this.state.change) this.setState({ change : true})
   }
 
-  saveAllAnnouncements(){
+  saveAllAnnouncements(cb){
     $.post(saveAnnouncementsUrl, this.state, (data) => {
       this.setState({ announcements : data })
       this.setState({ change : false })
+      if (typeof cb === 'function') {
+        cb()
+      }
     })
   }
 
@@ -80,18 +83,20 @@ class EditAnnouncemnts extends React.Component {
   }
 
   addAnnouncement(){
-    this.saveAllAnnouncements()
-    var emptyAnnouncement = {
-      announcement : {
-		    title : "",
-		    order : this.state.announcements.length+1,
-		    body : ""
-	    }
-    }
-    // add to db, get new json from db, set new state
-    $.post(addAnnouncementUrl, emptyAnnouncement, (data) => {
-      this.setState({ announcements: data })
+    this.saveAllAnnouncements(() => {
+      var emptyAnnouncement = {
+        announcement : {
+          title : "",
+          order : this.state.announcements.length+1,
+          body : ""
+        }
+      }
+      // add to db, get new json from db, set new state
+      $.post(addAnnouncementUrl, emptyAnnouncement, (data) => {
+        this.setState({ announcements: data })
+      })
     })
+
   }
 
   renderAnnouncements() {

@@ -12,6 +12,7 @@ import $ from 'jquery'
 const stubGetJson = sinon.stub($, 'getJSON').callsFake((url, callBack) => {
   callBack(all_announcements)
 })
+const stubAddAnnouncement = sinon.stub(EditAnnouncements.prototype, 'addAnnouncement')
 const stubPost = sinon.stub($, 'post')
 const stubAjax = sinon.stub($, 'ajax')
 const component = shallow(
@@ -30,16 +31,16 @@ test('save button calls $.post', () => {
   stubPost.resetHistory()
 })
 
-test('edit button calls $.post twice', () => {
+test('add new button calls addAnnouncement()', () => {
   var addNewBtn = component.childAt(3)
   addNewBtn.simulate('click')
-  expect(stubPost.callCount).toBe(2)
-  stubPost.resetHistory()
+  expect(stubAddAnnouncement.callCount).toBe(1)
+  stubAddAnnouncement.resetHistory()
 })
 
-test.skip('delete button on AnnouncementCard calls $.ajax', () => {
-  var deleteBtn = component.find(AnnouncementCard).shallow().find('Button')
-  deleteBtn.simulate('click')
-  expect(stubAjax.callCount).toBe(1)
-  stubAjax.resetHistory()
+test('AnnoouncementCard is given expected props', () => {
+  var card = component.find(AnnouncementCard)
+  expect(card.prop('onMove')).toBe(component.instance().moveAnnouncement)
+  expect(card.prop('onDelete')).toBe(component.instance().deleteAnnouncement)
+  expect(card.prop('onEdit')).toBe(component.instance().editAnnouncement)
 })

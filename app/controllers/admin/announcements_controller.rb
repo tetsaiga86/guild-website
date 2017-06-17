@@ -27,8 +27,6 @@ module Admin
     # POST /announcements.json
     def create
       @announcement = Announcement.new(announcement_params)
-
-
       if @announcement.save
         render json: Announcement.order(:order), status: :created
       else
@@ -38,17 +36,17 @@ module Admin
 
     # PATCH/PUT /announcements/1
     # PATCH/PUT /announcements/1.json
-    def update
-      respond_to do |format|
-        if @announcement.update(announcement_params)
-          format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
-          format.json { render json: @announcement, status: :ok }
-        else
-          format.html { render :edit }
-          format.json { render json: @announcement.errors, status: :unprocessable_entity }
-        end
-      end
-    end
+    # def update
+    #   respond_to do |format|
+    #     if @announcement.update(announcement_params)
+    #       format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
+    #       format.json { render json: @announcement, status: :ok }
+    #     else
+    #       format.html { render :edit }
+    #       format.json { render json: @announcement.errors, status: :unprocessable_entity }
+    #     end
+    #   end
+    # end
 
     # DELETE /announcements/1
     # DELETE /announcements/1.json
@@ -69,9 +67,7 @@ module Admin
             announcement.permit(:title, :order, :body, :retired)
           )
       end
-      respond_to do |format|
-        format.json { render json: Announcement.order(:order), status: :ok }
-      end
+      render json: Announcement.order(:order), status: :ok
     end
 
     private
