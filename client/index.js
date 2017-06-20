@@ -5,6 +5,7 @@ import Home from './components/home'
 import Members from './components/members'
 import GuildUpdates from './components/guildUpdates'
 import AdminLanding from './components/adminLanding'
+import RecruitApplication from './components/recruitApplication'
 
 function renderComponent(component) {
   ReactDOM.render(
@@ -27,6 +28,10 @@ page('/spa/achievements', function (){
 
 page('/spa/admin', function (){
   renderComponent(<AdminLanding />);
+});
+
+page('/spa/recruit_application', function (){
+  renderComponent(<RecruitApplication />)
 });
 
 page(window.ENV.route);

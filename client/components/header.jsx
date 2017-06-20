@@ -25,7 +25,7 @@ class Header extends React.Component {
               <NavItem eventKey={3} href="#">About</NavItem>
               <NavItem eventKey={4} href="/spa/achievements">Achievements</NavItem>
               <NavItem eventKey={5} href="/spa/members">Members</NavItem>
-              <NavItem eventKey={6} href="#">Recruitment</NavItem>
+              <NavItem eventKey={6} href="/spa/recruit_application">Recruitment</NavItem>
             </Nav>
             <Nav pullRight>
               <NavDropdown eventKey={1} title={loginTitle} id="basic-nav-dropdown">

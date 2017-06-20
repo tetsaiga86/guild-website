@@ -1,4 +1,5 @@
 class ProxyController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   def news
     bnet_response = HTTParty.get 'https://worldofwarcraft.com/en-US/news'
     render body: bnet_response.body
@@ -59,6 +60,11 @@ class ProxyController < ApplicationController
 
   def character_parse
     render json: logs_client.character_parse(params[:name])
+  end
+
+  def recruitment_application
+    applicant = RecruitApplication.find_or_create_by(battletag: params[:battletag])
+    applicant.update(name_server: params[:name_server], class_spec: params[:class_spec], armoryUrl: params[:armoryUrl], email: params[:email], q1: params[:q1], q2: params[:q2], q3: params[:q3], q4: params[:q4], q5: params[:q5])
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603030151) do
+ActiveRecord::Schema.define(version: 20170620002713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,21 @@ ActiveRecord::Schema.define(version: 20170603030151) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "recruit_applications", force: :cascade do |t|
+    t.string   "name_server"
+    t.string   "battletag"
+    t.string   "class_spec"
+    t.string   "armoryUrl"
+    t.string   "email"
+    t.boolean  "q1"
+    t.boolean  "q2"
+    t.boolean  "q3"
+    t.text     "q4"
+    t.text     "q5"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "wow_classes", force: :cascade do |t|

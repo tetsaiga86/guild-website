@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get '/api/wow_classes' => 'proxy#wow_classes'
   get '/api/officer_info' => 'proxy#officer_info'
 
+  post '/recruitment_application' => 'proxy#recruitment_application'
+
 
   namespace :admin do
     resources :recruitments, only: [:index, :create, :destroy, :update]
