@@ -3,6 +3,7 @@ import Footer from './footer'
 import Header from './header'
 import EditAnnouncements from './editAnnouncements'
 import EditRecruitList from './editRecruitList'
+import RecruitAppList from './recruitAppList'
 import {
   Grid,
   Row,
@@ -32,7 +33,8 @@ class AdminLanding extends React.Component {
                  </Col>
                </Row>
                <Row>
-                 <Col xs={6} md={4}>
+                 <Col xs={18} md={12}>
+                   <RecruitAppList />
                  </Col>
                </Row>
              </Col>

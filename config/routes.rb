@@ -26,9 +26,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :recruitments, only: [:index, :create, :destroy, :update]
     resources :announcements, only: [:index, :create, :destroy, :update]
-    get '/wow_specs' => 'wow_spec#list'
+
     post '/announcements_many' => 'announcements#update_many'
+
+    get '/wow_specs' => 'wow_spec#list'
     post '/wow_specs_many' => 'wow_spec#update_many'
+
+    get '/recruit_app_list' => 'recruit_application#list'
+    delete '/recruit_applications/:id' => 'recruit_application#destroy'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
