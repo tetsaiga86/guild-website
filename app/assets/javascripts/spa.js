@@ -51513,7 +51513,16 @@ exports.default = {
   100497: '/images/ui-ej-boss-ursoc.png',
   102679: '/images/ui-ej-boss-dragons-of-nightmare.png',
   113534: '/images/ui-ej-boss-cenarius.png',
-  103769: '/images/ui-ej-boss-xavius.png'
+  103769: '/images/ui-ej-boss-xavius.png',
+  115844: '/images/ui-ej-boss-goroth.png',
+  116689: '/images/ui-ej-boss-inquisition.png',
+  116407: '/images/ui-ej-boss-nagabrute.png',
+  118523: '/images/ui-ej-boss-huntresskasparian.png',
+  115767: '/images/ui-ej-boss-mistresssasszine.png',
+  118460: '/images/ui-ej-boss-veliskarr.png',
+  118289: '/images/ui-ej-boss-feltitan.png',
+  116939: '/images/ui-ej-boss-fallenavatar.png',
+  117269: '/images/ui-ej-boss-kiljaeden.png'
 };
 
 /***/ }),

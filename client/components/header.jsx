@@ -21,11 +21,21 @@ class Header extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={2} href="#">Forum</NavItem>
-              <NavItem eventKey={3} href="#">About</NavItem>
-              <NavItem eventKey={4} href="/spa/achievements">Achievements</NavItem>
-              <NavItem eventKey={5} href="/spa/members">Members</NavItem>
-              <NavItem eventKey={6} href="/spa/recruit_application">Recruitment</NavItem>
+              <NavItem eventKey={2} href="#">
+                Forum
+              </NavItem>
+              <NavItem eventKey={3} href="#">
+                About
+              </NavItem>
+              <NavItem eventKey={4} href="/spa/achievements">
+                Achievements
+              </NavItem>
+              <NavItem eventKey={5} href="/spa/members">
+                Members
+              </NavItem>
+              <NavItem eventKey={6} href="/spa/recruit_application">
+                Recruitment
+              </NavItem>
             </Nav>
             <Nav pullRight>
               <NavDropdown eventKey={1} title={loginTitle} id="basic-nav-dropdown">

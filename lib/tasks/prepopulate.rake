@@ -43,7 +43,19 @@ namespace :prepopulate do
       puts "fetching #{member['character']['name']}"
       character_info = bnet_client.character_info(member['character']['name'])
       member_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
-      member_datum.update_from_hash(character_info)
+
+      counter = 0
+      while counter < 10
+        unless character_info.nil?
+          puts "#{member['character']['name']} success"
+          member_datum.update_from_hash(character_info)
+          break
+        else
+          puts "#{member['character']['name']} failed#{', trying again' if counter<10}"
+          character_info = bnet_client.character_info(member['character']['name'])
+          counter += 1
+        end
+      end
     end
   end
 
