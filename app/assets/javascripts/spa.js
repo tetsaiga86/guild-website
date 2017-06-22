@@ -26729,15 +26729,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _applicant = __webpack_require__(163);
-
-var _applicant2 = _interopRequireDefault(_applicant);
-
 var _reactBootstrap = __webpack_require__(14);
-
-var _jquery = __webpack_require__(27);
-
-var _jquery2 = _interopRequireDefault(_jquery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26747,16 +26739,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var RecruitAppList = function (_React$Component) {
-  _inherits(RecruitAppList, _React$Component);
+var Applicant = function (_React$Component) {
+  _inherits(Applicant, _React$Component);
 
-  function RecruitAppList() {
-    _classCallCheck(this, RecruitAppList);
+  function Applicant() {
+    _classCallCheck(this, Applicant);
 
-    return _possibleConstructorReturn(this, (RecruitAppList.__proto__ || Object.getPrototypeOf(RecruitAppList)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Applicant.__proto__ || Object.getPrototypeOf(Applicant)).apply(this, arguments));
   }
 
-  _createClass(RecruitAppList, [{
+  _createClass(Applicant, [{
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -26835,10 +26827,10 @@ var RecruitAppList = function (_React$Component) {
     }
   }]);
 
-  return RecruitAppList;
+  return Applicant;
 }(_react2.default.Component);
 
-exports.default = RecruitAppList;
+exports.default = Applicant;
 
 /***/ }),
 /* 164 */
@@ -47234,6 +47226,8 @@ var RecruitApplication = function (_React$Component) {
     _this.onEditQ3 = _this.createEditHandler('q3');
     _this.onEditQ4 = _this.createEditHandler('q4');
     _this.onEditQ5 = _this.createEditHandler('q5');
+    _this.getValidationState = _this.getValidationState.bind(_this);
+    _this.checkValidation = _this.checkValidation.bind(_this);
 
     _this.state = {
       name_server: "",
@@ -47270,9 +47264,98 @@ var RecruitApplication = function (_React$Component) {
       };
     }
   }, {
+    key: 'checkValidation',
+    value: function checkValidation(vs) {
+      for (var key in vs) {
+        if (vs[key].state != 'success') {
+          return false;
+        }
+      }
+      return true;
+    }
+  }, {
+    key: 'getValidationState',
+    value: function getValidationState() {
+      var _this3 = this;
+
+      var fieldValidators = {
+        name_server: {
+          isValid: function isValid(val) {
+            return val.match(/\w@\w/);
+          },
+          errorMessage: 'Must follow pattern Name@Server'
+        },
+        battletag: {
+          isValid: function isValid(val) {
+            return val.match(/\w#\d{4}/);
+          },
+          errorMessage: 'Must follow pattern Name#1234'
+        },
+        class_spec: {
+          isValid: function isValid(val) {
+            return val.match(/^\w+\s+\w+$/);
+          },
+          errorMessage: 'Must follow pattern DeathKnight Frost'
+        },
+        email: {
+          isValid: function isValid(val) {
+            return val.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+          },
+          errorMessage: 'Must be a valid email address (this will be used to contact you)'
+        },
+        armoryUrl: {
+          isValid: function isValid(val) {
+            return val.match(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/);
+          },
+          errorMessage: 'Must be a valid link to your character\'s armory page'
+        },
+        q1: {
+          isValid: function isValid(val) {
+            return _this3.state.q1 == "true";
+          },
+          errorMessage: 'This is a requirement for joining the guild'
+        },
+        q2: {
+          isValid: function isValid(val) {
+            return _this3.state.q2 == "false";
+          },
+          errorMessage: 'This is a requirement for joining the guild'
+        },
+        q3: {
+          isValid: function isValid(val) {
+            return _this3.state.q3 == "false";
+          },
+          errorMessage: 'This is a requirement for joining the guild'
+        },
+        q5: {
+          isValid: function isValid(val) {
+            return val.length > 20;
+          },
+          errorMessage: 'Tell us more!'
+        }
+      };
+
+      var validationStates = {};
+
+      Object.keys(fieldValidators).forEach(function (field) {
+        var validator = fieldValidators[field];
+        var value = _this3.state[field];
+
+        if (validator.isValid(value)) {
+          validationStates[field] = { state: 'success' };
+        } else if (!value) {
+          validationStates[field] = { state: null };
+        } else {
+          validationStates[field] = { state: 'error', help: validator.errorMessage };
+        }
+      });
+
+      return validationStates;
+    }
+  }, {
     key: 'render',
     value: function render() {
-
+      var validationStates = this.getValidationState();
       return _react2.default.createElement(
         'div',
         { className: 'home-div' },
@@ -47323,7 +47406,9 @@ var RecruitApplication = function (_React$Component) {
                         label: 'Character Name and current Server',
                         placeholder: 'Name@Kiljaeden',
                         value: this.state.name_server,
-                        onChange: this.onEditNameServer
+                        onChange: this.onEditNameServer,
+                        validationState: validationStates.name_server.state,
+                        help: validationStates.name_server.help
                       }),
                       _react2.default.createElement(_fieldGroup2.default, {
                         id: 'fg2',
@@ -47331,7 +47416,9 @@ var RecruitApplication = function (_React$Component) {
                         label: 'BattleTag',
                         placeholder: 'Name#1234',
                         value: this.state.battletag,
-                        onChange: this.onEditBattletag
+                        onChange: this.onEditBattletag,
+                        validationState: validationStates.battletag.state,
+                        help: validationStates.battletag.help
                       }),
                       _react2.default.createElement(_fieldGroup2.default, {
                         type: 'text',
@@ -47339,7 +47426,9 @@ var RecruitApplication = function (_React$Component) {
                         label: 'Class and Main Spec',
                         placeholder: 'Class Spec',
                         value: this.state.class_spec,
-                        onChange: this.onEditClassSpec
+                        onChange: this.onEditClassSpec,
+                        validationState: validationStates.class_spec.state,
+                        help: validationStates.class_spec.help
                       }),
                       _react2.default.createElement(_fieldGroup2.default, {
                         type: 'text',
@@ -47347,7 +47436,9 @@ var RecruitApplication = function (_React$Component) {
                         label: 'Armory profile Link',
                         placeholder: 'Copy link here',
                         value: this.state.armoryUrl,
-                        onChange: this.onEditArmoryUrl
+                        onChange: this.onEditArmoryUrl,
+                        validationState: validationStates.armoryUrl.state,
+                        help: validationStates.armoryUrl.help
                       }),
                       _react2.default.createElement(_fieldGroup2.default, {
                         type: 'email',
@@ -47355,11 +47446,13 @@ var RecruitApplication = function (_React$Component) {
                         label: 'Email Address',
                         placeholder: 'Enter Email Here',
                         value: this.state.email,
-                        onChange: this.onEditEmail
+                        onChange: this.onEditEmail,
+                        validationState: validationStates.email.state,
+                        help: validationStates.email.help
                       }),
                       _react2.default.createElement(
                         _reactBootstrap.FormGroup,
-                        null,
+                        { validationState: validationStates.q1.state },
                         _react2.default.createElement(
                           _reactBootstrap.ControlLabel,
                           null,
@@ -47374,11 +47467,16 @@ var RecruitApplication = function (_React$Component) {
                           _reactBootstrap.Radio,
                           { name: 'q1', id: 'q1o2', value: 'false', onChange: this.onEditQ1, checked: this.state.q1 === "false", inline: true },
                           'No'
+                        ),
+                        _react2.default.createElement(
+                          _reactBootstrap.HelpBlock,
+                          null,
+                          validationStates.q1.help
                         )
                       ),
                       _react2.default.createElement(
                         _reactBootstrap.FormGroup,
-                        null,
+                        { validationState: validationStates.q2.state },
                         _react2.default.createElement(
                           _reactBootstrap.ControlLabel,
                           null,
@@ -47393,11 +47491,16 @@ var RecruitApplication = function (_React$Component) {
                           _reactBootstrap.Radio,
                           { name: 'q2', id: 'q2o2', value: 'false', onChange: this.onEditQ2, checked: this.state.q2 === "false", inline: true },
                           'No'
+                        ),
+                        _react2.default.createElement(
+                          _reactBootstrap.HelpBlock,
+                          null,
+                          validationStates.q2.help
                         )
                       ),
                       _react2.default.createElement(
                         _reactBootstrap.FormGroup,
-                        null,
+                        { validationState: validationStates.q3.state },
                         _react2.default.createElement(
                           _reactBootstrap.ControlLabel,
                           null,
@@ -47412,12 +47515,17 @@ var RecruitApplication = function (_React$Component) {
                           _reactBootstrap.Radio,
                           { name: 'q3', id: 'q3o2', value: 'false', onChange: this.onEditQ3, checked: this.state.q3 === "false", inline: true },
                           'No'
+                        ),
+                        _react2.default.createElement(
+                          _reactBootstrap.HelpBlock,
+                          null,
+                          validationStates.q3.help
                         )
                       ),
                       _react2.default.createElement(_fieldGroup2.default, {
                         componentClass: 'textarea',
                         id: 'fg6',
-                        label: 'What secondary specs or alternative characters do you feel you play at a similar level to your main? Do you have sufficient gear to be raid viable with these specs/characters? What recent experience do you have playing them?',
+                        label: 'What secondary specs or alternative characters do you feel you play at a similar level to your main? Do {word}you have sufficient gear to be raid viable with these specs/characters? What recent experience do you have playing them?',
                         placeholder: '',
                         value: this.state.q4,
                         onChange: this.onEditQ4
@@ -47428,11 +47536,13 @@ var RecruitApplication = function (_React$Component) {
                         label: 'Tell us about yourself. Show us the man/woman behind the character.  Impress us, make us laugh. Convince us we want you in our guild. If you don\'t take the time to sell yourself, there\'s no reason for us to want to take you. We\'ve worked hard to make this a great place to raid and demand incoming candidates prove they\'re committed to continuing that.',
                         placeholder: '',
                         value: this.state.q5,
-                        onChange: this.onEditQ5
+                        onChange: this.onEditQ5,
+                        validationState: validationStates.q5.state,
+                        help: validationStates.q5.help
                       }),
                       _react2.default.createElement(
                         _reactBootstrap.Button,
-                        { bsStyle: 'success', onClick: this.submit },
+                        { bsStyle: 'success', onClick: this.submit, disabled: !this.checkValidation(validationStates) },
                         'Submit'
                       )
                     )
@@ -50145,6 +50255,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -50171,17 +50283,25 @@ var FieldGroup = function (_React$Component) {
   }
 
   _createClass(FieldGroup, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {}
+  }, {
     key: 'render',
     value: function render() {
+      var newProps = _extends({}, this.props);
+      delete newProps.help;
+      delete newProps.validationState;
+
       return _react2.default.createElement(
         _reactBootstrap.FormGroup,
-        { key: this.props.id, controlId: this.props.id },
+        { key: newProps.id, controlId: newProps.id, validationState: this.props.validationState },
         _react2.default.createElement(
           _reactBootstrap.ControlLabel,
           null,
-          this.props.label
+          newProps.label
         ),
-        _react2.default.createElement(_reactBootstrap.FormControl, this.props),
+        _react2.default.createElement(_reactBootstrap.FormControl, newProps),
+        _react2.default.createElement(_reactBootstrap.FormControl.Feedback, null),
         this.props.help && _react2.default.createElement(
           _reactBootstrap.HelpBlock,
           null,

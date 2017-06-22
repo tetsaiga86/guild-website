@@ -1,13 +1,9 @@
 import React from 'react'
-import Applicant from './applicant'
 import {
-  Table,
   Button,
-
 } from 'react-bootstrap'
-import $ from 'jquery'
 
-class RecruitAppList extends React.Component {
+class Applicant extends React.Component {
 
   render(){
     let applicant = this.props.applicant
@@ -34,4 +30,4 @@ class RecruitAppList extends React.Component {
   }
 }
 
-export default RecruitAppList
+export default Applicant

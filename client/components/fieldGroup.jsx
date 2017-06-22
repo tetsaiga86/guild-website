@@ -7,14 +7,23 @@ import {
 } from 'react-bootstrap'
 
 class FieldGroup extends React.Component{
+  componentWillMount(){
+  }
+
   render(){
+    let newProps = {...this.props}
+    delete newProps.help
+    delete newProps.validationState
+
     return(
-      <FormGroup key={this.props.id} controlId={this.props.id}>
-        <ControlLabel>{this.props.label}</ControlLabel>
-        <FormControl {...this.props} />
+      <FormGroup key={newProps.id} controlId={newProps.id} validationState={this.props.validationState}>
+        <ControlLabel>{newProps.label}</ControlLabel>
+        <FormControl {...newProps} />
+        <FormControl.Feedback />
         {this.props.help && <HelpBlock>{this.props.help}</HelpBlock>}
       </FormGroup>
     )
   }
 }
- export default FieldGroup
+
+export default FieldGroup

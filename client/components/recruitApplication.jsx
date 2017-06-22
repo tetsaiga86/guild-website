@@ -32,6 +32,8 @@ class RecruitApplication extends React.Component {
     this.onEditQ3 = this.createEditHandler('q3');
     this.onEditQ4 = this.createEditHandler('q4');
     this.onEditQ5 = this.createEditHandler('q5');
+    this.getValidationState = this.getValidationState.bind(this);
+    this.checkValidation = this.checkValidation.bind(this);
 
     this.state = {
       name_server: "",
@@ -43,7 +45,7 @@ class RecruitApplication extends React.Component {
     	q2: undefined,
     	q3: undefined,
     	q4: "",
-    	q5: ""
+    	q5: "",
     }
   }
 
@@ -62,10 +64,97 @@ class RecruitApplication extends React.Component {
     }
   }
 
+  checkValidation(vs){
+    for (var key in vs){
+      if (vs[key].state!='success') {
+        return false
+      }
+    }
+    return true
+  }
+
+  getValidationState(){
+    const fieldValidators = {
+      name_server: {
+        isValid: (val) => {
+          return val.match(/\w@\w/)
+        },
+        errorMessage: 'Must follow pattern Name@Server'
+      },
+      battletag: {
+        isValid: (val) => {
+          return val.match(/\w#\d{4}/)
+        },
+        errorMessage: 'Must follow pattern Name#1234'
+      },
+      class_spec: {
+        isValid: (val) => {
+          return val.match(/^\w+\s+\w+$/)
+        },
+        errorMessage: 'Must follow pattern DeathKnight Frost'
+      },
+      email: {
+        isValid: (val) => {
+          return val.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        },
+        errorMessage: 'Must be a valid email address (this will be used to contact you)'
+      },
+      armoryUrl: {
+        isValid: (val) => {
+          return val.match(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/)
+        },
+        errorMessage: 'Must be a valid link to your character\'s armory page'
+      },
+      q1: {
+        isValid: (val) => {
+          return this.state.q1=="true"
+        },
+        errorMessage: 'This is a requirement for joining the guild'
+      },
+      q2: {
+        isValid: (val) => {
+          return this.state.q2=="false"
+        },
+        errorMessage: 'This is a requirement for joining the guild'
+      },
+      q3: {
+        isValid: (val) => {
+          return this.state.q3=="false"
+        },
+        errorMessage: 'This is a requirement for joining the guild'
+      },
+      q5:{
+        isValid: (val)=> {
+          return val.length>20
+        },
+        errorMessage: 'Tell us more!'
+      }
+    }
+
+    const validationStates = {};
+
+    Object.keys(fieldValidators).forEach((field) => {
+      const validator = fieldValidators[field];
+      const value = this.state[field];
+
+      if (validator.isValid(value)) {
+        validationStates[field] = { state: 'success' }
+      }
+
+      else if (!value) {
+        validationStates[field] = { state: null }
+      }
+
+      else {
+        validationStates[field] = { state: 'error', help: validator.errorMessage }
+      }
+    });
+
+    return validationStates
+  }
 
   render () {
-
-
+    const validationStates = this.getValidationState();
     return (
       <div className="home-div">
         <Header className="header" />
@@ -91,6 +180,8 @@ class RecruitApplication extends React.Component {
                         placeholder="Name@Kiljaeden"
                         value={this.state.name_server}
                         onChange={this.onEditNameServer}
+                        validationState={validationStates.name_server.state}
+                        help={validationStates.name_server.help}
                       />
                       <FieldGroup
                         id="fg2"
@@ -99,6 +190,8 @@ class RecruitApplication extends React.Component {
                         placeholder="Name#1234"
                         value={this.state.battletag}
                         onChange={this.onEditBattletag}
+                        validationState={validationStates.battletag.state}
+                        help={validationStates.battletag.help}
                       />
                       <FieldGroup
                         type="text"
@@ -107,6 +200,8 @@ class RecruitApplication extends React.Component {
                         placeholder="Class Spec"
                         value={this.state.class_spec}
                         onChange={this.onEditClassSpec}
+                        validationState={validationStates.class_spec.state}
+                        help={validationStates.class_spec.help}
                       />
                       <FieldGroup
                         type="text"
@@ -115,6 +210,8 @@ class RecruitApplication extends React.Component {
                         placeholder="Copy link here"
                         value={this.state.armoryUrl}
                         onChange={this.onEditArmoryUrl}
+                        validationState={validationStates.armoryUrl.state}
+                        help={validationStates.armoryUrl.help}
                       />
                     <FieldGroup
                         type="email"
@@ -123,9 +220,11 @@ class RecruitApplication extends React.Component {
                         placeholder="Enter Email Here"
                         value={this.state.email}
                         onChange={this.onEditEmail}
+                        validationState={validationStates.email.state}
+                        help={validationStates.email.help}
                       />
 
-                      <FormGroup>
+                      <FormGroup validationState={validationStates.q1.state}>
                         <ControlLabel>Are you able to commit to our raid times?</ControlLabel>
                         <Radio name="q1" id="q1o1" value="true" onChange={this.onEditQ1} checked={this.state.q1 === "true"} inline>
                           Yes
@@ -133,9 +232,10 @@ class RecruitApplication extends React.Component {
                         <Radio name="q1" id="q1o2" value="false" onChange={this.onEditQ1} checked={this.state.q1 === "false"} inline>
                           No
                         </Radio>
+                        <HelpBlock>{validationStates.q1.help}</HelpBlock>
                       </FormGroup>
 
-                      <FormGroup>
+                      <FormGroup validationState={validationStates.q2.state}>
                         <ControlLabel>
                           If you need to miss or be late for a raid, we require you to let an officer know, asap. Would this be a problem for you?
                         </ControlLabel>
@@ -145,9 +245,10 @@ class RecruitApplication extends React.Component {
                         <Radio name="q2" id="q2o2" value="false" onChange={this.onEditQ2} checked={this.state.q2 === "false"} inline>
                           No
                         </Radio>
+                        <HelpBlock>{validationStates.q2.help}</HelpBlock>
                       </FormGroup>
 
-                      <FormGroup>
+                      <FormGroup validationState={validationStates.q3.state}>
                         <ControlLabel>
                           We require certain addons for loot distribution and to assist in progression. Will installing and keeping these addons up to date be an issue for you?
                         </ControlLabel>
@@ -157,12 +258,13 @@ class RecruitApplication extends React.Component {
                         <Radio name="q3" id="q3o2" value="false" onChange={this.onEditQ3} checked={this.state.q3 === "false"} inline>
                           No
                         </Radio>
+                        <HelpBlock>{validationStates.q3.help}</HelpBlock>
                       </FormGroup>
 
                       <FieldGroup
                         componentClass="textarea"
                         id="fg6"
-                        label="What secondary specs or alternative characters do you feel you play at a similar level to your main? Do you have sufficient gear to be raid viable with these specs/characters? What recent experience do you have playing them?"
+                        label="What secondary specs or alternative characters do you feel you play at a similar level to your main? Do {word}you have sufficient gear to be raid viable with these specs/characters? What recent experience do you have playing them?"
                         placeholder=""
                         value={this.state.q4}
                         onChange={this.onEditQ4}
@@ -175,9 +277,11 @@ class RecruitApplication extends React.Component {
                         placeholder=""
                         value={this.state.q5}
                         onChange={this.onEditQ5}
+                        validationState={validationStates.q5.state}
+                        help={validationStates.q5.help}
                       />
 
-                      <Button bsStyle="success" onClick={this.submit}>
+                    <Button bsStyle="success" onClick={this.submit} disabled={!this.checkValidation(validationStates)}>
                         Submit
                       </Button>
                     </form>
