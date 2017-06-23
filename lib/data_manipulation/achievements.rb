@@ -41,8 +41,9 @@ module DataManipulation
           newsItem['item'] = JSON.parse(item_info.body)
         end
       end
+
       filtered_news.select! do |newsItem|
-        newsItem['item']['quality'] && newsItem['item']['itemLevel']
+        newsItem['item'] && newsItem['item']['quality'] && newsItem['item']['itemLevel']
       end
 
       filtered_news.sort! do |a,b|

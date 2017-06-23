@@ -6,6 +6,11 @@ module Bnet
   class Client
     BASE_URL = 'https://us.api.battle.net/wow/'.freeze
     LOCALE = 'en_US'.freeze
+
+    def initialize(limit=1)
+      @limit = limit
+    end
+
     def realm
       ENV['REALM']
     end
@@ -50,9 +55,37 @@ module Bnet
         locale: LOCALE
       }.merge(query_values)
 
-      response = HTTParty.get "#{BASE_URL}#{request_path}?#{uri.query}"
+      response = with_retry(@limit) do
+        HTTParty.get "#{BASE_URL}#{request_path}?#{uri.query}"
+      end
 
-      response.parsed_response
+      if response.code == 200
+        response.parsed_response
+      else
+        nil
+      end
+      #
+      # counter = 0
+      # while counter<=limit
+      #   response = HTTParty.get "#{BASE_URL}#{request_path}?#{uri.query}"
+      #
+      #   if response.code == 200
+      #     response.parsed_response
+      #   else
+      #     nil
+      #   end
+      # end
+    end
+
+    def with_retry(limit=5)
+      response = nil
+      1.upto(limit) do
+        response = yield
+        if response.code == 200
+          break
+        end
+      end
+      response
     end
   end
 end

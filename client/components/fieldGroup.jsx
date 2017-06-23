@@ -7,9 +7,6 @@ import {
 } from 'react-bootstrap'
 
 class FieldGroup extends React.Component{
-  componentWillMount(){
-  }
-
   render(){
     let newProps = {...this.props}
     delete newProps.help

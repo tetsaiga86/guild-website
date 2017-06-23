@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import page from 'page'
 import Home from './components/home'
+import About from './components/about'
 import Members from './components/members'
 import GuildUpdates from './components/guildUpdates'
 import AdminLanding from './components/adminLanding'
@@ -17,6 +18,10 @@ function renderComponent(component) {
 page('/', function () {
   renderComponent(<Home />);
 });
+
+page('/spa/about', function () {
+  renderComponent(<About />);
+})
 
 page('/spa/members', function () {
   renderComponent(<Members />);

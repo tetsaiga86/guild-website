@@ -112,7 +112,7 @@ namespace :prepopulate do
   end
 
   task news: :environment do
-    bnet_client = ::Bnet::Client.new
+    bnet_client = ::Bnet::Client.new(5)
 
     def fn_id(fn)
       bonus_lists = fn['bonusLists'] || []
@@ -135,6 +135,7 @@ namespace :prepopulate do
 
       unless item_info
         item_info_body = bnet_client.item_info(newsItem)
+        next if item_info_body.nil?
         item_info = CharacterLootDatum.create(bnet_id: fn_id(newsItem), body: item_info_body.to_json)
         newsItem['item'] = item_info_body
       else

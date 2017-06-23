@@ -21,10 +21,8 @@ class Header extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={2} href="#">
-                Forum
-              </NavItem>
-              <NavItem eventKey={3} href="#">
+              
+              <NavItem eventKey={3} href="/spa/about">
                 About
               </NavItem>
               <NavItem eventKey={4} href="/spa/achievements">

@@ -51,7 +51,6 @@ class Members extends React.Component {
         }
       }
     })
-    console.log(name, performance, attendance)
     return Math.floor((performance+attendance)/2);
   }
 

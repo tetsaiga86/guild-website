@@ -42,6 +42,7 @@ class Progress extends React.Component {
     return (
       <div>
         <h2>Progression</h2>
+        <h4>Dates reflect our most recent kill</h4>
         {this.renderRaids()}
       </div>
     );
