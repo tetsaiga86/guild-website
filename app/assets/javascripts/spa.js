@@ -46658,6 +46658,10 @@ var _recruitAppList = __webpack_require__(412);
 
 var _recruitAppList2 = _interopRequireDefault(_recruitAppList);
 
+var _uploadDkp = __webpack_require__(770);
+
+var _uploadDkp2 = _interopRequireDefault(_uploadDkp);
+
 var _reactBootstrap = __webpack_require__(13);
 
 var _reactDndHtml5Backend = __webpack_require__(141);
@@ -46726,7 +46730,11 @@ var AdminLanding = function (_React$Component) {
                   )
                 )
               ),
-              _react2.default.createElement(_reactBootstrap.Col, { xs: 6, md: 4 })
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 6, md: 4 },
+                _react2.default.createElement(_uploadDkp2.default, null)
+              )
             ),
             _react2.default.createElement(
               _reactBootstrap.Row,
@@ -47051,61 +47059,59 @@ var Members = function (_React$Component) {
   }, {
     key: 'calculateGuildPoints',
     value: function calculateGuildPoints(playerReport, logJsonArray, name) {
-      var totalPoints = 0;
-      var counter = 0;
-      playerReport.forEach(function (report) {
-        report.specs.forEach(function (specReport) {
-          totalPoints += specReport.best_historical_percent;
-          counter++;
-        });
-      });
-      var performance = Math.floor(totalPoints / counter * 10) || 1;
-      var attendance = 0;
-      logJsonArray.forEach(function (log) {
-        var attendingFriendly = log.friendlies.find(function (friendly) {
-          return friendly.name == name;
-        });
-        if (attendingFriendly) {
-          var attendingDate = new Date(log.start);
-          var attendingDayOfWeek = attendingDate.getDay();
-          // if(name=="Lëmmiwinks") console.log(name, attendingDate);
-          switch (attendingDayOfWeek) {
-            case 2:
-            case 3:
-              attendance += 225;
-              break;
-            case 4:
-              attendance += 50;
-              break;
-          }
-        }
-      });
-      return Math.floor((performance + attendance) / 2);
+      // var totalPoints=0;
+      // var counter=0;
+      // playerReport.forEach(report => {
+      //   report.specs.forEach(specReport => {
+      //     totalPoints+=specReport.best_historical_percent;
+      //     counter++;
+      //   })
+      // })
+      // var performance = Math.floor((totalPoints/counter)*10) || 1;
+      // var attendance = 0;
+      // logJsonArray.forEach(log => {
+      //   const attendingFriendly = log.friendlies.find(friendly => friendly.name == name);
+      //   if (attendingFriendly) {
+      //     const attendingDate = new Date(log.start);
+      //     const attendingDayOfWeek = attendingDate.getDay();
+      //     // if(name=="Lëmmiwinks") console.log(name, attendingDate);
+      //     switch(attendingDayOfWeek) {
+      //       case 2:
+      //       case 3:
+      //         attendance+=225;
+      //         break;
+      //       case 4:
+      //       attendance+=50;
+      //       break;
+      //     }
+      //   }
+      // })
+      // return Math.floor((performance+attendance)/2);
+
+      return 0;
     }
   }, {
     key: 'fetchGuildMembers',
     value: function fetchGuildMembers() {
       var _this2 = this;
 
-      _jquery2.default.getJSON(guildMembersUrl, function (guildMembersJson) {
-        var gMembers = guildMembersJson;
-        _jquery2.default.getJSON(logReportUrl, function (logReport) {
-          gMembers.forEach(function (gMember) {
-            _jquery2.default.getJSON('/api/character_parse/' + gMember.name, function (playerReport) {
-              playerReport = playerReport.filter(function (report) {
-                return report.difficulty >= 4;
-              });
-              gMember.gp = _this2.calculateGuildPoints(playerReport, logReport, gMember.name);
-              _this2.setState({ members: gMembers });
-            });
-          });
-        });
+      _jquery2.default.getJSON(guildMembersUrl, function (members) {
+        _this2.setState({ members: members });
+        // const gMembers = guildMembersJson;
+        // $.getJSON(logReportUrl, (logReport) => {
+        //   gMembers.forEach(gMember => {
+        //     $.getJSON(`/api/character_parse/${gMember.name}`, (playerReport) => {
+        //       playerReport = playerReport.filter(report => report.difficulty>=4);
+        //       this.setState({ members : gMembers });
+        //     })
+        //   })
+        // })
       });
     }
   }, {
     key: 'renderMember',
     value: function renderMember(member) {
-      return _react2.default.createElement(_player2.default, { player: member, key: member.name });
+      return _react2.default.createElement(_player2.default, { player: member, key: member.body.name });
     }
   }, {
     key: 'renderMembers',
@@ -47151,7 +47157,7 @@ var Members = function (_React$Component) {
               _react2.default.createElement(
                 'th',
                 null,
-                'Guild Points'
+                'Dkp'
               ),
               _react2.default.createElement(
                 'th',
@@ -47548,7 +47554,7 @@ var RecruitApplication = function (_React$Component) {
                       _react2.default.createElement(_fieldGroup2.default, {
                         componentClass: 'textarea',
                         id: 'fg7',
-                        label: 'Tell us about yourself. Show us the man/woman behind the character.  Impress us, make us laugh. Convince us we want you in our guild. If you don\'t take the time to sell yourself, there\'s no reason for us to want to take you. We\'ve worked hard to make this a great place to raid and demand incoming candidates prove they\'re committed to continuing that.',
+                        label: 'Tell us about yourself. Show us the man/woman behind the character.  Impress us, make us laugh. Convince us we want you in our guild. If you don\'t take the time to sell yourself, there\'s no reason for us to want to take you. We\'ve worked hard to make this a great place to raid and demand incoming candidates prove they\'re committed to continuing this.',
                         placeholder: '',
                         value: this.state.q5,
                         onChange: this.onEditQ5,
@@ -50778,8 +50784,11 @@ var Player = function (_React$Component) {
 
   _createClass(Player, [{
     key: 'getGuildPoints',
-    value: function getGuildPoints(player) {
-      return player.gp;
+    value: function getGuildPoints(dkp) {
+      if (!dkp) {
+        return 'NOT HIGH RANK ENOUGH';
+      }
+      return dkp.net_dkp + ' (' + dkp.total_dkp + ' - ' + dkp.spent_dkp + ')';
     }
   }, {
     key: 'onOpen',
@@ -50809,7 +50818,7 @@ var Player = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var character = this.props.player;
+      var character = this.props.player.body;
       var playerAvatarUrl = avatarUrl + character.thumbnail;
       var playerImgUrl = this.state.error ? '/images/stick_thumbnail.jpg' : playerAvatarUrl;
       return _react2.default.createElement(
@@ -50840,7 +50849,7 @@ var Player = function (_React$Component) {
         _react2.default.createElement(
           'td',
           { className: 'members-table-cell' },
-          this.getGuildPoints(character)
+          this.getGuildPoints(this.props.player.dkp)
         ),
         _react2.default.createElement(
           'td',
@@ -81486,6 +81495,122 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 770 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _fieldGroup = __webpack_require__(405);
+
+var _fieldGroup2 = _interopRequireDefault(_fieldGroup);
+
+var _reactBootstrap = __webpack_require__(13);
+
+var _jquery = __webpack_require__(30);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var uploadUrl = '/admin/update_dkp';
+var initialState = {
+  value: "",
+  busy: false
+};
+
+var UploadDkp = function (_React$Component) {
+  _inherits(UploadDkp, _React$Component);
+
+  function UploadDkp(props) {
+    _classCallCheck(this, UploadDkp);
+
+    var _this = _possibleConstructorReturn(this, (UploadDkp.__proto__ || Object.getPrototypeOf(UploadDkp)).call(this, props));
+
+    _this.state = initialState;
+
+    _this.onEdit = _this.onEdit.bind(_this);
+    _this.submit = _this.submit.bind(_this);
+    return _this;
+  }
+
+  _createClass(UploadDkp, [{
+    key: 'onEdit',
+    value: function onEdit(e) {
+      this.setState({ value: e.target.value });
+      console.log(e.target.value);
+    }
+  }, {
+    key: 'renderBusy',
+    value: function renderBusy() {
+      if (this.state.busy) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          'WORKING...'
+        );
+      }
+    }
+  }, {
+    key: 'submit',
+    value: function submit() {
+      var _this2 = this;
+
+      var data = {
+        "xml_string": this.state.value
+      };
+      this.setState({ busy: true });
+      _jquery2.default.post(uploadUrl, data, function () {
+        alert('Data uploaded!');
+        _this2.setState(initialState);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_fieldGroup2.default, {
+          componentClass: 'textarea',
+          id: 'xmlString',
+          label: 'Paste XML from QDKP export here.',
+          placeholder: '',
+          value: this.state.value,
+          onChange: this.onEdit
+        }),
+        this.renderBusy(),
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          { bsStyle: 'success', onClick: this.submit, disabled: !this.state.value || this.state.busy },
+          'Upload'
+        )
+      );
+    }
+  }]);
+
+  return UploadDkp;
+}(_react2.default.Component);
+
+exports.default = UploadDkp;
 
 /***/ })
 /******/ ]);

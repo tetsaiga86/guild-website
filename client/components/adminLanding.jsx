@@ -4,6 +4,7 @@ import Header from './header'
 import EditAnnouncements from './editAnnouncements'
 import EditRecruitList from './editRecruitList'
 import RecruitAppList from './recruitAppList'
+import UploadDkp from './uploadDkp'
 import {
   Grid,
   Row,
@@ -39,6 +40,7 @@ class AdminLanding extends React.Component {
                </Row>
              </Col>
              <Col xs={6} md={4}>
+               <UploadDkp />
              </Col>
            </Row>
            <Row className="footer">

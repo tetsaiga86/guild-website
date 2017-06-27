@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626222420) do
+ActiveRecord::Schema.define(version: 20170627024357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20170626222420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json     "body_json"
+    t.integer  "dkp_id"
+    t.index ["dkp_id"], name: "index_members_data_on_dkp_id", using: :btree
   end
 
   create_table "raid_logs", force: :cascade do |t|
@@ -99,5 +101,6 @@ ActiveRecord::Schema.define(version: 20170626222420) do
     t.index ["wow_class_id"], name: "index_wow_specs_on_wow_class_id", using: :btree
   end
 
+  add_foreign_key "members_data", "dkps"
   add_foreign_key "wow_specs", "wow_classes"
 end

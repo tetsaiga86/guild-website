@@ -36,7 +36,7 @@ namespace :prepopulate do
     bnet_client = ::Bnet::Client.new
     guild_members = bnet_client.guild_members(ENV['GUILD_NAME'])
     filtered_guild_members = guild_members.select do |member|
-      member['rank']<=4
+      member['rank']<= ENV['MAXIMUM_RANK'].to_i
     end
 
     filtered_guild_members.each do |member|
@@ -48,7 +48,7 @@ namespace :prepopulate do
       while counter < 10
         unless character_info.nil?
           puts "#{member['character']['name']} success"
-          member_datum.update_from_hash(character_info)
+          result = member_datum.update_from_hash(character_info)
           break
         else
           puts "#{member['character']['name']} failed#{', trying again' if counter<10}"

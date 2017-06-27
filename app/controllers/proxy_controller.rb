@@ -6,9 +6,10 @@ class ProxyController < ApplicationController
   end
 
   def guild_members
-    guild_members = MembersDatum.recent.to_a
-    member_jsons = guild_members.map(&:body)
-    render json: "[#{member_jsons.join(',')}]"
+    render json: MembersDatum.with_dkp
+    # guild_members = MembersDatum.recent.to_a
+    # member_jsons = guild_members.map(&:body)
+    # render json: "[#{member_jsons.join(',')}]"
   end
 
   def character_info

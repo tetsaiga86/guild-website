@@ -24,53 +24,55 @@ class Members extends React.Component {
   }
 
   calculateGuildPoints(playerReport, logJsonArray, name){
-    var totalPoints=0;
-    var counter=0;
-    playerReport.forEach(report => {
-      report.specs.forEach(specReport => {
-        totalPoints+=specReport.best_historical_percent;
-        counter++;
-      })
-    })
-    var performance = Math.floor((totalPoints/counter)*10) || 1;
-    var attendance = 0;
-    logJsonArray.forEach(log => {
-      const attendingFriendly = log.friendlies.find(friendly => friendly.name == name);
-      if (attendingFriendly) {
-        const attendingDate = new Date(log.start);
-        const attendingDayOfWeek = attendingDate.getDay();
-        // if(name=="Lëmmiwinks") console.log(name, attendingDate);
-        switch(attendingDayOfWeek) {
-          case 2:
-          case 3:
-            attendance+=225;
-            break;
-          case 4:
-          attendance+=50;
-          break;
-        }
-      }
-    })
-    return Math.floor((performance+attendance)/2);
+    // var totalPoints=0;
+    // var counter=0;
+    // playerReport.forEach(report => {
+    //   report.specs.forEach(specReport => {
+    //     totalPoints+=specReport.best_historical_percent;
+    //     counter++;
+    //   })
+    // })
+    // var performance = Math.floor((totalPoints/counter)*10) || 1;
+    // var attendance = 0;
+    // logJsonArray.forEach(log => {
+    //   const attendingFriendly = log.friendlies.find(friendly => friendly.name == name);
+    //   if (attendingFriendly) {
+    //     const attendingDate = new Date(log.start);
+    //     const attendingDayOfWeek = attendingDate.getDay();
+    //     // if(name=="Lëmmiwinks") console.log(name, attendingDate);
+    //     switch(attendingDayOfWeek) {
+    //       case 2:
+    //       case 3:
+    //         attendance+=225;
+    //         break;
+    //       case 4:
+    //       attendance+=50;
+    //       break;
+    //     }
+    //   }
+    // })
+    // return Math.floor((performance+attendance)/2);
+
+    return 0;
   }
 
   fetchGuildMembers(){
-    $.getJSON(guildMembersUrl, (guildMembersJson) => {
-      const gMembers = guildMembersJson;
-      $.getJSON(logReportUrl, (logReport) => {
-        gMembers.forEach(gMember => {
-          $.getJSON(`/api/character_parse/${gMember.name}`, (playerReport) => {
-            playerReport = playerReport.filter(report => report.difficulty>=4);
-            gMember.gp=this.calculateGuildPoints(playerReport, logReport, gMember.name);
-            this.setState({ members : gMembers });
-          })
-        })
-      })
+    $.getJSON(guildMembersUrl, (members) => {
+      this.setState({ members })
+      // const gMembers = guildMembersJson;
+      // $.getJSON(logReportUrl, (logReport) => {
+      //   gMembers.forEach(gMember => {
+      //     $.getJSON(`/api/character_parse/${gMember.name}`, (playerReport) => {
+      //       playerReport = playerReport.filter(report => report.difficulty>=4);
+      //       this.setState({ members : gMembers });
+      //     })
+      //   })
+      // })
     })
   }
 
   renderMember(member){
-    return <Player player={member} key={member.name}/>
+    return <Player player={member} key={member.body.name}/>
   }
 
   renderMembers(){
@@ -88,7 +90,7 @@ class Members extends React.Component {
               <th>Class</th>
               <th>Spec</th>
               <th>Achievement Points</th>
-              <th>Guild Points</th>
+              <th>Dkp</th>
               <th>Item Level</th>
             </tr>
           </thead>

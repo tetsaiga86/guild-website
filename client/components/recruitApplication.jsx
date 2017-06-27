@@ -273,7 +273,7 @@ class RecruitApplication extends React.Component {
                       <FieldGroup
                         componentClass="textarea"
                         id="fg7"
-                        label="Tell us about yourself. Show us the man/woman behind the character.  Impress us, make us laugh. Convince us we want you in our guild. If you don't take the time to sell yourself, there's no reason for us to want to take you. We've worked hard to make this a great place to raid and demand incoming candidates prove they're committed to continuing that."
+                        label="Tell us about yourself. Show us the man/woman behind the character.  Impress us, make us laugh. Convince us we want you in our guild. If you don't take the time to sell yourself, there's no reason for us to want to take you. We've worked hard to make this a great place to raid and demand incoming candidates prove they're committed to continuing this."
                         placeholder=""
                         value={this.state.q5}
                         onChange={this.onEditQ5}

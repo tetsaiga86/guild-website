@@ -22,8 +22,11 @@ class Player extends React.Component{
     this.onOpen = this.onOpen.bind(this);
   }
 
-  getGuildPoints(player){
-    return player.gp;
+  getGuildPoints(dkp){
+    if (!dkp) {
+      return 'NOT HIGH RANK ENOUGH'
+    }
+    return `${dkp.net_dkp} (${dkp.total_dkp} - ${dkp.spent_dkp})`;
   }
 
   onOpen () {
@@ -48,7 +51,7 @@ class Player extends React.Component{
   }
 
   render(){
-    const character = this.props.player;
+    const character = this.props.player.body;
     const playerAvatarUrl = avatarUrl + character.thumbnail;
     const playerImgUrl = this.state.error ? '/images/stick_thumbnail.jpg' : playerAvatarUrl;
     return(
@@ -68,7 +71,7 @@ class Player extends React.Component{
           {character.achievementPoints}
         </td>
         <td className="members-table-cell">
-          {this.getGuildPoints(character)}
+          {this.getGuildPoints(this.props.player.dkp)}
         </td>
         <td className="members-table-cell">
           {character.items && character.items.averageItemLevel || 'Not Available'}
