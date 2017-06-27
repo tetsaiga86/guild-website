@@ -1,0 +1,2 @@
+class Dkp < ApplicationRecord
+end

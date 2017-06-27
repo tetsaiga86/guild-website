@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620002713) do
+ActiveRecord::Schema.define(version: 20170626222420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20170620002713) do
     t.integer  "ilevel"
     t.string   "context"
     t.json     "bonus_list"
+  end
+
+  create_table "dkps", force: :cascade do |t|
+    t.string   "name"
+    t.string   "rank"
+    t.integer  "net_dkp"
+    t.integer  "total_dkp"
+    t.integer  "spent_dkp"
+    t.integer  "hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "members_data", force: :cascade do |t|

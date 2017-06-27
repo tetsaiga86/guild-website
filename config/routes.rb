@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
     get '/recruit_app_list' => 'recruit_application#list'
     delete '/recruit_applications/:id' => 'recruit_application#destroy'
+
+    post '/update_dkp' => 'dkp#update_all'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

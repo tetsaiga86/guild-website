@@ -64,17 +64,6 @@ module Bnet
       else
         nil
       end
-      #
-      # counter = 0
-      # while counter<=limit
-      #   response = HTTParty.get "#{BASE_URL}#{request_path}?#{uri.query}"
-      #
-      #   if response.code == 200
-      #     response.parsed_response
-      #   else
-      #     nil
-      #   end
-      # end
     end
 
     def with_retry(limit=5)
