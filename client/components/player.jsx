@@ -22,9 +22,9 @@ class Player extends React.Component{
     this.onOpen = this.onOpen.bind(this);
   }
 
-  getGuildPoints(dkp){
+  getDkp(dkp){
     if (!dkp) {
-      return 'NOT HIGH RANK ENOUGH'
+      return 'Not Available'
     }
     return `${dkp.net_dkp} (${dkp.total_dkp} - ${dkp.spent_dkp})`;
   }
@@ -71,7 +71,7 @@ class Player extends React.Component{
           {character.achievementPoints}
         </td>
         <td className="members-table-cell">
-          {this.getGuildPoints(this.props.player.dkp)}
+          {this.getDkp(this.props.player.dkp)}
         </td>
         <td className="members-table-cell">
           {character.items && character.items.averageItemLevel || 'Not Available'}

@@ -24,30 +24,31 @@ class Achievement extends React.Component{
     var criteria;
     var achievement = this.props.achievement;
     var details = achievement.details;
-    // var criteria = details.criteria;
+    if(details){
+      try {
+        criteria = details.criteria;
+      } catch(e) { debugger }
+      var popover = (
+        <Popover className='popover' id={achievement.id}>
+          <h5>{details.description}</h5>
+          <h5>{details.reward}</h5>
+          {this.renderCriteria(criteria)}
+        </Popover>
+      )
+      return(
+        <tr>
+          <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={popover}>
+            <td className="achievement-table-cell" onClick={()=> window.open(`${achievementUrl}${achievement.id}/${details.title}`)}>
+              <img src={`${iconUrl}${details.icon}.jpg`} className="achievement-icon" />
+              {details.title}
+            </td>
+          </OverlayTrigger>
 
-    try {
-      criteria = details.criteria;
-    } catch(e) { debugger }
-    var popover = (
-      <Popover className='popover' id={achievement.id}>
-        <h5>{details.description}</h5>
-        <h5>{details.reward}</h5>
-        {this.renderCriteria(criteria)}
-      </Popover>
-    )
-    return(
-      <tr>
-        <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={popover}>
-          <td className="achievement-table-cell" onClick={()=> window.open(`${achievementUrl}${achievement.id}/${details.title}`)}>
-            <img src={`${iconUrl}${details.icon}.jpg`} className="achievement-icon" />
-            {details.title}
-          </td>
-        </OverlayTrigger>
-
-        <td className="achievement-table-cell">{unixTime(this.props.achievement.timestamp)}</td>
-      </tr>
-    )
+          <td className="achievement-table-cell">{unixTime(this.props.achievement.timestamp)}</td>
+        </tr>
+      )
+    }
+    return null
   }
 }
 

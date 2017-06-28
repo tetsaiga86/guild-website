@@ -9,7 +9,6 @@ const iconUrl = 'http://media.blizzard.com/wow/icons/56/';
 const itemUrl = 'http://us.battle.net/wow/en/item/';
 class Equip extends React.Component{
   getArtifactRank(item){
-    //console.log(item);
     if(item.artifactTraits && item.artifactTraits.length){
       var counter=0;
       for (var i = 0; i < item.artifactTraits.length; i++) {
@@ -39,7 +38,6 @@ class Equip extends React.Component{
     var itemStyle = {
       backgroundPosition : `-${(item.quality+1)*49}px 0`
     }
-    console.log(item)
     var popover = (
       <Popover className='popover' id={item.id}>
         <h2>{item.name}</h2>

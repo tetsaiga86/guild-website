@@ -11,9 +11,6 @@ class MembersDatum < ApplicationRecord
     officer_names = ENV['OFFICERS'].split(' ')
 
     MembersDatum.where(bnet_id: officer_names).pluck(:body_json)
-    # ENV['OFFICERS'].split(' ').map do |officer|
-    #   MembersDatum.find_by(bnet_id: officer).body_json
-    # end
   end
 
   def self.with_dkp
