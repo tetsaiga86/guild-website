@@ -19,7 +19,8 @@ class Members extends React.Component {
 
     this.state = {
       members: [],
-      sortBy: 'Name'
+      sortBy: 'Name',
+      descending: true
     };
     this.members = props.members;
   }
@@ -38,45 +39,78 @@ class Members extends React.Component {
     return <Player player={member} key={member.body.name}/>
   }
 
+  getOrder(bool){
+    return bool ? -1 : 1
+  }
+
+  renderSortArrows(columnName){
+    return(
+      <th>
+        <img src='/images/up-arrow.png'
+          onClick={() => {this.setState({ sortBy : columnName, descending : false })}}></img>
+        {columnName}
+        <img src='/images/down-arrow.png'
+          onClick={() => {this.setState({ sortBy : columnName, descending : true })}}></img>
+      </th>
+    )
+  }
+
+  getCharacterspec(character){
+    for (var i = 0; character.talents && i < character.talents.length; i++) {
+      if(character.talents[i].selected){
+        return character.talents[i].spec.name
+      }
+    }
+    return 'Not Available'
+  }
+
   renderMembers(){
-    console.log(this.state.members);
+    let descending = this.state.descending
     switch(this.state.sortBy){
       case 'Item Level':
         this.state.members.sort((a,b) => {
-          if (a.body.items.averageItemLevel > b.body.items.averageItemLevel) return -1
-          if (a.body.items.averageItemLevel < b.body.items.averageItemLevel) return 1
+          if (a.body.items.averageItemLevel > b.body.items.averageItemLevel) return this.getOrder(descending)
+          if (a.body.items.averageItemLevel < b.body.items.averageItemLevel) return this.getOrder(!descending)
           return 0
         })
         break
 
       case 'Class':
         this.state.members.sort((a,b) => {
-          if (classID[a.body.class] < classID[b.body.class]) return -1
-          if (classID[a.body.class] > classID[b.body.class]) return 1
+          if (classID[a.body.class] < classID[b.body.class]) return this.getOrder(descending)
+          if (classID[a.body.class] > classID[b.body.class]) return this.getOrder(!descending)
           return 0
         })
         break
 
       case 'Achievement Points':
         this.state.members.sort((a,b) => {
-          if (a.body.achievementPoints > b.body.achievementPoints) return -1
-          if (a.body.achievementPoints < b.body.achievementPoints) return 1
+          if (a.body.achievementPoints > b.body.achievementPoints) return this.getOrder(descending)
+          if (a.body.achievementPoints < b.body.achievementPoints) return this.getOrder(!descending)
           return 0
         })
         break
 
       case 'Dkp':
         this.state.members.sort((a,b) => {
-          if (a.dkp.net_dkp > b.dkp.net_dkp) return -1
-          if (a.dkp.net_dkp < b.dkp.net_dkp) return 1
+          if (a.dkp.net_dkp > b.dkp.net_dkp) return this.getOrder(descending)
+          if (a.dkp.net_dkp < b.dkp.net_dkp) return this.getOrder(!descending)
+          return 0
+        })
+        break
+
+      case 'Spec':
+        this.state.members.sort((a,b) => {
+          if (this.getCharacterspec(a.body) > this.getCharacterspec(b.body)) return this.getOrder(!descending)
+          if (this.getCharacterspec(a.body) < this.getCharacterspec(b.body)) return this.getOrder(descending)
           return 0
         })
         break
 
       default:
         this.state.members.sort((a,b) => {
-          if (a.body.name < b.body.name) return -1
-          if (a.body.name > b.body.name) return 1
+          if (a.body.name < b.body.name) return this.getOrder(descending)
+          if (a.body.name > b.body.name) return this.getOrder(!descending)
           return 0
         })
     }
@@ -87,26 +121,15 @@ class Members extends React.Component {
     return (
       <div>
         <Header />
-        <h1>Sort By:</h1>
-        <br/>
-        <SplitButton bsStyle='default' title={this.state.sortBy} key={'SplitButton'}>
-          <MenuItem eventKey="1" onClick={() => {this.setState({ sortBy : 'Name' })}}>Name</MenuItem>
-          <MenuItem eventKey="2" onClick={() => {this.setState({ sortBy : 'Item Level' })}}>Item Level</MenuItem>
-          <MenuItem eventKey="3" onClick={() => {this.setState({ sortBy : 'Class' })}}>Class</MenuItem>
-          <MenuItem eventKey="4" onClick={() => {this.setState({ sortBy : 'Achievement Points' })}}>Achievement Points</MenuItem>
-          <MenuItem eventKey="5" onClick={() => {this.setState({ sortBy : 'Dkp' })}}>Dkp</MenuItem>
-        </SplitButton>
         <Table striped bordered condensed hover className="members-table">
           <thead>
             <tr>
-              <th>
-                Name
-              </th>
-              <th>Class</th>
-              <th>Spec</th>
-              <th>Achievement Points</th>
-              <th>Dkp</th>
-              <th>Item Level</th>
+              {this.renderSortArrows('Name')}
+              {this.renderSortArrows('Class')}
+              {this.renderSortArrows('Spec')}
+              {this.renderSortArrows('Achievement Points')}
+              {this.renderSortArrows('Dkp')}
+              {this.renderSortArrows('Item Level')}
             </tr>
           </thead>
           <tbody>
