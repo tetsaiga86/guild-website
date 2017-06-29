@@ -9,7 +9,7 @@ import {
 
 class Header extends React.Component {
   render () {
-    const loginTitle = ENV.membership_level > 99 ? 'Login' : `Member level ${ENV.membership_level}`
+    const loginTitle = ENV.membership_level > 1 ? 'Login' : `Member level ${ENV.membership_level}`
     return (
       <div className="menu">
         <Navbar inverse collapseOnSelect>
@@ -21,7 +21,6 @@ class Header extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              
               <NavItem eventKey={3} href="/spa/about">
                 About
               </NavItem>

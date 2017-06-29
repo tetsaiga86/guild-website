@@ -18798,7 +18798,7 @@ var Header = function (_React$Component) {
   _createClass(Header, [{
     key: 'render',
     value: function render() {
-      var loginTitle = ENV.membership_level > 99 ? 'Login' : 'Member level ' + ENV.membership_level;
+      var loginTitle = ENV.membership_level > 1 ? 'Login' : 'Member level ' + ENV.membership_level;
       return _react2.default.createElement(
         'div',
         { className: 'menu' },
@@ -47086,6 +47086,10 @@ var _player = __webpack_require__(409);
 
 var _player2 = _interopRequireDefault(_player);
 
+var _character_class_id = __webpack_require__(419);
+
+var _character_class_id2 = _interopRequireDefault(_character_class_id);
+
 var _jquery = __webpack_require__(27);
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -47112,7 +47116,8 @@ var Members = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Members.__proto__ || Object.getPrototypeOf(Members)).call(this, props));
 
     _this.state = {
-      members: []
+      members: [],
+      sortBy: 'Name'
     };
     _this.members = props.members;
     return _this;
@@ -47140,15 +47145,103 @@ var Members = function (_React$Component) {
   }, {
     key: 'renderMembers',
     value: function renderMembers() {
+      console.log(this.state.members);
+      switch (this.state.sortBy) {
+        case 'Item Level':
+          this.state.members.sort(function (a, b) {
+            if (a.body.items.averageItemLevel > b.body.items.averageItemLevel) return -1;
+            if (a.body.items.averageItemLevel < b.body.items.averageItemLevel) return 1;
+            return 0;
+          });
+          break;
+
+        case 'Class':
+          this.state.members.sort(function (a, b) {
+            if (_character_class_id2.default[a.body.class] < _character_class_id2.default[b.body.class]) return -1;
+            if (_character_class_id2.default[a.body.class] > _character_class_id2.default[b.body.class]) return 1;
+            return 0;
+          });
+          break;
+
+        case 'Achievement Points':
+          this.state.members.sort(function (a, b) {
+            if (a.body.achievementPoints > b.body.achievementPoints) return -1;
+            if (a.body.achievementPoints < b.body.achievementPoints) return 1;
+            return 0;
+          });
+          break;
+
+        case 'Dkp':
+          this.state.members.sort(function (a, b) {
+            if (a.dkp.net_dkp > b.dkp.net_dkp) return -1;
+            if (a.dkp.net_dkp < b.dkp.net_dkp) return 1;
+            return 0;
+          });
+          break;
+
+        default:
+          this.state.members.sort(function (a, b) {
+            if (a.body.name < b.body.name) return -1;
+            if (a.body.name > b.body.name) return 1;
+            return 0;
+          });
+      }
       return this.state.members.map(this.renderMember);
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
+
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(_header2.default, null),
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Sort By:'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          _reactBootstrap.SplitButton,
+          { bsStyle: 'default', title: this.state.sortBy, key: 'SplitButton' },
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { eventKey: '1', onClick: function onClick() {
+                _this3.setState({ sortBy: 'Name' });
+              } },
+            'Name'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { eventKey: '2', onClick: function onClick() {
+                _this3.setState({ sortBy: 'Item Level' });
+              } },
+            'Item Level'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { eventKey: '3', onClick: function onClick() {
+                _this3.setState({ sortBy: 'Class' });
+              } },
+            'Class'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { eventKey: '4', onClick: function onClick() {
+                _this3.setState({ sortBy: 'Achievement Points' });
+              } },
+            'Achievement Points'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { eventKey: '5', onClick: function onClick() {
+                _this3.setState({ sortBy: 'Dkp' });
+              } },
+            'Dkp'
+          )
+        ),
         _react2.default.createElement(
           _reactBootstrap.Table,
           { striped: true, bordered: true, condensed: true, hover: true, className: 'members-table' },
