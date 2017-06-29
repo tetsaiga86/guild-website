@@ -47024,7 +47024,7 @@ var Members = function (_React$Component) {
 
       return _react2.default.createElement(
         'th',
-        null,
+        { className: 'members-table-head' },
         _react2.default.createElement('img', { src: '/images/up-arrow.png',
           onClick: function onClick() {
             _this3.setState({ sortBy: columnName, descending: false });
@@ -47362,12 +47362,12 @@ var RecruitApplication = function (_React$Component) {
                     _react2.default.createElement(
                       'p',
                       null,
-                      'F O O L S A V A G E is always looking for active members. We list our most needed classes on our homepage, but we take and review all aplicants for serious consideration. If you believe you could be an asset to our guild and are dedicated to progression, please fill out the form below and we will be in contact asap.'
+                      'F O O L S A V A G E is always looking for active members. We list our most needed classes on our homepage, but we take and review all applicants for serious consideration. If you believe you could be an asset to our guild and are dedicated to progression, please fill out the form below and we will be in contact asap.'
                     ),
                     _react2.default.createElement(
                       'h6',
                       null,
-                      'All information shared in this application will only be used for contact purposes and will be destroyed after the application is considered closed. Only officers in the guild will have access to this information.'
+                      'All information shared in this application will be used for contact purposes only and will be destroyed after the application is considered closed. Only officers in the guild will have access to this information.'
                     )
                   ),
                   _react2.default.createElement(_reactBootstrap.Col, { xs: 6, md: 4 })
@@ -51310,22 +51310,27 @@ function renderComponent(component) {
 });
 
 (0, _page2.default)('/spa/about', function () {
+  renderComponent(_react2.default.createElement(_home2.default, null));
   renderComponent(_react2.default.createElement(_about2.default, null));
 });
 
 (0, _page2.default)('/spa/members', function () {
+  renderComponent(_react2.default.createElement(_home2.default, null));
   renderComponent(_react2.default.createElement(_members2.default, null));
 });
 
 (0, _page2.default)('/spa/achievements', function () {
+  renderComponent(_react2.default.createElement(_home2.default, null));
   renderComponent(_react2.default.createElement(_guildUpdates2.default, null));
 });
 
 (0, _page2.default)('/spa/admin', function () {
+  renderComponent(_react2.default.createElement(_home2.default, null));
   renderComponent(_react2.default.createElement(_adminLanding2.default, null));
 });
 
 (0, _page2.default)('/spa/recruit_application', function () {
+  renderComponent(_react2.default.createElement(_home2.default, null));
   renderComponent(_react2.default.createElement(_recruitApplication2.default, null));
 });
 

@@ -164,8 +164,8 @@ class RecruitApplication extends React.Component {
               <Col xs={18} md={12}>
                 <Row>
                   <Col xs={12} md={8}>
-                    <p>F O O L S A V A G E is always looking for active members. We list our most needed classes on our homepage, but we take and review all aplicants for serious consideration. If you believe you could be an asset to our guild and are dedicated to progression, please fill out the form below and we will be in contact asap.</p>
-                    <h6>All information shared in this application will only be used for contact purposes and will be destroyed after the application is considered closed. Only officers in the guild will have access to this information.</h6>
+                    <p>F O O L S A V A G E is always looking for active members. We list our most needed classes on our homepage, but we take and review all applicants for serious consideration. If you believe you could be an asset to our guild and are dedicated to progression, please fill out the form below and we will be in contact asap.</p>
+                    <h6>All information shared in this application will be used for contact purposes only and will be destroyed after the application is considered closed. Only officers in the guild will have access to this information.</h6>
                   </Col>
                   <Col xs={6} md={4}>
                   </Col>

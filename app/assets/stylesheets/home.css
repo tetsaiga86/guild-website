@@ -7,9 +7,14 @@
   color: white;
   font-family: 'WarcraftFont', Fallback, sans-serif;
 }
+
+.members-table-head{
+  
+}
+
+
 .banner{
   max-height: 20em;
-  /*margin-left: 20%;*/
   width: 100%;
   object-fit: contain;
 }

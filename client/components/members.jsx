@@ -45,7 +45,7 @@ class Members extends React.Component {
 
   renderSortArrows(columnName){
     return(
-      <th>
+      <th className="members-table-head">
         <img src='/images/up-arrow.png'
           onClick={() => {this.setState({ sortBy : columnName, descending : false })}}></img>
         {columnName}

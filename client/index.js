@@ -20,22 +20,27 @@ page('/', function () {
 });
 
 page('/spa/about', function () {
+  renderComponent(<Home />);
   renderComponent(<About />);
 })
 
 page('/spa/members', function () {
+  renderComponent(<Home />);
   renderComponent(<Members />);
 });
 
 page('/spa/achievements', function (){
+  renderComponent(<Home />);
   renderComponent(<GuildUpdates />);
 });
 
 page('/spa/admin', function (){
+  renderComponent(<Home />);
   renderComponent(<AdminLanding />);
 });
 
 page('/spa/recruit_application', function (){
+  renderComponent(<Home />);
   renderComponent(<RecruitApplication />)
 });
 
