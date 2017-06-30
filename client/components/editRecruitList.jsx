@@ -72,7 +72,6 @@ class EditRecruitList extends React.Component {
         <RecruitCard recruit={recruit} id={recruit.id} index={activeRecruitsList.length} key={recruit.id} onMove={this.moveRecruit} />
       )
     })
-    console.log('arl', activeRecruitsList);
     return activeRecruitsList
   }
 

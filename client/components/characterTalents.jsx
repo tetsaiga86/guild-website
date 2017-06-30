@@ -30,7 +30,6 @@ class CharacterTalents extends React.Component{
     talentsArr.sort((a,b) =>{
       return a.tier-b.tier;
     })
-    // console.log(talentsArr);
     if (this.props.data) {
       for (var i = 0; i < talentsArr.length; i++) {
         var spellUrl = `http://media.blizzard.com/wow/icons/36/${talentsArr[i].spell.icon}.jpg`
@@ -52,7 +51,6 @@ class CharacterTalents extends React.Component{
       var collapsibleArray = [];
       var talents = this.props.data.talents;
       const state = this.state;
-      // console.log('talents', talents);
       var length = talents.filter(talent => {return talent.talents.length > 0}).length
       for (var i = 0; i < length; i++) {
         const talent = talents[i];
@@ -73,7 +71,6 @@ class CharacterTalents extends React.Component{
   onToggle (talent) {
     const state = this.state;
     const toggleSpec = talent.spec;
-    // console.log('togglespec', toggleSpec)
     this.setState({
       ...state,
       [toggleSpec.name]: !state[toggleSpec.name]

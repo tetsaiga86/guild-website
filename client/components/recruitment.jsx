@@ -3,8 +3,12 @@ import $ from 'jquery'
 
 const recruitmentUrl = '/api/recruitment'
 class Recruitment extends React.Component {
-  componentWillMount () {
-    this.setState({wowClasses: []})
+  constructor(props){
+    super(props)
+    this.state = { wowClasses : []}
+  }
+
+  componentDidMount () {
     $.getJSON(recruitmentUrl, (wowClasses) => {
       this.setState({wowClasses: wowClasses})
     })

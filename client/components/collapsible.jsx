@@ -11,7 +11,6 @@ const { bool, func, string } = React.PropTypes;
 
 class Collapsible extends React.Component {
   popover(string){
-    // console.log('popover', string)
     return(
       <Popover id={string}>
         {string}

@@ -14,7 +14,7 @@ class Progress extends React.Component {
     this.onToggle = this.onToggle.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
       fetchLeaderdata((data) => {
         this.setState( { raids: data });
       });

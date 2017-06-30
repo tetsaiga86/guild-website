@@ -16,7 +16,6 @@ class WowClass extends React.Component{
 
   onToggle(specIndex){
     return (e) => {
-      console.log(e);
       this.props.onEdit(specIndex, 'active', e.nativeEvent.target.checked);
     }
   }

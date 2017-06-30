@@ -16,7 +16,7 @@ class GuildUpdates extends React.Component {
     }
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.fetchGuildAchievNews()
   }
 

@@ -16,31 +16,32 @@ function renderComponent(component) {
 }
 
 page('/', function () {
+  ReactDOM.unmountComponentAtNode(document.getElementById('app'))
   renderComponent(<Home />);
 });
 
 page('/spa/about', function () {
-  renderComponent(<Home />);
+  ReactDOM.unmountComponentAtNode(document.getElementById('app'))
   renderComponent(<About />);
 })
 
 page('/spa/members', function () {
-  renderComponent(<Home />);
+  ReactDOM.unmountComponentAtNode(document.getElementById('app'))
   renderComponent(<Members />);
 });
 
 page('/spa/achievements', function (){
-  renderComponent(<Home />);
+  ReactDOM.unmountComponentAtNode(document.getElementById('app'))
   renderComponent(<GuildUpdates />);
 });
 
 page('/spa/admin', function (){
-  renderComponent(<Home />);
+  ReactDOM.unmountComponentAtNode(document.getElementById('app'))
   renderComponent(<AdminLanding />);
 });
 
 page('/spa/recruit_application', function (){
-  renderComponent(<Home />);
+  ReactDOM.unmountComponentAtNode(document.getElementById('app'))
   renderComponent(<RecruitApplication />)
 });
 

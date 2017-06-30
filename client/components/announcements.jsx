@@ -4,8 +4,12 @@ import moment from 'moment'
 
 const announcementsUrl = '/api/announcements';
 class Announcements extends React.Component {
-  componentWillMount () {
-    this.setState({items: []})
+  constructor(props){
+    super(props)
+    this.state = { items : [] }
+  }
+
+  componentDidMount () {
     $.getJSON(announcementsUrl, (announcements) => {
       this.setState({items: announcements})
     })

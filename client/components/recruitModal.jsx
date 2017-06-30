@@ -27,7 +27,6 @@ class RecruitModal extends React.Component{
   }
 
   render(){
-    console.log(this.props.recruitList);
     return(
       <Modal show={this.props.show} onHide={this.props.onRequestClose}>
         <Modal.Header closeButton>

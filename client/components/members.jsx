@@ -20,18 +20,17 @@ class Members extends React.Component {
     this.state = {
       members: [],
       sortBy: 'Name',
-      descending: true
+      descending: false
     };
-    this.members = props.members;
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.fetchGuildMembers();
   }
 
   fetchGuildMembers(){
     $.getJSON(guildMembersUrl, (members) => {
-      this.setState({ members })
+      this.onSortBy(this.state.sortBy, this.state.descending, members)
     })
   }
 
@@ -39,18 +38,32 @@ class Members extends React.Component {
     return <Player player={member} key={member.body.name}/>
   }
 
-  getOrder(bool){
-    return bool ? -1 : 1
+  renderArrow(columnName){
+    if(this.state.sortBy==columnName){
+      if(this.state.descending){
+        return <img src='/images/up-arrow.png'></img>
+      }else{
+        return <img src='/images/down-arrow.png'></img>
+      }
+    }
   }
 
-  renderSortArrows(columnName){
+  onColumnHeaderClick(columnName) {
+    if (this.state.sortBy == columnName) {
+      // as before
+      this.onSortBy(columnName, !this.state.descending)
+    } else {
+      this.onSortBy(columnName, false)
+    }
+  }
+
+  renderColumnHead(columnName){
     return(
-      <th className="members-table-head">
-        <img src='/images/up-arrow.png'
-          onClick={() => {this.setState({ sortBy : columnName, descending : false })}}></img>
+      <th className="members-table-head" onClick={() => {
+        this.onColumnHeaderClick(columnName)
+      }}>
         {columnName}
-        <img src='/images/down-arrow.png'
-          onClick={() => {this.setState({ sortBy : columnName, descending : true })}}></img>
+        {this.renderArrow(columnName)}
       </th>
     )
   }
@@ -64,56 +77,42 @@ class Members extends React.Component {
     return 'Not Available'
   }
 
-  renderMembers(){
-    let descending = this.state.descending
-    switch(this.state.sortBy){
-      case 'Item Level':
-        this.state.members.sort((a,b) => {
-          if (a.body.items.averageItemLevel > b.body.items.averageItemLevel) return this.getOrder(descending)
-          if (a.body.items.averageItemLevel < b.body.items.averageItemLevel) return this.getOrder(!descending)
-          return 0
-        })
-        break
+  onSortBy(sortBy, descending, members) {
+    let newMembers = members || [...this.state.members];
 
-      case 'Class':
-        this.state.members.sort((a,b) => {
-          if (classID[a.body.class] < classID[b.body.class]) return this.getOrder(descending)
-          if (classID[a.body.class] > classID[b.body.class]) return this.getOrder(!descending)
-          return 0
-        })
-        break
-
-      case 'Achievement Points':
-        this.state.members.sort((a,b) => {
-          if (a.body.achievementPoints > b.body.achievementPoints) return this.getOrder(descending)
-          if (a.body.achievementPoints < b.body.achievementPoints) return this.getOrder(!descending)
-          return 0
-        })
-        break
-
-      case 'Dkp':
-        this.state.members.sort((a,b) => {
-          if (a.dkp.net_dkp > b.dkp.net_dkp) return this.getOrder(descending)
-          if (a.dkp.net_dkp < b.dkp.net_dkp) return this.getOrder(!descending)
-          return 0
-        })
-        break
-
-      case 'Spec':
-        this.state.members.sort((a,b) => {
-          if (this.getCharacterspec(a.body) > this.getCharacterspec(b.body)) return this.getOrder(!descending)
-          if (this.getCharacterspec(a.body) < this.getCharacterspec(b.body)) return this.getOrder(descending)
-          return 0
-        })
-        break
-
-      default:
-        this.state.members.sort((a,b) => {
-          if (a.body.name < b.body.name) return this.getOrder(descending)
-          if (a.body.name > b.body.name) return this.getOrder(!descending)
-          return 0
-        })
+    const compareFn = this.generateComparisonFn(sortBy);
+    const directionalCompareFn = (a, b) => {
+      if (descending) {
+        [a, b] = [b, a]
+      }
+      return compareFn(a, b)
     }
+    newMembers.sort(directionalCompareFn)
+    this.setState({
+      members: newMembers,
+      sortBy,
+      descending
+    })
+  }
+
+  generateComparisonFn(columnName) {
+    switch(columnName){
+      case 'Item Level':
+        return (a, b) => { return b.body.items.averageItemLevel - a.body.items.averageItemLevel }
+      case 'Class':
+        return (a, b) => { return classID[a.body.class].localeCompare(classID[b.body.class]) }
+      case 'Achievement Points':
+        return (a, b) => { return b.body.achievementPoints - a.body.achievementPoints }
+      case 'Dkp':
+        return (a, b) => { return b.dkp.net_dkp - a.dkp.net_dkp }
+      case 'Spec':
+        return (a, b) => { return this.getCharacterspec(a.body).localeCompare(this.getCharacterspec(b.body)) }
+      default:
+        return (a, b) => { return a.body.name.localeCompare(b.body.name) }
+    }
+  }
+
+  renderMembers(){
     return this.state.members.map(this.renderMember);
   }
 
@@ -124,12 +123,12 @@ class Members extends React.Component {
         <Table striped bordered condensed hover className="members-table">
           <thead>
             <tr>
-              {this.renderSortArrows('Name')}
-              {this.renderSortArrows('Class')}
-              {this.renderSortArrows('Spec')}
-              {this.renderSortArrows('Achievement Points')}
-              {this.renderSortArrows('Dkp')}
-              {this.renderSortArrows('Item Level')}
+              {this.renderColumnHead('Name')}
+              {this.renderColumnHead('Class')}
+              {this.renderColumnHead('Spec')}
+              {this.renderColumnHead('Achievement Points')}
+              {this.renderColumnHead('Dkp')}
+              {this.renderColumnHead('Item Level')}
             </tr>
           </thead>
           <tbody>
