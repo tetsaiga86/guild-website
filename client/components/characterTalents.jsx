@@ -34,7 +34,7 @@ class CharacterTalents extends React.Component{
       for (var i = 0; i < talentsArr.length; i++) {
         var spellUrl = `http://media.blizzard.com/wow/icons/36/${talentsArr[i].spell.icon}.jpg`
         talentNames.push(
-          <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={this.popover(talentsArr[i].spell.description)}>
+          <OverlayTrigger key={i} trigger={['hover', 'focus']} placement="bottom" overlay={this.popover(talentsArr[i].spell.description)}>
             <div className="talent-div">
               <img className="talent-icon" src={spellUrl} />
               <h3>{talentsArr[i].spell.name}</h3>

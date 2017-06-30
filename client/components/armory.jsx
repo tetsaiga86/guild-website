@@ -23,19 +23,19 @@ class Armory extends React.Component{
       if(gearArray==leftColumn){
         for (var i = 0; i < gearArray.length; i++) {
           if(this.props.data.items[gearArray[i]]){
-            equipArray.push(<Equip position='right' item={this.props.data.items[gearArray[i]]} />)
+            equipArray.push(<Equip key={`left${i}`} position='right' item={this.props.data.items[gearArray[i]]} />)
           }
         }
       }else if (gearArray==rightColumn) {
         for (var i = 0; i < gearArray.length; i++) {
           if(this.props.data.items[gearArray[i]]){
-            equipArray.push(<Equip position='left' item={this.props.data.items[gearArray[i]]} />)
+            equipArray.push(<Equip key={`right${i}`} position='left' item={this.props.data.items[gearArray[i]]} />)
           }
         }
       }else{
         for (var i = 0; i < gearArray.length; i++) {
           if(this.props.data.items[gearArray[i]]){
-            equipArray.push(<Equip position='top' item={this.props.data.items[gearArray[i]]} />)
+            equipArray.push(<Equip key={`bottom${i}`} position='top' item={this.props.data.items[gearArray[i]]} />)
           }
         }
       }

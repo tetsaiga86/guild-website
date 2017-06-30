@@ -15,7 +15,7 @@ class Achievement extends React.Component{
     var criteriaTitles = [];
     for (var i = 0; i < criteriaArr.length; i++) {
       criteriaTitles.push(
-        <li>{criteriaArr[i].description}</li>
+        <li key={criteriaArr[i].description}>{criteriaArr[i].description}</li>
       )
     }
     return <ul>{criteriaTitles}</ul>;

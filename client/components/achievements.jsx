@@ -6,7 +6,7 @@ import {
 
 class Achievements extends React.Component {
   renderAchievement(achievement){
-    return <Achievement achievement={achievement} />
+    return <Achievement achievement={achievement} key={achievement.id}/>
   }
 
   renderAchievements(){

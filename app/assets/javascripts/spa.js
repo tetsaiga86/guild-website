@@ -26775,7 +26775,7 @@ var Equip = function (_React$Component) {
         var amount = itemStatsArr[i].amount;
         statsArr.push(_react2.default.createElement(
           'h5',
-          null,
+          { key: i },
           _stat_id2.default[statId] + ': ' + amount
         ));
       }
@@ -48702,7 +48702,7 @@ var Achievement = function (_React$Component) {
       for (var i = 0; i < criteriaArr.length; i++) {
         criteriaTitles.push(_react2.default.createElement(
           'li',
-          null,
+          { key: criteriaArr[i].description },
           criteriaArr[i].description
         ));
       }
@@ -48813,7 +48813,7 @@ var Achievements = function (_React$Component) {
   _createClass(Achievements, [{
     key: 'renderAchievement',
     value: function renderAchievement(achievement) {
-      return _react2.default.createElement(_achievement2.default, { achievement: achievement });
+      return _react2.default.createElement(_achievement2.default, { achievement: achievement, key: achievement.id });
     }
   }, {
     key: 'renderAchievements',
@@ -49417,19 +49417,19 @@ var Armory = function (_React$Component) {
         if (gearArray == leftColumn) {
           for (var i = 0; i < gearArray.length; i++) {
             if (this.props.data.items[gearArray[i]]) {
-              equipArray.push(_react2.default.createElement(_equip2.default, { position: 'right', item: this.props.data.items[gearArray[i]] }));
+              equipArray.push(_react2.default.createElement(_equip2.default, { key: 'left' + i, position: 'right', item: this.props.data.items[gearArray[i]] }));
             }
           }
         } else if (gearArray == rightColumn) {
           for (var i = 0; i < gearArray.length; i++) {
             if (this.props.data.items[gearArray[i]]) {
-              equipArray.push(_react2.default.createElement(_equip2.default, { position: 'left', item: this.props.data.items[gearArray[i]] }));
+              equipArray.push(_react2.default.createElement(_equip2.default, { key: 'right' + i, position: 'left', item: this.props.data.items[gearArray[i]] }));
             }
           }
         } else {
           for (var i = 0; i < gearArray.length; i++) {
             if (this.props.data.items[gearArray[i]]) {
-              equipArray.push(_react2.default.createElement(_equip2.default, { position: 'top', item: this.props.data.items[gearArray[i]] }));
+              equipArray.push(_react2.default.createElement(_equip2.default, { key: 'bottom' + i, position: 'top', item: this.props.data.items[gearArray[i]] }));
             }
           }
         }
@@ -50030,7 +50030,7 @@ var CharacterTalents = function (_React$Component) {
           var spellUrl = 'http://media.blizzard.com/wow/icons/36/' + talentsArr[i].spell.icon + '.jpg';
           talentNames.push(_react2.default.createElement(
             _reactBootstrap.OverlayTrigger,
-            { trigger: ['hover', 'focus'], placement: 'bottom', overlay: this.popover(talentsArr[i].spell.description) },
+            { key: i, trigger: ['hover', 'focus'], placement: 'bottom', overlay: this.popover(talentsArr[i].spell.description) },
             _react2.default.createElement(
               'div',
               { className: 'talent-div' },
@@ -50556,12 +50556,13 @@ var GuildNews = function (_React$Component) {
   _createClass(GuildNews, [{
     key: 'renderNewsPiece',
     value: function renderNewsPiece(newsPiece) {
-      return _react2.default.createElement(_newsPiece2.default, { piece: newsPiece });
+      return _react2.default.createElement(_newsPiece2.default, { piece: newsPiece, key: 'news_piece_' + this.newsCount++ });
     }
   }, {
     key: 'renderNews',
     value: function renderNews() {
-      return this.props.news.map(this.renderNewsPiece);
+      this.newsCount = 0;
+      return this.props.news.map(this.renderNewsPiece, this);
     }
   }, {
     key: 'render',

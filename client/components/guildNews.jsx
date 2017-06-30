@@ -6,11 +6,12 @@ import {
 
 class GuildNews extends React.Component {
   renderNewsPiece(newsPiece){
-    return <NewsPiece piece={newsPiece} />
+    return <NewsPiece piece={newsPiece} key={`news_piece_${this.newsCount++}`}/>
   }
 
   renderNews(){
-    return this.props.news.map(this.renderNewsPiece);
+    this.newsCount = 0;
+    return this.props.news.map(this.renderNewsPiece, this);
   }
 
   render () {

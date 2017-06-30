@@ -28,7 +28,7 @@ class Equip extends React.Component{
     for (var i = 0; i < itemStatsArr.length; i++) {
       var statId=itemStatsArr[i].stat;
       var amount=itemStatsArr[i].amount;
-      statsArr.push(<h5>{`${statMap[statId]}: ${amount}`}</h5>)
+      statsArr.push(<h5 key={i}>{`${statMap[statId]}: ${amount}`}</h5>)
     }
     return statsArr;
   }
