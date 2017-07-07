@@ -26794,6 +26794,8 @@ var Equip = function (_React$Component) {
   }, {
     key: 'renderSpellDescription',
     value: function renderSpellDescription(item) {
+      if (!item.description) return;
+      if (!item.description.itemSpells) return;
       if (!item.description.itemSpells.length) return;else if (!item.description.itemSpells[0].spell.description) return;else return _react2.default.createElement(
         'h5',
         null,
@@ -26812,6 +26814,7 @@ var Equip = function (_React$Component) {
   }, {
     key: 'renderGems',
     value: function renderGems(item) {
+      if (!item.gems) return;
       var gems = [];
       for (var i = 0; i < item.gems.length; i++) {
         gems.push(_react2.default.createElement(

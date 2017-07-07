@@ -40,6 +40,8 @@ class Equip extends React.Component{
   }
 
   renderSpellDescription(item){
+    if(!item.description) return
+    if(!item.description.itemSpells) return
     if(!item.description.itemSpells.length) return
     else if(!item.description.itemSpells[0].spell.description) return
     else return (<h5>{`Spell: ${item.description.itemSpells[0].spell.description}`}</h5>)
@@ -51,6 +53,7 @@ class Equip extends React.Component{
   }
 
   renderGems(item){
+    if(!item.gems) return
     let gems = []
     for (var i = 0; i < item.gems.length; i++) {
       gems.push(<h5 key={gemKeyCounter}>Gem: {item.gems[i].gemInfo.bonus.name}</h5>)
