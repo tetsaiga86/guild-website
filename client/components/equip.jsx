@@ -1,5 +1,6 @@
 import React from 'react'
 import statMap from '../data/stat_id'
+import enchant_list from '../data/enchant_id.json'
 import {
 Popover,
 OverlayTrigger,
@@ -39,6 +40,18 @@ class Equip extends React.Component{
     else return (<h5>{`Description: ${description}`}</h5>)
   }
 
+  renderEnchant(item){
+    if(!item.tooltipParams) return
+    if(!item.tooltipParams.enchant) return
+    let id = item.tooltipParams.enchant
+    for (var i = 0; i < enchant_list.length; i++) {
+      if (id == enchant_list[i]['id']) {
+        return (<h5>{`Enchant: ${enchant_list[i].name_enus}`}</h5>)
+      }
+    }
+    return 'Not Available'
+  }
+
   renderSpellDescription(item){
     if(!item.description) return
     if(!item.description.itemSpells) return
@@ -56,7 +69,13 @@ class Equip extends React.Component{
     if(!item.gems) return
     let gems = []
     for (var i = 0; i < item.gems.length; i++) {
-      gems.push(<h5 key={gemKeyCounter}>Gem: {item.gems[i].gemInfo.bonus.name}</h5>)
+      let name = item.gems[i].name
+      let bonusName = item.gems[i].gemInfo.bonus.name
+      if(bonusName != 'Relic Enhancement'){
+        gems.push(<h5 key={gemKeyCounter}>Gem: {name} {bonusName}</h5>)
+      }else{
+        gems.push(<h5 key={gemKeyCounter}>{item.gems[i].gemInfo.type.type} Relic: {name} </h5>)
+      }
       gemKeyCounter++
     }
     return gems
@@ -77,6 +96,7 @@ class Equip extends React.Component{
         {this.renderSpellDescription(item)}
         {this.renderTransmogName(item)}
         {this.renderGems(item)}
+        {this.renderEnchant(item)}
         <h5></h5>
         <h5>{this.getArmor(item)}</h5>
       </Popover>

@@ -1,6 +1,6 @@
 module Api
   class Request
-    def getItemInfo(id)
+    def self.getItemInfo(id)
       bnet_client = ::Bnet::Client.new
       puts "fetching #{id}"
       description = bnet_client.item_description(id)
