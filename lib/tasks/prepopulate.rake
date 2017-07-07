@@ -45,9 +45,31 @@ namespace :prepopulate do
       member_datum = MembersDatum.find_or_create_by(bnet_id: member['character']['name'])
 
       counter = 0
+      data_request = ::Api::Request.new
       while counter < 10
         unless character_info.nil?
           puts "#{member['character']['name']} success"
+          character_info['items'].each do |_key, value|
+            if value.is_a?(::Hash)
+              value['description'] = data_request.getItemInfo(value['id'])
+
+              if value['tooltipParams'].length
+                if value['tooltipParams'].has_key?('transmogItem')
+                  value['transmog'] = data_request.getItemInfo(value['tooltipParams']['transmogItem'])
+                end
+
+                gemsArr = []
+                for i in 0...value['tooltipParams'].length
+                  if value['tooltipParams'].has_key?("gem#{i}")
+                    gemsArr.push(data_request.getItemInfo(value['tooltipParams']["gem#{i}"]))
+                  end
+                end
+                value["gems"] = gemsArr
+
+              end
+            end
+
+          end
           result = member_datum.update_from_hash(character_info)
           break
         else

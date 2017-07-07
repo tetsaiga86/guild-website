@@ -7,6 +7,7 @@ OverlayTrigger,
 
 const iconUrl = 'http://media.blizzard.com/wow/icons/56/';
 const itemUrl = 'http://us.battle.net/wow/en/item/';
+let gemKeyCounter = 0
 class Equip extends React.Component{
   getArtifactRank(item){
     if(item.artifactTraits && item.artifactTraits.length){
@@ -33,6 +34,31 @@ class Equip extends React.Component{
     return statsArr;
   }
 
+  renderDescription(description){
+    if(!description) return
+    else return (<h5>{`Description: ${description}`}</h5>)
+  }
+
+  renderSpellDescription(item){
+    if(!item.description.itemSpells.length) return
+    else if(!item.description.itemSpells[0].spell.description) return
+    else return (<h5>{`Spell: ${item.description.itemSpells[0].spell.description}`}</h5>)
+  }
+
+  renderTransmogName(item){
+    if(!item.transmog) return
+    else return (<h5>{`Transmog: ${item.transmog.name}`}</h5>)
+  }
+
+  renderGems(item){
+    let gems = []
+    for (var i = 0; i < item.gems.length; i++) {
+      gems.push(<h5 key={gemKeyCounter}>Gem: {item.gems[i].gemInfo.bonus.name}</h5>)
+      gemKeyCounter++
+    }
+    return gems
+  }
+
   render(){
     var item = this.props.item
     var itemStyle = {
@@ -44,8 +70,10 @@ class Equip extends React.Component{
         <h4>{this.getArtifactRank(item)}</h4>
         <h5>{`Item Level: ${item.itemLevel}`}</h5>
         {this.renderItemStats(item.stats || item.bonusStats)}
-        <h5></h5>
-        <h5></h5>
+        {this.renderDescription(item.description.description)}
+        {this.renderSpellDescription(item)}
+        {this.renderTransmogName(item)}
+        {this.renderGems(item)}
         <h5></h5>
         <h5>{this.getArmor(item)}</h5>
       </Popover>

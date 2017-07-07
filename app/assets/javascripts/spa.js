@@ -26739,6 +26739,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var iconUrl = 'http://media.blizzard.com/wow/icons/56/';
 var itemUrl = 'http://us.battle.net/wow/en/item/';
+var gemKeyCounter = 0;
 
 var Equip = function (_React$Component) {
   _inherits(Equip, _React$Component);
@@ -26782,6 +26783,48 @@ var Equip = function (_React$Component) {
       return statsArr;
     }
   }, {
+    key: 'renderDescription',
+    value: function renderDescription(description) {
+      if (!description) return;else return _react2.default.createElement(
+        'h5',
+        null,
+        'Description: ' + description
+      );
+    }
+  }, {
+    key: 'renderSpellDescription',
+    value: function renderSpellDescription(item) {
+      if (!item.description.itemSpells.length) return;else if (!item.description.itemSpells[0].spell.description) return;else return _react2.default.createElement(
+        'h5',
+        null,
+        'Spell: ' + item.description.itemSpells[0].spell.description
+      );
+    }
+  }, {
+    key: 'renderTransmogName',
+    value: function renderTransmogName(item) {
+      if (!item.transmog) return;else return _react2.default.createElement(
+        'h5',
+        null,
+        'Transmog: ' + item.transmog.name
+      );
+    }
+  }, {
+    key: 'renderGems',
+    value: function renderGems(item) {
+      var gems = [];
+      for (var i = 0; i < item.gems.length; i++) {
+        gems.push(_react2.default.createElement(
+          'h5',
+          { key: gemKeyCounter },
+          'Gem: ',
+          item.gems[i].gemInfo.bonus.name
+        ));
+        gemKeyCounter++;
+      }
+      return gems;
+    }
+  }, {
     key: 'render',
     value: function render() {
       var item = this.props.item;
@@ -26807,8 +26850,10 @@ var Equip = function (_React$Component) {
           'Item Level: ' + item.itemLevel
         ),
         this.renderItemStats(item.stats || item.bonusStats),
-        _react2.default.createElement('h5', null),
-        _react2.default.createElement('h5', null),
+        this.renderDescription(item.description.description),
+        this.renderSpellDescription(item),
+        this.renderTransmogName(item),
+        this.renderGems(item),
         _react2.default.createElement('h5', null),
         _react2.default.createElement(
           'h5',

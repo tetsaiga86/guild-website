@@ -43,7 +43,7 @@ module DataManipulation
       end
 
       filtered_news.select! do |newsItem|
-        newsItem['item'] && newsItem['item']['quality'] && newsItem['item']['itemLevel']
+        newsItem['item'] && newsItem['item']['quality'] && newsItem['item']['itemLevel'] && newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i
       end
 
       filtered_news.sort! do |a,b|
