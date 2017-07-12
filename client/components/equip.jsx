@@ -52,12 +52,33 @@ class Equip extends React.Component{
     return 'Not Available'
   }
 
+  renderNewsRelicInfo(item){
+    if(!item.gemInfo) return
+    if(!item.gemInfo.bonus) return
+    if(item.gemInfo.bonus.name == "Relic Enhancement"){
+      return(<h5>{item.gemInfo.type.type} {item.gemInfo.bonus.name}</h5>)
+    }
+  }
+
+  renderNewsDescription(item){
+    if(typeof item.description != "string") return
+    if(!item.description) return
+    else return (<h5>{`Description: ${item.description}`}</h5>)
+  }
+
   renderSpellDescription(item){
     if(!item.description) return
     if(!item.description.itemSpells) return
     if(!item.description.itemSpells.length) return
     else if(!item.description.itemSpells[0].spell.description) return
     else return (<h5>{`Spell: ${item.description.itemSpells[0].spell.description}`}</h5>)
+  }
+
+  renderNewsSpellDescription(item){
+    if(!item.itemSpells) return
+    if(!item.itemSpells.length) return
+    else if(!item.itemSpells[0].spell.description) return
+    else return (<h5>{`Spell: ${item.itemSpells[0].spell.description}`}</h5>)
   }
 
   renderTransmogName(item){
@@ -94,6 +115,9 @@ class Equip extends React.Component{
         {this.renderItemStats(item.stats || item.bonusStats)}
         {this.renderDescription(item.description.description)}
         {this.renderSpellDescription(item)}
+        {this.renderNewsSpellDescription(item)}
+        {this.renderNewsRelicInfo(item)}
+        {this.renderNewsDescription(item)}
         {this.renderTransmogName(item)}
         {this.renderGems(item)}
         {this.renderEnchant(item)}

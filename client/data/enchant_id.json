@@ -1,5 +1,8 @@
 [
     {
+      "id": "https://www.warcraftlogs.com/json/enchant-names.json"
+    },
+    {
         "id": "13",
         "name_enus": "Sharpened (+3 Damage)",
         "name_frfr": "Aiguisé (+3 points de dégâts)",

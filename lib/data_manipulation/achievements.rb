@@ -42,6 +42,7 @@ module DataManipulation
         end
       end
 
+
       filtered_news.select! do |newsItem|
         newsItem['item'] && newsItem['item']['quality'] && newsItem['item']['itemLevel'] && newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i
       end
@@ -54,6 +55,9 @@ module DataManipulation
 
       guild_data['news'] = topFourtyNews
 
+      # filtered_news = CharacterLootDatum.all.map do |newsItem|
+      #   JSON.parse(newsItem.body)
+      # end
       return guild_data
     end
 
