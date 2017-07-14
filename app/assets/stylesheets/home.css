@@ -9,9 +9,17 @@
 }
 
 .members-table-head{
-  
+
 }
 
+.nav-link{
+  color: #9d9d9d;
+}
+
+.nav-link:hover{
+  color: white;
+  text-decoration: none;
+}
 
 .banner{
   max-height: 20em;

@@ -1,4 +1,5 @@
 import React from 'react'
+import page from 'page'
 import {
   Navbar,
   Nav,
@@ -8,8 +9,11 @@ import {
 } from 'react-bootstrap'
 
 class Header extends React.Component {
+  changeLocation(url){
+    page(url)
+  }
   render () {
-    const loginTitle = ENV.membership_level > 1 ? 'Login' : `Member level ${ENV.membership_level}`
+    const loginTitle = ENV.membership_level > 2 ? 'Login' : `Member level ${ENV.membership_level}`
     return (
       <div className="menu">
         <Navbar inverse collapseOnSelect>
@@ -21,16 +25,24 @@ class Header extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={3} href="/spa/about">
+              <NavItem onClick={() => {
+                this.changeLocation("/spa/about")
+                }}>
                 About
               </NavItem>
-              <NavItem eventKey={4} href="/spa/achievements">
+              <NavItem onClick={() => {
+                this.changeLocation("/spa/achievements")
+                }}>
                 Achievements
               </NavItem>
-              <NavItem eventKey={5} href="/spa/members">
+              <NavItem onClick={() => {
+                this.changeLocation("/spa/members")
+                }}>
                 Members
               </NavItem>
-              <NavItem eventKey={6} href="/spa/recruit_application">
+              <NavItem onClick={() => {
+                this.changeLocation("/spa/recruit_application")
+                }}>
                 Recruitment
               </NavItem>
             </Nav>
