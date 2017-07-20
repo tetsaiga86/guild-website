@@ -1,5 +1,5 @@
 module Admin
-  class WowSpecController < ApplicationController
+  class WowSpecController < AdminController
     skip_before_filter :verify_authenticity_token
 
     def list

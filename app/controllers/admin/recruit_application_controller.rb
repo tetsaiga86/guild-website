@@ -1,5 +1,5 @@
 module Admin
-  class RecruitApplicationController < ApplicationController
+  class RecruitApplicationController < AdminController
     skip_before_filter :verify_authenticity_token
 
     def list

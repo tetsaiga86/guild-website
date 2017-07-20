@@ -1,5 +1,5 @@
 module Admin
-  class DkpController < ApplicationController
+  class DkpController < AdminController
     skip_before_filter :verify_authenticity_token
 
     def update_all

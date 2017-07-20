@@ -1,5 +1,5 @@
 module Admin
-  class AnnouncementsController < ApplicationController
+  class AnnouncementsController < AdminController
     skip_before_filter :verify_authenticity_token
     before_action :set_announcement, only: [:show, :edit, :update, :destroy]
 

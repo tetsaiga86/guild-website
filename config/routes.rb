@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'spa#index'
 
   get '/spa/:spa_route' => 'spa#spa_route'

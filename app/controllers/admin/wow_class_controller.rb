@@ -1,4 +1,4 @@
 module Admin
-  class WowClassController < ApplicationController
+  class WowClassController < AdminController
   end
 end
