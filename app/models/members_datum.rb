@@ -33,7 +33,13 @@ class MembersDatum < ApplicationRecord
 
   def populate_dkp
     if read_attribute(:dkp_id).nil?
-      self.dkp = Dkp.find_by(name: self.bnet_id)
+      self.dkp = Dkp.find_or_create_by(name: self.bnet_id) do |new_dkp|
+        new_dkp.rank = 'LITTLE SAVAGE'
+        new_dkp.net_dkp = 0
+        new_dkp.total_dkp = 0
+        new_dkp.spent_dkp = 0
+        new_dkp.hours = 0
+      end
     end
     true
   end
