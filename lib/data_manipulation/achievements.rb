@@ -38,12 +38,17 @@ module DataManipulation
           item_info = CharacterLootDatum.create(bnet_id: fn_id(newsItem), body: item_info_body.to_json)
           newsItem['item'] = item_info_body
         else
-          newsItem['item'] = JSON.parse(item_info.body)
+          begin
+            newsItem['item'] = JSON.parse(item_info.body)
+          rescue StandardError
+            newsItem['item'] = 'error'
+          end
         end
       end
 
 
       filtered_news.select! do |newsItem|
+        newsItem['item'] != 'error' &&
         newsItem['item'] && newsItem['item']['quality'] && newsItem['item']['itemLevel'] && newsItem['item']['itemLevel'] >= ENV['MINIMUM_ITEM_LEVEL'].to_i
       end
 
