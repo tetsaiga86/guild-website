@@ -7,8 +7,9 @@ module Bnet
     BASE_URL = 'https://us.api.battle.net/wow/'.freeze
     LOCALE = 'en_US'.freeze
 
-    def initialize(limit=1)
+    def initialize(limit=1, token=nil)
       @limit = limit
+      @token = token
     end
 
     def realm
@@ -16,7 +17,7 @@ module Bnet
     end
 
     def api_key
-      ENV['API_KEY']
+      @token || ENV['API_KEY']
     end
 
     def guild_members(name)
@@ -48,6 +49,11 @@ module Bnet
       query_values = { fields: 'items stats talents progression'}
 
       request "character/#{realm}/#{URI.escape name}", query_values
+    end
+
+    def profile_wow_characters
+      raise "Can't look at profile without token" unless @token
+      request "wow/user/characters"
     end
 
     private

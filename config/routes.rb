@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks'}
+
   root to: 'spa#index'
 
   get '/spa/:spa_route' => 'spa#spa_route'
 
-  get '/auth/:provider/callback', to: 'sessions#create'
-
   get '/news' => 'proxy#news'
+
+  get '/logout' => 'sessions#destroy'
 
   get '/api/guild_members' => 'proxy#guild_members'
   get '/api/character_info/:name' => 'proxy#character_info'
