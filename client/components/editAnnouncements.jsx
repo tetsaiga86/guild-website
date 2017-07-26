@@ -62,6 +62,10 @@ class EditAnnouncemnts extends React.Component {
   }
 
   saveAllAnnouncements(cb){
+    if (!this.state.announcements.length) {
+      return cb();
+    }
+    
     $.post(saveAnnouncementsUrl, this.state, (data) => {
       this.setState({ announcements : data })
       this.setState({ change : false })
