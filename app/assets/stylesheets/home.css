@@ -12,13 +12,22 @@
 
 }
 
-.nav-link{
+.login-thumbnail{
+  max-height: 45px;
+  border-radius: 90px;
+}
+
+.nav-link, .thumbnail-span{
   color: #9d9d9d;
 }
 
-.nav-link:hover{
+.nav-link:hover, .thumbnail-span:hover{
   color: white;
   text-decoration: none;
+}
+
+#basic-nav-dropdown{
+  padding: 0;
 }
 
 .banner{

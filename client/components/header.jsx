@@ -29,9 +29,9 @@ class Header extends React.Component {
 
     return (
       <NavDropdown eventKey={1} title={
-            <div>
-              <img src={playerUrl + ENV.current_user_thumbnail} /> {ENV.current_user_name}
-            </div>
+            <span className="thumbnail-span">
+              <img className="login-thumbnail" src={playerUrl + ENV.current_user_thumbnail} /> {ENV.current_user_name}
+            </span>
         } id="basic-nav-dropdown">
         <MenuItem eventKey={1.1} href="/logout">Logout</MenuItem>
       </NavDropdown>
@@ -43,9 +43,9 @@ class Header extends React.Component {
 
     return (
       <NavDropdown eventKey={1} title={
-            <div>
-              <img src={playerUrl + ENV.current_user_thumbnail} /> {ENV.current_user_name}
-            </div>
+            <span className="thumbnail-span">
+              <img className="login-thumbnail" src={playerUrl + ENV.current_user_thumbnail} /> {ENV.current_user_name}
+            </span>
         } id="basic-nav-dropdown">
         <MenuItem eventKey={1.1} href="/logout">Logout</MenuItem>
         <MenuItem divider />
@@ -58,7 +58,7 @@ class Header extends React.Component {
     if(isLoggedIn()) return;
     if(isAdmin()) return;
     return (
-      <NavDropdown eventKey={1} title={"Login With Bnet"} id="basic-nav-dropdown">
+      <NavDropdown eventKey={1} title={"Login With Bnet"}>
         <MenuItem eventKey={1.1} href="/users/auth/bnet">Login</MenuItem>
       </NavDropdown>
     )
