@@ -158,20 +158,18 @@ class RecruitApplication extends React.Component {
     return (
       <div className="home-div">
         <Header className="header" />
-        <div className="main-page">
-          <Grid>
+        <div>
+          <Grid className="recruit-application-div">
             <Row className="top-row">
               <Col xs={18} md={12}>
                 <Row>
-                  <Col xs={12} md={8}>
-                    <p>F O O L S A V A G E is always looking for active members. We list our most needed classes on our homepage, but we take and review all applicants for serious consideration. If you believe you could be an asset to our guild and are dedicated to progression, please fill out the form below and we will be in contact asap.</p>
-                    <h6>All information shared in this application will be used for contact purposes only and will be destroyed after the application is considered closed. Only officers in the guild will have access to this information.</h6>
-                  </Col>
-                  <Col xs={6} md={4}>
+                  <Col xs={18} md={12}>
+                    <p className="application-text">F O O L S A V A G E is always looking for active members. We list our most needed classes on our homepage, but we take and review all applicants for serious consideration. If you believe you could be an asset to our guild and are dedicated to progression, please fill out the form below and we will be in contact asap.</p>
+                    <h6 className="application-text">All information shared in this application will be used for contact purposes only and will be destroyed after the application is considered closed. Only officers in the guild will have access to this information.</h6>
                   </Col>
                 </Row>
                 <Row>
-                  <Col xs={12} md={8}>
+                  <Col xs={18} md={12}>
                     <form>
                       <FieldGroup
                         id="fg1"
@@ -226,12 +224,14 @@ class RecruitApplication extends React.Component {
 
                       <FormGroup validationState={validationStates.q1.state}>
                         <ControlLabel>Are you able to commit to our raid times?</ControlLabel>
-                        <Radio name="q1" id="q1o1" value="true" onChange={this.onEditQ1} checked={this.state.q1 === "true"} inline>
-                          Yes
-                        </Radio>
-                        <Radio name="q1" id="q1o2" value="false" onChange={this.onEditQ1} checked={this.state.q1 === "false"} inline>
-                          No
-                        </Radio>
+                        <div>
+                          <Radio name="q1" id="q1o1" value="true" onChange={this.onEditQ1} checked={this.state.q1 === "true"} inline>
+                            Yes
+                          </Radio>
+                          <Radio name="q1" id="q1o2" value="false" onChange={this.onEditQ1} checked={this.state.q1 === "false"} inline>
+                            No
+                          </Radio>
+                        </div>
                         <HelpBlock>{validationStates.q1.help}</HelpBlock>
                       </FormGroup>
 
@@ -239,12 +239,14 @@ class RecruitApplication extends React.Component {
                         <ControlLabel>
                           If you need to miss or be late for a raid, we require you to let an officer know, asap. Would this be a problem for you?
                         </ControlLabel>
-                        <Radio name="q2" id="q2o1" value="true" onChange={this.onEditQ2} checked={this.state.q2 === "true"} inline>
-                          Yes
-                        </Radio>
-                        <Radio name="q2" id="q2o2" value="false" onChange={this.onEditQ2} checked={this.state.q2 === "false"} inline>
-                          No
-                        </Radio>
+                        <div>
+                          <Radio name="q2" id="q2o1" value="true" onChange={this.onEditQ2} checked={this.state.q2 === "true"} inline>
+                            Yes
+                          </Radio>
+                          <Radio name="q2" id="q2o2" value="false" onChange={this.onEditQ2} checked={this.state.q2 === "false"} inline>
+                            No
+                          </Radio>
+                        </div>
                         <HelpBlock>{validationStates.q2.help}</HelpBlock>
                       </FormGroup>
 
@@ -252,12 +254,14 @@ class RecruitApplication extends React.Component {
                         <ControlLabel>
                           We require certain addons for loot distribution and to assist in progression. Will installing and keeping these addons up to date be an issue for you?
                         </ControlLabel>
-                        <Radio name="q3" id="q3o1" value="true" onChange={this.onEditQ3} checked={this.state.q3 === "true"} inline>
-                          Yes
-                        </Radio>
-                        <Radio name="q3" id="q3o2" value="false" onChange={this.onEditQ3} checked={this.state.q3 === "false"} inline>
-                          No
-                        </Radio>
+                        <div>
+                          <Radio name="q3" id="q3o1" value="true" onChange={this.onEditQ3} checked={this.state.q3 === "true"} inline>
+                            Yes
+                          </Radio>
+                          <Radio name="q3" id="q3o2" value="false" onChange={this.onEditQ3} checked={this.state.q3 === "false"} inline>
+                            No
+                          </Radio>
+                        </div>
                         <HelpBlock>{validationStates.q3.help}</HelpBlock>
                       </FormGroup>
 
@@ -288,11 +292,11 @@ class RecruitApplication extends React.Component {
                   </Col>
                 </Row>
               </Col>
-              <Col xs={6} md={4}>
-              </Col>
             </Row>
             <Row className="footer">
-              <Footer />
+              <Col xs={18} md={12}>
+                <Footer />
+              </Col>
             </Row>
           </Grid>
         </div>

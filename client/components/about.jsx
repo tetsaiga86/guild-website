@@ -14,7 +14,7 @@ class About extends React.Component{
     return(
       <div>
         <Header className="header" />
-        <Grid>
+        <Grid className="about-grid">
           <Row>
             <Col xs={18} md={12}>
               <h1>About Us</h1>

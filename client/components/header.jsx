@@ -25,7 +25,7 @@ class Header extends React.Component {
 
   renderLogout(){
     if(!isLoggedIn()) return;
-    if(!isAdmin()) return;
+    if(isAdmin()) return;
 
     return (
       <NavDropdown eventKey={1} title={

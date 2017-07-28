@@ -225,3 +225,26 @@ strong{
 .wow-class-button{
   min-width: 100%;
 }
+
+.recruit-application-div,
+.about-grid{
+    border: 1px solid white;
+    background-color: black;
+    padding-top: 1em;
+}
+
+.application-text,
+.control-label,
+.form-control{
+  font-family: sans-serif;
+}
+
+.radio-inline,
+.help-block{
+  font-family: sans-serif;
+  margin-left: 1em;
+}
+
+.footer{
+  padding-top: 1em;
+}
