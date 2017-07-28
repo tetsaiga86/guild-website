@@ -17,6 +17,7 @@ class User < ApplicationRecord
     user.character_name = user_character['name']
     user.user_level = user_character['rank']
     user.thumbnail = user_character['thumbnail']
+    user.moderator = user.user_level <= ENV['OFFICER_RANK']
     user.save
 
     # debugger
