@@ -17,7 +17,7 @@ class User < ApplicationRecord
     user.character_name = user_character['name']
     user.user_level = user_character['rank']
     user.thumbnail = user_character['thumbnail']
-    user.moderator = user.user_level <= ENV['OFFICER_RANK']
+    user.moderator = user.user_level <= ENV['OFFICER_RANK'].to_i
     user.save
 
     # debugger
@@ -30,14 +30,20 @@ class User < ApplicationRecord
       character['guild'] == ENV['GUILD_NAME'] && character['realm'].downcase.sub("'", "") == ENV['REALM']
     end
 
+    if characters_in_guild.empty?
+      raise 'Not a current guild member'
+    end
+
     characters_in_guild.each do |character|
       matching_member = guild_members.select do |member|
         member['character']['name'] == character['name']
       end.first
 
-      unless matching_member.nil?
-        character['rank'] = matching_member['rank']
+      if matching_member.nil?
+        raise 'Not a current guild member'
       end
+
+      character['rank'] = matching_member['rank']
     end
 
     characters_in_guild.sort! do |a,b|

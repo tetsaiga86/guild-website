@@ -14,7 +14,6 @@ function isAdmin() {
 
 function isLoggedIn() {
   return ENV.membership_level <= 99
-  && ENV.membership_level >=3
 }
 
 const playerUrl = 'http://render-us.worldofwarcraft.com/character/'
@@ -23,51 +22,53 @@ class Header extends React.Component {
     page(url)
   }
 
+  renderForum(){
+    if (ENV.membership_level <= 99){
+      return(
+        <NavItem onClick={() => {
+            this.changeLocation("/forum")
+          }}>
+          Forum
+        </NavItem>
+      )
+    }
+  }
+
   renderLogout(){
     if(!isLoggedIn()) return;
-    if(isAdmin()) return;
 
-    return (
-      <NavDropdown eventKey={1} title={
-            <span className="thumbnail-span">
-              <img className="login-thumbnail" src={playerUrl + ENV.current_user_thumbnail} /> {ENV.current_user_name}
-            </span>
-        } id="basic-nav-dropdown">
-        <MenuItem eventKey={1.1} href="/logout">Logout</MenuItem>
-      </NavDropdown>
-    )
+    return <MenuItem eventKey={1.1} href="/logout">Logout</MenuItem>
   }
 
   renderAdminMenuItems(){
     if(!isAdmin()) return;
 
-    return (
-      <NavDropdown eventKey={1} title={
-            <span className="thumbnail-span">
-              <img className="login-thumbnail" src={playerUrl + ENV.current_user_thumbnail} /> {ENV.current_user_name}
-            </span>
-        } id="basic-nav-dropdown">
-        <MenuItem eventKey={1.1} href="/logout">Logout</MenuItem>
-        <MenuItem divider />
-        <MenuItem eventKey={1.2} href="/spa/admin">Admin</MenuItem>
-      </NavDropdown>
-    )
+    return [
+      <MenuItem divider />,
+      <MenuItem eventKey={1.2} href="/spa/admin">Admin</MenuItem>
+    ]
   }
 
   renderLogin() {
     if(isLoggedIn()) return;
-    if(isAdmin()) return;
     return (
-      <NavDropdown eventKey={1} title={"Login With Bnet"}>
-        <MenuItem eventKey={1.1} href="/users/auth/bnet">Login</MenuItem>
-      </NavDropdown>
+      <MenuItem eventKey={1.1} href="/users/auth/bnet">Login</MenuItem>
     )
+  }
+
+  renderTitle() {
+    if(!isLoggedIn()) {
+      return 'Login With Bnet';
+    } else {
+      return <span className="thumbnail-span">
+        <img className="login-thumbnail" src={playerUrl + ENV.current_user_thumbnail} /> {ENV.current_user_name}
+      </span>;
+    }
   }
 
 
 
   render () {
-    const loginTitle = ENV.membership_level > 2 ? 'Login' : `Member level ${ENV.membership_level}`
     return (
       <div className="menu">
         <Navbar inverse collapseOnSelect>
@@ -99,11 +100,14 @@ class Header extends React.Component {
                 }}>
                 Recruitment
               </NavItem>
+              {this.renderForum()}
             </Nav>
             <Nav pullRight>
-              {this.renderLogin()}
-              {this.renderLogout()}
-              {this.renderAdminMenuItems()}
+              <NavDropdown eventKey={1} title={this.renderTitle()} id="basic-nav-dropdown">
+                {this.renderLogin()}
+                {this.renderLogout()}
+                {this.renderAdminMenuItems()}
+              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

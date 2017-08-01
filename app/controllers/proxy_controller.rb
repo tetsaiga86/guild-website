@@ -1,5 +1,11 @@
 class ProxyController < ApplicationController
   skip_before_filter :verify_authenticity_token
+
+  def user_armory
+    user = User.find(params[:id])
+    redirect_to "https://worldofwarcraft.com/en-us/character/#{ENV['REALM']}/#{user.character_name}"
+  end
+
   def news
     bnet_response = HTTParty.get 'https://worldofwarcraft.com/en-US/news'
     render body: bnet_response.body

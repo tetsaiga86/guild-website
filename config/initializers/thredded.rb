@@ -156,3 +156,18 @@ Thredded.layout = 'thredded/application'
 #
 # add in (must install separate gem (under development) as well):
 # Thredded.notifiers = [Thredded::EmailNotifier.new, Thredded::PushoverNotifier.new(ENV['PUSHOVER_APP_ID'])]
+
+require 'thredded/application_controller'
+module Thredded
+  class ApplicationController < ::ApplicationController
+    before_action :check_user_permissions
+
+    def check_user_permissions
+      if user_signed_in?
+        true
+      else
+        redirect_to '/'
+      end
+    end
+  end
+end

@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks'}
 
+  mount Thredded::Engine => '/forum'
+
   root to: 'spa#index'
 
   get '/spa/:spa_route' => 'spa#spa_route'
 
   get '/news' => 'proxy#news'
+  get '/users/:id' => 'proxy#user_armory'
 
   get '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy', as: 'destroy_user_session'
 
   get '/api/guild_members' => 'proxy#guild_members'
   get '/api/character_info/:name' => 'proxy#character_info'

@@ -5,6 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     sign_in @user
     redirect_to root_path
+  rescue RuntimeError => e
+    @error = e.message
+    render 'error', layout: false
   end
 
   def failure

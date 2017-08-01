@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Login Error</title>
+    <script type="text/javascript">
+      setTimeout(function() {
+        window.location = '/';
+      }, 5000);
+    </script>
+  </head>
+
+<body>
+  <h1>Login Error</h1>
+  <p>There was an error while logging in.</p>
+  <p><%= @error %></p>
+  <noscript>
+    <p><a href="/">Back To Home</a></p>
+  </noscript>
+</body>
+</html>
