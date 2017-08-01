@@ -1,0 +1,51 @@
+{
+  "id": 138313,
+  "name": "Purifier's Gorget",
+  "icon": "inv_cloth_raidpriest_q_01_helm",
+  "quality": 4,
+  "itemLevel": 890,
+  "tooltipParams": {
+    "set": [
+      138370,
+      138313,
+      138319,
+      138316
+    ],
+    "transmogItem": 129342,
+    "timewalkerLevel": 110
+  },
+  "stats": [
+    {
+      "stat": 32,
+      "amount": 557
+    },
+    {
+      "stat": 49,
+      "amount": 1034
+    },
+    {
+      "stat": 5,
+      "amount": 1977
+    },
+    {
+      "stat": 7,
+      "amount": 2965
+    }
+  ],
+  "armor": 244,
+  "context": "raid-heroic",
+  "bonusLists": [
+    3516,
+    1487,
+    1813
+  ],
+  "artifactId": 0,
+  "displayInfoId": 151206,
+  "artifactAppearanceId": 0,
+  "artifactTraits": [],
+  "relics": [],
+  "appearance": {
+    "itemId": 129342,
+    "itemAppearanceModId": 0
+  }
+}

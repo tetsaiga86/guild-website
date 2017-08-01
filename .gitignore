@@ -25,3 +25,7 @@
 
 #myIgnores
 /node_modules/*
+.idea/
+node_modules/
+cert.pem
+key.pem

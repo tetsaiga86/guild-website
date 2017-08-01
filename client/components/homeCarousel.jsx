@@ -1,5 +1,6 @@
 import React from 'react'
 import { Carousel } from 'react-bootstrap'
+import $ from 'jquery'
 
 class HomeCarousel extends React.Component {
   constructor (props) {
@@ -12,9 +13,12 @@ class HomeCarousel extends React.Component {
     $.get('/news', (response) => {
       const $page = $(response);
 
-      const articleTiles = $page.find('.ArticleTile').slice(0, 3);
-
-      const articles = [articleTiles[0], articleTiles[1], articleTiles[2]].map(articleTile => {
+      const articleTiles = $page.find('.ArticleTile');
+      var articlesArr = [];
+      for (var i = 0; i < articleTiles.length; i++) {
+        articlesArr.push(articleTiles[i]);
+      }
+      const articles = articlesArr.map(articleTile => {
         const $tile = $(articleTile);
         const imageUrl = $tile.find('.Tile-bg').attr('style').match(/"(.*)"/)[1];
         const title = $tile.find('.ArticleTile-title').text();
@@ -36,7 +40,7 @@ class HomeCarousel extends React.Component {
 
   renderArticle(article) {
     return (
-      <Carousel.Item>
+      <Carousel.Item key={article.href}>
         <a href={article.href} target="_blank">
           <img className="carousel-img" width={615} height={300} alt={article.subtitle} src={article.imageUrl} />
           <Carousel.Caption>
@@ -55,7 +59,7 @@ class HomeCarousel extends React.Component {
     return (
       <Carousel prevIcon={prevIcon} nextIcon={nextIcon}>
         { this.state.list.map(this.renderArticle) }
-    </Carousel>
+      </Carousel>
     )
   }
 }

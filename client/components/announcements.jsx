@@ -1,43 +1,37 @@
 import React from 'react'
+import $ from 'jquery'
+import moment from 'moment'
 
-// var propTypes = React.propTypes;
-
+const announcementsUrl = '/api/announcements';
 class Announcements extends React.Component {
-  // static propTypes = {
-  //   maxShown: propTypes.number
-  // };
-  //
-  // static defaultProps = {
-  //   maxShown: 1000
-  // };
-
-  componentWillMount () {
-    this.setState({items: []})
+  constructor(props){
+    super(props)
+    this.state = { items : [] }
   }
 
   componentDidMount () {
-    setTimeout(() => {
-      this.setState({items: ['announcement1', 'announcement2', 'announcement3']})
-    }, 5000);
-    // $.get('endpoint', function (results) {
-    //   this.setState({items: results})
-    // });
+    $.getJSON(announcementsUrl, (announcements) => {
+      this.setState({items: announcements})
+    })
   }
 
   renderAnnouncements() {
     var announcements = [];
     this.state.items.forEach(item => {
-      // if (announcements.length >= this.props.maxShown) {
-      //   return;
-      // }
-      announcements.push(<li key={item}>{item}</li>)
+      announcements.push(
+        <li key={item.title}>
+          <h3>{item.title}</h3>
+          <h4>{item.body}</h4>
+          <h7>{moment(item.updated_at).format('LLLL')}</h7>
+        </li>
+      )
     });
     return <ul>{announcements}</ul>;
   }
 
   render () {
     if (this.state.items.length === 0) {
-      return <h2>No announcements</h2>;
+      return <h2>No Announcements</h2>;
     }
 
     return (

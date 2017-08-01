@@ -1,0 +1,45 @@
+{
+  "id": 132444,
+  "name": "Prydaz, Xavaric's Magnum Opus",
+  "icon": "inv_misc_necklace15",
+  "quality": 5,
+  "itemLevel": 940,
+  "tooltipParams": {
+    "gem0": 130220,
+    "enchant": 5891,
+    "timewalkerLevel": 110
+  },
+  "stats": [
+    {
+      "stat": 32,
+      "amount": 1079
+    },
+    {
+      "stat": 49,
+      "amount": 1079
+    },
+    {
+      "stat": 36,
+      "amount": 1079
+    },
+    {
+      "stat": 7,
+      "amount": 2658
+    }
+  ],
+  "armor": 0,
+  "context": "",
+  "bonusLists": [
+    3529,
+    3530,
+    1811
+  ],
+  "artifactId": 0,
+  "displayInfoId": 0,
+  "artifactAppearanceId": 0,
+  "artifactTraits": [],
+  "relics": [],
+  "appearance": {
+    "enchantDisplayInfoId": 5891
+  }
+}

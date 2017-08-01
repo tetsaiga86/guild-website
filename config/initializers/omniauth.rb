@@ -11,6 +11,6 @@
 #   end
 # end
 
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :bnet, ENV['API_KEY'], ENV['API_SECRET']
-end
+# Rails.application.config.middleware.use OmniAuth::Builder do
+#   provider :bnet, ENV['API_KEY'], ENV['API_SECRET']
+# end

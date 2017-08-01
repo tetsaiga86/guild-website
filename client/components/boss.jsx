@@ -1,5 +1,6 @@
 import React from 'react'
 import bossImages from '../data/boss_images'
+import unixTime from '../util/unix_time'
 import {
   Table
 } from 'react-bootstrap'
@@ -9,20 +10,23 @@ class Boss extends React.Component {
     const boss = this.props.boss;
     return(
     <tr>
-      <td><img className="bossImg" src={bossImages[boss.id]} />{boss.description}</td>
       <td>
-        {
-        boss.killedDate &&
-        <img className="skullImg" src="/images/heroic_icon.png"></img>
-        }
-        {boss.killedDate}
+        <img className="bossImg" src={bossImages[boss.id]} />
+        {boss.name}
       </td>
       <td>
         {
-        boss.mKilledDate &&
+        !!boss.heroicKills &&
         <img className="skullImg" src="/images/heroic_icon.png"></img>
         }
-        {boss.mKilledDate}
+        {!!boss.heroicTimestamp && unixTime(boss.heroicTimestamp)}
+      </td>
+      <td>
+        {
+        !!boss.mythicKills &&
+        <img className="skullImg" src="/images/heroic_icon.png"></img>
+        }
+        {!!boss.mythicTimestamp && unixTime(boss.mythicTimestamp)}
       </td>
     </tr>
     )

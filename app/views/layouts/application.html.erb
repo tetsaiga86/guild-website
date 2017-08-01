@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Foolsavage</title>
+    <title><%= ENV['GUILD_NAME'] %></title>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <!-- <%= stylesheet_link_tag "home" %> -->
   </head>
-
   <body>
     <%= yield %>
     <%= javascript_include_tag 'application' %>

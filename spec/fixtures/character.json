@@ -1,0 +1,3417 @@
+{
+    "lastModified": 1494891712000,
+    "name": "Srprise",
+    "realm": "Kil'jaeden",
+    "battlegroup": "Bloodlust",
+    "class": 5,
+    "race": 10,
+    "gender": 0,
+    "level": 110,
+    "achievementPoints": 9620,
+    "thumbnail": "kiljaeden/67/167211075-avatar.jpg",
+    "calcClass": "X",
+    "faction": 1,
+    "items": {
+        "averageItemLevel": 913,
+        "averageItemLevelEquipped": 910,
+        "head": {
+            "id": 138313,
+            "name": "Purifier's Gorget",
+            "icon": "inv_cloth_raidpriest_q_01_helm",
+            "quality": 4,
+            "itemLevel": 890,
+            "tooltipParams": {
+                "set": [
+                    138370,
+                    138313,
+                    138319,
+                    138316
+                ],
+                "transmogItem": 129342,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 32,
+                    "amount": 557
+                },
+                {
+                    "stat": 49,
+                    "amount": 1034
+                },
+                {
+                    "stat": 5,
+                    "amount": 1977
+                },
+                {
+                    "stat": 7,
+                    "amount": 2965
+                }
+            ],
+            "armor": 244,
+            "context": "raid-heroic",
+            "bonusLists": [
+                3516,
+                1487,
+                1813
+            ],
+            "artifactId": 0,
+            "displayInfoId": 151206,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "itemId": 129342,
+                "itemAppearanceModId": 0
+            }
+        },
+        "neck": {
+            "id": 132444,
+            "name": "Prydaz, Xavaric's Magnum Opus",
+            "icon": "inv_misc_necklace15",
+            "quality": 5,
+            "itemLevel": 940,
+            "tooltipParams": {
+                "gem0": 130220,
+                "enchant": 5891,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 32,
+                    "amount": 1079
+                },
+                {
+                    "stat": 49,
+                    "amount": 1079
+                },
+                {
+                    "stat": 36,
+                    "amount": 1079
+                },
+                {
+                    "stat": 7,
+                    "amount": 2658
+                }
+            ],
+            "armor": 0,
+            "context": "",
+            "bonusLists": [
+                3529,
+                3530,
+                1811
+            ],
+            "artifactId": 0,
+            "displayInfoId": 0,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "enchantDisplayInfoId": 5891
+            }
+        },
+        "shoulder": {
+            "id": 140853,
+            "name": "Chaos-Scarred Mantle",
+            "icon": "inv_shoulder_cloth_raidmage_q_01",
+            "quality": 4,
+            "itemLevel": 910,
+            "tooltipParams": {
+                "enchant": 5883,
+                "transmogItem": 31069,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 32,
+                    "amount": 864
+                },
+                {
+                    "stat": 49,
+                    "amount": 422
+                },
+                {
+                    "stat": 5,
+                    "amount": 1786
+                },
+                {
+                    "stat": 7,
+                    "amount": 2680
+                }
+            ],
+            "armor": 242,
+            "context": "raid-heroic",
+            "bonusLists": [
+                3444,
+                1507,
+                3337
+            ],
+            "artifactId": 0,
+            "displayInfoId": 153488,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "itemId": 31069,
+                "enchantDisplayInfoId": 5883,
+                "itemAppearanceModId": 0
+            }
+        },
+        "back": {
+            "id": 138370,
+            "name": "Purifier's Drape",
+            "icon": "inv_raidpriestmythic_q_01cape",
+            "quality": 4,
+            "itemLevel": 905,
+            "tooltipParams": {
+                "gem0": 130219,
+                "enchant": 5436,
+                "set": [
+                    138370,
+                    138313,
+                    138319,
+                    138316
+                ],
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 40,
+                    "amount": 615
+                },
+                {
+                    "stat": 49,
+                    "amount": 331
+                },
+                {
+                    "stat": 7,
+                    "amount": 1918
+                },
+                {
+                    "stat": 71,
+                    "amount": 1278
+                }
+            ],
+            "armor": 158,
+            "context": "raid-mythic",
+            "bonusLists": [
+                3518,
+                1808,
+                1502,
+                3528
+            ],
+            "artifactId": 0,
+            "displayInfoId": 151166,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "enchantDisplayInfoId": 5436
+            }
+        },
+        "chest": {
+            "id": 138319,
+            "name": "Purifier's Cassock",
+            "icon": "inv_raidpriestmythic_q_01chest",
+            "quality": 4,
+            "itemLevel": 905,
+            "tooltipParams": {
+                "set": [
+                    138370,
+                    138313,
+                    138319,
+                    138316
+                ],
+                "transmogItem": 9946,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 32,
+                    "amount": 1022
+                },
+                {
+                    "stat": 36,
+                    "amount": 661
+                },
+                {
+                    "stat": 5,
+                    "amount": 2273
+                },
+                {
+                    "stat": 7,
+                    "amount": 3410
+                }
+            ],
+            "armor": 317,
+            "context": "raid-mythic",
+            "bonusLists": [
+                3518,
+                1502,
+                3528
+            ],
+            "artifactId": 0,
+            "displayInfoId": 155532,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "itemId": 9946,
+                "itemAppearanceModId": 0
+            }
+        },
+        "shirt": {
+            "id": 42374,
+            "name": "Blue Martial Shirt",
+            "icon": "inv_shirt_blue_01",
+            "quality": 2,
+            "itemLevel": 1,
+            "tooltipParams": {
+                "timewalkerLevel": 110
+            },
+            "stats": [],
+            "armor": 0,
+            "context": "vendor",
+            "bonusLists": [],
+            "artifactId": 0,
+            "displayInfoId": 16486,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {}
+        },
+        "tabard": {
+            "id": 52252,
+            "name": "Tabard of the Lightbringer",
+            "icon": "inv_shirt_guildtabard_01",
+            "quality": 4,
+            "itemLevel": 80,
+            "tooltipParams": {
+                "transmogItem": 142504,
+                "timewalkerLevel": 110
+            },
+            "stats": [],
+            "armor": 0,
+            "context": "quest-reward",
+            "bonusLists": [],
+            "artifactId": 0,
+            "displayInfoId": 65733,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "itemId": 142504,
+                "itemAppearanceModId": 0
+            }
+        },
+        "wrist": {
+            "id": 140886,
+            "name": "Woven Lasher Tendril Bracers",
+            "icon": "inv_bracer_cloth_raidwarlock_q_01",
+            "quality": 4,
+            "itemLevel": 915,
+            "tooltipParams": {
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 40,
+                    "amount": 302
+                },
+                {
+                    "stat": 36,
+                    "amount": 681
+                },
+                {
+                    "stat": 5,
+                    "amount": 1404
+                },
+                {
+                    "stat": 7,
+                    "amount": 2106
+                }
+            ],
+            "armor": 144,
+            "context": "raid-heroic",
+            "bonusLists": [
+                3516,
+                1512,
+                3337
+            ],
+            "artifactId": 0,
+            "displayInfoId": 149565,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {}
+        },
+        "hands": {
+            "id": 144247,
+            "name": "Rammal's Ulterior Motive",
+            "icon": "inv_cloth_draenorcrafted_d_01gloves_horde",
+            "quality": 5,
+            "itemLevel": 940,
+            "tooltipParams": {
+                "transmogItem": 129324,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 32,
+                    "amount": 514
+                },
+                {
+                    "stat": 49,
+                    "amount": 925
+                },
+                {
+                    "stat": 5,
+                    "amount": 2362
+                },
+                {
+                    "stat": 7,
+                    "amount": 3544
+                }
+            ],
+            "armor": 224,
+            "context": "",
+            "bonusLists": [
+                3529,
+                3530,
+                1811
+            ],
+            "artifactId": 0,
+            "displayInfoId": 131914,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "itemId": 129324,
+                "itemAppearanceModId": 0
+            }
+        },
+        "waist": {
+            "id": 140849,
+            "name": "Antiquated Highborne Cinch",
+            "icon": "inv_raidpriestmythic_q_01belt",
+            "quality": 4,
+            "itemLevel": 925,
+            "tooltipParams": {
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 40,
+                    "amount": 914
+                },
+                {
+                    "stat": 36,
+                    "amount": 447
+                },
+                {
+                    "stat": 5,
+                    "amount": 2055
+                },
+                {
+                    "stat": 7,
+                    "amount": 3082
+                }
+            ],
+            "armor": 191,
+            "context": "raid-mythic",
+            "bonusLists": [
+                3445,
+                1522,
+                3337
+            ],
+            "artifactId": 0,
+            "displayInfoId": 151211,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {}
+        },
+        "legs": {
+            "id": 138316,
+            "name": "Purifier's Leggings",
+            "icon": "inv_cloth_raidpriest_q_01_pant",
+            "quality": 4,
+            "itemLevel": 895,
+            "tooltipParams": {
+                "set": [
+                    138370,
+                    138313,
+                    138319,
+                    138316
+                ],
+                "transmogItem": 65926,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 40,
+                    "amount": 602
+                },
+                {
+                    "stat": 36,
+                    "amount": 1019
+                },
+                {
+                    "stat": 5,
+                    "amount": 2071
+                },
+                {
+                    "stat": 7,
+                    "amount": 3107
+                }
+            ],
+            "armor": 267,
+            "context": "raid-heroic",
+            "bonusLists": [
+                3516,
+                1492,
+                3336
+            ],
+            "artifactId": 0,
+            "displayInfoId": 151207,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "itemId": 65926,
+                "itemAppearanceModId": 0
+            }
+        },
+        "feet": {
+            "id": 140914,
+            "name": "Outcast Wanderer's Footrags",
+            "icon": "inv_boot_cloth_raidwarlock_q_01",
+            "quality": 4,
+            "itemLevel": 895,
+            "tooltipParams": {
+                "transmogItem": 129229,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 32,
+                    "amount": 816
+                },
+                {
+                    "stat": 49,
+                    "amount": 399
+                },
+                {
+                    "stat": 5,
+                    "amount": 1553
+                },
+                {
+                    "stat": 7,
+                    "amount": 2330
+                }
+            ],
+            "armor": 210,
+            "context": "raid-heroic",
+            "bonusLists": [
+                3517,
+                1492,
+                1813
+            ],
+            "artifactId": 0,
+            "displayInfoId": 149559,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "itemId": 129229,
+                "itemAppearanceModId": 0
+            }
+        },
+        "finger1": {
+            "id": 140895,
+            "name": "Spellblade's Gemmed Signet",
+            "icon": "inv_70_raid_ring4b",
+            "quality": 4,
+            "itemLevel": 890,
+            "tooltipParams": {
+                "gem0": 130220,
+                "enchant": 5429,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 32,
+                    "amount": 1535
+                },
+                {
+                    "stat": 49,
+                    "amount": 703
+                },
+                {
+                    "stat": 7,
+                    "amount": 1668
+                }
+            ],
+            "armor": 0,
+            "context": "raid-heroic",
+            "bonusLists": [
+                3516,
+                1808,
+                1487,
+                1813
+            ],
+            "artifactId": 0,
+            "displayInfoId": 0,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "enchantDisplayInfoId": 5429
+            }
+        },
+        "finger2": {
+            "id": 133634,
+            "name": "Grasping Tentacle Loop",
+            "icon": "inv_misc_ring_6_0_013",
+            "quality": 4,
+            "itemLevel": 895,
+            "tooltipParams": {
+                "enchant": 5428,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 36,
+                    "amount": 977
+                },
+                {
+                    "stat": 49,
+                    "amount": 1303
+                },
+                {
+                    "stat": 7,
+                    "amount": 1747
+                }
+            ],
+            "armor": 0,
+            "context": "challenge-mode-2",
+            "bonusLists": [
+                3418,
+                1547,
+                3336
+            ],
+            "artifactId": 0,
+            "displayInfoId": 0,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {
+                "enchantDisplayInfoId": 5428
+            }
+        },
+        "trinket1": {
+            "id": 140803,
+            "name": "Etraeus' Celestial Map",
+            "icon": "inv_misc_celestialmap",
+            "quality": 4,
+            "itemLevel": 920,
+            "tooltipParams": {
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 5,
+                    "amount": 2485
+                }
+            ],
+            "armor": 0,
+            "context": "raid-heroic",
+            "bonusLists": [
+                3516,
+                1517,
+                3337
+            ],
+            "artifactId": 0,
+            "displayInfoId": 0,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {}
+        },
+        "trinket2": {
+            "id": 140793,
+            "name": "Perfectly Preserved Cake",
+            "icon": "inv_misc_celebrationcake_01",
+            "quality": 4,
+            "itemLevel": 885,
+            "tooltipParams": {
+                "gem0": 130248,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 49,
+                    "amount": 1116
+                }
+            ],
+            "armor": 0,
+            "context": "raid-heroic",
+            "bonusLists": [
+                3444,
+                1808,
+                1482,
+                3528
+            ],
+            "artifactId": 0,
+            "displayInfoId": 0,
+            "artifactAppearanceId": 0,
+            "artifactTraits": [],
+            "relics": [],
+            "appearance": {}
+        },
+        "mainHand": {
+            "id": 128825,
+            "name": "T'uure, Beacon of the Naaru",
+            "icon": "inv_staff_2h_artifactheartofkure_d_06",
+            "quality": 6,
+            "itemLevel": 929,
+            "tooltipParams": {
+                "gem0": 137346,
+                "gem1": 140838,
+                "gem2": 137495,
+                "timewalkerLevel": 110
+            },
+            "stats": [
+                {
+                    "stat": 32,
+                    "amount": 936
+                },
+                {
+                    "stat": 49,
+                    "amount": 899
+                },
+                {
+                    "stat": 5,
+                    "amount": 2843
+                },
+                {
+                    "stat": 7,
+                    "amount": 4265
+                }
+            ],
+            "armor": 0,
+            "weaponInfo": {
+                "damage": {
+                    "min": 7005,
+                    "max": 10509,
+                    "exactMin": 7005,
+                    "exactMax": 10508
+                },
+                "weaponSpeed": 3.6,
+                "dps": 2432.361
+            },
+            "context": "scenario-normal",
+            "bonusLists": [
+                739,
+                1531,
+                1533,
+                1531
+            ],
+            "artifactId": 45,
+            "displayInfoId": 156751,
+            "artifactAppearanceId": 912,
+            "artifactTraits": [
+                {
+                    "id": 846,
+                    "rank": 5
+                },
+                {
+                    "id": 1346,
+                    "rank": 1
+                },
+                {
+                    "id": 844,
+                    "rank": 4
+                },
+                {
+                    "id": 848,
+                    "rank": 4
+                },
+                {
+                    "id": 835,
+                    "rank": 1
+                },
+                {
+                    "id": 847,
+                    "rank": 5
+                },
+                {
+                    "id": 838,
+                    "rank": 4
+                },
+                {
+                    "id": 837,
+                    "rank": 1
+                },
+                {
+                    "id": 839,
+                    "rank": 1
+                },
+                {
+                    "id": 842,
+                    "rank": 4
+                },
+                {
+                    "id": 840,
+                    "rank": 1
+                },
+                {
+                    "id": 843,
+                    "rank": 5
+                },
+                {
+                    "id": 836,
+                    "rank": 1
+                },
+                {
+                    "id": 849,
+                    "rank": 4
+                },
+                {
+                    "id": 841,
+                    "rank": 3
+                },
+                {
+                    "id": 845,
+                    "rank": 1
+                },
+                {
+                    "id": 1380,
+                    "rank": 1
+                },
+                {
+                    "id": 1649,
+                    "rank": 1
+                },
+                {
+                    "id": 1569,
+                    "rank": 4
+                },
+                {
+                    "id": 1570,
+                    "rank": 1
+                },
+                {
+                    "id": 1571,
+                    "rank": 1
+                }
+            ],
+            "relics": [
+                {
+                    "socket": 0,
+                    "itemId": 137346,
+                    "context": 35,
+                    "bonusLists": [
+                        3418,
+                        1557,
+                        3337
+                    ]
+                },
+                {
+                    "socket": 1,
+                    "itemId": 140838,
+                    "context": 6,
+                    "bonusLists": [
+                        3445,
+                        1507,
+                        3336
+                    ]
+                },
+                {
+                    "socket": 2,
+                    "itemId": 137495,
+                    "context": 35,
+                    "bonusLists": [
+                        3418,
+                        1557,
+                        3337
+                    ]
+                }
+            ],
+            "appearance": {
+                "itemAppearanceModId": 32
+            }
+        }
+    },
+    "stats": {
+        "health": 3911760,
+        "powerType": "mana",
+        "power": 1100000,
+        "str": 5930,
+        "agi": 7501,
+        "int": 47590,
+        "sta": 65196,
+        "speedRating": 29.10625,
+        "speedRatingBonus": 0,
+        "crit": 26.6175,
+        "critRating": 8247,
+        "haste": 16.05867,
+        "hasteRating": 6022,
+        "hasteRatingPercent": 16.058666,
+        "mastery": 39.10625,
+        "masteryRating": 9314,
+        "leech": 0,
+        "leechRating": 0,
+        "leechRatingBonus": 0,
+        "versatility": 2433,
+        "versatilityDamageDoneBonus": 5.122105,
+        "versatilityHealingDoneBonus": 5.122105,
+        "versatilityDamageTakenBonus": 2.561053,
+        "avoidanceRating": 0,
+        "avoidanceRatingBonus": 0,
+        "spellPen": 0,
+        "spellCrit": 26.6175,
+        "spellCritRating": 8247,
+        "mana5": 44000,
+        "mana5Combat": 44000,
+        "armor": 1997,
+        "dodge": 3,
+        "dodgeRating": 0,
+        "parry": 0,
+        "parryRating": 0,
+        "block": 0,
+        "blockRating": 0,
+        "mainHandDmgMin": 13996,
+        "mainHandDmgMax": 20997,
+        "mainHandSpeed": 3.102,
+        "mainHandDps": 5640.419,
+        "offHandDmgMin": 0,
+        "offHandDmgMax": 1,
+        "offHandSpeed": 1.723,
+        "offHandDps": 0.579839,
+        "rangedDmgMin": -1,
+        "rangedDmgMax": -1,
+        "rangedSpeed": -1,
+        "rangedDps": -1
+    },
+    "talents": [
+        {
+            "selected": true,
+            "talents": [
+                {
+                    "tier": 5,
+                    "column": 0,
+                    "spell": {
+                        "id": 197031,
+                        "name": "Divinity",
+                        "icon": "ability_priest_ascendance",
+                        "description": "When you heal with a Holy Word spell, your healing is increased by 15% for 6 sec.",
+                        "castTime": "Passive"
+                    }
+                },
+                {
+                    "tier": 4,
+                    "column": 0,
+                    "spell": {
+                        "id": 109186,
+                        "name": "Surge of Light",
+                        "icon": "spell_holy_surgeoflight",
+                        "description": "Your healing spells and Smite have a 8% chance to make your next Flash Heal instant and cost no mana. Maximum 2 charges.",
+                        "castTime": "Passive"
+                    },
+                    "spec": {
+                        "name": "Holy",
+                        "role": "HEALING",
+                        "backgroundImage": "bg-priest-holy",
+                        "icon": "spell_holy_guardianspirit",
+                        "description": "A versatile healer who can reverse damage on individuals or groups and even heal from beyond the grave.",
+                        "order": 1
+                    }
+                },
+                {
+                    "tier": 6,
+                    "column": 0,
+                    "spell": {
+                        "id": 200183,
+                        "name": "Apotheosis",
+                        "icon": "ability_priest_ascension",
+                        "description": "Enter a pure Holy form for 30 sec, increasing the effects of Serendipity by 200% and reducing the cost of your Holy Words by 100%.",
+                        "castTime": "Instant",
+                        "cooldown": "3 min cooldown"
+                    },
+                    "spec": {
+                        "name": "Holy",
+                        "role": "HEALING",
+                        "backgroundImage": "bg-priest-holy",
+                        "icon": "spell_holy_guardianspirit",
+                        "description": "A versatile healer who can reverse damage on individuals or groups and even heal from beyond the grave.",
+                        "order": 1
+                    }
+                },
+                {
+                    "tier": 3,
+                    "column": 0,
+                    "spell": {
+                        "id": 196985,
+                        "name": "Light of the Naaru",
+                        "icon": "inv_pet_naaru",
+                        "description": "Serendipity reduces the remaining cooldown on the appropriate Holy Word by an additional 2 sec.",
+                        "castTime": "Passive"
+                    },
+                    "spec": {
+                        "name": "Holy",
+                        "role": "HEALING",
+                        "backgroundImage": "bg-priest-holy",
+                        "icon": "spell_holy_guardianspirit",
+                        "description": "A versatile healer who can reverse damage on individuals or groups and even heal from beyond the grave.",
+                        "order": 1
+                    }
+                },
+                {
+                    "tier": 1,
+                    "column": 0,
+                    "spell": {
+                        "id": 121536,
+                        "name": "Angelic Feather",
+                        "icon": "ability_priest_angelicfeather",
+                        "description": "Places a feather at the target location, granting the first ally to walk through it 40% increased movement speed for 5 sec. Only 3 feathers can be placed at one time.  Maximum 3 charges.",
+                        "range": "40 yd range",
+                        "castTime": "Instant"
+                    }
+                },
+                {
+                    "tier": 2,
+                    "column": 2,
+                    "spell": {
+                        "id": 196707,
+                        "name": "Afterlife",
+                        "icon": "inv_enchant_essencemagiclarge",
+                        "description": "Increases the duration of Spirit of Redemption by 50%.",
+                        "castTime": "Passive"
+                    },
+                    "spec": {
+                        "name": "Holy",
+                        "role": "HEALING",
+                        "backgroundImage": "bg-priest-holy",
+                        "icon": "spell_holy_guardianspirit",
+                        "description": "A versatile healer who can reverse damage on individuals or groups and even heal from beyond the grave.",
+                        "order": 1
+                    }
+                },
+                {
+                    "tier": 0,
+                    "column": 0,
+                    "spell": {
+                        "id": 200128,
+                        "name": "Trail of Light",
+                        "icon": "ability_priest_wordsofmeaning",
+                        "description": "When you cast Flash Heal, 40% of the healing is replicated to the previous target you healed with Flash Heal.",
+                        "castTime": "Passive"
+                    },
+                    "spec": {
+                        "name": "Holy",
+                        "role": "HEALING",
+                        "backgroundImage": "bg-priest-holy",
+                        "icon": "spell_holy_guardianspirit",
+                        "description": "A versatile healer who can reverse damage on individuals or groups and even heal from beyond the grave.",
+                        "order": 1
+                    }
+                }
+            ],
+            "spec": {
+                "name": "Holy",
+                "role": "HEALING",
+                "backgroundImage": "bg-priest-holy",
+                "icon": "spell_holy_guardianspirit",
+                "description": "A versatile healer who can reverse damage on individuals or groups and even heal from beyond the grave.",
+                "order": 1
+            },
+            "calcTalent": "0020000",
+            "calcSpec": "Z"
+        },
+        {
+            "talents": [
+                {
+                    "tier": 3,
+                    "column": 1,
+                    "spell": {
+                        "id": 197045,
+                        "name": "Shield Discipline",
+                        "icon": "spell_holy_divineprotection",
+                        "description": "When your Power Word: Shield is completely absorbed you instantly regenerate 1% of your maximum mana.",
+                        "castTime": "Passive"
+                    }
+                },
+                {
+                    "tier": 6,
+                    "column": 0,
+                    "spell": {
+                        "id": 204197,
+                        "name": "Purge the Wicked",
+                        "icon": "ability_mage_firestarter",
+                        "description": "Cleanses the target with fire, causing 6,306 Fire damage and an additional 34,693 Fire damage over 20 sec. Spreads to an additional nearby enemy when you cast Penance on the target.",
+                        "range": "40 yd range",
+                        "powerCost": "2% of base mana",
+                        "castTime": "Instant"
+                    },
+                    "spec": {
+                        "name": "Discipline",
+                        "role": "HEALING",
+                        "backgroundImage": "bg-priest-discipline",
+                        "icon": "spell_holy_powerwordshield",
+                        "description": "Uses magic to shield allies from taking damage as well as heal their wounds.",
+                        "order": 0
+                    }
+                },
+                {
+                    "tier": 2,
+                    "column": 0,
+                    "spell": {
+                        "id": 204263,
+                        "name": "Shining Force",
+                        "icon": "ability_paladin_blindinglight2",
+                        "description": "Creates a burst of light around a friendly target, knocking away nearby enemies and slowing their movement speed by 70% for 3 sec.",
+                        "range": "40 yd range",
+                        "powerCost": "2.5% of base mana",
+                        "castTime": "Instant",
+                        "cooldown": "45 sec cooldown"
+                    }
+                },
+                {
+                    "tier": 1,
+                    "column": 0,
+                    "spell": {
+                        "id": 121536,
+                        "name": "Angelic Feather",
+                        "icon": "ability_priest_angelicfeather",
+                        "description": "Places a feather at the target location, granting the first ally to walk through it 40% increased movement speed for 5 sec. Only 3 feathers can be placed at one time.  Maximum 3 charges.",
+                        "range": "40 yd range",
+                        "castTime": "Instant"
+                    }
+                },
+                {
+                    "tier": 0,
+                    "column": 1,
+                    "spell": {
+                        "id": 193134,
+                        "name": "Castigation",
+                        "icon": "spell_holy_searinglightpriest",
+                        "description": "Penance fires one additional bolt of holy light over its duration.",
+                        "castTime": "Passive"
+                    }
+                },
+                {
+                    "tier": 4,
+                    "column": 1,
+                    "spell": {
+                        "id": 10060,
+                        "name": "Power Infusion",
+                        "icon": "spell_holy_powerinfusion",
+                        "description": "Infuses you with power for 20 sec, increasing haste by 25% and reducing the mana cost of all spells by 20%.",
+                        "castTime": "Instant",
+                        "cooldown": "2 min cooldown"
+                    }
+                },
+                {
+                    "tier": 5,
+                    "column": 2,
+                    "spell": {
+                        "id": 120517,
+                        "name": "Halo",
+                        "icon": "ability_priest_halo",
+                        "description": "Creates a ring of Holy energy around you that quickly expands to a 30 yd radius, healing allies for 17,261 and dealing 27,186 Holy damage to enemies.",
+                        "range": "30 yd range",
+                        "powerCost": "3.59% of base mana",
+                        "castTime": "1.5 sec cast",
+                        "cooldown": "40 sec cooldown"
+                    }
+                }
+            ],
+            "spec": {
+                "name": "Discipline",
+                "role": "HEALING",
+                "backgroundImage": "bg-priest-discipline",
+                "icon": "spell_holy_powerwordshield",
+                "description": "Uses magic to shield allies from taking damage as well as heal their wounds.",
+                "order": 0
+            },
+            "calcTalent": "1001120",
+            "calcSpec": "a"
+        },
+        {
+            "talents": [
+                {
+                    "tier": 0,
+                    "column": 0,
+                    "spell": {
+                        "id": 109142,
+                        "name": "Twist of Fate",
+                        "icon": "spell_shadow_mindtwisting",
+                        "description": "After healing a target below 35% health, you deal 20% increased damage and 20% increased healing for 10 sec.",
+                        "castTime": "Passive"
+                    },
+                    "spec": {
+                        "name": "Shadow",
+                        "role": "DPS",
+                        "backgroundImage": "bg-priest-shadow",
+                        "icon": "spell_shadow_shadowwordpain",
+                        "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                        "order": 2
+                    }
+                },
+                {
+                    "tier": 1,
+                    "column": 1,
+                    "spell": {
+                        "id": 64129,
+                        "name": "Body and Soul",
+                        "icon": "spell_holy_symbolofhope",
+                        "description": "Power Word: Shield and Leap of Faith increase your target's movement speed by 40% for 3 sec.",
+                        "castTime": "Passive"
+                    }
+                },
+                {
+                    "tier": 2,
+                    "column": 0,
+                    "spell": {
+                        "id": 205369,
+                        "name": "Mind Bomb",
+                        "icon": "spell_shadow_mindbomb",
+                        "description": "Inflicts the target with a Mind Bomb.\n\n\n\nAfter 2 sec, or if the target dies, it unleashes a psychic explosion, stunning all enemies within 8 yds of the target for 4 sec.",
+                        "range": "30 yd range",
+                        "castTime": "Instant",
+                        "cooldown": "30 sec cooldown"
+                    },
+                    "spec": {
+                        "name": "Shadow",
+                        "role": "DPS",
+                        "backgroundImage": "bg-priest-shadow",
+                        "icon": "spell_shadow_shadowwordpain",
+                        "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                        "order": 2
+                    }
+                },
+                {
+                    "tier": 3,
+                    "column": 1,
+                    "spell": {
+                        "id": 199853,
+                        "name": "Reaper of Souls",
+                        "icon": "ability_warlock_soulswap",
+                        "description": "Shadow Word: Death is now castable on targets below 35% health, and always generates Insanity as though it killed the target.",
+                        "castTime": "Passive"
+                    },
+                    "spec": {
+                        "name": "Shadow",
+                        "role": "DPS",
+                        "backgroundImage": "bg-priest-shadow",
+                        "icon": "spell_shadow_shadowwordpain",
+                        "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                        "order": 2
+                    }
+                },
+                {
+                    "tier": 4,
+                    "column": 1,
+                    "spell": {
+                        "id": 155271,
+                        "name": "Auspicious Spirits",
+                        "icon": "ability_priest_auspiciousspirits",
+                        "description": "Your Shadowy Apparitions now deal 100% increased damage and generate 3 Insanity.",
+                        "castTime": "Passive"
+                    },
+                    "spec": {
+                        "name": "Shadow",
+                        "role": "DPS",
+                        "backgroundImage": "bg-priest-shadow",
+                        "icon": "spell_shadow_shadowwordpain",
+                        "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                        "order": 2
+                    }
+                },
+                {
+                    "tier": 5,
+                    "column": 0,
+                    "spell": {
+                        "id": 10060,
+                        "name": "Power Infusion",
+                        "icon": "spell_holy_powerinfusion",
+                        "description": "Infuses you with power for 20 sec, increasing haste by 25% and reducing the mana cost of all spells by 20%.",
+                        "castTime": "Instant",
+                        "cooldown": "2 min cooldown"
+                    },
+                    "spec": {
+                        "name": "Shadow",
+                        "role": "DPS",
+                        "backgroundImage": "bg-priest-shadow",
+                        "icon": "spell_shadow_shadowwordpain",
+                        "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                        "order": 2
+                    }
+                },
+                {
+                    "tier": 6,
+                    "column": 2,
+                    "spell": {
+                        "id": 193223,
+                        "name": "Surrender to Madness",
+                        "icon": "achievement_boss_generalvezax_01",
+                        "description": "All your Insanity-generating abilities generate 100% more Insanity, and you can cast while moving, until you exit Voidform.\n\n\n\nThen you die. Horribly.",
+                        "castTime": "Instant",
+                        "cooldown": "10 min cooldown"
+                    },
+                    "spec": {
+                        "name": "Shadow",
+                        "role": "DPS",
+                        "backgroundImage": "bg-priest-shadow",
+                        "icon": "spell_shadow_shadowwordpain",
+                        "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                        "order": 2
+                    }
+                }
+            ],
+            "spec": {
+                "name": "Shadow",
+                "role": "DPS",
+                "backgroundImage": "bg-priest-shadow",
+                "icon": "spell_shadow_shadowwordpain",
+                "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                "order": 2
+            },
+            "calcTalent": "0101102",
+            "calcSpec": "b"
+        },
+        {
+            "talents": [],
+            "calcTalent": "",
+            "calcSpec": ""
+        }
+    ],
+    "progression": {
+        "raids": [
+            {
+                "name": "Molten Core",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 2717,
+                "bosses": [
+                    {
+                        "id": 11502,
+                        "name": "Ragnaros",
+                        "normalKills": 1,
+                        "normalTimestamp": 1416722980000
+                    }
+                ]
+            },
+            {
+                "name": "Blackwing Lair",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 2677,
+                "bosses": [
+                    {
+                        "id": 11583,
+                        "name": "Nefarian",
+                        "normalKills": 1,
+                        "normalTimestamp": 1419318275000
+                    }
+                ]
+            },
+            {
+                "name": "Ruins of Ahn'Qiraj",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3429,
+                "bosses": [
+                    {
+                        "id": 15339,
+                        "name": "Ossirian the Unscarred",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Ahn'Qiraj Temple",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3428,
+                "bosses": [
+                    {
+                        "id": 15727,
+                        "name": "C'Thun",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Karazhan",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3457,
+                "bosses": [
+                    {
+                        "id": 15690,
+                        "name": "Prince Malchezaar",
+                        "normalKills": 1,
+                        "normalTimestamp": 1419314193000
+                    }
+                ]
+            },
+            {
+                "name": "Magtheridon's Lair",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3836,
+                "bosses": [
+                    {
+                        "id": 17257,
+                        "name": "Magtheridon",
+                        "normalKills": 1,
+                        "normalTimestamp": 1419312055000
+                    }
+                ]
+            },
+            {
+                "name": "Gruul's Lair",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3923,
+                "bosses": [
+                    {
+                        "id": 19044,
+                        "name": "Gruul the Dragonkiller",
+                        "normalKills": 1,
+                        "normalTimestamp": 1419311618000
+                    }
+                ]
+            },
+            {
+                "name": "Serpentshrine Cavern",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3607,
+                "bosses": [
+                    {
+                        "id": 21212,
+                        "name": "Lady Vashj",
+                        "normalKills": 2,
+                        "normalTimestamp": 1419391957000
+                    }
+                ]
+            },
+            {
+                "name": "Tempest Keep",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3845,
+                "bosses": [
+                    {
+                        "id": 19622,
+                        "name": "Kael'thas Sunstrider",
+                        "normalKills": 1,
+                        "normalTimestamp": 1419392813000
+                    }
+                ]
+            },
+            {
+                "name": "The Battle for Mount Hyjal",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3606,
+                "bosses": [
+                    {
+                        "id": 17968,
+                        "name": "Archimonde",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Black Temple",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3959,
+                "bosses": [
+                    {
+                        "id": 22917,
+                        "name": "Illidan Stormrage",
+                        "normalKills": 1,
+                        "normalTimestamp": 1417159974000
+                    }
+                ]
+            },
+            {
+                "name": "The Sunwell",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 4075,
+                "bosses": [
+                    {
+                        "id": 25315,
+                        "name": "Kil'jaeden",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Vault of Archavon",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 4603,
+                "bosses": [
+                    {
+                        "id": 31125,
+                        "name": "Archavon the Stone Watcher",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 33993,
+                        "name": "Emalon the Storm Watcher",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 35013,
+                        "name": "Koralon the Flame Watcher",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 38433,
+                        "name": "Toravon the Ice Watcher",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Naxxramas",
+                "lfr": 0,
+                "normal": 1,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 3456,
+                "bosses": [
+                    {
+                        "id": 15956,
+                        "name": "Anub'Rekhan",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390369401000
+                    },
+                    {
+                        "id": 15953,
+                        "name": "Grand Widow Faerlina",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390369642000
+                    },
+                    {
+                        "id": 15952,
+                        "name": "Maexxna",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390369962000
+                    },
+                    {
+                        "id": 15954,
+                        "name": "Noth the Plaguebringer",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390365830000
+                    },
+                    {
+                        "id": 15936,
+                        "name": "Heigan the Unclean",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 16011,
+                        "name": "Loatheb",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 16061,
+                        "name": "Instructor Razuvious",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 16060,
+                        "name": "Gothik the Harvester",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 0,
+                        "name": "The Four Horsemen",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 16028,
+                        "name": "Patchwerk",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390368681000
+                    },
+                    {
+                        "id": 15931,
+                        "name": "Grobbulus",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390368879000
+                    },
+                    {
+                        "id": 15932,
+                        "name": "Gluth",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390368990000
+                    },
+                    {
+                        "id": 15928,
+                        "name": "Thaddius",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390369255000
+                    },
+                    {
+                        "id": 15989,
+                        "name": "Sapphiron",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 15990,
+                        "name": "Kel'Thuzad",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "The Obsidian Sanctum",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 4493,
+                "bosses": [
+                    {
+                        "id": 28860,
+                        "name": "Sartharion",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "The Eye of Eternity",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 4500,
+                "bosses": [
+                    {
+                        "id": 28859,
+                        "name": "Malygos",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Ulduar",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 4273,
+                "bosses": [
+                    {
+                        "id": 33113,
+                        "name": "Flame Leviathan",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 33118,
+                        "name": "Ignis the Furnace Master",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 33186,
+                        "name": "Razorscale",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 33293,
+                        "name": "XT-002 Deconstructor",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 0,
+                        "name": "The Assembly of Iron",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 32930,
+                        "name": "Kologarn",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 33515,
+                        "name": "Auriaya",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 32845,
+                        "name": "Hodir",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 32865,
+                        "name": "Thorim",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 32906,
+                        "name": "Freya",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 33350,
+                        "name": "Mimiron",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 33271,
+                        "name": "General Vezax",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 33288,
+                        "name": "Yogg-Saron",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 32871,
+                        "name": "Algalon the Observer",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Onyxia's Lair",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 2159,
+                "bosses": [
+                    {
+                        "id": 10184,
+                        "name": "Onyxia",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Trial of the Crusader",
+                "lfr": 0,
+                "normal": 1,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 4722,
+                "bosses": [
+                    {
+                        "id": 0,
+                        "name": "Northrend Beasts",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390548394000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 34780,
+                        "name": "Lord Jaraxxus",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390548582000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 0,
+                        "name": "Faction Champions",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390548971000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 0,
+                        "name": "Val'kyr Twins",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390549212000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 34564,
+                        "name": "Anub'arak",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Icecrown Citadel",
+                "lfr": 0,
+                "normal": 1,
+                "heroic": 2,
+                "mythic": 0,
+                "id": 4812,
+                "bosses": [
+                    {
+                        "id": 36612,
+                        "name": "Lord Marrowgar",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1417295042000
+                    },
+                    {
+                        "id": 36855,
+                        "name": "Lady Deathwhisper",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1417296318000
+                    },
+                    {
+                        "id": 0,
+                        "name": "Icecrown Gunship Battle",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1417296483000
+                    },
+                    {
+                        "id": 37813,
+                        "name": "Deathbringer Saurfang",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1417296660000
+                    },
+                    {
+                        "id": 36627,
+                        "name": "Rotface",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1417296883000
+                    },
+                    {
+                        "id": 36626,
+                        "name": "Festergut",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1417296953000
+                    },
+                    {
+                        "id": 36678,
+                        "name": "Professor Putricide",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1417297056000
+                    },
+                    {
+                        "id": 0,
+                        "name": "Blood Council",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1417297204000
+                    },
+                    {
+                        "id": 37955,
+                        "name": "Blood-Queen Lana'thel",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 2,
+                        "heroicTimestamp": 1418175474000
+                    },
+                    {
+                        "id": 36789,
+                        "name": "Valithria Dreamwalker",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390540887000,
+                        "heroicKills": 2,
+                        "heroicTimestamp": 1418175649000
+                    },
+                    {
+                        "id": 36853,
+                        "name": "Sindragosa",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390541477000,
+                        "heroicKills": 2,
+                        "heroicTimestamp": 1418175847000
+                    },
+                    {
+                        "id": 36597,
+                        "name": "The Lich King",
+                        "normalKills": 1,
+                        "normalTimestamp": 1390541892000,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1418177056000
+                    }
+                ]
+            },
+            {
+                "name": "The Ruby Sanctum",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 4987,
+                "bosses": [
+                    {
+                        "id": 39863,
+                        "name": "Halion",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Baradin Hold",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 5600,
+                "bosses": [
+                    {
+                        "id": 47120,
+                        "name": "Argaloth",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 52363,
+                        "name": "Occu'thar",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    },
+                    {
+                        "id": 55869,
+                        "name": "Alizabal, Mistress of Hate",
+                        "normalKills": 0,
+                        "normalTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Blackwing Descent",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 5094,
+                "bosses": [
+                    {
+                        "id": 0,
+                        "name": "Omnotron Defense System",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 41570,
+                        "name": "Magmaw",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 41442,
+                        "name": "Atramedes",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 43296,
+                        "name": "Chimaeron",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 41378,
+                        "name": "Maloriak",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 41376,
+                        "name": "Nefarian's End",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "The Bastion of Twilight",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 5334,
+                "bosses": [
+                    {
+                        "id": 44600,
+                        "name": "Halfus Wyrmbreaker",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 0,
+                        "name": "Theralion and Valiona",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 0,
+                        "name": "Ascendant Council",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 43324,
+                        "name": "Cho'gall",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 45213,
+                        "name": "Sinestra",
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Throne of the Four Winds",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 5638,
+                "bosses": [
+                    {
+                        "id": 0,
+                        "name": "The Conclave of Wind",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 46753,
+                        "name": "Al'Akir",
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Firelands",
+                "lfr": 0,
+                "normal": 2,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 5723,
+                "bosses": [
+                    {
+                        "id": 52498,
+                        "name": "Beth'tilac",
+                        "normalKills": 1,
+                        "normalTimestamp": 1492108637000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 53772,
+                        "name": "Lord Rhyolith",
+                        "normalKills": 1,
+                        "normalTimestamp": 1492108179000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 53691,
+                        "name": "Shannox",
+                        "normalKills": 1,
+                        "normalTimestamp": 1492119485000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 52530,
+                        "name": "Alysrazor",
+                        "normalKills": 1,
+                        "normalTimestamp": 1492108328000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 53494,
+                        "name": "Baleroc, the Gatekeeper",
+                        "normalKills": 1,
+                        "normalTimestamp": 1492108328000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 52571,
+                        "name": "Majordomo Staghelm",
+                        "normalKills": 1,
+                        "normalTimestamp": 1492119740000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 52409,
+                        "name": "Ragnaros",
+                        "normalKills": 1,
+                        "normalTimestamp": 1492119870000,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Dragon Soul",
+                "lfr": 0,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 5892,
+                "bosses": [
+                    {
+                        "id": 55265,
+                        "name": "Morchok",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 55308,
+                        "name": "Warlord Zon'ozz",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 55312,
+                        "name": "Yor'sahj the Unsleeping",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 55689,
+                        "name": "Hagara the Stormbinder",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 55294,
+                        "name": "Ultraxion",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 56427,
+                        "name": "Warmaster Blackhorn",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 53879,
+                        "name": "Spine of Deathwing",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 57962,
+                        "name": "Madness of Deathwing",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Mogu'shan Vaults",
+                "lfr": 2,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 6125,
+                "bosses": [
+                    {
+                        "id": 0,
+                        "name": "The Stone Guard",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1388344895000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 60009,
+                        "name": "Feng the Accursed",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1388345278000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 60143,
+                        "name": "Gara'jal the Spiritbinder",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1388625571000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 0,
+                        "name": "The Spirit Kings",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1388378669000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 60410,
+                        "name": "Elegon",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1388626104000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 0,
+                        "name": "Will of the Emperor",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1388626862000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Heart of Fear",
+                "lfr": 2,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 6297,
+                "bosses": [
+                    {
+                        "id": 62980,
+                        "name": "Imperial Vizier Zor'lok",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1388606320000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 62543,
+                        "name": "Blade Lord Ta'yak",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1388607026000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 62164,
+                        "name": "Garalon",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1388607870000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 62397,
+                        "name": "Wind Lord Mel'jarak",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1388436285000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 62511,
+                        "name": "Amber-Shaper Un'sok",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1388437114000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 62837,
+                        "name": "Grand Empress Shek'zeer",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1388712257000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Terrace of Endless Spring",
+                "lfr": 2,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 6067,
+                "bosses": [
+                    {
+                        "id": 60583,
+                        "name": "Protectors of the Endless",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1390776115000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 62442,
+                        "name": "Tsulong",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1390776484000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 62983,
+                        "name": "Lei Shi",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1390776929000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 60999,
+                        "name": "Sha of Fear",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1390777309000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Throne of Thunder",
+                "lfr": 2,
+                "normal": 0,
+                "heroic": 0,
+                "mythic": 0,
+                "id": 6622,
+                "bosses": [
+                    {
+                        "id": 69465,
+                        "name": "Jin'rokh the Breaker",
+                        "lfrKills": 5,
+                        "lfrTimestamp": 1415477698000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 68476,
+                        "name": "Horridon",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1415479619000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 69078,
+                        "name": "Council of Elders",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1415480588000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 67977,
+                        "name": "Tortos",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389123940000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 68066,
+                        "name": "Megaera",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389125709000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 68177,
+                        "name": "Ji-Kun",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389126571000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 67827,
+                        "name": "Durumu the Forgotten",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389138659000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 69017,
+                        "name": "Primordius",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389139048000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 69427,
+                        "name": "Dark Animus",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389139466000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 68078,
+                        "name": "Iron Qon",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389139963000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 68904,
+                        "name": "Twin Consorts",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389140410000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 68397,
+                        "name": "Lei Shen",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1389141031000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    },
+                    {
+                        "id": 69473,
+                        "name": "Ra-den",
+                        "heroicKills": 0,
+                        "heroicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Siege of Orgrimmar",
+                "lfr": 2,
+                "normal": 2,
+                "heroic": 2,
+                "mythic": 0,
+                "id": 6738,
+                "bosses": [
+                    {
+                        "id": 71543,
+                        "name": "Immerseus",
+                        "lfrKills": 5,
+                        "lfrTimestamp": 1415526377000,
+                        "normalKills": 10,
+                        "normalTimestamp": 1408924815000,
+                        "heroicKills": 6,
+                        "heroicTimestamp": 1415852945000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71475,
+                        "name": "The Fallen Protectors",
+                        "lfrKills": 5,
+                        "lfrTimestamp": 1415526875000,
+                        "normalKills": 8,
+                        "normalTimestamp": 1408925464000,
+                        "heroicKills": 5,
+                        "heroicTimestamp": 1415853416000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71965,
+                        "name": "Norushen",
+                        "lfrKills": 5,
+                        "lfrTimestamp": 1415527455000,
+                        "normalKills": 9,
+                        "normalTimestamp": 1408927026000,
+                        "heroicKills": 4,
+                        "heroicTimestamp": 1415855029000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71734,
+                        "name": "Sha of Pride",
+                        "lfrKills": 5,
+                        "lfrTimestamp": 1415524315000,
+                        "normalKills": 8,
+                        "normalTimestamp": 1408927772000,
+                        "heroicKills": 4,
+                        "heroicTimestamp": 1415855553000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 72249,
+                        "name": "Galakras",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1390543722000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1408934407000,
+                        "heroicKills": 3,
+                        "heroicTimestamp": 1415856437000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 72616,
+                        "name": "Iron Juggernaut",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1390544340000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1393977749000,
+                        "heroicKills": 3,
+                        "heroicTimestamp": 1415856926000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71859,
+                        "name": "Kor'kron Dark Shaman",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1390338684000,
+                        "normalKills": 7,
+                        "normalTimestamp": 1408424728000,
+                        "heroicKills": 2,
+                        "heroicTimestamp": 1415857940000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71515,
+                        "name": "General Nazgrim",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1390339798000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1393964052000,
+                        "heroicKills": 2,
+                        "heroicTimestamp": 1415858738000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71454,
+                        "name": "Malkorok",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1390329237000,
+                        "normalKills": 2,
+                        "normalTimestamp": 1392518522000,
+                        "heroicKills": 3,
+                        "heroicTimestamp": 1415847045000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71889,
+                        "name": "Spoils of Pandaria",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1390331130000,
+                        "normalKills": 1,
+                        "normalTimestamp": 1392520687000,
+                        "heroicKills": 2,
+                        "heroicTimestamp": 1415253912000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71529,
+                        "name": "Thok the Bloodthirsty",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1390332163000,
+                        "normalKills": 3,
+                        "normalTimestamp": 1395031223000,
+                        "heroicKills": 1,
+                        "heroicTimestamp": 1414991653000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71504,
+                        "name": "Siegecrafter Blackfuse",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1390334152000,
+                        "normalKills": 3,
+                        "normalTimestamp": 1408294555000,
+                        "heroicKills": 3,
+                        "heroicTimestamp": 1415842566000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71152,
+                        "name": "Paragons of the Klaxxi",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1390335410000,
+                        "normalKills": 2,
+                        "normalTimestamp": 1393982543000,
+                        "heroicKills": 2,
+                        "heroicTimestamp": 1415843801000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 71865,
+                        "name": "Garrosh Hellscream",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1390337246000,
+                        "normalKills": 1,
+                        "normalTimestamp": 1393983973000,
+                        "heroicKills": 2,
+                        "heroicTimestamp": 1415342340000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Highmaul",
+                "lfr": 2,
+                "normal": 2,
+                "heroic": 2,
+                "mythic": 1,
+                "id": 6996,
+                "bosses": [
+                    {
+                        "id": 87444,
+                        "name": "Kargath Bladefist",
+                        "lfrKills": 8,
+                        "lfrTimestamp": 1423548689000,
+                        "normalKills": 9,
+                        "normalTimestamp": 1422497427000,
+                        "heroicKills": 11,
+                        "heroicTimestamp": 1424226765000,
+                        "mythicKills": 5,
+                        "mythicTimestamp": 1459474286000
+                    },
+                    {
+                        "id": 87447,
+                        "name": "The Butcher",
+                        "lfrKills": 8,
+                        "lfrTimestamp": 1423548929000,
+                        "normalKills": 8,
+                        "normalTimestamp": 1422498307000,
+                        "heroicKills": 10,
+                        "heroicTimestamp": 1424228133000,
+                        "mythicKills": 2,
+                        "mythicTimestamp": 1448511991000
+                    },
+                    {
+                        "id": 87441,
+                        "name": "Brackenspore",
+                        "lfrKills": 8,
+                        "lfrTimestamp": 1423549426000,
+                        "normalKills": 7,
+                        "normalTimestamp": 1422499096000,
+                        "heroicKills": 10,
+                        "heroicTimestamp": 1424229207000,
+                        "mythicKills": 1,
+                        "mythicTimestamp": 1448512273000
+                    },
+                    {
+                        "id": 87446,
+                        "name": "Tectus",
+                        "lfrKills": 8,
+                        "lfrTimestamp": 1423549426000,
+                        "normalKills": 8,
+                        "normalTimestamp": 1422500715000,
+                        "heroicKills": 10,
+                        "heroicTimestamp": 1428460401000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 87449,
+                        "name": "Twin Ogron",
+                        "lfrKills": 5,
+                        "lfrTimestamp": 1422335736000,
+                        "normalKills": 8,
+                        "normalTimestamp": 1422501693000,
+                        "heroicKills": 10,
+                        "heroicTimestamp": 1428461427000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 87445,
+                        "name": "Ko'ragh",
+                        "lfrKills": 5,
+                        "lfrTimestamp": 1422336218000,
+                        "normalKills": 7,
+                        "normalTimestamp": 1422503305000,
+                        "heroicKills": 11,
+                        "heroicTimestamp": 1428462590000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 87818,
+                        "name": "Imperator Mar'gok",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1423547562000,
+                        "normalKills": 4,
+                        "normalTimestamp": 1422506053000,
+                        "heroicKills": 3,
+                        "heroicTimestamp": 1422593371000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Blackrock Foundry",
+                "lfr": 1,
+                "normal": 1,
+                "heroic": 2,
+                "mythic": 0,
+                "id": 6967,
+                "bosses": [
+                    {
+                        "id": 77182,
+                        "name": "Oregorger",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1427857331000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1425865136000,
+                        "heroicKills": 14,
+                        "heroicTimestamp": 1431568614000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 76877,
+                        "name": "Gruul",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1427857905000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1425864338000,
+                        "heroicKills": 18,
+                        "heroicTimestamp": 1431567740000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 76809,
+                        "name": "The Blast Furnace",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1427858619000,
+                        "normalKills": 1,
+                        "normalTimestamp": 1425273883000,
+                        "heroicKills": 7,
+                        "heroicTimestamp": 1431576099000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 76974,
+                        "name": "Hans'gar and Franzok",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 4,
+                        "normalTimestamp": 1425266287000,
+                        "heroicKills": 18,
+                        "heroicTimestamp": 1431569452000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 76814,
+                        "name": "Flamebender Ka'graz",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 5,
+                        "normalTimestamp": 1425869132000,
+                        "heroicKills": 15,
+                        "heroicTimestamp": 1431570196000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 77692,
+                        "name": "Kromog",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1425964457000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1425870482000,
+                        "heroicKills": 10,
+                        "heroicTimestamp": 1431572045000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 76865,
+                        "name": "Beastlord Darmac",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1426357730000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1425865947000,
+                        "heroicKills": 15,
+                        "heroicTimestamp": 1431573001000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 76906,
+                        "name": "Operator Thogar",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 5,
+                        "normalTimestamp": 1425866852000,
+                        "heroicKills": 14,
+                        "heroicTimestamp": 1433476825000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 77557,
+                        "name": "The Iron Maidens",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1427859578000,
+                        "normalKills": 3,
+                        "normalTimestamp": 1425874621000,
+                        "heroicKills": 8,
+                        "heroicTimestamp": 1431574925000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 87420,
+                        "name": "Blackhand",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1428459120000,
+                        "normalKills": 0,
+                        "normalTimestamp": 0,
+                        "heroicKills": 5,
+                        "heroicTimestamp": 1432264407000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "Hellfire Citadel",
+                "lfr": 1,
+                "normal": 2,
+                "heroic": 2,
+                "mythic": 2,
+                "id": 7545,
+                "bosses": [
+                    {
+                        "id": 93023,
+                        "name": "Hellfire Assault",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 2,
+                        "normalTimestamp": 1439269945000,
+                        "heroicKills": 5,
+                        "heroicTimestamp": 1444786812000,
+                        "mythicKills": 19,
+                        "mythicTimestamp": 1461819557000
+                    },
+                    {
+                        "id": 90284,
+                        "name": "Iron Reaver",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 2,
+                        "normalTimestamp": 1439270318000,
+                        "heroicKills": 4,
+                        "heroicTimestamp": 1444787292000,
+                        "mythicKills": 17,
+                        "mythicTimestamp": 1461820019000
+                    },
+                    {
+                        "id": 90435,
+                        "name": "Kormrok",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 2,
+                        "normalTimestamp": 1439271666000,
+                        "heroicKills": 5,
+                        "heroicTimestamp": 1444788376000,
+                        "mythicKills": 14,
+                        "mythicTimestamp": 1462411958000
+                    },
+                    {
+                        "id": 90378,
+                        "name": "Kilrogg Deadeye",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 3,
+                        "normalTimestamp": 1445308569000,
+                        "heroicKills": 4,
+                        "heroicTimestamp": 1444791202000,
+                        "mythicKills": 13,
+                        "mythicTimestamp": 1462421445000
+                    },
+                    {
+                        "id": 92146,
+                        "name": "Hellfire High Council",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 2,
+                        "normalTimestamp": 1439272727000,
+                        "heroicKills": 5,
+                        "heroicTimestamp": 1444789365000,
+                        "mythicKills": 16,
+                        "mythicTimestamp": 1462413004000
+                    },
+                    {
+                        "id": 90199,
+                        "name": "Gorefiend",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 3,
+                        "normalTimestamp": 1445310265000,
+                        "heroicKills": 5,
+                        "heroicTimestamp": 1444792601000,
+                        "mythicKills": 9,
+                        "mythicTimestamp": 1462424433000
+                    },
+                    {
+                        "id": 90316,
+                        "name": "Shadow-Lord Iskar",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 4,
+                        "normalTimestamp": 1445312165000,
+                        "heroicKills": 10,
+                        "heroicTimestamp": 1444795114000,
+                        "mythicKills": 12,
+                        "mythicTimestamp": 1461201401000
+                    },
+                    {
+                        "id": 90296,
+                        "name": "Socrethar the Eternal",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 3,
+                        "normalTimestamp": 1445920503000,
+                        "heroicKills": 10,
+                        "heroicTimestamp": 1445550758000,
+                        "mythicKills": 11,
+                        "mythicTimestamp": 1461210615000
+                    },
+                    {
+                        "id": 90269,
+                        "name": "Tyrant Velhari",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 2,
+                        "normalTimestamp": 1445923431000,
+                        "heroicKills": 6,
+                        "heroicTimestamp": 1443063380000,
+                        "mythicKills": 6,
+                        "mythicTimestamp": 1461212330000
+                    },
+                    {
+                        "id": 89890,
+                        "name": "Fel Lord Zakuun",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 1,
+                        "normalTimestamp": 1436491422000,
+                        "heroicKills": 9,
+                        "heroicTimestamp": 1443059229000,
+                        "mythicKills": 9,
+                        "mythicTimestamp": 1461202743000
+                    },
+                    {
+                        "id": 93068,
+                        "name": "Xhul'horac",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 1,
+                        "normalTimestamp": 1436493128000,
+                        "heroicKills": 9,
+                        "heroicTimestamp": 1448431824000,
+                        "mythicKills": 6,
+                        "mythicTimestamp": 1463707816000
+                    },
+                    {
+                        "id": 91349,
+                        "name": "Mannoroth",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 1,
+                        "normalTimestamp": 1436500256000,
+                        "heroicKills": 22,
+                        "heroicTimestamp": 1455775506000,
+                        "mythicKills": 5,
+                        "mythicTimestamp": 1464231525000
+                    },
+                    {
+                        "id": 91331,
+                        "name": "Archimonde",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1448511155000,
+                        "normalKills": 1,
+                        "normalTimestamp": 1453413660000,
+                        "heroicKills": 22,
+                        "heroicTimestamp": 1457057597000,
+                        "mythicKills": 2,
+                        "mythicTimestamp": 1464238403000
+                    }
+                ]
+            },
+            {
+                "name": "The Emerald Nightmare",
+                "lfr": 2,
+                "normal": 2,
+                "heroic": 2,
+                "mythic": 2,
+                "id": 8026,
+                "bosses": [
+                    {
+                        "id": 103160,
+                        "name": "Nythendra",
+                        "lfrKills": 5,
+                        "lfrTimestamp": 1491237075000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1478051546000,
+                        "heroicKills": 17,
+                        "heroicTimestamp": 1485610957000,
+                        "mythicKills": 14,
+                        "mythicTimestamp": 1492133676000
+                    },
+                    {
+                        "id": 111000,
+                        "name": "Elerethe Renferal",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1491237566000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1478053669000,
+                        "heroicKills": 15,
+                        "heroicTimestamp": 1485611900000,
+                        "mythicKills": 7,
+                        "mythicTimestamp": 1492136191000
+                    },
+                    {
+                        "id": 105393,
+                        "name": "Il'gynoth, Heart of Corruption",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1491236611000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1478054375000,
+                        "heroicKills": 18,
+                        "heroicTimestamp": 1485611508000,
+                        "mythicKills": 1,
+                        "mythicTimestamp": 1492139779000
+                    },
+                    {
+                        "id": 100497,
+                        "name": "Ursoc",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1487269631000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1478052415000,
+                        "heroicKills": 18,
+                        "heroicTimestamp": 1485612521000,
+                        "mythicKills": 7,
+                        "mythicTimestamp": 1492134423000
+                    },
+                    {
+                        "id": 102679,
+                        "name": "Dragons of Nightmare",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1487269940000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1478053088000,
+                        "heroicKills": 17,
+                        "heroicTimestamp": 1485612195000,
+                        "mythicKills": 3,
+                        "mythicTimestamp": 1492135155000
+                    },
+                    {
+                        "id": 113534,
+                        "name": "Cenarius",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1491609703000,
+                        "normalKills": 2,
+                        "normalTimestamp": 1476844191000,
+                        "heroicKills": 14,
+                        "heroicTimestamp": 1485612867000,
+                        "mythicKills": 1,
+                        "mythicTimestamp": 1492140438000
+                    },
+                    {
+                        "id": 103769,
+                        "name": "Xavius",
+                        "lfrKills": 4,
+                        "lfrTimestamp": 1491693908000,
+                        "normalKills": 2,
+                        "normalTimestamp": 1478056598000,
+                        "heroicKills": 14,
+                        "heroicTimestamp": 1485613268000,
+                        "mythicKills": 2,
+                        "mythicTimestamp": 1492142263000
+                    }
+                ]
+            },
+            {
+                "name": "Trial of Valor",
+                "lfr": 2,
+                "normal": 2,
+                "heroic": 2,
+                "mythic": 0,
+                "id": 8440,
+                "bosses": [
+                    {
+                        "id": 115323,
+                        "name": "Odyn",
+                        "lfrKills": 2,
+                        "lfrTimestamp": 1483656537000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1481854959000,
+                        "heroicKills": 3,
+                        "heroicTimestamp": 1485624460000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 114344,
+                        "name": "Guarm",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1483657114000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1481855890000,
+                        "heroicKills": 3,
+                        "heroicTimestamp": 1485625172000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 93394,
+                        "name": "Helya",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1483657660000,
+                        "normalKills": 5,
+                        "normalTimestamp": 1481856895000,
+                        "heroicKills": 3,
+                        "heroicTimestamp": 1485627693000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    }
+                ]
+            },
+            {
+                "name": "The Nighthold",
+                "lfr": 1,
+                "normal": 2,
+                "heroic": 2,
+                "mythic": 1,
+                "id": 8025,
+                "bosses": [
+                    {
+                        "id": 102263,
+                        "name": "Skorpyron",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1485635803000,
+                        "normalKills": 15,
+                        "normalTimestamp": 1494292744000,
+                        "heroicKills": 15,
+                        "heroicTimestamp": 1493172421000,
+                        "mythicKills": 8,
+                        "mythicTimestamp": 1494380774000
+                    },
+                    {
+                        "id": 104415,
+                        "name": "Chronomatic Anomaly",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1485636285000,
+                        "normalKills": 15,
+                        "normalTimestamp": 1494293108000,
+                        "heroicKills": 15,
+                        "heroicTimestamp": 1493172926000,
+                        "mythicKills": 7,
+                        "mythicTimestamp": 1494381579000
+                    },
+                    {
+                        "id": 104288,
+                        "name": "Trilliax",
+                        "lfrKills": 1,
+                        "lfrTimestamp": 1485636682000,
+                        "normalKills": 14,
+                        "normalTimestamp": 1494293437000,
+                        "heroicKills": 14,
+                        "heroicTimestamp": 1493173292000,
+                        "mythicKills": 6,
+                        "mythicTimestamp": 1494382854000
+                    },
+                    {
+                        "id": 107699,
+                        "name": "Spellblade Aluriel",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 13,
+                        "normalTimestamp": 1494293817000,
+                        "heroicKills": 14,
+                        "heroicTimestamp": 1493173977000,
+                        "mythicKills": 2,
+                        "mythicTimestamp": 1493861250000
+                    },
+                    {
+                        "id": 103685,
+                        "name": "Tichondrius",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1493491392000,
+                        "normalKills": 13,
+                        "normalTimestamp": 1494294270000,
+                        "heroicKills": 12,
+                        "heroicTimestamp": 1493174720000,
+                        "mythicKills": 1,
+                        "mythicTimestamp": 1494392098000
+                    },
+                    {
+                        "id": 101002,
+                        "name": "Krosus",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1493491845000,
+                        "normalKills": 13,
+                        "normalTimestamp": 1494294702000,
+                        "heroicKills": 15,
+                        "heroicTimestamp": 1493175251000,
+                        "mythicKills": 4,
+                        "mythicTimestamp": 1493782994000
+                    },
+                    {
+                        "id": 104528,
+                        "name": "High Botanist Tel'arn",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 9,
+                        "normalTimestamp": 1494296035000,
+                        "heroicKills": 14,
+                        "heroicTimestamp": 1493176961000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 103758,
+                        "name": "Star Augur Etraeus",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 10,
+                        "normalTimestamp": 1494295221000,
+                        "heroicKills": 13,
+                        "heroicTimestamp": 1493176154000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 110965,
+                        "name": "Grand Magistrix Elisande",
+                        "lfrKills": 3,
+                        "lfrTimestamp": 1493492398000,
+                        "normalKills": 8,
+                        "normalTimestamp": 1494296580000,
+                        "heroicKills": 15,
+                        "heroicTimestamp": 1494379103000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    },
+                    {
+                        "id": 105503,
+                        "name": "Gul'dan",
+                        "lfrKills": 0,
+                        "lfrTimestamp": 0,
+                        "normalKills": 8,
+                        "normalTimestamp": 1494297097000,
+                        "heroicKills": 12,
+                        "heroicTimestamp": 1494379773000,
+                        "mythicKills": 0,
+                        "mythicTimestamp": 0
+                    }
+                ]
+            }
+        ]
+    },
+    "totalHonorableKills": 5480
+}

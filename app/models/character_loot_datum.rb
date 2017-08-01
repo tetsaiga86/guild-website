@@ -1,0 +1,2 @@
+class CharacterLootDatum < ApplicationRecord
+end

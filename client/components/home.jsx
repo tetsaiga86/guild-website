@@ -18,22 +18,34 @@ class Home extends React.Component {
     return (
       <div className="home-div">
         <Header className="header" />
-        <div className="banner-div"><img className="banner" src="/images/kubrickheader.jpg"/></div>
+        <div className="banner-div">
+          <img className="banner" src="/images/kubrickheader.jpg"/>
+        </div>
         <div className="main-page">
           <Grid>
            <Row className="top-row">
              <Col xs={12} md={8}>
                <Row>
-                 <Col><HomeCarousel /></Col>
+                 <Col>
+                   <HomeCarousel />
+                 </Col>
                </Row>
                <Row>
-                 <Col xs={12} md={8}><Announcements /></Col>
-                 <Col xs={6} md={4}><Recruitment /></Col>
+                 <Col xs={12} md={8}>
+                   <Announcements />
+                 </Col>
+                 <Col xs={6} md={4}>
+                   <Recruitment />
+                 </Col>
                </Row>
              </Col>
-             <Col xs={6} md={4}><Progress /></Col>
+             <Col xs={6} md={4}>
+               <Progress />
+             </Col>
            </Row>
-           <Row className="footer"><Footer /></Row>
+           <Row className="footer">
+             <Footer />
+           </Row>
           </Grid>
         </div>
       </div>

@@ -1,0 +1,173 @@
+{
+  "id": 128825,
+  "name": "T'uure, Beacon of the Naaru",
+  "icon": "inv_staff_2h_artifactheartofkure_d_06",
+  "quality": 6,
+  "itemLevel": 929,
+  "tooltipParams": {
+    "gem0": 137346,
+    "gem1": 140838,
+    "gem2": 137495,
+    "timewalkerLevel": 110
+  },
+  "stats": [
+    {
+      "stat": 32,
+      "amount": 936
+    },
+    {
+      "stat": 49,
+      "amount": 899
+    },
+    {
+      "stat": 5,
+      "amount": 2843
+    },
+    {
+      "stat": 7,
+      "amount": 4265
+    }
+  ],
+  "armor": 0,
+  "weaponInfo": {
+    "damage": {
+      "min": 7005,
+      "max": 10509,
+      "exactMin": 7005,
+      "exactMax": 10508
+    },
+    "weaponSpeed": 3.6,
+    "dps": 2432.361
+  },
+  "context": "scenario-normal",
+  "bonusLists": [
+    739,
+    1531,
+    1533,
+    1531
+  ],
+  "artifactId": 45,
+  "displayInfoId": 156751,
+  "artifactAppearanceId": 912,
+  "artifactTraits": [
+    {
+      "id": 846,
+      "rank": 5
+    },
+    {
+      "id": 1346,
+      "rank": 1
+    },
+    {
+      "id": 844,
+      "rank": 4
+    },
+    {
+      "id": 848,
+      "rank": 4
+    },
+    {
+      "id": 835,
+      "rank": 1
+    },
+    {
+      "id": 847,
+      "rank": 5
+    },
+    {
+      "id": 838,
+      "rank": 4
+    },
+    {
+      "id": 837,
+      "rank": 1
+    },
+    {
+      "id": 839,
+      "rank": 1
+    },
+    {
+      "id": 842,
+      "rank": 4
+    },
+    {
+      "id": 840,
+      "rank": 1
+    },
+    {
+      "id": 843,
+      "rank": 5
+    },
+    {
+      "id": 836,
+      "rank": 1
+    },
+    {
+      "id": 849,
+      "rank": 4
+    },
+    {
+      "id": 841,
+      "rank": 4
+    },
+    {
+      "id": 845,
+      "rank": 1
+    },
+    {
+      "id": 1380,
+      "rank": 1
+    },
+    {
+      "id": 1649,
+      "rank": 1
+    },
+    {
+      "id": 1569,
+      "rank": 4
+    },
+    {
+      "id": 1570,
+      "rank": 1
+    },
+    {
+      "id": 1571,
+      "rank": 1
+    }
+  ],
+  "relics": [
+    {
+      "socket": 0,
+      "itemId": 137346,
+      "context": 35,
+      "bonusLists": [
+        3418,
+        1557,
+        3337
+      ]
+    },
+    {
+      "socket": 1,
+      "itemId": 140838,
+      "context": 6,
+      "bonusLists": [
+        3445,
+        1507,
+        3336
+      ]
+    },
+    {
+      "socket": 2,
+      "itemId": 137495,
+      "context": 35,
+      "bonusLists": [
+        3418,
+        1557,
+        3337
+      ]
+    }
+  ],
+  "appearance": {
+    "itemAppearanceModId": 32
+  }
+}
