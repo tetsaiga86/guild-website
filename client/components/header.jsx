@@ -16,7 +16,7 @@ function isLoggedIn() {
   return ENV.membership_level <= 99
 }
 
-const playerUrl = 'http://render-us.worldofwarcraft.com/character/'
+const playerUrl = 'https://render-us.worldofwarcraft.com/character/'
 class Header extends React.Component {
   changeLocation(url){
     page(url)
