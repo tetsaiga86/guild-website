@@ -74,7 +74,7 @@ class Header extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">F O O L S A V G E</a>
+              <a href="/">{ENV.guild_name}</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
