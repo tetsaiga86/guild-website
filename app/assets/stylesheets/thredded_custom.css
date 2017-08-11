@@ -1,0 +1,9 @@
+/*
+ *= require 'thredded'
+ */
+
+.custom-forum-nav{
+ min-width: inherit;
+ display: flex;
+ justify-content: space-around;
+}

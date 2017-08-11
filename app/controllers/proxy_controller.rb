@@ -1,9 +1,14 @@
 class ProxyController < ApplicationController
   skip_before_filter :verify_authenticity_token
-
-  def user_armory
+  include Thredded::Engine.routes.url_helpers
+  def user_private_message
     user = User.find(params[:id])
-    redirect_to "https://worldofwarcraft.com/en-us/character/#{ENV['REALM']}/#{user.character_name}"
+
+    if user == current_user
+      redirect_to "https://worldofwarcraft.com/en-us/character/#{ENV['REALM']}/#{user.character_name}"
+    else
+      redirect_to new_private_topic_path(user_names: user.character_name)
+    end
   end
 
   def news
@@ -37,8 +42,10 @@ class ProxyController < ApplicationController
   end
 
   def achievements
-    guild_data = bnet_client.achievements(ENV['GUILD_NAME'])
-    render json: data_manipulation_achievements.massage_achievements(guild_data)
+    # guild_data = bnet_client.achievements(ENV['GUILD_NAME'])
+    # render json: data_manipulation_achievements.massage_achievements(guild_data)
+    return head :not_found unless GuildUpdateCache.count > 0
+    render json: GuildUpdateCache.first.json
   end
 
   def announcements

@@ -40,6 +40,7 @@ module DataManipulation
         else
           begin
             newsItem['item'] = JSON.parse(item_info.body)
+            item_info.touch
           rescue StandardError
             newsItem['item'] = 'error'
           end

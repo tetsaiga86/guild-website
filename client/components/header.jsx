@@ -44,8 +44,8 @@ class Header extends React.Component {
     if(!isAdmin()) return;
 
     return [
-      <MenuItem divider />,
-      <MenuItem eventKey={1.2} href="/spa/admin">Admin</MenuItem>
+      <MenuItem key='divider' divider />,
+      <MenuItem key='adminLink' eventKey={1.2} href="/spa/admin">Admin</MenuItem>
     ]
   }
 

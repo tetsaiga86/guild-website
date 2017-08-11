@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap'
 import Equip from './equip'
 
-const itemUrl = 'http://us.battle.net/wow/en/item/';
+const itemUrl = 'https://us.battle.net/wow/en/item/';
 class NewsPiece extends React.Component{
   render(){
     var player = this.props.piece.character;

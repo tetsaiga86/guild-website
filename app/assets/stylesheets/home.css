@@ -103,7 +103,7 @@ th, .raid-table, .members-table-cell, .achievement-table-cell{
 .frame{
   width: 49px;
   height: 49px;
-  background: url("http://us.battle.net/wow/static/images/icons/frames/inventory-slots.png");
+  background: url("https://us.battle.net/wow/static/images/icons/frames/inventory-slots.png");
   background-repeat: no-repeat;
   border-radius: 4px;
   /*display: block;*/
@@ -248,4 +248,14 @@ strong{
 
 .footer{
   padding-top: 1em;
+}
+
+.about-section{
+  text-decoration: underline;
+}
+
+ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }

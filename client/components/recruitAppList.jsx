@@ -58,9 +58,6 @@ class RecruitAppList extends React.Component {
               <th>Class/Spec</th>
               <th>Armory Url</th>
               <th>email</th>
-              <th>Can make raid times</th>
-              <th>Agrees to let officer know of absence</th>
-              <th>Agrees to use mandated addons</th>
               <th>Viiable Alts/Offspecs</th>
               <th>About</th>
               <th>Delete?</th>

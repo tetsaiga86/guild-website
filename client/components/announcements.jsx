@@ -29,14 +29,20 @@ class Announcements extends React.Component {
     return <ul>{announcements}</ul>;
   }
 
-  render () {
-    if (this.state.items.length === 0) {
-      return <h2>No Announcements</h2>;
+  renderTitle(length){
+    if (!length) {
+      return <h2>No Announcements</h2>
+    }else if (length === 1) {
+      return <h2>1 Announcement</h2>
+    }else{
+      return <h2>{length} announcements</h2>
     }
+  }
 
+  render () {
     return (
       <div>
-        <h2>{this.state.items.length} announcements</h2>
+        {this.renderTitle(this.state.items.length)}
         {this.renderAnnouncements()}
       </div>
     );

@@ -32,7 +32,7 @@ class CharacterTalents extends React.Component{
     })
     if (this.props.data) {
       for (var i = 0; i < talentsArr.length; i++) {
-        var spellUrl = `http://media.blizzard.com/wow/icons/36/${talentsArr[i].spell.icon}.jpg`
+        var spellUrl = `https://media.blizzard.com/wow/icons/36/${talentsArr[i].spell.icon}.jpg`
         talentNames.push(
           <OverlayTrigger key={i} trigger={['hover', 'focus']} placement="bottom" overlay={this.popover(talentsArr[i].spell.description)}>
             <div className="talent-div">
@@ -56,7 +56,7 @@ class CharacterTalents extends React.Component{
         const talent = talents[i];
         const specName = talent.spec.name;
         const popoverString = talent.spec.description;
-        const icon = `http://media.blizzard.com/wow/icons/36/${talent.spec.icon}.jpg`;
+        const icon = `https://media.blizzard.com/wow/icons/36/${talent.spec.icon}.jpg`;
         collapsibleArray.push(
           <Collapsible title={specName} popoverInfo={popoverString} iconUrl={icon} in={!!state[specName]} key={specName} onToggle={() => this.onToggle(talent)}>
             {this.renderTalents(talent.talents)}

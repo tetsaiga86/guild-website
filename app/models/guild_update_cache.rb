@@ -1,0 +1,2 @@
+class GuildUpdateCache < ApplicationRecord
+end

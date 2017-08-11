@@ -5,7 +5,7 @@ import {
   Table
 } from 'react-bootstrap'
 
-const avatarUrl = 'http://render-us.worldofwarcraft.com/character/';
+const avatarUrl = 'https://render-us.worldofwarcraft.com/character/';
 const imgType = {
   avatar: 'avatar.jpg',
   inset: 'inset.jpg',

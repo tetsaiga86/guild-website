@@ -134,34 +134,12 @@ namespace :prepopulate do
 
   task news: :environment do
     bnet_client = ::Bnet::Client.new(5)
-
-    def fn_id(fn)
-      bonus_lists = fn['bonusLists'] || []
-      id = "#{fn['itemId']}_#{fn['context']}_#{bonus_lists.join('*')}"
-      puts id
-      return id
-    end
-
     guild_data = bnet_client.achievements(ENV['GUILD_NAME'])
+    data_massager = DataManipulation::Achievements.new
+    massaged = data_massager.massage_achievements(guild_data)
+    GuildUpdateCache.destroy_all
+    GuildUpdateCache.create(json: massaged.to_json)
 
-    filtered_news = guild_data['news'].select do |fn|
-      fn['type']=="itemLoot"
-    end
-
-    filtered_news_ids = filtered_news.map {|fn| fn_id(fn)}
-    item_infos = CharacterLootDatum.where(bnet_id: filtered_news_ids).to_a
-
-    filtered_news.each do |newsItem|
-      item_info = item_infos.select { |i| i.bnet_id == fn_id(newsItem) }.first
-
-      unless item_info
-        item_info_body = bnet_client.item_info(newsItem)
-        next if item_info_body.nil?
-        item_info = CharacterLootDatum.create(bnet_id: fn_id(newsItem), body: item_info_body.to_json)
-        newsItem['item'] = item_info_body
-      else
-        newsItem['item'] = JSON.parse(item_info.body)
-      end
-    end
+    CharacterLootDatum.where.not(updated_at: 20.minutes.ago...Time.now).destroy_all
   end
 end

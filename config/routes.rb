@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/spa/:spa_route' => 'spa#spa_route'
 
   get '/news' => 'proxy#news'
-  get '/users/:id' => 'proxy#user_armory'
+  get '/users/:id' => 'proxy#user_private_message'
 
   get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy', as: 'destroy_user_session'
