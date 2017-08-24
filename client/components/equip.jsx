@@ -6,8 +6,8 @@ Popover,
 OverlayTrigger,
 } from 'react-bootstrap'
 
-const iconUrl = 'https://media.blizzard.com/wow/icons/56/';
-const itemUrl = 'https://us.battle.net/wow/en/item/';
+const iconUrl = 'http://media.blizzard.com/wow/icons/56/';
+const itemUrl = 'http://us.battle.net/wow/en/item/';
 let gemKeyCounter = 0
 class Equip extends React.Component{
   getArtifactRank(item){
