@@ -7,7 +7,7 @@ import {
 
 } from 'react-bootstrap'
 
-const iconUrl = 'https://media.blizzard.com/wow/icons/56/';
+const iconUrl = 'http://media.blizzard.com/wow/icons/56/';
 const achievementUrl = 'https://www.wowhead.com/achievement=';
 class Achievement extends React.Component{
   renderCriteria(criteriaArr){
