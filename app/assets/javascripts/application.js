@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require spa
+//= require google_analytics
