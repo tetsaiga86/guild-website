@@ -15,6 +15,12 @@ function renderComponent(component) {
   );
 }
 
+page('*', function (context, next) {
+  ga('set', 'page', context.path);
+  ga('send', 'pageview');
+  next();
+})
+
 page('/', function () {
   ReactDOM.unmountComponentAtNode(document.getElementById('app'))
   renderComponent(<Home />);
