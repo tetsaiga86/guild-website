@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'figaro'
 gem 'httparty'
 gem 'omniauth-bnet', '~> 1.1', '>= 1.1.1'
 gem 'omniauth'
